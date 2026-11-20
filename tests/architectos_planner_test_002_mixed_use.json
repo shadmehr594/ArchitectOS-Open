@@ -1,0 +1,155 @@
+{
+  "test_id": "PLANNER_TEST_002_MIXED_USE",
+
+  "intent": {
+    "type": "design_request",
+    "goal": "generate_optimal_mixed_use_design"
+  },
+
+  "site": {
+    "site_id": "site_507155_2999810",
+    "area": 200,
+    "geometry": {
+      "type": "polygon",
+      "source": "DWG_HATCH_EXTRACTED"
+    }
+  },
+
+  "building_program": {
+
+    "building_type": "commercial_residential",
+
+    "floors": 3,
+
+    "ground_floor": {
+
+      "coverage": 100,
+
+      "required_functions": [
+        "commercial",
+        "commercial_mezzanine",
+        "parking",
+        "stair",
+        "elevator"
+      ],
+
+      "commercial_rule": {
+        "parking_ratio": "1 parking per 40 sqm commercial"
+      },
+
+      "mezzanine": {
+        "type": "commercial_mezzanine",
+        "allowed": true,
+        "optimize_area": true
+      }
+    },
+
+
+    "floor_1": {
+
+      "coverage_ratio": 0.60,
+
+      "units": 1,
+
+      "constraints": {
+
+        "north_lightwell": {
+          "width": 1.7,
+          "area": 12
+        },
+
+        "south_projection": {
+          "width": 1.2
+        }
+      }
+    },
+
+
+    "floor_2": {
+
+      "coverage_ratio": 0.60,
+
+      "units": 2,
+
+      "constraints": {
+
+        "north_lightwell": "same_as_floor_1",
+
+        "south_projection": "same_as_floor_1"
+
+      }
+    },
+
+
+    "roof": {
+
+      "type": "stair_headroom"
+
+    }
+
+  },
+
+
+  "regulations": {
+
+    "residential": {
+
+      "parking_required": "1 parking per unit"
+
+    },
+
+    "commercial": {
+
+      "parking_required": "1 parking per 40 sqm"
+
+    }
+
+  },
+
+
+  "planner_task": {
+
+    "instructions": [
+
+      "Analyze site constraints",
+
+      "Calculate residential parking demand",
+
+      "Optimize commercial and mezzanine area",
+
+      "Fit required parking inside ground floor",
+
+      "Preserve circulation core",
+
+      "Generate final architectural program"
+
+    ]
+
+  },
+
+
+  "expected_output": {
+
+    "type": "planner_decision",
+
+    "required_fields": [
+
+      "ground_floor_layout",
+
+      "commercial_area",
+
+      "mezzanine_area",
+
+      "parking_count",
+
+      "residential_units",
+
+      "reasoning",
+
+      "confidence"
+
+    ]
+
+  }
+
+}

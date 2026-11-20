@@ -1,0 +1,307 @@
+{
+  "202": {
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model (FLUX Krea Dev FP8)"
+    },
+    "inputs": {
+      "unet_name": "flux1-krea-dev_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "204": {
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader (CLIP-L + T5-XXL)"
+    },
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux"
+    }
+  },
+  "205": {
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE (ae.safetensors)"
+    },
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    }
+  },
+  "300": {
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "IMAGE B - Working Target Building (Prepared from B01_GEMINI_HQ)",
+      "_architectos_role": "IMAGE_B_target_building_geometry_authority"
+    },
+    "inputs": {
+      "image": "architectos_b_working.png",
+      "upload": "image"
+    }
+  },
+  "301": {
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode (IMAGE B)"
+    },
+    "inputs": {
+      "pixels": [
+        "300",
+        0
+      ],
+      "vae": [
+        "205",
+        0
+      ]
+    }
+  },
+  "302": {
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "IMAGE A - Style Reference (A_STYLE.jpg)",
+      "_architectos_role": "IMAGE_A_style_reference_appearance_only"
+    },
+    "inputs": {
+      "image": "architectos_a_style.png",
+      "upload": "image"
+    }
+  },
+  "304": {
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "Load SigLIP Vision (USO Compatible)"
+    },
+    "inputs": {
+      "clip_name": "sigclip_vision_patch14_384.safetensors"
+    }
+  },
+  "303": {
+    "class_type": "CLIPVisionEncode",
+    "_meta": {
+      "title": "CLIP Vision Encode (IMAGE A)"
+    },
+    "inputs": {
+      "clip_vision": [
+        "304",
+        0
+      ],
+      "image": [
+        "302",
+        0
+      ],
+      "crop": "center"
+    }
+  },
+  "320": {
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "USO DiT LoRA (strength=0.85 to prevent dome bleed)"
+    },
+    "inputs": {
+      "model": [
+        "202",
+        0
+      ],
+      "lora_name": "uso-flux1-dit-lora-v1.safetensors",
+      "strength_model": 0.92
+    }
+  },
+  "321": {
+    "class_type": "ModelPatchLoader",
+    "_meta": {
+      "title": "USO Projector Patch"
+    },
+    "inputs": {
+      "name": "uso-flux1-projector-v1.safetensors"
+    }
+  },
+  "322": {
+    "class_type": "USOStyleReference",
+    "_meta": {
+      "title": "USO Style Reference (Active with CFG Batch Patch)"
+    },
+    "inputs": {
+      "model": [
+        "320",
+        0
+      ],
+      "model_patch": [
+        "321",
+        0
+      ],
+      "clip_vision_output": [
+        "303",
+        0
+      ]
+    }
+  },
+  "206": {
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive Prompt (Surface Material & Lighting)"
+    },
+    "inputs": {
+      "text": "luxury Iranian neoclassical architectural facade finished in large smooth honed cream-beige travertine stone ashlar slabs, fluted Corinthian stone pilasters with carved capitals along the vertical structural columns, carved travertine stone baluster railings (نرده صراحی سنگی) on the recessed right-side balconies, full double-glazed reflective dark-framed windows with carved classical stone architraves and triangular pediments in all window openings, clean neoclassical stone roof cornice, honed travertine courtyard paving, bright natural daylight, 8k photorealistic architectural photography",
+      "clip": [
+        "204",
+        0
+      ]
+    }
+  },
+  "212": {
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative Prompt (Block Raw Brick & Dome Bleed)"
+    },
+    "inputs": {
+      "text": "raw clay bricks, orange hollow bricks, grey cinderblocks, rubble stone, rough cobblestone, mortar grid bleed, unglazed black window holes, missing windows, exposed rebar rods on roof, unfinished construction site, dirt ground, deformed perspective, cartoon",
+      "clip": [
+        "204",
+        0
+      ]
+    }
+  },
+  "330": {
+    "class_type": "LoadImageMask",
+    "_meta": {
+      "title": "Editable Building Mask S (1=Building S, 0=Protected Environment P)",
+      "_architectos_role": "MASK_S_building_region"
+    },
+    "inputs": {
+      "image": "architectos_mask_S.png",
+      "channel": "red",
+      "upload": "image"
+    }
+  },
+  "331": {
+    "class_type": "SetLatentNoiseMask",
+    "_meta": {
+      "title": "Latent Noise Mask (Constrain Sampling to Building S)"
+    },
+    "inputs": {
+      "samples": [
+        "301",
+        0
+      ],
+      "mask": [
+        "330",
+        0
+      ]
+    }
+  },
+  "307": {
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Pre-computed DA3 Relative Depth Map (Saves VRAM during KSampler)",
+      "_architectos_role": "DA3_PRECOMPUTED_DEPTH_MAP"
+    },
+    "inputs": {
+      "image": "architectos_da3_depth.png",
+      "upload": "image"
+    }
+  },
+  "310": {
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load FLUX ControlNet Union Pro 2.0 FP8"
+    },
+    "inputs": {
+      "control_net_name": "flux1-dev-controlnet-union-pro-2.0-fp8.safetensors"
+    }
+  },
+  "311": {
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply 2.5D Geometry ControlNet (end_percent=1.0 across all steps)"
+    },
+    "inputs": {
+      "positive": [
+        "206",
+        0
+      ],
+      "negative": [
+        "212",
+        0
+      ],
+      "control_net": [
+        "310",
+        0
+      ],
+      "image": [
+        "307",
+        0
+      ],
+      "vae": [
+        "205",
+        0
+      ],
+      "strength": 0.72,
+      "start_percent": 0.0,
+      "end_percent": 0.8
+    }
+  },
+  "210": {
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler (Single Supervised Render)"
+    },
+    "inputs": {
+      "model": [
+        "322",
+        0
+      ],
+      "seed": 123456789,
+      "steps": 28,
+      "cfg": 4.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "positive": [
+        "311",
+        0
+      ],
+      "negative": [
+        "311",
+        1
+      ],
+      "latent_image": [
+        "331",
+        0
+      ],
+      "denoise": 0.78
+    }
+  },
+  "208": {
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VAE Decode Tiled (Includes all 4 ComfyUI 0.29.0 required inputs)"
+    },
+    "inputs": {
+      "samples": [
+        "210",
+        0
+      ],
+      "vae": [
+        "205",
+        0
+      ],
+      "tile_size": 512,
+      "overlap": 64,
+      "temporal_size": 64,
+      "temporal_overlap": 8
+    }
+  },
+  "9": {
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Generated Architectural Output"
+    },
+    "inputs": {
+      "images": [
+        "208",
+        0
+      ],
+      "filename_prefix": "architectos_stage2_render"
+    }
+  }
+}

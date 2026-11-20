@@ -1,0 +1,19 @@
+{
+  "case_id": "bedroom",
+  "input": {
+    "image_type": "architectural_render_or_photo",
+    "observed": ["bed visible", "window visible", "closet visible"],
+    "inferred": [],
+    "unresolved": [],
+    "confidence": "MEDIUM",
+    "architectural_elements": ["bed", "window", "closet"]
+  },
+  "expected": {
+    "space_type": "bedroom",
+    "semantic_status": "bounded_interpretation",
+    "role": "sleeping_space",
+    "visible_elements": ["sleeping_element", "window", "wardrobe_or_closet"],
+    "relation_types": ["opening_associated_with_space"],
+    "relation_statuses": ["BOUNDED_INFERENCE"]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "REFERENCE_PATTERN_EVIDENCE_V1",
+  "source_policy": "RELATIONS_ONLY_NO_PIXELS_NO_TRACED_POLYGONS_NO_COPIED_DIMENSIONS_NO_COORDINATES",
+  "samples": [
+    {
+      "sample_id": "REVIEW_A",
+      "conceptual_contributions": [
+        "side-by-side public/private split",
+        "entry bifurcation",
+        "private hall serving bedrooms and bath",
+        "guest WC at privacy threshold",
+        "kitchen access to usable outdoor space"
+      ]
+    },
+    {
+      "sample_id": "REVIEW_B",
+      "conceptual_contributions": [
+        "dual entry paths",
+        "private wing without guest view",
+        "open dining/living/kitchen field",
+        "rear-side outdoor access"
+      ],
+      "negative_observation": "guest WC inside sleeping cluster"
+    },
+    {
+      "sample_id": "CUMULATIVE_SYNTHESIS",
+      "conceptual_contributions": [
+        "mid-plan yard serving kitchen and bedrooms",
+        "front-yard parking and pedestrian entry separation"
+      ]
+    }
+  ],
+  "provenance": [
+    "HUMAN_REFERENCE_PATTERN",
+    "GENERALIZED_HUMAN_REVIEW_LEARNING"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "_role": "LEARNER DATA. Case TEXT only. No case here carries an expected answer, a label, or a concept name. The evaluation fixture is a separate file that the learner never imports.",
+  "_note": "The cases are grouped by the probe they exercise, so the harness can feed exactly one group at a time.",
+  "unseen_cases": {
+    "support": [
+      {
+        "contract": "ArchitecturalNewSpaceV1",
+        "version": "1.0",
+        "space_id": "U1",
+        "description": "A small room sits off the main area, kept out of view.",
+        "reason": "because the person who uses it has to recover without being watched"
+      },
+      {
+        "contract": "ArchitecturalNewSpaceV1",
+        "version": "1.0",
+        "space_id": "U2",
+        "description": "A narrow pocket lies beyond the shared zone, turned from the crowd.",
+        "reason": "since its occupant needs to recover where no one observes"
+      }
+    ],
+    "zero_word": [
+      {
+        "_note": "Carries NONE of the teaching vocabulary: no chamber, cell, nook, bay, room, or any teaching WHY stem. Decidable only from formal structure.",
+        "contract": "ArchitecturalNewSpaceV1",
+        "version": "1.0",
+        "space_id": "Z1",
+        "description": "An enclosure lies apart from the communal field, screened along its length.",
+        "reason": "for the one inside requires an interval of restoration while unseen"
+      }
+    ],
+    "contradicting": [
+      {
+        "contract": "ArchitecturalNewSpaceV1",
+        "version": "1.0",
+        "space_id": "C1",
+        "description": "A large hall sits at the very centre of the shared rooms, fully open to everyone.",
+        "reason": "because the gathering must always be watched and never separated"
+      }
+    ],
+    "same_structure_different_meaning": [
+      {
+        "_note": "Descriptions are near-identical; only the WHY differs. A learner that ignores the WHY will conflate them.",
+        "contract": "ArchitecturalNewSpaceV1",
+        "version": "1.0",
+        "space_id": "S1",
+        "description": "A quiet nook sits past the gathering space, kept out of sight.",
+        "reason": "because the household member needs an unwatched place to rest"
+      },
+      {
+        "contract": "ArchitecturalNewSpaceV1",
+        "version": "1.0",
+        "space_id": "S2",
+        "description": "A quiet nook sits past the gathering space, kept out of sight.",
+        "reason": "because the furniture layout simply left a gap there"
+      }
+    ]
+  }
+}

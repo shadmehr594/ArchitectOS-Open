@@ -1,0 +1,41 @@
+{
+  "fixture": "abstraction_v3_evaluation_expectations",
+  "version": "1.0",
+  "visibility": "EVALUATOR_ONLY_READ_AFTER_VERDICT",
+  "read_policy": "This file must not be read before Phase 6 completes. The probe records evaluation_key_read=false in Phase 5 and reads this only for audit, after the verdict.",
+  "expectations": {
+    "mode_p": {
+      "may_exceed_level": "LEVEL_B_STRUCTURED_GENERALIZATION",
+      "must_never_report": [
+        "LEVEL_D_EMERGENT_RELATIONAL_ABSTRACTION",
+        "LEVEL_E_CONCEPTUAL_ABSTRACTION_EVIDENCE"
+      ],
+      "must_report_predefined_vocabulary_used": true
+    },
+    "mode_e": {
+      "may_reach": [
+        "LEVEL_A_ENGINEERED_REPRESENTATION",
+        "LEVEL_B_STRUCTURED_GENERALIZATION",
+        "LEVEL_C_WHY_GROUNDED_GENERALIZATION",
+        "LEVEL_D_EMERGENT_RELATIONAL_ABSTRACTION"
+      ],
+      "must_never_receive_relation_vocabulary": true,
+      "acceptable_outcome_if_no_pattern_is_found": "PREDEFINED-REPRESENTATION-DEPENDENCE is a valid, expected, and reportable result"
+    },
+    "universal": {
+      "all_eleven_failure_modes_must_be_emitted": true,
+      "fingerprint_must_be_labelled_representation_stability": true,
+      "no_failure_mode_may_be_reported_as_a_pass_when_it_was_never_exercised": true,
+      "reserved_status_requires_full_gate_pass": true
+    }
+  },
+  "forbidden_evidence_claims": {
+    "note": "No run of this experiment may claim any of these. They are listed so a test can assert their absence from every verdict.",
+    "claims": [
+      "conceptual_abstraction_without_predefined_representation_dependence_measured",
+      "human_like_understanding",
+      "learned_model",
+      "generalizes_to_arbitrary_architectural_language"
+    ]
+  }
+}

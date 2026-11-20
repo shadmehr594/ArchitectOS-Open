@@ -1,0 +1,49 @@
+{
+  "contract": "ResidentialFloorPrecedentPatternsV1",
+  "authority_class": "PRECEDENT_NON_REGULATORY",
+  "policy": {
+    "geometry_copying": false,
+    "regulatory_authority": false,
+    "project_specific_validation_required": true
+  },
+  "cases": [
+    {
+      "id": "ZIO_APARTMENT_BLOCK",
+      "url": "https://www.metalocus.es/en/news/a-pleasant-living-experience-zio-apartment-block-alexis-papadopoulos-architectural-practice",
+      "observed_abstract_features": ["COMPACT_SHARED_LANDING", "INDEPENDENT_UNIT_THRESHOLDS", "LIVING_DINING_AS_DISTRIBUTION_SUPPORT", "INTERIOR_WET_CLUSTER", "PERIMETER_HABITABLE_ROOMS"]
+    },
+    {
+      "id": "KOOHSAR_RESIDENTIAL_APARTMENT",
+      "url": "https://amazingarchitecture.com/residential-building/koohsar-residential-apartment-in-shiraz-iran-by-ashariarchitects",
+      "observed_abstract_features": ["COMPACT_ENTRY_NODE", "PUBLIC_PRIVATE_ZONING", "CENTRAL_WET_CLUSTER", "PERIMETER_BEDROOMS", "REAL_DAYLIGHT_SETBACK"]
+    },
+    {
+      "id": "ZADAR_DIKLO_TWO_UNIT_FLOOR",
+      "url": "https://eurovilla.hr/projekt/zadar-diklo-moderna-zgrada-sa-sest-trosobnih-stanova-na-super-lokaciji/581/",
+      "observed_abstract_features": ["TWO_UNITS_ONE_COMPACT_CORE_LANDING", "MIRRORED_BALANCE_WITHOUT_GEOMETRY_COPY", "LIVING_TO_TERRACE", "BEDROOMS_TO_OPPOSITE_FACADE", "CENTRAL_WET_CLUSTER"]
+    },
+    {
+      "id": "SABA_APARTMENT_TEHRAN",
+      "url": "https://architizer.com/idea/2021250/",
+      "observed_abstract_features": ["SHORT_BRANCHING_COMMON_ACCESS", "SERVICE_NEAR_CORE", "OPEN_LIVING_DINING", "PERIMETER_BEDROOMS", "DIRECT_FACADE_ALLOCATION"]
+    },
+    {
+      "id": "ELMWOOD_COURT",
+      "url": "https://www.archdaily.com/782611/elmwood-court-cf-moller",
+      "observed_abstract_features": ["AVOID_LONG_INTERNAL_CORRIDORS", "FEW_UNITS_PER_CORE", "DOUBLE_EXPOSURE_PRIORITY"]
+    }
+  ],
+  "derived_patterns": [
+    {"id": "COMPACT_ENTRY_DISTRIBUTION", "move": "THRESHOLD_TO_COMPACT_FOYER_THEN_PUBLIC_ROOM_AND_SHORT_PRIVATE_BRANCH", "forbids": ["THRESHOLD_TO_LONGITUDINAL_SPINE"]},
+    {"id": "FACADE_FIRST_HABITABLE_BANDS", "move": "ALLOCATE_LIVING_AND_BEDROOMS_TO_QUALIFYING_FACADE_BEFORE_INTERIOR_SERVICE", "forbids": ["INTERIOR_REQUIRED_ROOM_WITH_FAKE_DAYLIGHT"]},
+    {"id": "CENTRAL_WET_SERVICE_CLUSTER", "move": "GROUP_KITCHEN_BATHROOM_AND_SERVICE_AT_SHARED_INTERIOR_BOUNDARIES_NEAR_CORE", "forbids": ["SCATTERED_WET_CELLS"]},
+    {"id": "PUBLIC_PRIVATE_ROOM_ZONES", "move": "KEEP_LIVING_DINING_PUBLIC_AND_ROUTE_BEDROOMS_FROM_A_SHORT_PRIVACY_VESTIBULE", "forbids": ["BEDROOM_REACHED_THROUGH_ANOTHER_BEDROOM", "BATHROOM_REACHED_THROUGH_LIVING"]},
+    {"id": "RF2_SIMULTANEOUS_BALANCE", "move": "SOLVE_BOTH_THRESHOLDS_FACADE_SHARES_WET_CLUSTERS_AND_DAYLIGHT_IN_ONE_FLOOR_HYPOTHESIS", "forbids": ["INDEPENDENT_UNIT_BY_UNIT_SELECTION"]}
+  ],
+  "design_guardrails_non_regulatory": {
+    "private_circulation_area_ratio_max": 0.1,
+    "distribution_node_elongation_max": 2.5,
+    "common_corridor_role": "COMPACT_LANDING_TERMINATING_AT_UNIT_THRESHOLDS",
+    "required_room_facade_priority": ["living", "bedroom", "kitchen"]
+  }
+}

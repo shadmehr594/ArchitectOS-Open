@@ -1,0 +1,20 @@
+{
+  "precedent_id": "PARCEL2_HUMAN_REJECTION_20260920_V1",
+  "software_acceptance": "PASS",
+  "human_architectural_acceptance": "REJECTED",
+  "reason": "MECHANICAL_GRID_PACKING_WITHOUT_ARCHITECTURAL_FUNCTIONAL_COMPOSITION",
+  "negative_family": [
+    "GROUND_NOT_DESIGNED", "ROOF_NOT_DESIGNED", "R1_SEPARATION_JOINT_MISSING",
+    "R1_4_BY_5_EQUAL_CELL_GRID", "R2_ROTATED_OR_RESIZED_GRID_VARIANT",
+    "NO_MEANINGFUL_FUNCTIONAL_RELATIONSHIPS", "AUTOMATIC_DOOR_SPAM",
+    "STAIR_DISCONNECTED_FROM_ENTRY", "DOOR_TO_UNSAFE_NO_LANDING_CONDITION",
+    "ENTITY_CLASS_GENERATION_WITHOUT_ARCHITECTURAL_COMPOSITION"
+  ],
+  "source_code_signature": {
+    "module": "parcel2_autonomous_room_partition_design_gate_v1.py",
+    "r1_axes": {"x": [0.2, 2.6, 5.0, 7.4, 9.8], "y": [0.2, 4.12, 8.04, 11.96, 15.88, 19.8]},
+    "r2_axes": {"x": [0.2, 3.6, 4.2, 5.8, 6.4, 9.8], "row_step": 2.45},
+    "hard_failure_code": "MECHANICAL_GRID_PACKING_DETECTED"
+  },
+  "policy": "THIS_FAILURE_FAMILY_MUST_NOT_PASS_HUMAN_REVIEW_READINESS"
+}

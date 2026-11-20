@@ -1,0 +1,613 @@
+{
+  "schema": "RESIDENTIAL_PATTERN_LIBRARY_V1",
+  "patterns": [
+    {
+      "id": "P01",
+      "name_fa": "عمومی جلو، خصوصی عقب",
+      "name_en": "FRONT_PUBLIC_REAR_PRIVATE",
+      "intent": "public frontage; quieter deeper bedrooms",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [
+        "ENTRY",
+        "PUBLIC",
+        "PRIVATE"
+      ],
+      "public_private_service_zoning_behavior": "public frontage; quieter deeper bedrooms",
+      "access_circulation_grammar": "ENTRY -> PUBLIC; TRANSITION -> PRIVATE",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P02",
+      "name_fa": "خصوصی چپ، عمومی راست",
+      "name_en": "LEFT_PRIVATE_RIGHT_PUBLIC",
+      "intent": "lateral split; side follows context, never a universal south rule",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [
+        "ENTRY"
+      ],
+      "public_private_service_zoning_behavior": "lateral split; side follows context, never a universal south rule",
+      "access_circulation_grammar": "ENTRY -> LEFT_DOMAIN + RIGHT_DOMAIN",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P03",
+      "name_fa": "دوشاخه ورود عمومی و خصوصی",
+      "name_en": "ENTRY_BIFURCATION_PUBLIC_PRIVATE",
+      "intent": "immediate decision node",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [
+        "ENTRY",
+        "PUBLIC",
+        "PRIVATE"
+      ],
+      "public_private_service_zoning_behavior": "immediate decision node",
+      "access_circulation_grammar": "ENTRY_NODE -> PUBLIC_BRANCH + PRIVATE_BRANCH; private route excludes LIVING",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P04",
+      "name_fa": "دو مسیر متمایز پس از ورود",
+      "name_en": "DUAL_ENTRY_PUBLIC_PRIVATE_SPLIT",
+      "intent": "guest/family flows differentiated",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [
+        "PUBLIC",
+        "PRIVATE"
+      ],
+      "public_private_service_zoning_behavior": "guest/family flows differentiated",
+      "access_circulation_grammar": "ARRIVAL -> PUBLIC_DOORWAY; ARRIVAL -> PRIVATE_DOORWAY",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P05",
+      "name_fa": "توزیع‌کننده خنثی مرکزی",
+      "name_en": "CENTRAL_NEUTRAL_DISTRIBUTOR",
+      "intent": "compact node serves >=3 destinations; wet/private rooms are leaves",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [
+        "PUBLIC"
+      ],
+      "public_private_service_zoning_behavior": "compact node serves >=3 destinations; wet/private rooms are leaves",
+      "access_circulation_grammar": "PUBLIC -> NEUTRAL_DISTRIBUTOR -> BEDROOMS + BATH + COURTYARD",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P06",
+      "name_fa": "راهروی خصوصی کوتاه",
+      "name_en": "SHORT_PRIVATE_CORRIDOR",
+      "intent": "corridor justified only by privacy/access",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [
+        "PRIVATE"
+      ],
+      "public_private_service_zoning_behavior": "corridor justified only by privacy/access",
+      "access_circulation_grammar": "TRANSITION -> PRIVATE_CORRIDOR -> MULTIPLE_PRIVATE_DESTINATIONS",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P07",
+      "name_fa": "میدان پیوسته عمومی",
+      "name_en": "PUBLIC_OPEN_FIELD",
+      "intent": "continuous public field; doors not mandatory",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [],
+      "public_private_service_zoning_behavior": "continuous public field; doors not mandatory",
+      "access_circulation_grammar": "LIVING <-> DINING <-> OPEN_KITCHEN via WIDE_OPENING",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P08",
+      "name_fa": "حیاط نورده میانی",
+      "name_en": "MID_PLAN_DAYLIGHT_YARD",
+      "intent": "middle/upper third allowed; demonstrated deficit required",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [],
+      "public_private_service_zoning_behavior": "middle/upper third allowed; demonstrated deficit required",
+      "access_circulation_grammar": "NEUTRAL_ACCESS -> NEEDED_DAYLIGHT_YARD -> MULTIPLE_SPACES",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P09",
+      "name_fa": "خوشه فشرده فضاهای تر",
+      "name_en": "WET_CORE_CLUSTER",
+      "intent": "compact services without transit wet rooms",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [],
+      "public_private_service_zoning_behavior": "compact services without transit wet rooms",
+      "access_circulation_grammar": "CIRCULATION -> each WET_LEAF; cluster never blocks route",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P10",
+      "name_fa": "بال خصوصی بدون دید مهمان",
+      "name_en": "PRIVATE_WING_WITH_NO_GUEST_VIEW",
+      "intent": "shield bedroom doors from dominant guest sightlines",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [
+        "PUBLIC",
+        "PRIVATE"
+      ],
+      "public_private_service_zoning_behavior": "shield bedroom doors from dominant guest sightlines",
+      "access_circulation_grammar": "GUEST_PATH -> PUBLIC; OFFSET_THRESHOLD -> PRIVATE_WING",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P11",
+      "name_fa": "سرویس مهمان در آستانه حریم",
+      "name_en": "GUEST_WC_AT_PRIVACY_THRESHOLD",
+      "intent": "guest never enters sleeping cluster",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [
+        "PUBLIC"
+      ],
+      "public_private_service_zoning_behavior": "guest never enters sleeping cluster",
+      "access_circulation_grammar": "PUBLIC -> PRIVACY_THRESHOLD -> GUEST_WC; excludes SLEEPING_CLUSTER",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P12",
+      "name_fa": "حمام خانواده در حوزه خصوصی",
+      "name_en": "FAMILY_BATH_IN_PRIVATE_DOMAIN",
+      "intent": "no direct living exposure",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [
+        "PRIVATE"
+      ],
+      "public_private_service_zoning_behavior": "no direct living exposure",
+      "access_circulation_grammar": "PRIVATE_HALL -> FAMILY_BATH_LEAF",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P13",
+      "name_fa": "اتصال آشپزخانه به حیاط قابل استفاده",
+      "name_en": "KITCHEN_TO_USABLE_REAR_OR_SIDE_YARD",
+      "intent": "physical access without wet-room transit",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [
+        "SERVICE"
+      ],
+      "public_private_service_zoning_behavior": "physical access without wet-room transit",
+      "access_circulation_grammar": "KITCHEN_SERVICE -> USABLE_YARD",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P14",
+      "name_fa": "اتاق‌ها مقصد نهایی",
+      "name_en": "BEDROOMS_AS_LEAF_DESTINATIONS",
+      "intent": "bedrooms never transit",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [],
+      "public_private_service_zoning_behavior": "bedrooms never transit",
+      "access_circulation_grammar": "DISTRIBUTOR -> BEDROOM_LEAVES",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P15",
+      "name_fa": "توالی ورود از حیاط جلو",
+      "name_en": "ENTRY_YARD_ARRIVAL_SEQUENCE",
+      "intent": "front-yard arrival legibility",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [
+        "ENTRY"
+      ],
+      "public_private_service_zoning_behavior": "front-yard arrival legibility",
+      "access_circulation_grammar": "STREET -> PEDESTRIAN_GATE -> PATH -> PORCH_PLATFORM_STEPS_CANOPY -> ENTRY",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P16",
+      "name_fa": "پارکینگ حیاط جلو با مانور",
+      "name_en": "PARKING_IN_FRONT_YARD_WITH_CLEAR_MANEUVER",
+      "intent": "maneuver proof required",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [],
+      "public_private_service_zoning_behavior": "maneuver proof required",
+      "access_circulation_grammar": "STREET -> VEHICLE_GATE -> DRIVEWAY -> MANEUVER -> BAY; pedestrian semantics distinct",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P17",
+      "name_fa": "تفکیک جانبی با ستون خدماتی",
+      "name_en": "PUBLIC_PRIVATE_LATERAL_SPLIT_WITH_SERVICE_SPINE",
+      "intent": "service mediator must not block circulation",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [
+        "PUBLIC",
+        "PRIVATE",
+        "SERVICE"
+      ],
+      "public_private_service_zoning_behavior": "service mediator must not block circulation",
+      "access_circulation_grammar": "PUBLIC_DOMAIN <-> SERVICE_SPINE <-> PRIVATE_DOMAIN; service rooms are leaves",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    },
+    {
+      "id": "P18",
+      "name_fa": "حیاط نورده چندفضایی",
+      "name_en": "COURTYARD_SERVES_MULTIPLE_HABITABLE_SPACES",
+      "intent": "maximize useful daylight service",
+      "applicable_site_program_conditions": [
+        "context predicate evaluated by selector"
+      ],
+      "required_spatial_roles": [],
+      "public_private_service_zoning_behavior": "maximize useful daylight service",
+      "access_circulation_grammar": "NEUTRAL_ACCESS -> OPEN_SPACE; OPEN_SPACE serves MULTIPLE_HABITABLE_SPACES",
+      "daylight_strategy": "use legal open edges; insert yard only for demonstrated need; serve multiple spaces when possible",
+      "allowed_variations": [
+        "context-responsive topology variant"
+      ],
+      "disqualifying_conditions": [
+        "required role/route cannot be satisfied",
+        "cosmetic orientation-only duplicate"
+      ],
+      "soft_quality_indicators": [
+        "route clarity",
+        "privacy",
+        "low redundant circulation",
+        "daylight utility"
+      ],
+      "negative_counter_patterns": [],
+      "provenance": [
+        "HUMAN_REFERENCE_PATTERN",
+        "GENERALIZED_HUMAN_REVIEW_LEARNING"
+      ],
+      "coordinate_policy": "NO_COORDINATES"
+    }
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "501": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "input.png",
+      "upload": "image"
+    }
+  },
+  "503": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "sam3.1_multiplex_fp16.safetensors"
+    }
+  },
+  "502": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "facade wall",
+      "clip": [
+        "503",
+        1
+      ]
+    }
+  },
+  "504": {
+    "class_type": "SAM3_Detect",
+    "inputs": {
+      "model": [
+        "503",
+        0
+      ],
+      "image": [
+        "501",
+        0
+      ],
+      "conditioning": [
+        "502",
+        0
+      ],
+      "threshold": 0.5,
+      "refine_iterations": 2,
+      "individual_masks": false
+    }
+  },
+  "505": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "window:12, railing:12, door:2, balcony slab:9, roof parapet:2",
+      "clip": [
+        "503",
+        1
+      ]
+    }
+  },
+  "506": {
+    "class_type": "SAM3_Detect",
+    "inputs": {
+      "model": [
+        "503",
+        0
+      ],
+      "image": [
+        "501",
+        0
+      ],
+      "conditioning": [
+        "505",
+        0
+      ],
+      "threshold": 0.5,
+      "refine_iterations": 2,
+      "individual_masks": false
+    }
+  },
+  "507": {
+    "class_type": "MaskComposite",
+    "inputs": {
+      "destination": [
+        "504",
+        0
+      ],
+      "source": [
+        "506",
+        0
+      ],
+      "x": 0,
+      "y": 0,
+      "operation": "and"
+    }
+  },
+  "508": {
+    "class_type": "MaskComposite",
+    "inputs": {
+      "destination": [
+        "504",
+        0
+      ],
+      "source": [
+        "507",
+        0
+      ],
+      "x": 0,
+      "y": 0,
+      "operation": "subtract"
+    }
+  },
+  "509": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "504",
+        0
+      ]
+    }
+  },
+  "510": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "architectos_sam3_sub_wall_raw",
+      "images": [
+        "509",
+        0
+      ]
+    }
+  },
+  "511": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "506",
+        0
+      ]
+    }
+  },
+  "512": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "architectos_sam3_sub_protected_raw",
+      "images": [
+        "511",
+        0
+      ]
+    }
+  },
+  "513": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "508",
+        0
+      ]
+    }
+  },
+  "514": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "architectos_sam3_sub_editable",
+      "images": [
+        "513",
+        0
+      ]
+    }
+  },
+  "515": {
+    "class_type": "ImageCompositeMasked",
+    "inputs": {
+      "destination": [
+        "501",
+        0
+      ],
+      "source": [
+        "513",
+        0
+      ],
+      "x": 0,
+      "y": 0,
+      "resize_source": false,
+      "mask": [
+        "508",
+        0
+      ]
+    }
+  },
+  "516": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "architectos_sam3_sub_preview_editable",
+      "images": [
+        "515",
+        0
+      ]
+    }
+  },
+  "519": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "507",
+        0
+      ]
+    }
+  },
+  "517": {
+    "class_type": "ImageCompositeMasked",
+    "inputs": {
+      "destination": [
+        "501",
+        0
+      ],
+      "source": [
+        "519",
+        0
+      ],
+      "x": 0,
+      "y": 0,
+      "resize_source": false,
+      "mask": [
+        "507",
+        0
+      ]
+    }
+  },
+  "518": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "architectos_sam3_sub_preview_protected",
+      "images": [
+        "517",
+        0
+      ]
+    }
+  }
+}

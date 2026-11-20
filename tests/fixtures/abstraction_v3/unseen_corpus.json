@@ -1,0 +1,73 @@
+{
+  "fixture": "abstraction_v3_unseen_corpus",
+  "version": "1.0",
+  "visibility": "LEARNER_VISIBLE",
+  "note": "Unseen cases only. Case text and identifier, nothing else. No expected outcome, no concept name, no evaluation key. These are handed to the probe, which reasons over them without needing an answer.",
+  "unseen_cases": [
+    {
+      "contract": "V3UnseenCaseV1",
+      "version": "1.0",
+      "case_id": "U1",
+      "text": "A nook stands back from the lane because a reader who is drained needs to recover in quiet."
+    },
+    {
+      "contract": "V3UnseenCaseV1",
+      "version": "1.0",
+      "case_id": "U2",
+      "text": "A corner is drawn away from the aisle so that a tired person can recover undisturbed."
+    },
+    {
+      "contract": "V3UnseenCaseV1",
+      "version": "1.0",
+      "case_id": "U3",
+      "text": "The vestibule opens onto the square because a visitor needs to be welcomed plainly."
+    },
+    {
+      "contract": "V3UnseenCaseV1",
+      "version": "1.0",
+      "case_id": "U4",
+      "text": "A platform meets the stair because a walker needs to arrive at a clear place."
+    },
+    {
+      "contract": "V3UnseenCaseV1",
+      "version": "1.0",
+      "case_id": "U5",
+      "text": "A cedar deck turns toward the water because a person who is resting wants to watch the boats."
+    },
+    {
+      "contract": "V3UnseenCaseV1",
+      "version": "1.0",
+      "case_id": "U6",
+      "text": "The alcove is set within the passage because a person needs to recover apart from the movement."
+    }
+  ],
+  "probe_only_cases": {
+    "note": "Cases the probe reasons over but that the learner never saw. They exercise the same-structure, different-form and novel-combination failure modes.",
+    "same_structure_pair": [
+      {
+        "contract": "V3UnseenCaseV1",
+        "version": "1.0",
+        "case_id": "S1",
+        "text": "A recess sits apart from the corridor because a person who is unwell needs to recover quietly."
+      },
+      {
+        "contract": "V3UnseenCaseV1",
+        "version": "1.0",
+        "case_id": "S2",
+        "text": "A recess sits apart from the corridor because the tiles were left over from an earlier job."
+      }
+    ],
+    "different_form_case": {
+      "contract": "V3UnseenCaseV1",
+      "version": "1.0",
+      "case_id": "F1",
+      "text": "A tired person recovers away from the movement, and so the alcove is set back from the passage."
+    },
+    "novel_combination_case": {
+      "contract": "V3UnseenCaseV1",
+      "version": "1.0",
+      "case_id": "N1-combo",
+      "text": "A tired person needs to recover, and the alcove is set back from the passage while the vestibule opens onto the square."
+    }
+  }
+}

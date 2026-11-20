@@ -1,0 +1,38 @@
+{
+  "_role": "EVALUATION DATA. This file is read by the EVALUATOR only, and ONLY AFTER Phase 5 inference has completed. The learner never imports this file, and the probe boundary records that it read nothing from it during Phases 1-5.",
+  "_warning": "If any key in this file is ever read while inference is running, the experiment is INVALID and must report LEARNING_NOT_DEMONSTRATED.",
+  "intended_concept_name": "withdrawal_for_undisturbed_recovery",
+  "intended_invariant": "a domain set apart from shared activity, whose occupant recovers unobserved",
+  "expected_abstract_content": [
+    "the occupant",
+    "recovery / recovery-need",
+    "being unobserved"
+  ],
+  "expected_label_for_support_cases": "supports_abstraction",
+  "expected_label_for_contradicting_cases": "contradicts_abstraction",
+  "expected_label_for_zero_word_case": "decidable_only_from_formal_structure",
+  "probe_expectations": {
+    "evaluation_leakage": "no case carries an evaluation key",
+    "hardcoded_target": "no concept name or skeleton is an input",
+    "zero_word_lexical_independence": "Z1 must be handled without lexical overlap",
+    "why_swap": "the reason-only corpus must not reproduce the original abstraction",
+    "same_structure_different_meaning": "S1 and S2 must not be treated identically",
+    "filler_substitution": "the filler corpus must reproduce the same WHY-bound content",
+    "template_retrieval": "no stored template may be used",
+    "predesigned_concept_role_map": "no concept-to-role map may carry the derivation",
+    "incorrect_transfer": "C1 must not be accepted"
+  },
+  "author_knowledge": {
+    "author_knows": [
+      "the intended concept name",
+      "the intended invariant",
+      "the WHY",
+      "the expected abstraction skeleton",
+      "the answer to every probe"
+    ],
+    "learner_knows": [
+      "the corpus text only"
+    ],
+    "evaluator_reads_this_after_phase_5": true
+  }
+}

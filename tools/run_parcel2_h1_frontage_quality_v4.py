@@ -1,0 +1,35 @@
+"""Parcel 2 H1 V4 frontage-quality architecture-only human-review output."""
+from __future__ import annotations
+import hashlib, html, json
+from datetime import datetime
+from pathlib import Path
+from core.architecture.reasoning.frontage_relative_architectural_quality_v1 import FrontageRelativeArchitecturalQualityV1
+
+ROOT=Path(__file__).resolve().parents[1]
+V3=ROOT/'exports/DEFAULT/parcel2_h1_access_first_v3_20260912_202659/PARCEL2_H1_ACCESS_FIRST_V3.json'
+def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def pts(poly,s,ox,oy,minx,maxy):return ' '.join(f'{ox+(x-minx)*s:.1f},{oy+(maxy-y)*s:.1f}' for x,y in poly)
+def poly(coords,pp,fill,stroke,op=.45,dash=''):
+    return '' if not coords else f'<polygon points="{pp(coords)}" fill="{fill}" fill-opacity="{op}" stroke="{stroke}" {dash}/>'
+def render(report,c):
+    parcel=report['parcel'];xs=[p[0] for p in parcel];ys=[p[1] for p in parcel];minx,maxy=min(xs),max(ys);s=min(700/(max(xs)-min(xs)),700/(max(ys)-min(ys)));pp=lambda p:pts(p,s,70,140,minx,maxy);q=c['architectural_quality'];core=c['temp_core'];cx=sum(p[0] for p in core)/len(core);cy=sum(p[1] for p in core)/len(core)
+    body=[poly(parcel,pp,'#fff','#111827',.1),poly(c['direct_commercial_street_frontage_region'],pp,'#f59e0b','#b45309',.42),poly(c['aisle_manoeuvre'],pp,'#cbd5e1','#475569',.55),poly(c['public_pedestrian_path'],pp,'#22c55e','#15803d',.13),poly(c['vehicle_corridor'],pp,'#a855f7','#7e22ce',.28),poly(core,pp,'#f3d28f','#92400e',.72,'stroke-width="2"')]
+    for st in c['stalls']:body.append(poly(st['polygon'],pp,'#60a5fa','#1d4ed8',.62))
+    body += [f'<polyline points="{pp(report["frontage"])}" fill="none" stroke="#dc2626" stroke-width="8"/>',f'<text x="{pp([[cx,cy]]) .split(",")[0]}" y="{float(pp([[cx,cy]]).split(",")[1])+5:.1f}" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold">TEMP CORE — NOT COMMERCIAL</text>']
+    status=q['status'].upper(); color='#166534' if status=='PASSING' else ('#b91c1c' if status=='REJECTED' else '#9a3412')
+    lines=[f'{status} | RANK {c["bounded_review_rank"]} | NO WINNER',f'Commercial: {q["commercial_area_m2"]:.2f} m² | frontage {q["commercial_frontage_length_m"]:.2f} m | mean depth {q["commercial_mean_depth_m"]:.2f} m',f'Core depth: {q["core_centroid_depth_m"]:.2f} m ({q["core_centroid_depth_ratio"]:.2f}) | {q["core_position"]}',f'Quality CFQ {q["commercial_frontage_quality"]:.2f} | intrusion {q["core_frontage_intrusion"]:.2f} | depth penalty {q["commercial_depth_penalty"]:.2f} | continuity {q["frontage_continuity"]:.2f} | competition {q["access_competition_at_frontage"]:.2f}',f'Reasons: {", ".join(q["reasons"]) or "none"}','TEMP CORE: 2-FLIGHT STAIR (SCHEMATIC) + ELEVATOR 2.10×2.10 TEMP + LOBBY UNRESOLVED','RED = STREET / COMMERCIAL FRONTAGE | ORANGE = COMMERCIAL | CREAM = TEMP CORE (NOT COMMERCIAL)']
+    text=''.join(f'<text x="55" y="{875+i*25}" font-family="Arial" font-size="15" fill="{color if i==0 else "#111827"}" font-weight="{("bold" if i in (0,4,5) else "normal")}">{html.escape(x)}</text>' for i,x in enumerate(lines))
+    return f'<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1060"><rect width="100%" height="100%" fill="#f8fafc"/><text x="55" y="40" font-family="Arial" font-size="23" font-weight="bold">H1 V4 — {html.escape(c["candidate_id"])}</text><text x="55" y="70" font-family="Arial" font-size="16" fill="#dc2626" font-weight="bold">STREET / COMMERCIAL FRONTAGE</text>{"".join(body)}{text}</svg>'
+def index(report):
+    rows=[]
+    for i,c in enumerate(report['candidates']):
+        q=c['architectural_quality']; rows.append(f'<text x="35" y="{110+i*62}" font-family="Arial" font-size="14"><tspan font-weight="bold">#{c["bounded_review_rank"]} {html.escape(c["candidate_id"])}</tspan><tspan x="35" dy="21">{q["status"]} | P {c["parking_count"]} | core {q["core_position"]} {q["core_centroid_depth_m"]:.2f}m | commercial {q["commercial_area_m2"]:.2f}m² / frontage {q["commercial_frontage_length_m"]:.2f}m / mean depth {q["commercial_mean_depth_m"]:.2f}m</tspan></text>')
+    return f'<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="470"><rect width="100%" height="100%" fill="#f8fafc"/><text x="35" y="40" font-family="Arial" font-size="23" font-weight="bold">Parcel 2 H1 V4 — bounded frontage-quality review</text><text x="35" y="68" font-family="Arial" font-size="14">PROJECT/HUMAN DESIGN CRITIQUE | NO WINNER | H2 PARKED | READY={str(report["h1_ready_for_human_architectural_selection"]).upper()}</text>{"".join(rows)}</svg>'
+def main(output_root=None):
+    v3=json.loads(V3.read_text(encoding='utf-8')); evaluated=FrontageRelativeArchitecturalQualityV1().evaluate({'polygon':v3['parcel']},{'segment':v3['frontage']},v3['candidates']); candidates=evaluated['candidates']; passing=[c for c in candidates if c['human_quality_status']=='passing']; ready=bool(passing)
+    report={'contract':'Parcel2H1FrontageArchitecturalQualityReviewV4','generated_at':datetime.now().astimezone().isoformat(),'scope':'architecture_only','authority_class':'PROJECT_HUMAN_DESIGN_CRITIQUE','lineage':{'v3_json_path':str(V3),'v3_json_sha256':digest(V3),'v3_mutated':False},'snapshot':{'overwritten_files':[],'snapshot_required':False,'reason':'V4 creates new files only'},'parcel':v3['parcel'],'frontage':v3['frontage'],'frontage_relative_frame':evaluated['frontage_relative_frame'],'candidates':candidates,'candidate_count':len(candidates),'passing_candidate_ids':[c['candidate_id'] for c in passing],'architecturally_disfavored_candidate_ids':[c['candidate_id'] for c in candidates if c['human_quality_status']=='architecturally_disfavored'],'rejected_candidate_ids':[c['candidate_id'] for c in candidates if c['human_quality_status']=='rejected'],'final_selection_performed':False,'winner':None,'h1_ready_for_human_architectural_selection':ready,'h2_status':'parked_not_evaluated','preserved_v3_access_first_gates':True,'prohibited_workflows_executed':{'elevator_traffic':False,'structure':False,'BIM':False,'IFC':False,'render':False}}
+    stamp=datetime.now().strftime('%Y%m%d_%H%M%S');out=(Path(output_root) if output_root else ROOT/'exports/DEFAULT')/f'parcel2_h1_frontage_quality_v4_{stamp}';out.mkdir(parents=True)
+    jp=out/'PARCEL2_H1_FRONTAGE_QUALITY_V4.json';jp.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8'); svgs=[]
+    for c in candidates:p=out/f'{c["candidate_id"]}.svg';p.write_text(render(report,c),encoding='utf-8');svgs.append({'candidate_id':c['candidate_id'],'path':str(p),'sha256':digest(p)})
+    ip=out/'PARCEL2_H1_FRONTAGE_QUALITY_V4_INDEX.svg';ip.write_text(index(report),encoding='utf-8'); manifest={'json_path':str(jp),'json_sha256':digest(jp),'candidate_svgs':svgs,'index_svg_path':str(ip),'index_svg_sha256':digest(ip),'ready':ready};mp=out/'ARTIFACT_MANIFEST.json';mp.write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8');manifest['manifest_path']=str(mp);manifest['manifest_sha256']=digest(mp);print(json.dumps(manifest,ensure_ascii=False,indent=2))
+if __name__=='__main__':main()

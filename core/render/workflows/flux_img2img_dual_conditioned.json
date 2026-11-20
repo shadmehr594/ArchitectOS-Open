@@ -1,0 +1,256 @@
+{
+  "202": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux1-krea-dev_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "204": {
+    "class_type": "DualCLIPLoader",
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux",
+      "device": "default"
+    }
+  },
+  "205": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    }
+  },
+  "300": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "input.png"
+    },
+    "_architectos_role": "IMAGE_B_target_building_geometry_authority"
+  },
+  "301": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "300",
+        0
+      ],
+      "vae": [
+        "205",
+        0
+      ]
+    },
+    "_architectos_note": "IMAGE B img2img latent path - PRESERVED from FACADE-04D.2"
+  },
+  "302": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "style_reference.png"
+    },
+    "_architectos_role": "IMAGE_A_style_reference_appearance_only"
+  },
+  "304": {
+    "class_type": "CLIPVisionLoader",
+    "inputs": {
+      "clip_name": "sigclip_vision_patch14_384.safetensors"
+    },
+    "_architectos_note": "SigLIP patch14/384 - the encoder USO was trained against. clip_vision_h (CLIP-ViT-H) is INCOMPATIBLE with USO."
+  },
+  "303": {
+    "class_type": "CLIPVisionEncode",
+    "inputs": {
+      "clip_vision": [
+        "304",
+        0
+      ],
+      "image": [
+        "302",
+        0
+      ],
+      "crop": "center"
+    },
+    "_architectos_note": "CONSUMED by node 322 USOStyleReference.clip_vision_output (style conditioning is ACTIVE, not an unused branch)."
+  },
+  "321": {
+    "class_type": "ModelPatchLoader",
+    "inputs": {
+      "name": "uso-flux1-projector-v1.safetensors"
+    },
+    "_architectos_note": "USO projector -> MODEL_PATCH. ModelPatchLoader routes it to SigLIPMultiFeatProjModel via the feature_embedder.mid_layer_norm.bias key."
+  },
+  "320": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "202",
+        0
+      ],
+      "lora_name": "uso-flux1-dit-lora-v1.safetensors",
+      "strength_model": 1.0
+    },
+    "_architectos_note": "Receives the ACTUAL base MODEL from node 202 (flux1-krea-dev_fp8_scaled)."
+  },
+  "322": {
+    "class_type": "USOStyleReference",
+    "inputs": {
+      "model": [
+        "320",
+        0
+      ],
+      "model_patch": [
+        "321",
+        0
+      ],
+      "clip_vision_output": [
+        "303",
+        0
+      ]
+    },
+    "_architectos_note": "USO style conditioning. Output MODEL feeds KSampler 210. EXPERIMENTAL node - runtime behaviour unverified until a supervised live render."
+  },
+  "206": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "improve the architectural design, realistic materials, better lighting, professional architectural visualization",
+      "clip": [
+        "204",
+        0
+      ]
+    },
+    "_architectos_note": "positive conditioning source - routed through ControlNetApplyAdvanced 311"
+  },
+  "212": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "",
+      "clip": [
+        "204",
+        0
+      ]
+    },
+    "_architectos_note": "negative conditioning source - routed through ControlNetApplyAdvanced 311"
+  },
+  "305": {
+    "class_type": "LoadDA3Model",
+    "inputs": {
+      "model_name": "depth_anything_3_small.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "306": {
+    "class_type": "DA3Inference",
+    "inputs": {
+      "da3_model": [
+        "305",
+        0
+      ],
+      "image": [
+        "300",
+        0
+      ],
+      "resolution": 504,
+      "resize_method": "upper_bound_resize",
+      "mode": "mono"
+    },
+    "_architectos_note": "Depth from IMAGE B (node 300) ONLY. 'mode' is a V3 DynamicCombo: the flat API value is the option key string 'mono'."
+  },
+  "307": {
+    "class_type": "DA3Render",
+    "inputs": {
+      "da3_geometry": [
+        "306",
+        0
+      ],
+      "output": "depth",
+      "output.normalization": "v2_style",
+      "output.apply_sky_clip": false
+    },
+    "_architectos_note": "Depth map IMAGE. 'output' is a V3 DynamicCombo; its nested inputs are flat keys prefixed with the parent id ('output.<nested>')."
+  },
+  "310": {
+    "class_type": "ControlNetLoader",
+    "inputs": {
+      "control_net_name": "flux1-dev-controlnet-union-pro-2.0-fp8.safetensors"
+    }
+  },
+  "311": {
+    "class_type": "ControlNetApplyAdvanced",
+    "inputs": {
+      "positive": [
+        "206",
+        0
+      ],
+      "negative": [
+        "212",
+        0
+      ],
+      "control_net": [
+        "310",
+        0
+      ],
+      "image": [
+        "307",
+        0
+      ],
+      "strength": 0.8,
+      "start_percent": 0.0,
+      "end_percent": 0.8,
+      "vae": [
+        "205",
+        0
+      ]
+    },
+    "_architectos_note": "Geometry guidance from IMAGE B only. FLUX ControlNet is latent-input, so the FLUX VAE (node 205) is REQUIRED. Pro-2.0 has no mode embedder - the mode is implied by the depth input."
+  },
+  "210": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 0,
+      "steps": 30,
+      "cfg": 5,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.3,
+      "model": [
+        "322",
+        0
+      ],
+      "positive": [
+        "311",
+        0
+      ],
+      "negative": [
+        "311",
+        1
+      ],
+      "latent_image": [
+        "301",
+        0
+      ]
+    },
+    "_architectos_note": "Single sampler. model <- USO-conditioned MODEL (322); positive/negative <- ControlNet-conditioned pair (311); latent_image <- IMAGE B VAEEncode (301)."
+  },
+  "208": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "210",
+        0
+      ],
+      "vae": [
+        "205",
+        0
+      ]
+    }
+  },
+  "9": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "architectos_img2img_dual_conditioned",
+      "images": [
+        "208",
+        0
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "case_id": "living_room",
+  "input": {
+    "image_type": "architectural_render_or_photo",
+    "observed": ["living room visible", "seating visible", "window visible"],
+    "inferred": [],
+    "unresolved": [],
+    "confidence": "MEDIUM",
+    "architectural_elements": ["seating", "window"]
+  },
+  "expected": {
+    "space_type": "living room",
+    "semantic_status": "bounded_interpretation",
+    "role": null,
+    "visible_elements": ["seating", "window"]
+  }
+}

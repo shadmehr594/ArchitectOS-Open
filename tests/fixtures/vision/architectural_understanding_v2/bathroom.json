@@ -1,0 +1,19 @@
+{
+  "case_id": "bathroom",
+  "input": {
+    "image_type": "architectural_render_or_photo",
+    "observed": ["bathroom visible", "sanitary zone visible"],
+    "inferred": [],
+    "unresolved": [],
+    "confidence": "MEDIUM",
+    "architectural_elements": ["bathroom"]
+  },
+  "expected": {
+    "space_type": "bathroom",
+    "semantic_status": "bounded_interpretation",
+    "role": null,
+        "visible_elements": [
+      "bathroom_or_ensuite"
+    ]
+  }
+}

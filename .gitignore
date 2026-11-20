@@ -1,0 +1,148 @@
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.installed.cfg
+pip-wheel-metadata/
+
+# Test / type / lint caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.env/
+.venv*/
+
+# ---------------------------------------------------------------------------
+# Secrets & credentials
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.json
+credentials*.json
+*token*.json
+!*tokens*.md
+
+# ---------------------------------------------------------------------------
+# ArchitectOS runtime data (personal, never published)
+# ---------------------------------------------------------------------------
+data/projects/*
+!data/projects/.gitkeep
+data/site_cache/*
+!data/site_cache/.gitkeep
+data/learning/
+data/reference_index/
+data/reference_sets/
+data/trash/
+data/voice_inbox/
+data/active_external_plan*.json
+
+outputs/*
+!outputs/.gitkeep
+exports/*
+!exports/.gitkeep
+
+logs/
+runs/
+uploads/
+tmp/
+backup/
+snapshots/
+_probe/
+
+# Runtime memory (conversation history, render caches)
+memory/comfy/
+memory/*.json
+core/memory/*.json
+!core/memory/test_render_memory_contract.json
+core/memory/render_memory.json
+
+# ---------------------------------------------------------------------------
+# Local regulatory documents (copyrighted, operator-supplied)
+# ---------------------------------------------------------------------------
+core/architecture/authorities/local/*
+!core/architecture/authorities/local/README.md
+!core/architecture/authorities/local/.gitkeep
+core/architecture/authorities/national/*.pdf
+core/architecture/authorities/minab/*.pdf
+
+# ---------------------------------------------------------------------------
+# Models & large binaries
+# ---------------------------------------------------------------------------
+models/*
+!models/.gitkeep
+!models/README.md
+3D-FUTURE-model/
+3D-FUTURE-model.zip
+
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.onnx
+*.npz
+*.max
+*.obj
+*.dwg
+*.ifc
+*.glb
+*.fbx
+*.rvt
+*.3ds
+*.stl
+*.ply
+*.zip
+*.rar
+*.7z
+*.exe
+*.dll
+*.pyd
+*.sqlite
+*.sqlite3
+*.db
+
+# ---------------------------------------------------------------------------
+# ComfyUI (root-level installs only; do not ignore first-party skills/comfyui)
+# ---------------------------------------------------------------------------
+/ComfyUI/
+/comfyui/
+/custom_nodes/
+workflows/comfy/output/
+*.png.tmp
+*.webp.tmp
+
+# ---------------------------------------------------------------------------
+# OS / editors
+# ---------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

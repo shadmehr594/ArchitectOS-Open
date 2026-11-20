@@ -1,0 +1,222 @@
+{
+  "contract": "JurisdictionalLightwellWindowAuthorityProfileV10_1",
+  "profile_id": "PARCEL2_MINAB_AUTHORITY_RESOLVED_V10_1_20260913",
+  "scope": "ARCHITECTURE_ONLY",
+  "jurisdiction": "Minab, Hormozgan, Iran",
+  "authority_classes": [
+    "NATIONAL_VERIFIED",
+    "LOCAL_VERIFIED",
+    "PROJECT_LOCAL_CONFIRMED_CONDITION",
+    "USER_REPORTED_LOCAL_RULE",
+    "DESIGN_KNOWLEDGE_NON_AUTHORITATIVE"
+  ],
+  "source_documents": [
+    {
+      "document_id": "IRAN_TOPIC4_1396",
+      "title": "مبحث چهارم مقررات ملی ساختمان - الزامات عمومی ساختمان",
+      "edition": "ویرایش سوم ۱۳۹۶",
+      "path": "core/architecture/authorities/national/Mabhas4-v3_0-1396-user-supplied.pdf",
+      "sha256": "d1bf218bd5e346158a7f2a64bf929096c95b6330d1bd50d097c17bea9dff94d2",
+      "size_bytes": 683832,
+      "authority_class": "NATIONAL_VERIFIED",
+      "promulgation_status": "NATIONAL_BUILDING_REGULATION_VERIFIED",
+      "regulatory_acceptance_use": true,
+      "design_generation_use": true
+    },
+    {
+      "document_id": "MINAB_DETAILED_PLAN_VOL4_SPRING_1400",
+      "title": "طرح تفصیلی شهر میناب، جلد ۴، ضوابط و مقررات",
+      "edition": "بهار ۱۴۰۰",
+      "issuing_labels_on_cover": ["وزارت کشور", "استانداری استان هرمزگان", "شهرداری میناب"],
+      "consultant_on_cover": "پویا نقش شهر بوینا",
+      "path": "core/architecture/authorities/minab/minab_detailed_plan_volume_4_regulations_spring_1400.pdf",
+      "sha256": "13b2c9a9e7279ca3b4641ec0dc1c9b175adbc1474c52c5dad562746aa3e05db2",
+      "size_bytes": 6890828,
+      "authority_class": "LOCAL_VERIFIED",
+      "promulgation_status": "PROMULGATION_OR_APPROVAL_RECORD_NOT_PRESENT_IN_AVAILABLE_FILE",
+      "parcel2_zoning_applicability": "UNVERIFIED",
+      "regulatory_acceptance_use": false,
+      "design_generation_use": true
+    }
+  ],
+  "project_conditions": [
+    {
+      "condition_id": "P2_PARCEL_AREA",
+      "authority_class": "PROJECT_LOCAL_CONFIRMED_CONDITION",
+      "source_document": "Parcel2 current geometry",
+      "value": 200.0,
+      "unit": "m2",
+      "applicability_status": "CONFIRMED_BY_POLYGON_AREA"
+    },
+    {
+      "condition_id": "P2_RESIDENTIAL_FLOOR_COUNT",
+      "authority_class": "PROJECT_LOCAL_CONFIRMED_CONDITION",
+      "source_document": "core/architecture/contracts/parcel2_project_level_contract_v1.json",
+      "value": 2,
+      "unit": "residential_floors",
+      "applicability_status": "HUMAN_CONFIRMED_PROJECT_REQUIREMENT"
+    },
+    {
+      "condition_id": "P2_BUILDING_GROUP",
+      "authority_class": "DESIGN_KNOWLEDGE_NON_AUTHORITATIVE",
+      "value": "1-5",
+      "applicability_status": "INFERRED_FROM_CONFIRMED_LOW_RISE_LEVEL_CHAIN_NOT_SEPARATELY_CERTIFIED",
+      "regulatory_acceptance_use": false
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "T4_4_5_8_3_5_HABITABLE_COURTYARD",
+      "authority_class": "NATIONAL_VERIFIED",
+      "source_document_id": "IRAN_TOPIC4_1396",
+      "clause": "4-5-8-3-5",
+      "pdf_page": 78,
+      "printed_page": 65,
+      "applicability_conditions": {"building_group": "1-5", "served_spaces": ["habitable", "occupational"]},
+      "constraints": {"minimum_area_m2": 12.0, "minimum_width_m": 3.0},
+      "promulgation_applicability_status": "NATIONAL_VERIFIED_CONDITIONAL_ON_BUILDING_GROUP",
+      "regulatory_acceptance_use": true,
+      "design_generation_use": true
+    },
+    {
+      "rule_id": "T4_4_5_8_3_6_KITCHEN_STORAGE_COURTYARD",
+      "authority_class": "NATIONAL_VERIFIED",
+      "source_document_id": "IRAN_TOPIC4_1396",
+      "clause": "4-5-8-3-6",
+      "pdf_page": 78,
+      "printed_page": 65,
+      "applicability_conditions": {"building_group": "1-5", "served_spaces": ["kitchen", "storage"], "exclusive_service": true},
+      "constraints": {"minimum_area_m2": 6.0, "minimum_width_m": 2.0},
+      "promulgation_applicability_status": "NATIONAL_VERIFIED_CONDITIONAL",
+      "regulatory_acceptance_use": true,
+      "design_generation_use": true
+    },
+    {
+      "rule_id": "T4_4_5_8_3_8_COURTYARD_WIDTH_BY_LAND_AREA",
+      "authority_class": "NATIONAL_VERIFIED",
+      "source_document_id": "IRAN_TOPIC4_1396",
+      "clause": "4-5-8-3-8",
+      "pdf_page": 78,
+      "printed_page": 65,
+      "applicability_conditions": {"building_group": "1-5", "parcel_area_m2": ">=200"},
+      "constraints": {"minimum_width_m": 3.0},
+      "promulgation_applicability_status": "NATIONAL_VERIFIED_AND_PARCEL_AREA_MATCHED",
+      "regulatory_acceptance_use": true,
+      "design_generation_use": true
+    },
+    {
+      "rule_id": "T4_4_5_8_3_10_OPPOSING_WINDOWS",
+      "authority_class": "NATIONAL_VERIFIED",
+      "source_document_id": "IRAN_TOPIC4_1396",
+      "clause": "4-5-8-3-10",
+      "pdf_page": 79,
+      "printed_page": 66,
+      "applicability_conditions": {"two_distinct_occupancies": true, "windows_face_same_courtyard_or_patio": true},
+      "constraints": {"minimum_opposing_window_wall_distance_m": 3.0},
+      "promulgation_applicability_status": "NATIONAL_VERIFIED_CONDITIONAL",
+      "regulatory_acceptance_use": true,
+      "design_generation_use": true
+    },
+    {
+      "rule_id": "T4_4_9_12_10_1_SAME_WALL_OPENABLE_WINDOWS",
+      "authority_class": "NATIONAL_VERIFIED",
+      "source_document_id": "IRAN_TOPIC4_1396",
+      "clause": "4-9-12-10-1",
+      "pdf_page": 124,
+      "printed_page": 111,
+      "applicability_conditions": {"distinct_occupancies": true, "openable_windows_on_same_wall": true},
+      "constraints": {"minimum_horizontal_distance_m": 1.5},
+      "promulgation_applicability_status": "NATIONAL_VERIFIED_CONDITIONAL",
+      "regulatory_acceptance_use": true,
+      "design_generation_use": true
+    },
+    {
+      "rule_id": "T4_4_9_12_10_2_CORNER_OR_NEIGHBOR_BOUNDARY",
+      "authority_class": "NATIONAL_VERIFIED",
+      "source_document_id": "IRAN_TOPIC4_1396",
+      "clause": "4-9-12-10-2",
+      "pdf_page": 124,
+      "printed_page": 111,
+      "applicability_conditions": {"distinct_occupancies": true, "walls_angle_degrees": "<=90"},
+      "constraints": {"minimum_horizontal_window_distance_m": 2.0, "minimum_each_window_to_neighbor_boundary_m": 1.0},
+      "promulgation_applicability_status": "NATIONAL_VERIFIED_CONDITIONAL",
+      "regulatory_acceptance_use": true,
+      "design_generation_use": true
+    },
+    {
+      "rule_id": "T4_4_9_12_10_3_PARALLEL_WALL_WINDOWS",
+      "authority_class": "NATIONAL_VERIFIED",
+      "source_document_id": "IRAN_TOPIC4_1396",
+      "clause": "4-9-12-10-3",
+      "pdf_page": 124,
+      "printed_page": 111,
+      "applicability_conditions": {"distinct_buildings_or_occupancies": true, "walls_parallel": true, "larger_side_m": ">3"},
+      "constraints": {"minimum_horizontal_distance_m": 3.0, "alternative_protection_may_apply": true},
+      "promulgation_applicability_status": "NATIONAL_VERIFIED_CONDITIONAL",
+      "regulatory_acceptance_use": true,
+      "design_generation_use": true
+    },
+    {
+      "rule_id": "MINAB_21_1_MAIN_SPACE_LIGHTWELL",
+      "authority_class": "LOCAL_VERIFIED",
+      "source_document_id": "MINAB_DETAILED_PLAN_VOL4_SPRING_1400",
+      "clause": "21-1",
+      "pdf_page": 33,
+      "printed_page": 29,
+      "applicability_conditions": {"residential_floors_max": 5, "parcel_area_and_orientation_rows": true},
+      "constraints": {"minimum_area_m2": 12.0, "table_width_m": {"north_south_over_200": 1.7, "east_west_over_200": 2.0, "north_south_101_to_199_or_pilot": 1.5, "east_west_101_to_199_or_pilot": 2.0}, "prose_minimum_width_m": 3.0},
+      "internal_consistency": "UNRESOLVED_TABLE_VS_PROSE_WIDTH_CONFLICT_AND_EXACT_200_BOUNDARY_GAP",
+      "promulgation_applicability_status": "TEXT_VERIFIED_PROMULGATION_AND_PARCEL_ZONE_UNVERIFIED",
+      "regulatory_acceptance_use": false,
+      "design_generation_use": true
+    },
+    {
+      "rule_id": "MINAB_21_2_CENTRAL_LIGHTWELL_AIRFLOW",
+      "authority_class": "LOCAL_VERIFIED",
+      "source_document_id": "MINAB_DETAILED_PLAN_VOL4_SPRING_1400",
+      "clause": "21-2",
+      "pdf_page": 33,
+      "printed_page": 29,
+      "applicability_conditions": {"central_lightwell": true},
+      "constraints": {"natural_airflow_required": true},
+      "promulgation_applicability_status": "TEXT_VERIFIED_PROMULGATION_AND_PARCEL_ZONE_UNVERIFIED",
+      "regulatory_acceptance_use": false,
+      "design_generation_use": true
+    },
+    {
+      "rule_id": "MINAB_23_1_TO_3_PRIVACY",
+      "authority_class": "LOCAL_VERIFIED",
+      "source_document_id": "MINAB_DETAILED_PLAN_VOL4_SPRING_1400",
+      "clause": "23-1..3",
+      "pdf_page": 33,
+      "printed_page": 29,
+      "applicability_conditions": {"courtyard_or_lightwell_openings": true},
+      "constraints": {"ground_floor_opening_guard_below_m": 0.9, "neighbor_overlook_mitigation_required": true, "opposing_independent_unit_window_distance_m": 3.0, "opposing_window_min_installation_height_m": 1.7},
+      "promulgation_applicability_status": "TEXT_VERIFIED_PROMULGATION_AND_PARCEL_ZONE_UNVERIFIED",
+      "regulatory_acceptance_use": false,
+      "design_generation_use": true
+    }
+  ],
+  "resolved_engine_profile": {
+    "profile_id": "PARCEL2_MINAB_NATIONAL_ACCEPTANCE_BASELINE_V10_1",
+    "edge_rules": [
+      {"relation": "STREET", "projection": "OPTIONAL_ALLOWED", "balcony": "OPTIONAL_ALLOWED", "window": "OPEN_EDGE_SUBJECT_TO_NATIONAL_AND_PROFILE_RULES"},
+      {"relation": "PARTY_WALL", "projection": "PROHIBITED", "balcony": "PROHIBITED", "window": "PROHIBITED_UNLESS_SEPARATE_VERIFIED_PERMISSION_AND_PRIVACY_COMPLIANCE"}
+    ],
+    "parameters": {
+      "lightwell_min_width_m": {"value": 3.0, "unit": "m", "status": "NATIONAL_VERIFIED", "authority": "T4 4-5-8-3-5 + 4-5-8-3-8", "regulatory_acceptance_use": true},
+      "lightwell_min_area_m2": {"value": 12.0, "unit": "m2", "status": "NATIONAL_VERIFIED", "authority": "T4 4-5-8-3-5", "regulatory_acceptance_use": true},
+      "neighbor_window_min_sill_m": {"value": null, "unit": "m", "status": "LOCAL_PROMULGATION_UNVERIFIED_FAIL_CLOSED", "authority": "MINAB 23-3 text verified but not accepted"}
+    },
+    "opposing_window_min_distance_m": 3.0,
+    "party_wall_openings": "FAIL_CLOSED_PROHIBITED",
+    "provenance": "NATIONAL_VERIFIED_BASELINE_WITH_LOCAL_TEXT_RECORDED_NON_ACCEPTANCE"
+  },
+  "acceptance_resolution": {
+    "lightwell_dimensions": "RESOLVED_BY_NATIONAL_VERIFIED_BASELINE_FOR_GROUP_1_5_CANDIDATE_EVALUATION",
+    "opposing_windows": "RESOLVED_BY_NATIONAL_VERIFIED_3M_DISTANCE",
+    "neighbor_party_wall_openings": "FAIL_CLOSED_PROHIBITED",
+    "local_override": "NOT_APPLIED",
+    "remaining_authority_warning": "Formal building-group certification and local promulgation/zoning applicability remain permit-stage checks; no local numeric override is hard-coded."
+  }
+}

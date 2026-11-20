@@ -1,0 +1,121 @@
+{
+  "contract": "Parcel2ResidentialCorridorEntranceRegulationEvidenceV1",
+  "jurisdiction": "Minab, Hormozgan, Iran",
+  "research_date": "2026-09-12",
+  "authority_policy": "national_and_local_families_consulted_separately_no_silent_conflict_resolution",
+  "resolved_design_inputs": {
+    "common_access_corridor_minimum_clear_width_m": 1.4,
+    "apartment_internal_entrance_space_minimum_clear_depth_m": 1.4,
+    "apartment_internal_entrance_space_minimum_area_m2": 2.0
+  },
+  "evidence_records": [
+    {
+      "id": "iran_national_topic4_common_access_corridor_width",
+      "jurisdiction": "Iran including Minab",
+      "issuing_authority": "Ministry of Roads and Urban Development, Office for Compilation of National Building Regulations",
+      "document_title": "Iran National Building Regulations, Topic 4 - General Building Requirements",
+      "edition_date": "third edition, 1396",
+      "clause_article": "4-5-1-4-1",
+      "printed_page": 44,
+      "pdf_page": 57,
+      "value": 1.4,
+      "unit": "m",
+      "constraint": "minimum_clear_unobstructed_width",
+      "applicability": {
+        "status": "applicable",
+        "reason": "shared internal corridor is part of the access/exit route serving apartment units",
+        "excludes": "corridors wholly inside an occupancy where accessibility is not required; clause 4-5-1-4-2 is not used for the shared corridor"
+      },
+      "provenance": {
+        "regulation_url": "https://haftshahraria.com/wp-content/uploads/2025/11/Mabhas-04-V3.pdf",
+        "promulgation_record_url": "https://nezamat.ir/مقررات-ملی-ساختمان-ایران-مبحث-چهارم/",
+        "verification": "clause_text_and_page_verified"
+      }
+    },
+    {
+      "id": "iran_national_topic4_apartment_internal_entrance_space",
+      "jurisdiction": "Iran including Minab",
+      "issuing_authority": "Ministry of Roads and Urban Development, Office for Compilation of National Building Regulations",
+      "document_title": "Iran National Building Regulations, Topic 4 - General Building Requirements",
+      "edition_date": "third edition, 1396",
+      "clause_article": "4-7-1-1-1(a)",
+      "printed_page": 83,
+      "pdf_page": 96,
+      "values": {"minimum_clear_depth_m": 1.4, "minimum_area_m2": 2.0},
+      "constraint": "internal_entrance_space_after_apartment_main_door",
+      "applicability": {
+        "status": "applicable_to_apartment_internal_entrance_zone",
+        "reason": "the project has apartment residential occupancies",
+        "not_applicable_as": "public_corridor_extension_inside_private_unit"
+      },
+      "provenance": {
+        "regulation_url": "https://haftshahraria.com/wp-content/uploads/2025/11/Mabhas-04-V3.pdf",
+        "promulgation_record_url": "https://nezamat.ir/مقررات-ملی-ساختمان-ایران-مبحث-چهارم/",
+        "verification": "clause_text_and_page_verified"
+      }
+    },
+    {
+      "id": "iran_national_topic4_access_route_no_passage_through_other_rooms",
+      "jurisdiction": "Iran including Minab",
+      "issuing_authority": "Ministry of Roads and Urban Development, Office for Compilation of National Building Regulations",
+      "document_title": "Iran National Building Regulations, Topic 4 - General Building Requirements",
+      "edition_date": "third edition, 1396",
+      "clause_article": "4-5-1-1-2",
+      "printed_page": 43,
+      "pdf_page": 56,
+      "constraint": "main_access_route_must_not_pass_through_other_rooms_or_spaces_except_stated_occupancy_exceptions",
+      "applicability": {"status": "applicable", "reason": "shared residential access route"},
+      "provenance": {
+        "regulation_url": "https://haftshahraria.com/wp-content/uploads/2025/11/Mabhas-04-V3.pdf",
+        "promulgation_record_url": "https://nezamat.ir/مقررات-ملی-ساختمان-ایران-مبحث-چهارم/",
+        "verification": "clause_text_and_page_verified"
+      }
+    },
+    {
+      "id": "minab_detailed_plan_volume4_corridor_entrance_review",
+      "jurisdiction": "Minab",
+      "issuing_authority": "unresolved_pending_approval_or_promulgation_sheet",
+      "document_title": "Minab Detailed Plan, Volume 4, Regulations",
+      "edition_date": "Spring 1400",
+      "clause_article": null,
+      "printed_page": null,
+      "pdf_page": null,
+      "applicability": {
+        "status": "no_specific_interior_residential_corridor_or_apartment_entrance_rule_verified",
+        "parcel2_zoning_map_condition": "unresolved",
+        "effect": "no_local_numeric_override_applied"
+      },
+      "provenance": {
+        "local_path": "core/architecture/authorities/minab/minab_detailed_plan_volume_4_regulations_spring_1400.pdf",
+        "sha256": "13b2c9a9e7279ca3b4641ec0dc1c9b175adbc1474c52c5dad562746aa3e05db2",
+        "document_status": "user_supplied_primary_local_reference_final_approval_status_unresolved",
+        "verification": "164_page_document_consulted; searchable_text_absent; no rule used without verifiable clause"
+      }
+    }
+  ],
+  "unresolved_related_requirements": [
+    "Topic 3 egress width, travel distance, door swing and fire separation depend on building group, occupant load and fire strategy not resolved in V9",
+    "accessibility applicability and turning clearances require confirmed building group and accessible-route scope",
+    "Minab parcel zoning/map condition and detailed-plan approval/promulgation sheet"
+  ],
+  "precedents_design_knowledge_only": [
+    {
+      "title": "The Octagon of Pelayo Apartment",
+      "url": "https://www.archdaily.com/974121/the-octagon-of-pelayo-apartment-piano-piano-studio",
+      "lesson": "a geometry-derived polygonal distribution piece can replace an inefficient corridor",
+      "authority": false
+    },
+    {
+      "title": "Lucent Apartment Building",
+      "url": "https://www.archdaily.com/941865/lucent-apartment-building-plazibat-architects",
+      "lesson": "corridor termination can contribute daylight and ventilation rather than become dead space",
+      "authority": false
+    },
+    {
+      "title": "20 Examples of Floor Plans for Social Housing",
+      "url": "https://www.archdaily.com/894746/20-examples-of-floor-plans-for-social-housing",
+      "lesson": "compare circulation, units per floor, privacy and exterior openings as linked metrics",
+      "authority": false
+    }
+  ]
+}

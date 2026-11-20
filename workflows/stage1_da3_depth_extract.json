@@ -1,0 +1,70 @@
+{
+  "300": {
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Target Building Image for DA3 Depth",
+      "_architectos_role": "IMAGE_B_depth_source"
+    },
+    "inputs": {
+      "image": "architectos_b_working.png",
+      "upload": "image"
+    }
+  },
+  "305": {
+    "class_type": "LoadDA3Model",
+    "_meta": {
+      "title": "Load Depth Anything 3 Small"
+    },
+    "inputs": {
+      "model_name": "depth_anything_3_small.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "306": {
+    "class_type": "DA3Inference",
+    "_meta": {
+      "title": "DA3 Relative Depth Inference"
+    },
+    "inputs": {
+      "da3_model": [
+        "305",
+        0
+      ],
+      "image": [
+        "300",
+        0
+      ],
+      "resolution": 504,
+      "resize_method": "upper_bound_resize",
+      "mode": "mono"
+    }
+  },
+  "307": {
+    "class_type": "DA3Render",
+    "_meta": {
+      "title": "DA3 Relative Depth Render"
+    },
+    "inputs": {
+      "da3_geometry": [
+        "306",
+        0
+      ],
+      "output": "depth",
+      "output.normalization": "v2_style",
+      "output.apply_sky_clip": false
+    }
+  },
+  "9": {
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Model-Derived DA3 Relative Depth"
+    },
+    "inputs": {
+      "images": [
+        "307",
+        0
+      ],
+      "filename_prefix": "architectos_stage1_da3_depth"
+    }
+  }
+}

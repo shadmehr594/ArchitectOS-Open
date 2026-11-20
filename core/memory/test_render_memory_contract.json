@@ -1,0 +1,28 @@
+[
+  {
+    "render_id": "render_c3148b79",
+    "type": "render_experience",
+    "project_id": "TEST_PROJECT",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern villa architectural visualization",
+    "design": {
+      "building_type": "villa",
+      "style": "modern",
+      "materials": [
+        "glass facade",
+        "exposed concrete"
+      ]
+    },
+    "asset": {
+      "filename": "test_render.png",
+      "url": null,
+      "path": "C:/ComfyUI-Zluda/output\\test_render.png",
+      "exists": false,
+      "type": "output",
+      "subfolder": ""
+    },
+    "success": true,
+    "created_at": 1793354567.5989614
+  }
+]

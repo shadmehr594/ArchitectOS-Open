@@ -1,0 +1,80 @@
+{
+  "contract": "JurisdictionalProjectionPolicyV1",
+  "schema_scope": "GENERIC_CITY_DRIVEN_ARCHITECTURE_POLICY",
+  "status_enum": ["PROHIBITED", "OPTIONAL_ALLOWED", "REQUIRED"],
+  "generic_defaults": {
+    "status": "PROHIBITED",
+    "max_projection_depth_m": null,
+    "min_clear_height_m": null,
+    "balcony_allowed": false,
+    "balcony_required": false,
+    "candidate_generation": "NONE_UNLESS_MATCHED_PROFILE"
+  },
+  "profiles": [
+    {
+      "profile_id": "PARCEL2_MINAB_WORKING_20260913",
+      "jurisdiction": "Minab",
+      "status": "OPTIONAL_ALLOWED",
+      "authority_class": "PROJECT_LOCAL_CONFIRMED_CONDITION",
+      "evidence_class": "USER_CONFIRMED_LOCAL_CONDITION_WITH_DOCUMENT_PENDING",
+      "applicability": {
+        "project": "Parcel2",
+        "use_for_design_generation": true,
+        "use_for_regulatory_acceptance": false,
+        "promote_to_national_law": false,
+        "evidence_pending": true,
+        "project_street_width_band_m": [10.0, 20.0]
+      },
+      "rules": [
+        {
+          "rule_id": "MINAB_1_6_8_PRIVATE_PROPERTY",
+          "street_width_min_m": null,
+          "street_width_max_m": null,
+          "max_projection_depth_m": 1.2,
+          "min_clear_height_m": null,
+          "eligible_floor_types": ["PROFILE_DEFINED_UPPER_FLOOR"],
+          "eligible_edge_types": ["PRIVATE_PROPERTY_EDGE"],
+          "requires_special_approval": false,
+          "balcony_allowed": true,
+          "balcony_required": false
+        },
+        {
+          "rule_id": "MINAB_1_6_8_STREET_10_TO_20",
+          "street_width_min_m": 10.0,
+          "street_width_max_m": 20.0,
+          "interval": "CLOSED",
+          "max_projection_depth_m": 0.8,
+          "min_clear_height_m": null,
+          "eligible_floor_types": ["PROFILE_DEFINED_UPPER_FLOOR"],
+          "eligible_edge_types": ["STREET_PUBLIC_EDGE"],
+          "requires_special_approval": false,
+          "balcony_allowed": true,
+          "balcony_required": false
+        },
+        {
+          "rule_id": "MINAB_1_6_8_STREET_OVER_20",
+          "street_width_min_m": 20.0,
+          "street_width_max_m": null,
+          "interval": "LOWER_EXCLUSIVE",
+          "max_projection_depth_m": 1.2,
+          "min_clear_height_m": null,
+          "eligible_floor_types": ["PROFILE_DEFINED_UPPER_FLOOR"],
+          "eligible_edge_types": ["STREET_PUBLIC_EDGE"],
+          "requires_special_approval": true,
+          "balcony_allowed": true,
+          "balcony_required": false
+        }
+      ],
+      "provenance": {
+        "source_document": "minab_detailed_plan_volume_4_regulations_spring_1400.pdf",
+        "clause": "1-6-8",
+        "printed_pages": [139, 140],
+        "pdf_pages": [144, 145],
+        "source_document_promulgation_status": "LOCAL_WORKING_UNRESOLVED",
+        "independently_verified_values": ["PRIVATE_PROPERTY_MAX_1.20M", "STREET_10_20_MAX_0.80M", "STREET_OVER_20_MAX_1.20M_WITH_TECHNICAL_COMMITTEE_APPROVAL"],
+        "user_reported_document_unavailable": ["COMMITTEE_APPROVAL_EXISTS_FOR_PROJECT", "MIN_CLEAR_HEIGHT_3.5M", "PRIVATE_PROPERTY_MIN_CLEAR_HEIGHT_2.4M", "ONE_BALCONY_PER_UNIT"],
+        "explicit_conflict": "OLDER_USER_REPORTED_1.00M_OVER_20M_NOT_RECONCILED_WITH_CLAUSE_1-6-8_1.20M"
+      }
+    }
+  ]
+}

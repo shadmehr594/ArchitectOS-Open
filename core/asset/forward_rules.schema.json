@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ArchitectOS/ForwardRuleRegistryV1",
+  "title": "ArchitectOS Forward Rule Registry V1",
+  "type": "object",
+  "required": ["format_version", "rules"],
+  "additionalProperties": false,
+  "properties": {
+    "format_version": {"const": "forward_rule_registry_v1"},
+    "rules": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "status",
+          "semantic_forward_axis",
+          "expected_geometry_direction",
+          "geometry_gate_required",
+          "scope",
+          "evidence"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "description": "Rule authority. 'verified' is forbidden for family rules; 'unobservable' and 'ambiguous' are per-asset result states, not rule authority states.",
+            "enum": ["supported", "unresolved", "unsupported"]
+          },
+          "semantic_forward_axis": {
+            "description": "The forward direction this rule ASSERTS. Never derived from measured geometry.",
+            "enum": ["+X", "-X", "+Z", "-Z"]
+          },
+          "expected_geometry_direction": {
+            "description": "The geometry direction the agreement gate checks. Declared explicitly; never derived from semantic_forward_axis.",
+            "enum": ["+X", "-X", "+Z", "-Z"]
+          },
+          "geometry_gate_required": {"type": "boolean"},
+          "scope": {
+            "type": "object",
+            "required": ["include_categories"],
+            "additionalProperties": false,
+            "properties": {
+              "include_categories": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {"type": "string", "minLength": 1}
+              },
+              "exclude_categories": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {"type": "string", "minLength": 1}
+              }
+            }
+          },
+          "evidence": {
+            "type": "object",
+            "required": ["rule_id", "source_checkpoint", "agreement", "notes"],
+            "additionalProperties": false,
+            "properties": {
+              "rule_id": {"type": "string", "minLength": 1},
+              "source_checkpoint": {"type": "string", "minLength": 1},
+              "agreement": {
+                "oneOf": [
+                  {"type": "number", "minimum": 0, "maximum": 1},
+                  {"type": "null"}
+                ]
+              },
+              "notes": {
+                "type": "array",
+                "items": {"type": "string", "maxLength": 200}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

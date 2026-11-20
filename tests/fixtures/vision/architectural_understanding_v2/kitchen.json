@@ -1,0 +1,19 @@
+{
+  "case_id": "kitchen",
+  "input": {
+    "image_type": "architectural_render_or_photo",
+    "observed": ["kitchen visible", "counter visible"],
+    "inferred": [],
+    "unresolved": [],
+    "confidence": "MEDIUM",
+    "architectural_elements": ["kitchen", "counter"]
+  },
+  "expected": {
+    "space_type": "kitchen",
+    "semantic_status": "bounded_interpretation",
+    "role": null,
+        "visible_elements": [
+      "kitchen"
+    ]
+  }
+}

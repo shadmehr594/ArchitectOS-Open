@@ -1,0 +1,29 @@
+{
+  "id": "MINAB_USER_DAYLIGHT_YARD_OVERLAY_V1",
+  "activation": {
+    "jurisdiction": "MINAB",
+    "user_requests_minab_daylight_overlay": true
+  },
+  "global_mandatory": false,
+  "provenance": "USER_DEFINED_LOCAL_RULE",
+  "semantic_scope": [
+    "REAR_YARD",
+    "SIDE_YARD",
+    "LOCAL_DAYLIGHT_YARD"
+  ],
+  "rules": {
+    "NORTH_SOUTH_REAR_YARD": {
+      "minimum_width_m": 1.7,
+      "minimum_area_m2": 12.0
+    },
+    "EAST_WEST_SIDE_YARD": {
+      "minimum_width_m": 2.0,
+      "minimum_area_m2": 12.0
+    }
+  },
+  "excluded_semantics": [
+    "COURTYARD",
+    "PATIO"
+  ],
+  "conflict_policy": "VERIFIED_MANDATORY_NATIONAL_RULE_PREVAILS_FOR_SAME_SPACE"
+}

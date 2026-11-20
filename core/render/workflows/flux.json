@@ -1,0 +1,83 @@
+{
+  "202": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux1-krea-dev_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+
+  "204": {
+    "class_type": "DualCLIPLoader",
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux",
+      "device": "default"
+    }
+  },
+
+  "205": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    }
+  },
+
+  "206": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "a modern villa in a cinematic style",
+      "clip": ["204", 0]
+    }
+  },
+
+  "212": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "",
+      "clip": ["204", 0]
+    }
+  },
+
+  "211": {
+    "class_type": "EmptyLatentImage",
+    "inputs": {
+      "width": 736,
+      "height": 704,
+      "batch_size": 1
+    }
+  },
+
+  "210": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 123456789,
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": ["202", 0],
+      "positive": ["206", 0],
+      "negative": ["212", 0],
+      "latent_image": ["211", 0]
+    }
+  },
+
+  "208": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": ["210", 0],
+      "vae": ["205", 0]
+    }
+  },
+
+  "9": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "architectos_v11",
+      "images": ["208", 0]
+    }
+  }
+}

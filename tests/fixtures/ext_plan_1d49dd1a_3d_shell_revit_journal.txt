@@ -1,0 +1,8 @@
+' Establish Revit Journal for ArchitectOS v52.0 IFC4 -> RVT Automatic Conversion
+Dim Jrn
+Set Jrn = CrsJournalScript
+Jrn.Command "Internal" , "Open IFC file , ID_IFC_IMPORT"
+Jrn.Data "File Name" , "IDOK", "\tmp\v62_2_build\tests\fixtures\ext_plan_1d49dd1a_3d_shell.ifc"
+Jrn.Command "Menu" , "Save the active project , ID_REVIT_FILE_SAVE_AS"
+Jrn.Data "File Name" , "IDOK", "\tmp\v62_2_build\tests\fixtures\ext_plan_1d49dd1a_3d_shell_revit_model.rvt"
+Jrn.Command "SystemMenu" , "Quit the application; prompts to save projects , ID_APP_EXIT"

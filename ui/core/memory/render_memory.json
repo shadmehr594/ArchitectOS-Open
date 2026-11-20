@@ -1,0 +1,1510 @@
+[
+  {
+    "render_id": "render_685fa80c",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "یه رندر واقع گرایانه از یک خانه سنتی بگیر",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern یه رندر واقع گرایانه از یک خانه سنتی بگیر architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting"
+    },
+    "design": {
+      "building_type": "یه رندر واقع گرایانه از یک خانه سنتی بگیر",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00052_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00052_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784411929.1425066
+  },
+  {
+    "render_id": "render_c0d03cfa",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "villa",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting"
+    },
+    "design": {
+      "building_type": "villa",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00052_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00052_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784413123.5565095
+  },
+  {
+    "render_id": "render_76c00d4e",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "یه خانه سنتی ایرانی با حیاط مرکزی و آجر کاری رندر کن",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern یه خانه سنتی ایرانی با حیاط مرکزی و آجر کاری رندر کن architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting"
+    },
+    "design": {
+      "building_type": "یه خانه سنتی ایرانی با حیاط مرکزی و آجر کاری رندر کن",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00052_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00052_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784413169.925048
+  },
+  {
+    "render_id": "render_014d4357",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "یه خانه سنتی ایرانی با حیاط مرکزی و آجر کاری رندر کن",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern یه خانه سنتی ایرانی با حیاط مرکزی و آجر کاری رندر کن architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting"
+    },
+    "design": {
+      "building_type": "یه خانه سنتی ایرانی با حیاط مرکزی و آجر کاری رندر کن",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00052_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00052_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784414086.5120482
+  },
+  {
+    "render_id": "render_95cd501d",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "custom",
+      "description": "custom building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "custom",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00053_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00053_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784416168.6779594
+  },
+  {
+    "render_id": "render_47752aa1",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "custom",
+      "description": "custom building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, یه خانه سنتی ایرانی با حیاط مرکزی و آجر کاری رندر کن, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "custom",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00054_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00054_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784416414.409503
+  },
+  {
+    "render_id": "render_1b973bb1",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "custom",
+      "description": "custom building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, یه ویدیوی کوتاه با کیفیت کم از همین تصویر تولید کن, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "custom",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00055_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00055_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784416737.315187
+  },
+  {
+    "render_id": "render_719df249",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "custom",
+      "description": "custom building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, یه خانه سنتی ایرانی با حیاط مرکزی و آجر کاری رندر کن, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "custom",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00056_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00056_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784417449.158442
+  },
+  {
+    "render_id": "render_8dcffd4a",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "custom",
+      "description": "custom building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, یه خانه سنتی ایرانی با حیاط مرکزی و آجر کاری رندر کن, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "custom",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00056_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00056_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784417884.189326
+  },
+  {
+    "render_id": "render_8f425e9f",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "custom",
+      "description": "custom building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, traditional Iranian architecture, Persian courtyard house, central courtyard, brick facade, ornamental brickwork, traditional Persian materials, large central courtyard garden, handcrafted brick masonry facade, یه خانه سنتی ایرانی با حیاط مرکزی و آجر کاری رندر کن, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "custom",
+      "features": [
+        "garden"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00057_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00057_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784418994.5228083
+  },
+  {
+    "render_id": "render_5e0e24e2",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "custom",
+      "description": "custom building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "custom",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00058_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00058_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784419351.4504082
+  },
+  {
+    "render_id": "render_2846d642",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, modern villa architecture, glass facade, exposed concrete, minimal modern design, luxury architectural visualization, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00059_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00059_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784419959.69464
+  },
+  {
+    "render_id": "render_4767c636",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, modern villa architecture, glass facade, exposed concrete, minimal modern design, luxury architectural visualization, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00059_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00059_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784421829.4683957
+  },
+  {
+    "render_id": "render_390fe5ee",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00060_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00060_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784427972.1213756
+  },
+  {
+    "render_id": "render_5b76ef86",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00060_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00060_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784428496.8083804
+  },
+  {
+    "render_id": "render_67956083",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00060_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00060_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784428881.008103
+  },
+  {
+    "render_id": "render_63baea20",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00060_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00060_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784429180.6605322
+  },
+  {
+    "render_id": "render_37675ab5",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00060_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00060_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784429432.0462053
+  },
+  {
+    "render_id": "render_ccecb13b",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00060_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00060_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784430195.5493407
+  },
+  {
+    "render_id": "render_92707c33",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00060_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00060_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784430666.0221875
+  },
+  {
+    "render_id": "render_60d23146",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, modern villa architecture, glass facade, exposed concrete, minimal modern design, luxury architectural visualization, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00061_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00061_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784430833.5031493
+  },
+  {
+    "render_id": "render_c0d1d2ba",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, modern villa architecture, glass facade, exposed concrete, minimal modern design, luxury architectural visualization, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00061_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00061_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784430968.8686013
+  },
+  {
+    "render_id": "render_b02159b4",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, modern villa architecture, glass facade, exposed concrete, minimal modern design, luxury architectural visualization, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00061_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00061_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784431125.9905949
+  },
+  {
+    "render_id": "render_fbee5b50",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, modern villa architecture, glass facade, exposed concrete, minimal modern design, luxury architectural visualization, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00061_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00061_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784431144.9354014
+  },
+  {
+    "render_id": "render_2bb65f81",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, modern villa architecture, glass facade, exposed concrete, minimal modern design, luxury architectural visualization, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00061_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00061_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784431224.8441532
+  },
+  {
+    "render_id": "render_a78c0053",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": {
+      "type": "building",
+      "floors": 1,
+      "style": "modern",
+      "description": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, modern villa architecture, glass facade, exposed concrete, minimal modern design, luxury architectural visualization, professional architectural design concept"
+    },
+    "design": {
+      "building_type": "building",
+      "style": "modern",
+      "features": [
+        "glass facade",
+        "natural stone",
+        "flat roof",
+        "minimalist"
+      ],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00061_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00061_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784432282.646973
+  },
+  {
+    "render_id": "render_2c4a8020",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, professional architectural design concept",
+    "design": {
+      "building_type": "building",
+      "style": "unknown",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00062_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00062_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784435880.6650414
+  },
+  {
+    "render_id": "render_01958c2c",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, modern architecture, villa, glass facade, exposed concrete, modern luxury car, front yard, professional architectural design concept",
+    "design": {
+      "building_type": "building",
+      "style": "unknown",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00063_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00063_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784436502.7980783
+  },
+  {
+    "render_id": "render_7bde6763",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, modern architecture, villa, glass facade, exposed concrete, modern luxury car, swimming pool, front yard, professional architectural design concept",
+    "design": {
+      "building_type": "building",
+      "style": "unknown",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00064_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00064_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784436796.7284284
+  },
+  {
+    "render_id": "render_a6b9112e",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, modern architecture, villa, glass facade, modern luxury car, professional architectural design concept",
+    "design": {
+      "building_type": "building",
+      "style": "unknown",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00065_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00065_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784436955.9682143
+  },
+  {
+    "render_id": "render_6e017f05",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, warm indirect lighting, modern architecture, villa, modern luxury car, professional architectural design concept",
+    "design": {
+      "building_type": "building",
+      "style": "unknown",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00066_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00066_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784437324.7853262
+  },
+  {
+    "render_id": "render_82fe9c92",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, glass, concrete, architectural visualization, professional architectural design concept",
+    "design": {
+      "building_type": "building",
+      "style": "unknown",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00083_.png",
+      "url": "/output/architectos_v11_00083_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00083_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784484908.034407
+  },
+  {
+    "render_id": "render_09238a56",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, glass, beton, car modern , architectural visualization, professional architectural design concept",
+    "design": {
+      "building_type": "building",
+      "style": "unknown",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00084_.png",
+      "url": "/output/architectos_v11_00084_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00084_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784486271.59412
+  },
+  {
+    "render_id": "render_98857e7e",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, glass, concrete, car, architectural visualization, professional architectural design concept",
+    "design": {
+      "building_type": "building",
+      "style": "unknown",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00085_.png",
+      "url": "/output/architectos_v11_00085_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00085_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784487642.4104064
+  },
+  {
+    "render_id": "render_2bde308d",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, glass facade, architectural visualization, professional architectural design concept",
+    "design": {
+      "building_type": "building",
+      "style": "unknown",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00086_.png",
+      "url": "/output/architectos_v11_00086_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00086_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784490164.2551057
+  },
+  {
+    "render_id": "render_0ef5464b",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, glass facade, architectural visualization, professional architectural design concept",
+    "design": {
+      "building_type": "building",
+      "style": "unknown",
+      "features": [],
+      "source": "prompt_builder"
+    },
+    "asset": {
+      "filename": "architectos_v11_00086_.png",
+      "url": "/output/architectos_v11_00086_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00086_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784491323.9824605
+  },
+  {
+    "render_id": "render_a5e10d55",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, glass facade, architectural visualization, professional architectural design concept",
+    "design": {
+      "type": "building",
+      "mode": "generate",
+      "prompt": "modern villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, professional architectural design concept",
+      "source": "chat_design",
+      "render_id": 1784492030,
+      "seed": 1784492030,
+      "architectural_intent": {
+        "building_type": "villa",
+        "style": "modern",
+        "materials": [
+          "glass facade"
+        ],
+        "objects": [],
+        "site": [],
+        "environment": [],
+        "camera": "architectural visualization",
+        "mood": "professional archviz"
+      }
+    },
+    "asset": {
+      "filename": "architectos_v11_00086_.png",
+      "url": "/output/architectos_v11_00086_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00086_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784492045.7528265
+  },
+  {
+    "render_id": "render_dca69f0a",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, glass facade, architectural visualization, professional architectural design concept",
+    "design": {
+      "type": "building",
+      "mode": "generate",
+      "prompt": "modern villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, professional architectural design concept",
+      "source": "chat_design",
+      "render_id": 1784492726,
+      "seed": 1784492726,
+      "architectural_intent": {
+        "building_type": "villa",
+        "style": "modern",
+        "materials": [
+          "glass facade"
+        ],
+        "objects": [],
+        "site": [],
+        "environment": [],
+        "camera": "architectural visualization",
+        "mood": "professional archviz"
+      }
+    },
+    "asset": {
+      "filename": "architectos_v11_00086_.png",
+      "url": "/output/architectos_v11_00086_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00086_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784492726.9260588
+  },
+  {
+    "render_id": "render_98b0e4a5",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern building architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, glass facade, architectural visualization, professional architectural design concept",
+    "design": {
+      "type": "building",
+      "mode": "generate",
+      "prompt": "modern villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, professional architectural design concept",
+      "source": "chat_design",
+      "render_id": 1784493532,
+      "seed": 1784493532,
+      "architectural_intent": {
+        "building_type": "villa",
+        "style": "modern",
+        "materials": [
+          "glass facade"
+        ],
+        "objects": [],
+        "site": [],
+        "environment": [],
+        "camera": "architectural visualization",
+        "mood": "professional archviz"
+      }
+    },
+    "asset": {
+      "filename": "architectos_v11_00086_.png",
+      "url": "/output/architectos_v11_00086_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00086_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784493532.9371297
+  },
+  {
+    "render_id": "render_5e7a290f",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "modern villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, minimalist modern architecture, glass facade, natural stone materials, flat roof design, glass, concrete, architectural visualization, professional architectural design concept",
+    "design": {
+      "prompt": "یک ویلای مدرن با نمای شیشه و بتن رندر کن",
+      "architectural_intent": {
+        "building": {
+          "type": "villa",
+          "style": "modern"
+        },
+        "materials": [
+          "glass",
+          "concrete"
+        ],
+        "objects": [],
+        "environment": [],
+        "atmosphere": {},
+        "camera": "architectural visualization",
+        "lighting": {}
+      },
+      "mode": "generate",
+      "source": "chat_image_generate",
+      "render_id": 1784502625,
+      "seed": 1784502625
+    },
+    "asset": {
+      "filename": "architectos_v11_00087_.png",
+      "url": "/output/architectos_v11_00087_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00087_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784502625.1842377
+  },
+  {
+    "render_id": "render_4e068c8d",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, architectural visualization",
+    "design": {
+      "type": "villa",
+      "floors": 1,
+      "style": "balanced",
+      "description": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, professional architectural design concept",
+      "render_id": 1784502978,
+      "seed": 1784502978,
+      "architectural_intent": {
+        "building_type": "building",
+        "style": null,
+        "materials": [],
+        "objects": [],
+        "site": [],
+        "environment": [],
+        "camera": "architectural visualization",
+        "mood": "professional archviz"
+      }
+    },
+    "asset": {
+      "filename": "architectos_v11_00088_.png",
+      "url": "/output/architectos_v11_00088_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00088_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784503113.3463776
+  },
+  {
+    "render_id": "render_6c27140d",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, architectural visualization",
+    "design": {
+      "type": "villa",
+      "floors": 1,
+      "style": "balanced",
+      "description": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, professional architectural design concept",
+      "render_id": 1784504451,
+      "seed": 1784504451,
+      "architectural_intent": {
+        "building_type": "building",
+        "style": null,
+        "materials": [],
+        "objects": [],
+        "site": [],
+        "environment": [],
+        "camera": "architectural visualization",
+        "mood": "professional archviz"
+      }
+    },
+    "asset": {
+      "filename": "architectos_v11_00088_.png",
+      "url": "/output/architectos_v11_00088_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00088_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784504451.8968568
+  },
+  {
+    "render_id": "render_cd3aa93f",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, architectural visualization",
+    "design": {
+      "type": "villa",
+      "floors": 1,
+      "style": "balanced",
+      "description": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, glass facade, exposed concrete, architectural visualization, professional architectural design concept",
+      "render_id": 1784541679,
+      "seed": 1784541679,
+      "architectural_intent": {
+        "building_type": "building",
+        "style": null,
+        "materials": [],
+        "objects": [],
+        "site": [],
+        "environment": [],
+        "camera": "architectural visualization",
+        "mood": "professional archviz"
+      }
+    },
+    "asset": {
+      "filename": "architectos_v11_00089_.png",
+      "url": "/output/architectos_v11_00089_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00089_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784541830.0746114
+  },
+  {
+    "render_id": "render_4924ce40",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, architectural visualization",
+    "design": {
+      "type": "villa",
+      "floors": 1,
+      "style": "balanced",
+      "description": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, glass facade, exposed concrete, architectural visualization, professional architectural design concept",
+      "render_id": 1784543879,
+      "seed": 1784543879,
+      "architectural_intent": {
+        "building_type": "building",
+        "style": null,
+        "materials": [],
+        "objects": [],
+        "site": [],
+        "environment": [],
+        "camera": "architectural visualization",
+        "mood": "professional archviz"
+      }
+    },
+    "asset": {
+      "filename": "architectos_v11_00089_.png",
+      "url": "/output/architectos_v11_00089_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00089_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784543879.402549
+  },
+  {
+    "render_id": "render_8628dc2e",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, architectural visualization",
+    "design": {
+      "type": "villa",
+      "floors": 1,
+      "style": "balanced",
+      "description": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, glass facade, exposed concrete, architectural visualization, professional architectural design concept",
+      "render_id": 1784546620,
+      "seed": 1784546620,
+      "architectural_intent": {
+        "building_type": "building",
+        "style": null,
+        "materials": [],
+        "objects": [],
+        "site": [],
+        "environment": [],
+        "camera": "architectural visualization",
+        "mood": "professional archviz"
+      }
+    },
+    "asset": {
+      "filename": "architectos_v11_00089_.png",
+      "url": "/output/architectos_v11_00089_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00089_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784546620.2028968
+  },
+  {
+    "render_id": "render_eca6adbd",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, architectural visualization",
+    "design": {
+      "type": "villa",
+      "floors": 1,
+      "style": "balanced",
+      "description": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, glass facade, exposed concrete, architectural visualization, professional architectural design concept",
+      "render_id": 1784546965,
+      "seed": 1784546965,
+      "architectural_intent": {
+        "building_type": "building",
+        "style": null,
+        "materials": [],
+        "objects": [],
+        "site": [],
+        "environment": [],
+        "camera": "architectural visualization",
+        "mood": "professional archviz"
+      }
+    },
+    "asset": {
+      "filename": "architectos_v11_00089_.png",
+      "url": "/output/architectos_v11_00089_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00089_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784546965.2201164
+  },
+  {
+    "render_id": "render_331fc8d3",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, architectural visualization",
+    "design": {
+      "type": "villa",
+      "floors": 1,
+      "style": "balanced",
+      "description": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, glass facade, exposed concrete, architectural visualization, professional architectural design concept",
+      "render_id": 1784547241,
+      "seed": 1784547241,
+      "architectural_intent": {
+        "building_type": "building",
+        "style": null,
+        "materials": [],
+        "objects": [],
+        "site": [],
+        "environment": [],
+        "camera": "architectural visualization",
+        "mood": "professional archviz"
+      }
+    },
+    "asset": {
+      "filename": "architectos_v11_00089_.png",
+      "url": "/output/architectos_v11_00089_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00089_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784547241.938771
+  },
+  {
+    "render_id": "render_d2fdf58d",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, architectural visualization",
+    "design": {
+      "type": "villa",
+      "floors": 1,
+      "style": "balanced",
+      "description": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, glass facade, exposed concrete, architectural visualization, professional architectural design concept",
+      "render_id": 1784548027,
+      "seed": 1784548027,
+      "architectural_intent": {
+        "building_type": "building",
+        "style": null,
+        "materials": [],
+        "objects": [],
+        "site": [],
+        "environment": [],
+        "camera": "architectural visualization",
+        "mood": "professional archviz"
+      }
+    },
+    "asset": {
+      "filename": "architectos_v11_00089_.png",
+      "url": "/output/architectos_v11_00089_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00089_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784548027.4215767
+  },
+  {
+    "render_id": "render_bf68a933",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, architectural visualization",
+    "design": {
+      "type": "villa",
+      "floors": 1,
+      "style": "balanced",
+      "description": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, glass facade, exposed concrete, architectural visualization, professional architectural design concept",
+      "render_id": 1784548584,
+      "seed": 1784548584,
+      "architectural_intent": {
+        "building_type": "building",
+        "style": null,
+        "materials": [],
+        "objects": [],
+        "site": [],
+        "environment": [],
+        "camera": "architectural visualization",
+        "mood": "professional archviz"
+      }
+    },
+    "asset": {
+      "filename": "architectos_v11_00089_.png",
+      "url": "/output/architectos_v11_00089_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00089_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784548584.7742658
+  },
+  {
+    "render_id": "render_9c3b50eb",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, architectural visualization",
+    "design": {
+      "type": "villa",
+      "floors": 1,
+      "style": "balanced",
+      "description": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, glass facade, exposed concrete, architectural visualization, professional architectural design concept",
+      "render_id": 1784548763,
+      "seed": 1784548763,
+      "architectural_intent": {
+        "building_type": "building",
+        "style": null,
+        "materials": [],
+        "objects": [],
+        "site": [],
+        "environment": [],
+        "camera": "architectural visualization",
+        "mood": "professional archviz"
+      }
+    },
+    "asset": {
+      "filename": "architectos_v11_00089_.png",
+      "url": "/output/architectos_v11_00089_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00089_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784548763.8378935
+  },
+  {
+    "render_id": "render_d1ffdd66",
+    "type": "render_experience",
+    "project_id": "chat_project",
+    "engine": "flux",
+    "workflow": "flux.json",
+    "prompt": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, architectural visualization",
+    "design": {
+      "type": "villa",
+      "floors": 1,
+      "style": "balanced",
+      "description": "balanced villa architectural visualization, 1 floor building, professional archviz render, realistic materials, cinematic lighting, glass facade, exposed concrete, architectural visualization, professional architectural design concept",
+      "render_id": 1784549621,
+      "seed": 1784549621,
+      "architectural_intent": {
+        "building_type": "building",
+        "style": null,
+        "materials": [],
+        "objects": [],
+        "site": [],
+        "environment": [],
+        "camera": "architectural visualization",
+        "mood": "professional archviz"
+      }
+    },
+    "asset": {
+      "filename": "architectos_v11_00089_.png",
+      "url": "/output/architectos_v11_00089_.png",
+      "path": "C:/ComfyUI-Zluda/output\\architectos_v11_00089_.png",
+      "type": "output"
+    },
+    "success": true,
+    "created_at": 1784549622.0683782
+  }
+]

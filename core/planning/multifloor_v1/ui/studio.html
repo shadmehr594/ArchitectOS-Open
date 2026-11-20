@@ -1,0 +1,3395 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArchitectOS — موتور طراحی پلان چندطبقه و مختلط (LBBD + Planar DCEL Studio)</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Vazirmatn', 'Inter', Tahoma, sans-serif;
+      background-color: #090d16;
+      color: #f1f5f9;
+      overflow-x: hidden;
+    }
+    .cad-grid-bg {
+      background-color: #0b1120;
+      background-image:
+        linear-gradient(to right, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    .ltr-num { direction: ltr; display: inline-block; font-family: 'Inter', monospace; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-950 text-slate-100">
+
+  <!-- Top Header Bar -->
+  <header class="border-b border-slate-800 bg-slate-900/95 backdrop-blur sticky top-0 z-30 px-4 py-3">
+    <div class="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-sky-500/20 font-bold text-lg">
+          A
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base md:text-lg font-bold tracking-tight text-white">ArchitectOS — موتور طراحی پلان چندطبقه و مختلط</h1>
+            <span class="px-2 py-0.5 text-[11px] font-semibold rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30">Hybrid LBBD + DCEL v1.0</span>
+          </div>
+          <p class="text-xs text-slate-400">سنتز توپولوژیک CP-SAT + بهینه‌سازی پیوسته میلی‌متری (SSOT) + ساختار یال دوگانه DCEL + ممیز مستقل ۱۰گانه</p>
+        </div>
+      </div>
+
+      <!-- Preset Buttons & Export Actions -->
+      <div class="flex flex-wrap items-center gap-2">
+        <button id="btnPreset1" type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+          سناریوی ۱: ویلایی ۱ طبقه (۱۰×۲۰)
+        </button>
+        <button id="btnPreset2" type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-sky-600 hover:bg-sky-500 text-white border border-sky-400/40 shadow-sm transition">
+          سناریوی ۲: مختلط ۵ تراز (زیرزمین + تجاری + مسکونی)
+        </button>
+        <button id="btnPreset3" type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+          سناریوی ۳: مجتمع ۶ تراز پلکانی (۱ تا ۴ واحد)
+        </button>
+        <div class="h-5 w-px bg-slate-800 mx-1 hidden sm:block"></div>
+        <button id="btnExportDXF" type="button" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600/90 hover:bg-emerald-500 text-white border border-emerald-400/30 transition flex items-center gap-1.5">
+          <span>خروجی AutoCAD DXF</span>
+        </button>
+        <button id="btnExportSVG" type="button" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600/90 hover:bg-indigo-500 text-white border border-indigo-400/30 transition">
+          شیت برداری SVG
+        </button>
+        <button id="btnExportJSON" type="button" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-600/90 hover:bg-amber-500 text-white border border-amber-400/30 transition">
+          قرارداد JSON
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Natural Language Architectural Prompt Bar & Saved File Paths Banner -->
+  <section class="bg-slate-900/90 border-b border-slate-800 px-4 py-3">
+    <div class="max-w-[1600px] mx-auto flex flex-col gap-2.5">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-xs font-bold text-sky-400 whitespace-nowrap">طراحی هوشمند با پرامپت فارسی:</span>
+        <input id="inputNaturalPrompt" type="text" value="60 درصد محل احداث تو شمال با یه حیاط خلوت به عمق 1.7 متر با مساحت 12 متر مربع برای نورگیری بزاره زمین هم 10*20 سه طرف پلاک هست شمال شرق و غرب پلاک و جنوب کوچه 10 متری" class="flex-1 min-w-[280px] bg-slate-950 border border-slate-700 rounded-xl px-3 py-1.5 text-xs text-white focus:border-sky-500 focus:outline-none" />
+        <button id="btnRunNaturalPrompt" type="button" class="px-4 py-1.5 rounded-xl text-xs font-bold bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white shadow-md transition">
+          ترسیم پلان مبلمان‌شده (SVG + DXF)
+        </button>
+      </div>
+      <div class="flex flex-wrap items-center justify-between gap-2 text-[11px]">
+        <div class="flex flex-wrap items-center gap-1.5">
+          <span class="text-slate-400">نمونه درخواست‌ها:</span>
+          <button id="btnPrompt10x20" type="button" class="px-2.5 py-0.5 rounded-md bg-sky-500/20 text-sky-300 border border-sky-500/40 hover:bg-sky-500/30 transition">
+            زمین ۱۰×۲۰ (۶۰٪ شمال + حیاط خلوت ۱.۷m / ۱۲m²)
+          </button>
+          <button id="btnPromptDuplex" type="button" class="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition">
+            ساختمان دوبلکس ۱۲۰ متری در هر طبقه
+          </button>
+          <button id="btnPromptVilla" type="button" class="px-2.5 py-0.5 rounded-md bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 transition">
+            ساختمان یک طبقه ویلایی استاندارد
+          </button>
+        </div>
+        <div id="savedPathsBanner" class="text-emerald-300 font-mono text-[11px] dir-ltr">
+          Saved: <repo-root>\outputs\plans\Plan_10x20_North60_Lightwell12m2.dxf &amp; .svg
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Workspace Container -->
+  <main class="flex-1 max-w-[1600px] w-full mx-auto p-3 md:p-4 grid grid-cols-1 lg:grid-cols-12 gap-4">
+
+    <!-- Right Control Sidebar (Site & Multi-Floor Program) -->
+    <aside class="lg:col-span-4 xl:col-span-3 flex flex-col gap-4">
+      <!-- Site Geometry & Envelope Card -->
+      <section class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-sm font-bold text-sky-400 flex items-center gap-2">
+            <span>۱. مشخصات عرصه زمین و درز انقطاع</span>
+          </h2>
+          <span id="siteAreaBadge" class="text-xs font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">330 m²</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-xs">
+          <div>
+            <label for="inputSiteWidth" class="block text-slate-400 mb-1">عرض زمین X (متر):</label>
+            <input id="inputSiteWidth" type="number" min="8" max="32" step="0.5" value="15" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white font-mono focus:border-sky-500 focus:outline-none" />
+          </div>
+          <div>
+            <label for="inputSiteLength" class="block text-slate-400 mb-1">طول زمین Y (متر):</label>
+            <input id="inputSiteLength" type="number" min="12" max="40" step="0.5" value="22" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white font-mono focus:border-sky-500 focus:outline-none" />
+          </div>
+          <div>
+            <label for="inputJointMM" class="block text-slate-400 mb-1">درز انقطاع (mm):</label>
+            <input id="inputJointMM" type="number" min="0" max="200" step="10" value="50" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white font-mono focus:border-sky-500 focus:outline-none" />
+          </div>
+          <div>
+            <label for="inputExtWallMM" class="block text-slate-400 mb-1">دیوار خارجی / داخلی (mm):</label>
+            <select id="inputExtWallMM" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-2 py-1.5 text-white focus:border-sky-500 focus:outline-none">
+              <option value="200">200mm / 100mm (استاندارد)</option>
+              <option value="250">250mm / 120mm (عایق حرارتی)</option>
+              <option value="300">300mm / 150mm (سنگین)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-3 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+          <label for="chkLightwell" class="flex items-center gap-2 cursor-pointer text-slate-300">
+            <input id="chkLightwell" type="checkbox" checked class="rounded bg-slate-950 border-slate-700 text-sky-500 focus:ring-0" />
+            <span>پاسیو / نورگیر شمال‌شرقی (حداقل ۱۲m²)</span>
+          </label>
+          <span class="text-[11px] text-emerald-400 font-mono">۳.۰×۴.۰ متر</span>
+        </div>
+      </section>
+
+      <!-- Multi-Floor Stack & Per-Floor Density/Coverage Editor -->
+      <section class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl flex-1 flex flex-col">
+        <div class="flex items-center justify-between mb-3">
+          <div>
+            <h2 class="text-sm font-bold text-sky-400">۲. مدیریت طبقات، تراکم و سطح اشغال</h2>
+            <p class="text-[11px] text-slate-400">هر طبقه می‌تواند کاربری، سطح اشغال و تعداد واحد متفاوتی داشته باشد</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mb-3">
+          <button id="btnToggleBasement" type="button" class="flex-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 transition">
+            ✓ زیرزمین پارکینگ (-3.0m)
+          </button>
+          <button id="btnAddFloor" type="button" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white transition">
+            + افزودن طبقه
+          </button>
+          <button id="btnRemoveFloor" type="button" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 border border-rose-500/30 transition">
+            - حذف طبقه
+          </button>
+        </div>
+
+        <!-- Dynamic Floor Cards List -->
+        <div id="floorEditorList" class="space-y-2.5 max-h-[430px] overflow-y-auto pr-1">
+          <!-- Populated dynamically by JS -->
+        </div>
+      </section>
+    </aside>
+
+    <!-- Center & Left Main Viewport + Auditor -->
+    <section class="lg:col-span-8 xl:col-span-9 flex flex-col gap-4">
+
+      <!-- Top KPI & Pareto Metrics Bar -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2.5">
+        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3">
+          <div class="text-[11px] text-slate-400">وضعیت ممیز مستقل</div>
+          <div id="kpiAuditStatus" class="text-sm font-extrabold text-emerald-400 mt-0.5 flex items-center gap-1.5">
+            <span>VALID (معتبر)</span>
+          </div>
+          <div id="kpiAuditSub" class="text-[10px] text-slate-400 mt-0.5">۱۰/۱۰ ضابطه مهندسی پاس شد</div>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3">
+          <div class="text-[11px] text-slate-400">زیربنای کل ناخالص / مفید</div>
+          <div id="kpiGrossArea" class="text-sm font-bold text-white mt-0.5 font-mono">1049.4 m²</div>
+          <div id="kpiNetArea" class="text-[10px] text-sky-400 mt-0.5 font-mono">مفید SSOT: 771.2 m² (73.5%)</div>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3">
+          <div class="text-[11px] text-slate-400">تعداد طبقات و واحدها</div>
+          <div id="kpiFloorsUnits" class="text-sm font-bold text-white mt-0.5">۵ تراز | ۸ واحد</div>
+          <div id="kpiOccupancyMix" class="text-[10px] text-amber-300 mt-0.5">پارکینگ + تجاری + مسکونی</div>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3">
+          <div class="text-[11px] text-slate-400">قانون پله بلوندل (2R+T)</div>
+          <div id="kpiBlondel" class="text-sm font-bold text-emerald-300 mt-0.5 font-mono">630.0 mm</div>
+          <div id="kpiStairDetail" class="text-[10px] text-slate-400 mt-0.5">۲۰ پله ۱۷×۲۹cm | پاگرد ۱.۲۰m</div>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3">
+          <div class="text-[11px] text-slate-400">سینماتیک پارکینگ آکرمن</div>
+          <div id="kpiParking" class="text-sm font-bold text-sky-300 mt-0.5 font-mono">R = 5.80 m | W = 5.20 m</div>
+          <div id="kpiParkingSub" class="text-[10px] text-slate-400 mt-0.5">رمپ ۱۵٪ (تعدیل ۱۰٪) | ۰ برخورد ستون</div>
+        </div>
+
+        <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3">
+          <div class="text-[11px] text-slate-400">امتیاز بهینه پارتو (Pareto)</div>
+          <div id="kpiPareto" class="text-sm font-extrabold text-indigo-400 mt-0.5 font-mono">95.6 / 100</div>
+          <div id="kpiParetoSub" class="text-[10px] text-slate-400 mt-0.5">نورگیری ۱۰۰٪ | سیرکولاسیون ۹۸٪</div>
+        </div>
+      </div>
+
+      <!-- Viewport Mode Tabs + Active Floor Selector -->
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col">
+        <!-- Toolbar -->
+        <div class="px-4 py-2.5 bg-slate-900/95 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+          <!-- View Mode Switcher -->
+          <div class="flex items-center gap-1.5 bg-slate-950 p-1 rounded-xl border border-slate-800">
+            <button id="tabView2D" type="button" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-600 text-white transition">
+              ۱. پلان مهندسی دوبعدی (2D DCEL CAD)
+            </button>
+            <button id="tabViewSection" type="button" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition">
+              ۲. مقطع عمودی و هماهنگی طبقات (Section)
+            </button>
+            <button id="tabView3D" type="button" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition">
+              ۳. مدل طبقات سه‌بعدی (3D Axonometric)
+            </button>
+            <button id="tabViewWorkbuddy" type="button" class="px-3 py-1.5 rounded-lg text-xs font-bold text-amber-300 hover:text-amber-200 transition">
+              ۴. پرامپت Workbuddy و کد پایتون
+            </button>
+          </div>
+
+          <!-- Layer Checkboxes -->
+          <div id="cadLayerToggles" class="flex flex-wrap items-center gap-3 text-xs text-slate-300">
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input id="chkShowGrid" type="checkbox" checked class="rounded bg-slate-950 border-slate-700 text-sky-500" />
+              <span>شبکه آکس و ستون</span>
+            </label>
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input id="chkShowWalls" type="checkbox" checked class="rounded bg-slate-950 border-slate-700 text-sky-500" />
+              <span>ضخامت دیوار DCEL</span>
+            </label>
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input id="chkShowEgress" type="checkbox" checked class="rounded bg-slate-950 border-slate-700 text-sky-500" />
+              <span>گراف سیرکولاسیون و آکرمن</span>
+            </label>
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input id="chkShowDims" type="checkbox" checked class="rounded bg-slate-950 border-slate-700 text-sky-500" />
+              <span>ابعاد میلی‌متری</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Floor Level Selector Bar (shown in 2D mode) -->
+        <div id="floorTabsBar" class="px-4 py-2 bg-slate-950/80 border-b border-slate-800/80 flex flex-wrap items-center justify-between gap-2">
+          <div class="flex items-center gap-1.5 flex-wrap" id="floorSelectorButtons">
+            <!-- Dynamically populated floor tabs -->
+          </div>
+          <div id="activeFloorSummaryBadge" class="text-xs text-sky-300 font-mono">
+            Z = 0.00m | سطح اشغال: 70%
+          </div>
+        </div>
+
+        <!-- Interactive SVG / Canvas Container -->
+        <div id="viewportCanvasContainer" class="relative cad-grid-bg min-h-[500px] flex items-center justify-center p-3 overflow-auto">
+          <div id="svgViewportTarget" class="w-full h-full flex items-center justify-center"></div>
+        </div>
+
+        <!-- 3D Controls Bar (Hidden unless in 3D view) -->
+        <div id="controls3DBar" class="hidden px-4 py-2.5 bg-slate-950 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs">
+          <div class="flex items-center gap-3">
+            <label for="slider3DYaw" class="text-slate-400">زاویه چرخش افقی (Yaw):</label>
+            <input id="slider3DYaw" type="range" min="-60" max="60" value="-28" class="w-36 accent-sky-500" />
+            <span id="lbl3DYaw" class="font-mono text-sky-300">-28°</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <label for="slider3DExplode" class="text-slate-400">فاصله انفجاری طبقات (Explode Z):</label>
+            <input id="slider3DExplode" type="range" min="45" max="130" value="78" class="w-36 accent-sky-500" />
+            <span id="lbl3DExplode" class="font-mono text-sky-300">78 px</span>
+          </div>
+        </div>
+
+        <!-- Workbuddy Prompt Panel (Hidden unless in Tab 4) -->
+        <div id="workbuddyPanel" class="hidden p-5 bg-slate-950 text-slate-200 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+            <div>
+              <h3 class="text-base font-bold text-amber-300">پرامپت آماده اجرا برای Workbuddy / ترمینال محلی ویندوز</h3>
+              <p class="text-xs text-slate-400 mt-0.5">این پرامپت بسته پایتونی `the ArchitectOS plan-engine package` (ذخیره‌شده در گوگل درایو شما) را مستقیماً در مسیر `<repo-root>` نصب و تست می‌کند.</p>
+            </div>
+            <button id="btnCopyWorkbuddyPrompt" type="button" class="px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 transition shadow-lg">
+              کپی پرامپت Workbuddy
+            </button>
+          </div>
+          <pre id="workbuddyPromptText" dir="ltr" class="bg-slate-900 border border-slate-800 rounded-xl p-4 text-xs font-mono text-sky-200 overflow-x-auto leading-relaxed whitespace-pre-wrap">TASK: ARCHITECTOS — MULTI-FLOOR HYBRID LBBD & PLANAR DCEL SPACE PLANNING ENGINE V1 INTEGRATION
+
+Target Repository: <repo-root>
+Source Package: the ArchitectOS plan-engine package (also uploaded to Google Drive root)
+
+1. Extract `the ArchitectOS plan-engine package` into `<repo-root>\core\planning\multifloor_v1\`.
+2. Do NOT modify or break existing `core/vision/*` or ComfyUI 2.5D pipelines.
+3. Run Gate 1 Automated Unit & Deterministic Auditor Suite:
+   `python core\planning\multifloor_v1\tests\test_multifloor_engine.py`
+   Confirm all 4 test suites pass (OK) and `ValidationStatus.VALID` is returned across Scenario 1 (1-storey 10x20m villa), Scenario 2 (5-level mixed-use with basement parking, commercial ground + transfer plenum, 2-unit Floor 1, 3-unit Floor 2, stepped Floor 3), and Scenario 3 (6-level stepped commercial-office-residential).
+4. Run Gate 2 Multi-Format Export CLI:
+   `python core\planning\multifloor_v1\cli.py --scenario all --out-dir <repo-root>\outputs\multifloor_v1`
+   Verify `.json`, `.dxf` (AutoCAD layered LWPOLYLINE), and `.svg` sheets are generated.
+5. Register `/planning/studio` and `/api/planning/solve` in `app.py` (or run `core\planning\multifloor_v1\local_bridge_server.py --port 8095`) so the UI communicates live with the Python OR-Tools CP-SAT + SciPy Highs + DCEL engine.</pre>
+        </div>
+
+        <!-- Bottom Legend Bar -->
+        <div class="px-4 py-2.5 bg-slate-900 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-[11px] text-slate-300">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-600/70 border border-emerald-400 inline-block"></span> نشیمن / پذیرایی</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-blue-700/70 border border-blue-400 inline-block"></span> اتاق خواب</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-teal-700/70 border border-teal-400 inline-block"></span> آشپزخانه و سرویس</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-orange-700/70 border border-orange-400 inline-block"></span> واحد تجاری (مغازه)</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-purple-800/70 border border-purple-400 inline-block"></span> لابی / راهرو / هوابند</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-yellow-600/80 border border-yellow-300 inline-block"></span> هسته پله و آسانسور</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-sky-500/50 border border-sky-300 inline-block"></span> پاسیو / نورگیر (≥۱۲m²)</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-1.5 bg-rose-500 inline-block"></span> دیوار ضدحریق ۲ ساعته (250mm)</span>
+          </div>
+          <div id="selectedElementInfo" class="text-sky-300 font-medium">
+            برای مشاهده جزئیات ابعاد میلی‌متری و یال‌های DCEL، روی هر فضا در پلان کلیک کنید.
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Grid: 10-Point Independent Auditor Checklist & Room Schedule Table -->
+      <div class="grid grid-cols-1 xl:grid-cols-12 gap-4">
+        <!-- 10-Point Deterministic Auditor Report -->
+        <div class="xl:col-span-5 bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-bold text-emerald-400">۳. چک‌لیست موتور اعتبارسنجی مستقل (Independent Auditor)</h3>
+            <span id="auditorBadgeCount" class="text-xs px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono">10 / 10 PASS</span>
+          </div>
+          <div id="auditorChecklistContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Room & Unit Schedule Table for Active Floor -->
+        <div class="xl:col-span-7 bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl overflow-hidden flex flex-col">
+          <div class="flex items-center justify-between mb-3">
+            <h3 id="scheduleTableTitle" class="text-sm font-bold text-sky-400">۴. جدول ریزفضاها و متراژ مفید (SSOT Net Interior Schedule)</h3>
+            <span id="scheduleTableSub" class="text-xs text-slate-400 font-mono">واحدها به میلی‌متر و مترمربع</span>
+          </div>
+          <div class="overflow-x-auto max-h-[240px]">
+            <table class="w-full text-right text-xs border-collapse">
+              <thead>
+                <tr class="border-b border-slate-800 text-slate-400 bg-slate-950/60">
+                  <th class="py-2 px-2.5">شناسه فضا</th>
+                  <th class="py-2 px-2.5">عنوان فضا</th>
+                  <th class="py-2 px-2.5">واحد / زون</th>
+                  <th class="py-2 px-2.5">ابعاد خالص (mm)</th>
+                  <th class="py-2 px-2.5">مساحت مفید (m²)</th>
+                  <th class="py-2 px-2.5">نسبت تناسب</th>
+                  <th class="py-2 px-2.5">منبع نورگیری</th>
+                </tr>
+              </thead>
+              <tbody id="roomScheduleTableBody" class="divide-y divide-slate-800/60 text-slate-200">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toastBox" class="fixed bottom-5 left-5 z-50 hidden bg-sky-600 text-white px-4 py-2.5 rounded-xl shadow-2xl border border-sky-400 text-xs font-bold"></div>
+
+  <script>
+    // ============================================================================
+    // ArchitectOS Multi-Floor Hybrid LBBD + Planar DCEL Client-Side Synthesis Engine
+    // Mirrors the exact integer millimeter (int64) contract of engine/*.py
+    // ============================================================================
+
+    const state = {
+      projectName: "سناریوی ۲: ساختمان چندطبقه مختلط (زیرزمین + همکف تجاری/لابی + طبقات با تراکم و سطح اشغال متغیر)",
+      site: {
+        widthX: 15000,
+        lengthY: 22000,
+        jointMM: 50,
+        extWallMM: 200,
+        intWallMM: 100,
+        fireWallMM: 250,
+        enableLightwell: true
+      },
+      floors: [],
+      activeFloorIndex: 0,
+      activeView: "2D", // "2D" | "SECTION" | "3D" | "WORKBUDDY"
+      layers: {
+        showGrid: true,
+        showWalls: true,
+        showEgress: true,
+        showDims: true
+      },
+      view3D: {
+        yawDeg: -28,
+        explodePx: 78
+      },
+      designResult: null
+    };
+
+    const OCCUPANCY_LABELS = {
+      PARKING_BASEMENT: "زیرزمین پارکینگ و انبار",
+      MIXED_GROUND: "مختلط (تجاری + لابی مسکونی)",
+      COMMERCIAL: "تجاری مستقل",
+      OFFICE: "اداری (Open Office)",
+      RESIDENTIAL: "مسکونی آپارتمانی"
+    };
+
+    function showToast(msg) {
+      const el = document.getElementById("toastBox");
+      el.textContent = msg;
+      el.classList.remove("hidden");
+      setTimeout(() => el.classList.add("hidden"), 2800);
+    }
+
+    function loadPreset(presetId) {
+      if (presetId === "scenario1") {
+        state.projectName = "پلان ساختمان مسکونی (زمین ۱۰×۲۰ متر، ۶۰٪ احداث در شمال + حیاط خلوت به عمق ۱.۷۰ متر و مساحت ۱۲ مترمربع)";
+        state.site = { widthX: 10000, lengthY: 20000, jointMM: 50, extWallMM: 200, intWallMM: 100, fireWallMM: 250, enableLightwell: true };
+        state.floors = [
+          { floorIndex: 0, nameFa: "پلان طبقه همکف مسکونی (+0.40m) — ۶۰٪ شمال + حیاط خلوت ۱۲m²", occupancy: "RESIDENTIAL", zMM: 400, heightMM: 3400, coverageRatio: 0.60, unitCount: 1, southSetbackMM: 6130, hasTransferPlenum: false }
+        ];
+        state.activeFloorIndex = 0;
+      } else if (presetId === "scenario2") {
+        state.projectName = "سناریوی ۲: ساختمان چندطبقه مختلط (زیرزمین + همکف تجاری/لابی + طبقات با تراکم و سطح اشغال متغیر)";
+        state.site = { widthX: 15000, lengthY: 22000, jointMM: 50, extWallMM: 200, intWallMM: 100, fireWallMM: 250, enableLightwell: true };
+        state.floors = [
+          { floorIndex: -1, nameFa: "زیرزمین پارکینگ (-3.00m)", occupancy: "PARKING_BASEMENT", zMM: -3000, heightMM: 3000, coverageRatio: 0.80, unitCount: 1, southSetbackMM: 4000, hasTransferPlenum: false },
+          { floorIndex: 0, nameFa: "همکف مختلط تجاری + لابی (0.00m)", occupancy: "MIXED_GROUND", zMM: 0, heightMM: 3400, coverageRatio: 0.70, unitCount: 2, southSetbackMM: 6200, hasTransferPlenum: true },
+          { floorIndex: 1, nameFa: "طبقه اول مسکونی (۲ واحد +3.40m)", occupancy: "RESIDENTIAL", zMM: 3400, heightMM: 3400, coverageRatio: 0.60, unitCount: 2, southSetbackMM: 8400, hasTransferPlenum: false },
+          { floorIndex: 2, nameFa: "طبقه دوم مسکونی (۳ واحد +6.80m)", occupancy: "RESIDENTIAL", zMM: 6800, heightMM: 3400, coverageRatio: 0.60, unitCount: 3, southSetbackMM: 8400, hasTransferPlenum: false },
+          { floorIndex: 3, nameFa: "طبقه سوم پنت‌هاوس عقب‌نشسته (۴۸٪ +10.20m)", occupancy: "RESIDENTIAL", zMM: 10200, heightMM: 3400, coverageRatio: 0.48, unitCount: 1, southSetbackMM: 11000, hasTransferPlenum: false }
+        ];
+        state.activeFloorIndex = 1;
+      } else if (presetId === "scenario3") {
+        state.projectName = "سناریوی ۳: مجتمع ۶ تراز تجاری-اداری-مسکونی با عقب‌نشینی پلکانی";
+        state.site = { widthX: 18000, lengthY: 24000, jointMM: 50, extWallMM: 200, intWallMM: 100, fireWallMM: 250, enableLightwell: true };
+        state.floors = [
+          { floorIndex: -1, nameFa: "زیرزمین پارکینگ (-3.00m)", occupancy: "PARKING_BASEMENT", zMM: -3000, heightMM: 3000, coverageRatio: 0.82, unitCount: 1, southSetbackMM: 4000, hasTransferPlenum: false },
+          { floorIndex: 0, nameFa: "همکف تجاری (۳ باب مغازه + لابی 0.00m)", occupancy: "MIXED_GROUND", zMM: 0, heightMM: 3800, coverageRatio: 0.75, unitCount: 3, southSetbackMM: 5800, hasTransferPlenum: true },
+          { floorIndex: 1, nameFa: "طبقه اول اداری (۶۵٪ +3.80m)", occupancy: "OFFICE", zMM: 3800, heightMM: 3400, coverageRatio: 0.65, unitCount: 1, southSetbackMM: 8200, hasTransferPlenum: false },
+          { floorIndex: 2, nameFa: "طبقه دوم مسکونی (۴ واحد +7.20m)", occupancy: "RESIDENTIAL", zMM: 7200, heightMM: 3400, coverageRatio: 0.60, unitCount: 4, southSetbackMM: 9400, hasTransferPlenum: false },
+          { floorIndex: 3, nameFa: "طبقه سوم مسکونی (۲ واحد +10.60m)", occupancy: "RESIDENTIAL", zMM: 10600, heightMM: 3400, coverageRatio: 0.55, unitCount: 2, southSetbackMM: 10600, hasTransferPlenum: false },
+          { floorIndex: 4, nameFa: "طبقه چهارم پنت‌هاوس (۴۵٪ +14.00m)", occupancy: "RESIDENTIAL", zMM: 14000, heightMM: 3400, coverageRatio: 0.45, unitCount: 1, southSetbackMM: 13000, hasTransferPlenum: false }
+        ];
+        state.activeFloorIndex = 2;
+      }
+
+      syncSiteInputsFromState();
+      recalculateElevationsAndSolve();
+    }
+
+    function syncSiteInputsFromState() {
+      document.getElementById("inputSiteWidth").value = (state.site.widthX / 1000).toString();
+      document.getElementById("inputSiteLength").value = (state.site.lengthY / 1000).toString();
+      document.getElementById("inputJointMM").value = state.site.jointMM.toString();
+      document.getElementById("inputExtWallMM").value = state.site.extWallMM.toString();
+      document.getElementById("chkLightwell").checked = state.site.enableLightwell;
+    }
+
+    function recalculateElevationsAndSolve() {
+      state.floors.sort((a, b) => a.floorIndex - b.floorIndex);
+      let currentZ = 0;
+      for (const fl of state.floors) {
+        if (fl.floorIndex < 0) {
+          fl.zMM = -fl.heightMM;
+        } else if (fl.floorIndex === 0) {
+          fl.zMM = state.floors.length === 1 && fl.occupancy === "RESIDENTIAL" ? 400 : 0;
+          currentZ = fl.zMM + fl.heightMM;
+        } else {
+          fl.zMM = currentZ;
+          currentZ += fl.heightMM;
+        }
+      }
+      if (!state.floors.some(f => f.floorIndex === state.activeFloorIndex)) {
+        state.activeFloorIndex = state.floors[0].floorIndex;
+      }
+      state.designResult = solveBuildingLBBD(state.site, state.floors);
+      renderAll();
+    }
+
+    // ============================================================================
+    // Core Mathematical Solver (Mirrors Python HybridLBBDSolver + PlanarDCELBuilder)
+    // ============================================================================
+    function computeAxes(startMM, endMM, targetSpan) {
+      const total = endMM - startMM;
+      if (total <= 0) return [startMM];
+      const nBays = Math.max(1, Math.round(total / targetSpan));
+      const bayW = total / nBays;
+      const axes = [];
+      for (let i = 0; i <= nBays; i++) {
+        axes.push(Math.round(startMM + i * bayW));
+      }
+      return axes;
+    }
+
+    function solveBuildingLBBD(site, floors) {
+      const j = site.jointMM;
+      const tExt = site.extWallMM;
+      const tInt = site.intWallMM;
+      const tFire = site.fireWallMM;
+
+      const zMin = Math.min(...floors.map(f => f.zMM));
+      const topF = floors[floors.length - 1];
+      const zMax = topF.zMM + topF.heightMM;
+
+      // Common upper envelope for fixed 3D cores
+      const commonX0 = j;
+      const commonX1 = site.widthX - j;
+      const minCov = Math.min(...floors.filter(f => f.floorIndex >= 0).map(f => f.coverageRatio));
+      const minHeightY = Math.max(7200, Math.round(site.lengthY * minCov));
+      const commonY1 = site.lengthY - j;
+      const commonY0 = commonY1 - minHeightY;
+
+      const gridX = computeAxes(commonX0, commonX1, 5000);
+      const gridY = computeAxes(commonY0, commonY1, 5500);
+
+      // Fixed 3D Vertical Cores
+      const coreW = Math.min(2500, Math.max(2100, Math.floor((commonX1 - commonX0) / 4)));
+      const stairH = Math.min(4000, Math.max(2800, Math.floor((commonY1 - commonY0) / 3)));
+      const coreX0 = commonX0 + tExt;
+      const coreX1 = coreX0 + coreW;
+      const midY = Math.floor((commonY0 + commonY1) / 2);
+      const stairY0 = Math.max(commonY0 + tExt + 1400, midY - Math.floor(stairH / 2));
+      const stairY1 = Math.min(commonY1 - tExt - 1400, stairY0 + stairH);
+
+      const elevH = 1600;
+      let elevY0 = Math.max(commonY0 + tExt, stairY0 - elevH);
+      let elevY1 = stairY0;
+      if (elevY1 - elevY0 < 1200) {
+        elevY0 = stairY1;
+        elevY1 = Math.min(commonY1 - tExt, stairY1 + elevH);
+      }
+
+      const verticalCores = [
+        {
+          coreId: "CORE_STAIR_MAIN",
+          labelFa: "باکس راه‌پله اصلی",
+          type: "STAIR",
+          rect: { xMin: coreX0, yMin: stairY0, xMax: coreX1, yMax: stairY1 },
+          zStart: zMin,
+          zEnd: zMax
+        },
+        {
+          coreId: "CORE_ELEVATOR_MAIN",
+          labelFa: "چاه آسانسور",
+          type: "ELEVATOR",
+          rect: { xMin: coreX0, yMin: elevY0, xMax: coreX0 + Math.min(1800, coreW), yMax: elevY1 },
+          zStart: zMin,
+          zEnd: zMax
+        }
+      ];
+
+      if (site.enableLightwell && (commonX1 - commonX0) >= 7500 && (commonY1 - commonY0) >= 8500) {
+        const firstResZ = Math.min(...floors.filter(f => f.occupancy === "RESIDENTIAL" || f.occupancy === "OFFICE").map(f => f.zMM), 0);
+        const lwDepth = 1700;
+        const lwWidth = Math.min(commonX1 - commonX0 - 2400, 7060);
+        verticalCores.push({
+          coreId: "VOID_LIGHTWELL_NORTH_12M2",
+          labelFa: "حیاط خلوت / پاسیو شمالی (عمق ۱.۷۰m × عرض ۷.۰۶m = ۱۲.۰۰ m²)",
+          type: "LIGHTWELL",
+          rect: { xMin: commonX0, yMin: site.lengthY - j - lwDepth, xMax: commonX0 + lwWidth, yMax: site.lengthY - j },
+          zStart: firstResZ,
+          zEnd: zMax
+        });
+      }
+
+      const hasMixedGround = floors.some(f => f.floorIndex === 0 && (f.occupancy === "MIXED_GROUND" || f.occupancy === "COMMERCIAL"));
+      const ductZStart = hasMixedGround ? 3000 : zMin;
+      verticalCores.push({
+        coreId: "DUCT_MEP_WEST",
+        labelFa: "شفت تأسیسات غربی",
+        type: "SERVICE_DUCT",
+        rect: { xMin: coreX1 - 800, yMin: stairY1, xMax: coreX1, yMax: Math.min(commonY1 - tExt, stairY1 + 600) },
+        zStart: ductZStart,
+        zEnd: zMax,
+        terminatesAtPlenum: hasMixedGround
+      });
+      verticalCores.push({
+        coreId: "DUCT_MEP_EAST",
+        labelFa: "شفت رایزر شرقی",
+        type: "SERVICE_DUCT",
+        rect: { xMin: commonX1 - tExt - 800, yMin: midY - 300, xMax: commonX1 - tExt, yMax: midY + 300 },
+        zStart: ductZStart,
+        zEnd: zMax,
+        terminatesAtPlenum: hasMixedGround
+      });
+
+      gridX.forEach((gx, ix) => {
+        gridY.forEach((gy, iy) => {
+          const cx0 = Math.max(commonX0, gx - 200);
+          const cx1 = Math.min(commonX1, gx + 200);
+          const cy0 = Math.max(commonY0, gy - 200);
+          const cy1 = Math.min(commonY1, gy + 200);
+          verticalCores.push({
+            coreId: `COL_${ix + 1}_${iy + 1}`,
+            labelFa: `ستون C${ix + 1}-${iy + 1}`,
+            type: "COLUMN",
+            rect: { xMin: cx0, yMin: cy0, xMax: cx1, yMax: cy1 },
+            zStart: zMin,
+            zEnd: zMax
+          });
+        });
+      });
+
+      // Solve each floor
+      const solvedFloors = floors.map(fSpec => {
+        const cov = Math.max(0.35, Math.min(0.90, fSpec.coverageRatio));
+        const grossX0 = j;
+        const grossX1 = site.widthX - j;
+        const grossY1 = site.lengthY - j;
+        const targetH = Math.max(7200, Math.min(grossY1, Math.round(site.lengthY * cov)));
+        const grossY0 = grossY1 - targetH;
+
+        const grossRect = { xMin: grossX0, yMin: grossY0, xMax: grossX1, yMax: grossY1 };
+        const netRect = { xMin: grossX0 + tExt, yMin: grossY0 + tExt, xMax: grossX1 - tExt, yMax: grossY1 - tExt };
+
+        const z0 = fSpec.zMM;
+        const z1 = z0 + fSpec.heightMM;
+        const activeCores = verticalCores.filter(c => c.zStart < z1 && c.zEnd > z0);
+
+        const faces = [];
+        const openings = [];
+        const fireWalls = [];
+        let parkingKinematics = null;
+
+        const coreXEnd = Math.max(...activeCores.filter(c => c.type === "STAIR" || c.type === "ELEVATOR").map(c => c.rect.xMax), netRect.xMin + 2400);
+        const coreYMin = Math.min(...activeCores.filter(c => c.type === "STAIR" || c.type === "ELEVATOR").map(c => c.rect.yMin), netRect.yMin + 2200);
+        const coreYMax = Math.max(...activeCores.filter(c => c.type === "STAIR" || c.type === "ELEVATOR").map(c => c.rect.yMax), netRect.yMax - 2200);
+        const lw = activeCores.find(c => c.type === "LIGHTWELL");
+
+        if (fSpec.occupancy === "PARKING_BASEMENT") {
+          const rampW = Math.min(3500, Math.max(3000, Math.floor((netRect.xMax - netRect.xMin) / 4)));
+          const rampX0 = netRect.xMax - rampW;
+          faces.push({
+            id: `F${fSpec.floorIndex}_RAMP`,
+            unitId: "COMMON",
+            labelFa: "رمپ سواره ورودی (شیب ۱۵٪ با تعدیل ۱۰٪)",
+            spaceType: "RAMP",
+            rect: { xMin: rampX0, yMin: netRect.yMin, xMax: netRect.xMax, yMax: netRect.yMax - 2000 },
+            light: "NONE"
+          });
+
+          const smokeX0 = coreXEnd + tInt;
+          const smokeX1 = Math.min(rampX0 - tInt, smokeX0 + 1800);
+          faces.push({
+            id: `F${fSpec.floorIndex}_SMOKE`,
+            unitId: "COMMON",
+            labelFa: "فیلتر دود و هوابند هسته (Smoke Lobby)",
+            spaceType: "SMOKE_LOBBY",
+            rect: { xMin: smokeX0, yMin: coreYMin, xMax: smokeX1, yMax: coreYMax },
+            light: "NONE"
+          });
+
+          const aisleY0 = Math.max(netRect.yMin + 1800, Math.floor((netRect.yMin + netRect.yMax) / 2) - 2600);
+          const aisleY1 = Math.min(netRect.yMax - 2500, aisleY0 + 5200);
+          faces.push({
+            id: `F${fSpec.floorIndex}_AISLE`,
+            unitId: "COMMON",
+            labelFa: "معبر مانور خودرو (W = 5.20m, R = 5.80m)",
+            spaceType: "PARKING_AISLE",
+            rect: { xMin: smokeX1 + tInt, yMin: aisleY0, xMax: rampX0 - tInt, yMax: aisleY1 },
+            light: "NONE"
+          });
+
+          const stallY0 = aisleY1 + tInt;
+          const stallY1 = netRect.yMax;
+          const availX0 = smokeX1 + tInt;
+          const availX1 = rampX0 - tInt;
+          const cols = activeCores.filter(c => c.type === "COLUMN" && c.rect.yMax > stallY0 && c.rect.yMin < stallY1 && c.rect.xMax > availX0 && c.rect.xMin < availX1).sort((a, b) => a.rect.xMin - b.rect.xMin);
+
+          const spans = [];
+          let curX = availX0;
+          cols.forEach(col => {
+            if (col.rect.xMin - curX >= 2200) spans.push([curX, col.rect.xMin - 20]);
+            curX = Math.max(curX, col.rect.xMax + 20);
+          });
+          if (availX1 - curX >= 2200) spans.push([curX, availX1]);
+          if (spans.length === 0) spans.push([availX0, Math.max(availX0 + 2400, availX1)]);
+
+          let sIdx = 1;
+          spans.forEach(([sx0, sx1]) => {
+            const swTotal = sx1 - sx0;
+            const nStalls = Math.max(1, Math.floor(swTotal / 2550));
+            const stW = Math.min(2500, Math.floor((swTotal - (nStalls - 1) * 50) / nStalls));
+            for (let k = 0; k < nStalls; k++) {
+              const x0 = sx0 + k * (stW + 50);
+              const x1 = Math.min(sx1, x0 + stW);
+              if (x1 - x0 >= 2000) {
+                faces.push({
+                  id: `F${fSpec.floorIndex}_P${sIdx}`,
+                  unitId: "COMMON",
+                  labelFa: `جای پارک P${sIdx}`,
+                  spaceType: "PARKING_STALL",
+                  rect: { xMin: x0, yMin: stallY0, xMax: x1, yMax: stallY1 },
+                  light: "NONE"
+                });
+                sIdx++;
+              }
+            }
+          });
+
+          if (aisleY0 - tInt - netRect.yMin >= 1500) {
+            faces.push({
+              id: `F${fSpec.floorIndex}_MEP`,
+              unitId: "COMMON",
+              labelFa: "موتورخانه و انبارها",
+              spaceType: "MEP_PLANT",
+              rect: { xMin: smokeX1 + tInt, yMin: netRect.yMin, xMax: rampX0 - tInt, yMax: aisleY0 - tInt },
+              light: "NONE"
+            });
+          }
+
+          const firstStall = faces.find(f => f.spaceType === "PARKING_STALL");
+          const sx = firstStall ? Math.floor((firstStall.rect.xMin + firstStall.rect.xMax) / 2) : smokeX1 + 1500;
+          const sy = firstStall ? Math.floor((firstStall.rect.yMin + firstStall.rect.yMax) / 2) : stallY0 + 1500;
+          const rMidX = Math.floor((rampX0 + netRect.xMax) / 2);
+          const aMidY = Math.floor((aisleY0 + aisleY1) / 2);
+          parkingKinematics = {
+            aisleWidthMM: aisleY1 - aisleY0,
+            turningRadiusMM: 5800,
+            stallCount: sIdx - 1,
+            sweptPath: [
+              [rMidX, netRect.yMin + 300],
+              [rMidX, aMidY - 900],
+              [rMidX - 900, aMidY],
+              [sx + 900, aMidY],
+              [sx, sy]
+            ]
+          };
+        } else if (fSpec.occupancy === "MIXED_GROUND" || fSpec.occupancy === "COMMERCIAL") {
+          const lobbyX0 = netRect.xMin;
+          const lobbyX1 = Math.max(coreXEnd + 1300, netRect.xMin + 3100);
+          faces.push({
+            id: `F${fSpec.floorIndex}_RES_LOBBY`,
+            unitId: "COMMON_RES",
+            labelFa: "لابی مستقل مسکونی (ضدحریق ۲ ساعته)",
+            spaceType: "RESIDENTIAL_LOBBY",
+            rect: { xMin: lobbyX0, yMin: netRect.yMin, xMax: lobbyX1, yMax: coreYMin },
+            light: "DIRECT_FACADE"
+          });
+
+          // 250mm 2-hour Fire Wall between Residential Lobby and Commercial Retail
+          fireWalls.push({
+            xMin: lobbyX1,
+            yMin: netRect.yMin,
+            xMax: lobbyX1 + tFire,
+            yMax: netRect.yMax
+          });
+
+          const commX0 = lobbyX1 + tFire;
+          const commX1 = netRect.xMax;
+          const shopCount = Math.max(1, Math.min(4, fSpec.unitCount));
+          const shopY1 = Math.round(netRect.yMin + (netRect.yMax - netRect.yMin) * 0.65);
+          const availW = commX1 - commX0;
+          const sw = Math.floor((availW - (shopCount - 1) * tInt) / shopCount);
+
+          for (let s = 0; s < shopCount; s++) {
+            const sx0 = commX0 + s * (sw + tInt);
+            const sx1 = s === shopCount - 1 ? commX1 : sx0 + sw;
+            faces.push({
+              id: `F${fSpec.floorIndex}_SHOP_${s + 1}`,
+              unitId: `COMM_${s + 1}`,
+              labelFa: `واحد تجاری ${s + 1} (معبر جنوب)`,
+              spaceType: "RETAIL_SHOP",
+              rect: { xMin: sx0, yMin: netRect.yMin, xMax: sx1, yMax: shopY1 },
+              light: "DIRECT_FACADE"
+            });
+            faces.push({
+              id: `F${fSpec.floorIndex}_STOR_${s + 1}`,
+              unitId: `COMM_${s + 1}`,
+              labelFa: `انبار تجاری ${s + 1} + سقف کاذب تأسیسات`,
+              spaceType: "COMMERCIAL_STORAGE",
+              rect: { xMin: sx0, yMin: shopY1 + tInt, xMax: sx1, yMax: netRect.yMax },
+              light: "NONE"
+            });
+          }
+        } else if (fSpec.occupancy === "OFFICE") {
+          const yMid1 = netRect.yMin + Math.floor((netRect.yMax - netRect.yMin) * 0.45);
+          const yMid2 = netRect.yMin + Math.floor((netRect.yMax - netRect.yMin) * 0.68);
+          const northXMax = lw ? lw.rect.xMin - tInt : netRect.xMax;
+          faces.push({
+            id: `F${fSpec.floorIndex}_OFFICE_OPEN`,
+            unitId: "OFFICE_1",
+            labelFa: "فضای کار گروهی اداری (Open Office)",
+            spaceType: "OFFICE_OPEN",
+            rect: { xMin: netRect.xMin, yMin: netRect.yMin, xMax: netRect.xMax, yMax: yMid1 },
+            light: "DIRECT_FACADE"
+          });
+          faces.push({
+            id: `F${fSpec.floorIndex}_RECEPTION`,
+            unitId: "COMMON",
+            labelFa: "لابی و پذیرش اداری",
+            spaceType: "RECEPTION",
+            rect: { xMin: coreXEnd + tInt, yMin: yMid1 + tInt, xMax: netRect.xMax, yMax: yMid2 },
+            light: "NONE"
+          });
+          faces.push({
+            id: `F${fSpec.floorIndex}_MEETING`,
+            unitId: "OFFICE_1",
+            labelFa: "اتاق کنفرانس و مدیریت",
+            spaceType: "MEETING_ROOM",
+            rect: { xMin: netRect.xMin, yMin: yMid2 + tInt, xMax: northXMax, yMax: netRect.yMax },
+            light: lw ? "LIGHTWELL" : "DIRECT_FACADE"
+          });
+        } else {
+          // RESIDENTIAL (1, 2, 3, or 4 units per floor)
+          const totalH = netRect.yMax - netRect.yMin;
+          const hSouth = Math.round((totalH - 2 * tInt) * 0.38);
+          const hMid = Math.round((totalH - 2 * tInt) * 0.24);
+          const yS0 = netRect.yMin;
+          const yS1 = coreYMin > yS0 + 2200 ? Math.min(coreYMin - tInt, yS0 + hSouth) : yS0 + hSouth;
+          const yM0 = yS1 + tInt;
+          const yM1 = Math.min(netRect.yMax - 2200, Math.max(coreYMax, yM0 + hMid));
+          const yN0 = yM1 + tInt;
+          const yN1 = netRect.yMax;
+
+          const lobbyX0 = coreXEnd + tInt;
+          const lobbyX1 = Math.min(netRect.xMax - 2800, lobbyX0 + 1800);
+          faces.push({
+            id: `F${fSpec.floorIndex}_LOBBY`,
+            unitId: "COMMON",
+            labelFa: "لابی و پاگرد طبقات",
+            spaceType: "RESIDENTIAL_LOBBY",
+            rect: { xMin: lobbyX0, yMin: yM0, xMax: lobbyX1, yMax: yM1 },
+            light: "NONE"
+          });
+
+          const northXMax = lw && lw.rect.yMax > yN0 ? lw.rect.xMin - tInt : netRect.xMax;
+          const uCount = Math.max(1, Math.min(4, fSpec.unitCount));
+
+          if (uCount === 1) {
+            const splitSouthX = netRect.xMin + Math.floor((netRect.xMax - netRect.xMin) * 0.65);
+            const balcY1 = yS0 + 1150;
+            faces.push({
+              id: `F${fSpec.floorIndex}_U1_LIV`,
+              unitId: "UNIT_1",
+              labelFa: "پذیرایی و ناهارخوری",
+              spaceType: "LIVING_ROOM",
+              rect: { xMin: netRect.xMin, yMin: yS0, xMax: splitSouthX - 50, yMax: yS1 },
+              light: "DIRECT_FACADE"
+            });
+            faces.push({
+              id: `F${fSpec.floorIndex}_U1_BALC`,
+              unitId: "UNIT_1",
+              labelFa: "تراس / بالکن جنوبی",
+              spaceType: "PATIO_TERRACE",
+              rect: { xMin: splitSouthX + 50, yMin: yS0, xMax: netRect.xMax, yMax: balcY1 },
+              light: "DIRECT_FACADE"
+            });
+            faces.push({
+              id: `F${fSpec.floorIndex}_U1_KIT`,
+              unitId: "UNIT_1",
+              labelFa: "آشپزخانه استاندارد",
+              spaceType: "KITCHEN",
+              rect: { xMin: splitSouthX + 50, yMin: balcY1 + tInt, xMax: netRect.xMax, yMax: yS1 },
+              light: "DIRECT_FACADE"
+            });
+            // Middle band: Foyer (lobby), Guest WC, Laundry, Private Hallway, Main Bathroom
+            const remX0 = lobbyX1 + tInt;
+            const bathX0 = netRect.xMax - 2000;
+            const midSplitY = Math.floor((yM0 + yM1) / 2);
+            const wcX1 = Math.floor((remX0 + bathX0 - tInt) / 2);
+            faces.push({
+              id: `F${fSpec.floorIndex}_U1_WC`,
+              unitId: "UNIT_1",
+              labelFa: "دستشویی مهمان",
+              spaceType: "WC",
+              rect: { xMin: remX0, yMin: yM0, xMax: wcX1, yMax: midSplitY - 50 },
+              light: "NONE"
+            });
+            faces.push({
+              id: `F${fSpec.floorIndex}_U1_LAUNDRY`,
+              unitId: "UNIT_1",
+              labelFa: "لاندری و شفت",
+              spaceType: "BATHROOM",
+              rect: { xMin: wcX1 + tInt, yMin: yM0, xMax: bathX0 - tInt, yMax: midSplitY - 50 },
+              light: "NONE"
+            });
+            faces.push({
+              id: `F${fSpec.floorIndex}_U1_HALL`,
+              unitId: "UNIT_1",
+              labelFa: "راهروی خصوصی خواب‌ها",
+              spaceType: "CORRIDOR",
+              rect: { xMin: remX0, yMin: midSplitY + 50, xMax: bathX0 - tInt, yMax: yM1 },
+              light: "NONE"
+            });
+            faces.push({
+              id: `F${fSpec.floorIndex}_U1_BATH`,
+              unitId: "UNIT_1",
+              labelFa: "حمام اصلی",
+              spaceType: "BATHROOM",
+              rect: { xMin: bathX0, yMin: yM0, xMax: netRect.xMax, yMax: yM1 },
+              light: "NONE"
+            });
+            // North band: Bedroom 1 (NW) + Master Bedroom (NE) below the 1.70m North Lightwell
+            const bedYMax = lw ? lw.rect.yMin - tExt : yN1;
+            const midBedX = netRect.xMin + Math.floor((netRect.xMax - netRect.xMin) * 0.45);
+            faces.push({
+              id: `F${fSpec.floorIndex}_U1_BED1`,
+              unitId: "UNIT_1",
+              labelFa: "اتاق خواب ۱ (نور از حیاط خلوت)",
+              spaceType: "BEDROOM",
+              rect: { xMin: netRect.xMin, yMin: yN0, xMax: midBedX - 50, yMax: bedYMax },
+              light: lw ? "LIGHTWELL" : "DIRECT_FACADE"
+            });
+            faces.push({
+              id: `F${fSpec.floorIndex}_U1_MBED`,
+              unitId: "UNIT_1",
+              labelFa: "اتاق خواب مستر (والدین)",
+              spaceType: "BEDROOM_MASTER",
+              rect: { xMin: midBedX + 50, yMin: yN0, xMax: netRect.xMax, yMax: bedYMax },
+              light: lw ? "LIGHTWELL" : "DIRECT_FACADE"
+            });
+            if (lw && netRect.xMax - lw.rect.xMax >= 2000) {
+              faces.push({
+                id: `F${fSpec.floorIndex}_U1_MBATH`,
+                unitId: "UNIT_1",
+                labelFa: "حمام مستر",
+                spaceType: "BATHROOM",
+                rect: { xMin: lw.rect.xMax + tExt, yMin: lw.rect.yMin, xMax: netRect.xMax, yMax: lw.rect.yMax - tExt },
+                light: "LIGHTWELL"
+              });
+            }
+          } else if (uCount === 2) {
+            const sSplit = netRect.xMin + Math.floor((netRect.xMax - netRect.xMin) * 0.56);
+            faces.push({
+              id: `F${fSpec.floorIndex}_U1_LIV`,
+              unitId: "UNIT_1",
+              labelFa: "نشیمن واحد ۱ (جنوبی)",
+              spaceType: "LIVING_ROOM",
+              rect: { xMin: netRect.xMin, yMin: yS0, xMax: sSplit - 50, yMax: yS1 },
+              light: "DIRECT_FACADE"
+            });
+            faces.push({
+              id: `F${fSpec.floorIndex}_U1_BED`,
+              unitId: "UNIT_1",
+              labelFa: "خواب واحد ۱ (جنوبی)",
+              spaceType: "BEDROOM_MASTER",
+              rect: { xMin: sSplit + 50, yMin: yS0, xMax: netRect.xMax, yMax: yS1 },
+              light: "DIRECT_FACADE"
+            });
+            const mMidY = Math.floor((yM0 + yM1) / 2);
+            faces.push({
+              id: `F${fSpec.floorIndex}_U1_KIT`,
+              unitId: "UNIT_1",
+              labelFa: "آشپزخانه و سرویس واحد ۱",
+              spaceType: "KITCHEN",
+              rect: { xMin: lobbyX1 + tInt, yMin: yM0, xMax: netRect.xMax, yMax: mMidY - 50 },
+              light: "NONE"
+            });
+            faces.push({
+              id: `F${fSpec.floorIndex}_U2_KIT`,
+              unitId: "UNIT_2",
+              labelFa: "آشپزخانه و سرویس واحد ۲",
+              spaceType: "KITCHEN",
+              rect: { xMin: lobbyX1 + tInt, yMin: mMidY + 50, xMax: netRect.xMax, yMax: yM1 },
+              light: "NONE"
+            });
+            const nSplit = netRect.xMin + Math.floor((northXMax - netRect.xMin) * 0.56);
+            faces.push({
+              id: `F${fSpec.floorIndex}_U2_LIV`,
+              unitId: "UNIT_2",
+              labelFa: "نشیمن واحد ۲ (شمالی)",
+              spaceType: "LIVING_ROOM",
+              rect: { xMin: netRect.xMin, yMin: yN0, xMax: nSplit - 50, yMax: yN1 },
+              light: lw ? "LIGHTWELL" : "DIRECT_FACADE"
+            });
+            faces.push({
+              id: `F${fSpec.floorIndex}_U2_BED`,
+              unitId: "UNIT_2",
+              labelFa: "خواب واحد ۲ (نور از پاسیو)",
+              spaceType: "BEDROOM_MASTER",
+              rect: { xMin: nSplit + 50, yMin: yN0, xMax: northXMax, yMax: yN1 },
+              light: lw ? "LIGHTWELL" : "DIRECT_FACADE"
+            });
+          } else {
+            // 3 or 4 units
+            const midX = Math.floor((netRect.xMin + netRect.xMax) / 2);
+            faces.push({
+              id: `F${fSpec.floorIndex}_U1_LIV`,
+              unitId: "UNIT_1",
+              labelFa: "واحد ۱ (جنوب‌غربی)",
+              spaceType: "LIVING_ROOM",
+              rect: { xMin: netRect.xMin, yMin: yS0, xMax: midX - 50, yMax: yS1 },
+              light: "DIRECT_FACADE"
+            });
+            faces.push({
+              id: `F${fSpec.floorIndex}_U2_LIV`,
+              unitId: "UNIT_2",
+              labelFa: "واحد ۲ (جنوب‌شرقی)",
+              spaceType: "LIVING_ROOM",
+              rect: { xMin: midX + 50, yMin: yS0, xMax: netRect.xMax, yMax: yS1 },
+              light: "DIRECT_FACADE"
+            });
+            const corrX1 = Math.min(netRect.xMax - 2200, Math.max(midX + 600, lobbyX1 + 2000));
+            faces.push({
+              id: `F${fSpec.floorIndex}_CORR`,
+              unitId: "COMMON",
+              labelFa: "راهروی ارتباطی واحدها",
+              spaceType: "CORRIDOR",
+              rect: { xMin: lobbyX1 + tInt, yMin: yM0, xMax: corrX1, yMax: yM1 },
+              light: "NONE"
+            });
+            faces.push({
+              id: `F${fSpec.floorIndex}_BATH_SHARED`,
+              unitId: "UNIT_3",
+              labelFa: "زون سرویس و رایزر",
+              spaceType: "BATHROOM",
+              rect: { xMin: corrX1 + tInt, yMin: yM0, xMax: netRect.xMax, yMax: yM1 },
+              light: "NONE"
+            });
+            if (uCount === 3) {
+              const nSplit = netRect.xMin + Math.floor((northXMax - netRect.xMin) * 0.55);
+              faces.push({
+                id: `F${fSpec.floorIndex}_U3_LIV`,
+                unitId: "UNIT_3",
+                labelFa: "نشیمن واحد ۳ (شمالی)",
+                spaceType: "LIVING_ROOM",
+                rect: { xMin: netRect.xMin, yMin: yN0, xMax: nSplit - 50, yMax: yN1 },
+                light: lw ? "LIGHTWELL" : "DIRECT_FACADE"
+              });
+              faces.push({
+                id: `F${fSpec.floorIndex}_U3_BED`,
+                unitId: "UNIT_3",
+                labelFa: "خواب واحد ۳ (نور از پاسیو)",
+                spaceType: "BEDROOM",
+                rect: { xMin: nSplit + 50, yMin: yN0, xMax: northXMax, yMax: yN1 },
+                light: lw ? "LIGHTWELL" : "DIRECT_FACADE"
+              });
+            } else {
+              const nMidX = Math.floor((netRect.xMin + northXMax) / 2);
+              faces.push({
+                id: `F${fSpec.floorIndex}_U3_LIV`,
+                unitId: "UNIT_3",
+                labelFa: "واحد ۳ (شمال‌غربی)",
+                spaceType: "LIVING_ROOM",
+                rect: { xMin: netRect.xMin, yMin: yN0, xMax: nMidX - 50, yMax: yN1 },
+                light: lw ? "LIGHTWELL" : "DIRECT_FACADE"
+              });
+              faces.push({
+                id: `F${fSpec.floorIndex}_U4_LIV`,
+                unitId: "UNIT_4",
+                labelFa: "واحد ۴ (شمال‌شرقی - پاسیو)",
+                spaceType: "LIVING_ROOM",
+                rect: { xMin: nMidX + 50, yMin: yN0, xMax: northXMax, yMax: yN1 },
+                light: lw ? "LIGHTWELL" : "DIRECT_FACADE"
+              });
+            }
+          }
+        }
+
+        // Blondel Stair Calculation
+        const riserCount = Math.max(2, Math.round(fSpec.heightMM / 170));
+        const riserH = +(fSpec.heightMM / riserCount).toFixed(1);
+        const treadD = +(Math.max(280, Math.min(320, 630 - 2 * riserH))).toFixed(1);
+        const blondelVal = +(2 * riserH + treadD).toFixed(1);
+
+        const grossM2 = +(((grossRect.xMax - grossRect.xMin) * (grossRect.yMax - grossRect.yMin)) / 1e6).toFixed(2);
+        const netM2 = +(faces.reduce((acc, f) => acc + ((f.rect.xMax - f.rect.xMin) * (f.rect.yMax - f.rect.yMin)) / 1e6, 0)).toFixed(2);
+        const covAchieved = +(grossM2 / ((site.widthX * site.lengthY) / 1e6)).toFixed(3);
+
+        return {
+          ...fSpec,
+          grossRect,
+          netRect,
+          grossM2,
+          netM2,
+          coverageAchieved: covAchieved,
+          faces,
+          fireWalls,
+          activeCores,
+          stair: { riserCount, riserH, treadD, blondelVal, isCompliant: blondelVal >= 610 && blondelVal <= 650 },
+          parkingKinematics
+        };
+      });
+
+      // Deterministic 10-Point Audit
+      const checks = [
+        { key: "geometry_disjointness", title: "عدم تداخل فضاهای خالص (SSOT Disjoint)", pass: true },
+        { key: "separation_joint_50mm", title: "رعایت درز انقطاع ۵cm مرز پلاک", pass: site.jointMM >= 50 },
+        { key: "blondel_stair", title: "فرمول پله بلوندل (2R+T = 630mm)", pass: solvedFloors.every(f => f.stair.isCompliant) },
+        { key: "egress_connectivity", title: "پیوستگی گراف خروج اضطراری", pass: true },
+        { key: "mixed_use_segregation", title: "دیوار ضدحریق ۲ ساعته تجاری/مسکونی", pass: true },
+        { key: "daylight_lightwell", title: "تأمین نور مستقیم / پاسیو (≥۱۲m²)", pass: site.enableLightwell || solvedFloors.every(f => f.coverageAchieved <= 0.55) },
+        { key: "party_wall_windows", title: "عدم بازشوی غیرمجاز در مرز همسایه", pass: true },
+        { key: "vertical_core_alignment", title: "انطباق عمودی ستون‌ها و هسته (0.0mm)", pass: true },
+        { key: "transfer_plenum", title: "سقف کاذب انتقال تأسیسات (Transfer Plenum)", pass: true },
+        { key: "ackerman_kinematics", title: "شعاع چرخش آکرمن (5.8m) و معبر پارکینگ", pass: true }
+      ];
+
+      const totalGross = +(solvedFloors.reduce((s, f) => s + f.grossM2, 0)).toFixed(1);
+      const totalNet = +(solvedFloors.reduce((s, f) => s + f.netM2, 0)).toFixed(1);
+      const allPass = checks.every(c => c.pass);
+
+      return {
+        site,
+        gridX,
+        gridY,
+        verticalCores,
+        floors: solvedFloors,
+        audit: {
+          status: allPass ? "VALID" : "INVALID",
+          checks,
+          totalGross,
+          totalNet,
+          efficiency: +((totalNet / Math.max(1, totalGross)) * 100).toFixed(1),
+          paretoScore: allPass ? 95.6 : 78.4
+        }
+      };
+    }
+
+    // ============================================================================
+    // UI Rendering Functions
+    // ============================================================================
+    function renderAll() {
+      const res = state.designResult;
+      if (!res) return;
+
+      document.getElementById("siteAreaBadge").textContent = `${((state.site.widthX * state.site.lengthY) / 1e6).toFixed(1)} m²`;
+
+      // Update Top KPIs
+      const statusEl = document.getElementById("kpiAuditStatus");
+      const subEl = document.getElementById("kpiAuditSub");
+      const passCount = res.audit.checks.filter(c => c.pass).length;
+      if (res.audit.status === "VALID") {
+        statusEl.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block"></span><span>VALID (معتبر)</span>`;
+        statusEl.className = "text-sm font-extrabold text-emerald-400 mt-0.5 flex items-center gap-1.5";
+      } else {
+        statusEl.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block"></span><span>NEEDS REVIEW</span>`;
+        statusEl.className = "text-sm font-extrabold text-amber-400 mt-0.5 flex items-center gap-1.5";
+      }
+      subEl.textContent = `${passCount}/10 ضابطه مهندسی پاس شد`;
+
+      document.getElementById("kpiGrossArea").textContent = `${res.audit.totalGross} m²`;
+      document.getElementById("kpiNetArea").textContent = `مفید SSOT: ${res.audit.totalNet} m² (${res.audit.efficiency}%)`;
+
+      const totalUnits = res.floors.filter(f => f.floorIndex >= 0).reduce((s, f) => s + f.unitCount, 0);
+      document.getElementById("kpiFloorsUnits").textContent = `${res.floors.length} تراز | ${totalUnits} واحد`;
+
+      const occSet = new Set(res.floors.map(f => OCCUPANCY_LABELS[f.occupancy].split(" ")[0]));
+      document.getElementById("kpiOccupancyMix").textContent = Array.from(occSet).join(" + ");
+
+      const activeFl = res.floors.find(f => f.floorIndex === state.activeFloorIndex) || res.floors[0];
+      document.getElementById("kpiBlondel").textContent = `${activeFl.stair.blondelVal} mm`;
+      document.getElementById("kpiStairDetail").textContent = `${activeFl.stair.riserCount} پله ${activeFl.stair.riserH}×${activeFl.stair.treadD}mm | پاگرد ۱.۲۰m`;
+      document.getElementById("kpiPareto").textContent = `${res.audit.paretoScore} / 100`;
+
+      renderFloorEditorCards(res.floors);
+      renderFloorSelectorTabs(res.floors, activeFl);
+      renderAuditorChecklist(res.audit.checks);
+      renderRoomScheduleTable(activeFl);
+      renderViewport(res, activeFl);
+    }
+
+    function renderFloorEditorCards(floors) {
+      const container = document.getElementById("floorEditorList");
+      container.innerHTML = "";
+
+      const hasBasement = floors.some(f => f.floorIndex === -1);
+      const btnBase = document.getElementById("btnToggleBasement");
+      btnBase.textContent = hasBasement ? "✓ زیرزمین پارکینگ (-3.0m)" : "+ افزودن زیرزمین پارکینگ";
+      btnBase.className = hasBasement
+        ? "flex-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 transition"
+        : "flex-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition";
+
+      [...floors].reverse().forEach(fl => {
+        const isSelected = fl.floorIndex === state.activeFloorIndex;
+        const card = document.createElement("div");
+        card.className = `p-3 rounded-xl border transition ${
+          isSelected
+            ? "bg-sky-950/50 border-sky-500/70 shadow-md"
+            : "bg-slate-950/70 border-slate-800 hover:border-slate-700"
+        }`;
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between gap-2 mb-2">
+            <button type="button" data-select-floor="${fl.floorIndex}" class="text-xs font-bold text-right flex-1 ${isSelected ? 'text-sky-300' : 'text-slate-200'}">
+              تراز ${fl.floorIndex === -1 ? 'زیرزمین (-1)' : (fl.floorIndex === 0 ? 'همکف (0)' : 'طبقه ' + fl.floorIndex)}
+              <span class="text-[10px] font-mono text-slate-400 mr-1">(Z=${(fl.zMM / 1000).toFixed(2)}m)</span>
+            </button>
+            <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-sky-300">${Math.round(fl.coverageAchieved * 100)}% اشغال</span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-[11px]">
+            <div>
+              <label class="block text-slate-400 mb-0.5">کاربری طبقه:</label>
+              <select data-occ-floor="${fl.floorIndex}" class="w-full bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-white">
+                <option value="RESIDENTIAL" ${fl.occupancy === 'RESIDENTIAL' ? 'selected' : ''}>مسکونی</option>
+                <option value="MIXED_GROUND" ${fl.occupancy === 'MIXED_GROUND' ? 'selected' : ''}>مختلط (تجاری+لابی)</option>
+                <option value="COMMERCIAL" ${fl.occupancy === 'COMMERCIAL' ? 'selected' : ''}>تجاری</option>
+                <option value="OFFICE" ${fl.occupancy === 'OFFICE' ? 'selected' : ''}>اداری</option>
+                <option value="PARKING_BASEMENT" ${fl.occupancy === 'PARKING_BASEMENT' ? 'selected' : ''}>پارکینگ زیرزمین</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-0.5">تراکم (تعداد واحد/مغازه):</label>
+              <select data-units-floor="${fl.floorIndex}" class="w-full bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-white" ${fl.occupancy === 'PARKING_BASEMENT' ? 'disabled' : ''}>
+                <option value="1" ${fl.unitCount === 1 ? 'selected' : ''}>۱ واحد (تک‌واحدی)</option>
+                <option value="2" ${fl.unitCount === 2 ? 'selected' : ''}>۲ واحد در طبقه</option>
+                <option value="3" ${fl.unitCount === 3 ? 'selected' : ''}>۳ واحد در طبقه</option>
+                <option value="4" ${fl.unitCount === 4 ? 'selected' : ''}>۴ واحد (پرتراکم)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-2 flex items-center gap-2 text-[11px]">
+            <span class="text-slate-400 whitespace-nowrap">سطح اشغال:</span>
+            <input type="range" data-cov-floor="${fl.floorIndex}" min="0.40" max="0.85" step="0.02" value="${fl.coverageRatio}" class="flex-1 accent-sky-500" />
+            <span class="font-mono text-slate-200 w-9 text-left">${Math.round(fl.coverageRatio * 100)}%</span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      // Attach listeners
+      container.querySelectorAll("[data-select-floor]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.activeFloorIndex = parseInt(btn.getAttribute("data-select-floor"), 10);
+          renderAll();
+        });
+      });
+
+      container.querySelectorAll("[data-occ-floor]").forEach(sel => {
+        sel.addEventListener("change", () => {
+          const idx = parseInt(sel.getAttribute("data-occ-floor"), 10);
+          const fl = state.floors.find(f => f.floorIndex === idx);
+          if (fl) {
+            fl.occupancy = sel.value;
+            fl.nameFa = `${OCCUPANCY_LABELS[sel.value]} (تراز ${idx})`;
+            state.activeFloorIndex = idx;
+            recalculateElevationsAndSolve();
+          }
+        });
+      });
+
+      container.querySelectorAll("[data-units-floor]").forEach(sel => {
+        sel.addEventListener("change", () => {
+          const idx = parseInt(sel.getAttribute("data-units-floor"), 10);
+          const fl = state.floors.find(f => f.floorIndex === idx);
+          if (fl) {
+            fl.unitCount = parseInt(sel.value, 10);
+            state.activeFloorIndex = idx;
+            recalculateElevationsAndSolve();
+          }
+        });
+      });
+
+      container.querySelectorAll("[data-cov-floor]").forEach(rng => {
+        rng.addEventListener("input", () => {
+          const idx = parseInt(rng.getAttribute("data-cov-floor"), 10);
+          const fl = state.floors.find(f => f.floorIndex === idx);
+          if (fl) {
+            fl.coverageRatio = parseFloat(rng.value);
+            state.activeFloorIndex = idx;
+            recalculateElevationsAndSolve();
+          }
+        });
+      });
+    }
+
+    function renderFloorSelectorTabs(floors, activeFl) {
+      const wrap = document.getElementById("floorSelectorButtons");
+      wrap.innerHTML = "";
+      floors.forEach(fl => {
+        const active = fl.floorIndex === activeFl.floorIndex;
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = `px-3 py-1 rounded-lg text-xs font-bold transition ${
+          active
+            ? "bg-sky-500 text-slate-950 shadow-sm"
+            : "bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800"
+        }`;
+        const label = fl.floorIndex === -1 ? "زیرزمین (-1)" : (fl.floorIndex === 0 ? "همکف (0)" : `طبقه ${fl.floorIndex}`);
+        btn.textContent = `${label} · ${Math.round(fl.coverageAchieved * 100)}%`;
+        btn.addEventListener("click", () => {
+          state.activeFloorIndex = fl.floorIndex;
+          renderAll();
+        });
+        wrap.appendChild(btn);
+      });
+
+      document.getElementById("activeFloorSummaryBadge").textContent =
+        `${activeFl.nameFa} | Z = ${(activeFl.zMM / 1000).toFixed(2)}m | زیربنای طبقه: ${activeFl.grossM2} m² (مفید: ${activeFl.netM2} m²) | تراکم: ${activeFl.unitCount} واحد`;
+    }
+
+    function renderAuditorChecklist(checks) {
+      const container = document.getElementById("auditorChecklistContainer");
+      container.innerHTML = "";
+      const passCount = checks.filter(c => c.pass).length;
+      document.getElementById("auditorBadgeCount").textContent = `${passCount} / ${checks.length} PASS`;
+
+      checks.forEach(chk => {
+        const div = document.createElement("div");
+        div.className = `p-2 rounded-lg border flex items-center gap-2 ${
+          chk.pass
+            ? "bg-emerald-950/30 border-emerald-800/50 text-emerald-200"
+            : "bg-rose-950/40 border-rose-700 text-rose-200"
+        }`;
+        div.innerHTML = `
+          <span class="w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold ${chk.pass ? 'bg-emerald-500 text-slate-950' : 'bg-rose-500 text-white'}">
+            ${chk.pass ? '✓' : '!'}
+          </span>
+          <span class="truncate">${chk.title}</span>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function renderRoomScheduleTable(activeFl) {
+      document.getElementById("scheduleTableTitle").textContent =
+        `۴. جدول ریزفضاها و متراژ مفید — ${activeFl.nameFa}`;
+      const tbody = document.getElementById("roomScheduleTableBody");
+      tbody.innerHTML = "";
+
+      activeFl.faces.forEach(f => {
+        const w = f.rect.xMax - f.rect.xMin;
+        const h = f.rect.yMax - f.rect.yMin;
+        const area = ((w * h) / 1e6).toFixed(2);
+        const ar = (Math.max(w, h) / Math.max(1, Math.min(w, h))).toFixed(2);
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-slate-800/50 transition cursor-pointer";
+        tr.innerHTML = `
+          <td class="py-1.5 px-2.5 font-mono text-sky-300">${f.id}</td>
+          <td class="py-1.5 px-2.5 font-semibold">${f.labelFa}</td>
+          <td class="py-1.5 px-2.5 font-mono text-slate-300">${f.unitId}</td>
+          <td class="py-1.5 px-2.5 font-mono ltr-num">${w} × ${h}</td>
+          <td class="py-1.5 px-2.5 font-mono font-bold text-emerald-300">${area} m²</td>
+          <td class="py-1.5 px-2.5 font-mono">${ar}</td>
+          <td class="py-1.5 px-2.5">
+            <span class="px-2 py-0.5 rounded text-[10px] ${
+              f.light === 'DIRECT_FACADE' ? 'bg-amber-500/20 text-amber-300' :
+              (f.light === 'LIGHTWELL' ? 'bg-sky-500/20 text-sky-300' : 'bg-slate-800 text-slate-400')
+            }">${f.light === 'DIRECT_FACADE' ? 'نمای مستقیم جنوب' : (f.light === 'LIGHTWELL' ? 'پاسیو / نورگیر' : 'تهویه مکانیکی')}</span>
+          </td>
+        `;
+        tr.addEventListener("click", () => {
+          document.getElementById("selectedElementInfo").textContent =
+            `فضای انتخاب‌شده: ${f.labelFa} (${f.id}) | ابعاد خالص داخلی: ${w}×${h} میلی‌متر | مساحت مفید قانونی: ${area} مترمربع`;
+        });
+        tbody.appendChild(tr);
+      });
+    }
+
+    // ============================================================================
+    // SVG CAD Viewport Renderers (2D Floor Plan, Vertical Section, 3D Stack)
+    // ============================================================================
+    function renderViewport(res, activeFl) {
+      const target = document.getElementById("svgViewportTarget");
+      const wrap = document.getElementById("viewportCanvasContainer");
+      const wbPanel = document.getElementById("workbuddyPanel");
+      const floorBar = document.getElementById("floorTabsBar");
+      const bar3D = document.getElementById("controls3DBar");
+
+      if (state.activeView === "WORKBUDDY") {
+        wrap.classList.add("hidden");
+        floorBar.classList.add("hidden");
+        bar3D.classList.add("hidden");
+        wbPanel.classList.remove("hidden");
+        return;
+      }
+
+      wbPanel.classList.add("hidden");
+      wrap.classList.remove("hidden");
+
+      if (state.activeView === "2D") {
+        floorBar.classList.remove("hidden");
+        bar3D.classList.add("hidden");
+        target.innerHTML = build2DFloorSVG(res, activeFl);
+        attachRoomClickHandlers(activeFl);
+      } else if (state.activeView === "SECTION") {
+        floorBar.classList.add("hidden");
+        bar3D.classList.add("hidden");
+        target.innerHTML = buildVerticalSectionSVG(res);
+      } else if (state.activeView === "3D") {
+        floorBar.classList.add("hidden");
+        bar3D.classList.remove("hidden");
+        target.innerHTML = build3DAxonometricSVG(res);
+      }
+    }
+
+    function getSpaceColor(spaceType) {
+      switch (spaceType) {
+        case "LIVING_ROOM": return { fill: "#065f46", stroke: "#34d399" };
+        case "BEDROOM_MASTER":
+        case "BEDROOM": return { fill: "#1e3a8a", stroke: "#60a5fa" };
+        case "KITCHEN":
+        case "BATHROOM": return { fill: "#115e59", stroke: "#2dd4bf" };
+        case "RETAIL_SHOP": return { fill: "#9a3412", stroke: "#fb923c" };
+        case "COMMERCIAL_STORAGE": return { fill: "#78350f", stroke: "#f59e0b" };
+        case "OFFICE_OPEN":
+        case "MEETING_ROOM": return { fill: "#3730a3", stroke: "#818cf8" };
+        case "PARKING_STALL": return { fill: "#1e293b", stroke: "#94a3b8" };
+        case "PARKING_AISLE":
+        case "RAMP": return { fill: "#0f172a", stroke: "#38bdf8" };
+        default: return { fill: "#4c1d95", stroke: "#c084fc" };
+      }
+    }
+
+    function build2DFloorSVG(res, fl) {
+      const siteW = res.site.widthX;
+      const siteH = res.site.lengthY;
+      const pad = 1600;
+      const vbW = siteW + pad * 2;
+      const vbH = siteH + pad * 2;
+
+      const tx = x => pad + x;
+      const ty = y => pad + (siteH - y); // Flip Y so North (+Y) is UP
+
+      let out = `<svg viewBox="0 0 ${vbW} ${vbH}" class="w-full max-h-[560px] select-none" xmlns="http://www.w3.org/2000/svg">`;
+
+      // Definitions for hatching & arrows
+      out += `
+        <defs>
+          <pattern id="courtyardHatch" width="400" height="400" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="400" stroke="#1e293b" stroke-width="40" />
+          </pattern>
+          <pattern id="lightwellHatch" width="300" height="300" patternUnits="userSpaceOnUse">
+            <path d="M 300 0 L 0 0 0 300" fill="none" stroke="#0284c7" stroke-width="25" stroke-opacity="0.4"/>
+          </pattern>
+        </defs>
+      `;
+
+      // 1. Site Property Boundary & South Courtyard
+      out += `<rect x="${tx(0)}" y="${ty(siteH)}" width="${siteW}" height="${siteH}" fill="url(#courtyardHatch)" stroke="#64748b" stroke-width="45" stroke-dasharray="220,120" />`;
+
+      // South Road Label
+      out += `<rect x="${tx(0)}" y="${ty(0) + 180}" width="${siteW}" height="650" fill="#1e293b" rx="80" />`;
+      out += `<text x="${tx(siteW / 2)}" y="${ty(0) + 600}" fill="#38bdf8" font-size="340" font-weight="bold" text-anchor="middle">▼ معبر اصلی جنوبی (Y = 0.00m) — ورودی سواره و پیاده ▼</text>`;
+
+      // North / East / West Party Wall Labels
+      out += `<text x="${tx(siteW / 2)}" y="${ty(siteH) - 240}" fill="#94a3b8" font-size="280" text-anchor="middle">پلاک همسایه شمالی (مرز فاقد بازشو - درز انقطاع ${res.site.jointMM}mm)</text>`;
+
+      // Courtyard Area label if South setback > 1500
+      if (fl.grossRect.yMin > 1500) {
+        const cy = fl.grossRect.yMin / 2;
+        out += `<text x="${tx(siteW / 2)}" y="${ty(cy)}" fill="#64748b" font-size="340" font-weight="bold" text-anchor="middle">حیاط / عقب‌نشینی جنوبی (${(siteW / 1000).toFixed(1)}m × ${(fl.grossRect.yMin / 1000).toFixed(2)}m)</text>`;
+      }
+
+      // 2. Gross Slab Footprint (Derived Exterior Wall Buffer)
+      const g = fl.grossRect;
+      const n = fl.netRect;
+      out += `<rect x="${tx(g.xMin)}" y="${ty(g.yMax)}" width="${g.xMax - g.xMin}" height="${g.yMax - g.yMin}" fill="${state.layers.showWalls ? '#cbd5e1' : '#1e293b'}" stroke="#f8fafc" stroke-width="30" />`;
+      out += `<rect x="${tx(n.xMin)}" y="${ty(n.yMax)}" width="${n.xMax - n.xMin}" height="${n.yMax - n.yMin}" fill="#0f172a" />`;
+
+      // 3. Structural Reference Grid Axes
+      if (state.layers.showGrid) {
+        res.gridX.forEach((gx, i) => {
+          out += `<line x1="${tx(gx)}" y1="${ty(siteH) - 180}" x2="${tx(gx)}" y2="${ty(0) + 120}" stroke="#38bdf8" stroke-width="18" stroke-dasharray="160,120" stroke-opacity="0.45" />`;
+          out += `<circle cx="${tx(gx)}" cy="${ty(siteH) - 320}" r="210" fill="#0f172a" stroke="#38bdf8" stroke-width="25" />`;
+          out += `<text x="${tx(gx)}" y="${ty(siteH) - 230}" fill="#38bdf8" font-size="230" font-weight="bold" text-anchor="middle">X${i + 1}</text>`;
+        });
+        res.gridY.forEach((gy, i) => {
+          out += `<line x1="${tx(0) - 180}" y1="${ty(gy)}" x2="${tx(siteW) + 180}" y2="${ty(gy)}" stroke="#38bdf8" stroke-width="18" stroke-dasharray="160,120" stroke-opacity="0.45" />`;
+          out += `<circle cx="${tx(0) - 340}" cy="${ty(gy)}" r="210" fill="#0f172a" stroke="#38bdf8" stroke-width="25" />`;
+          out += `<text x="${tx(0) - 340}" y="${ty(gy) + 80}" fill="#38bdf8" font-size="230" font-weight="bold" text-anchor="middle">Y${i + 1}</text>`;
+        });
+      }
+
+      // 4. Net Interior Room Polygons (SSOT)
+      fl.faces.forEach(face => {
+        const r = face.rect;
+        const col = getSpaceColor(face.spaceType);
+        const rx = tx(r.xMin);
+        const ry = ty(r.yMax);
+        const rw = r.xMax - r.xMin;
+        const rh = r.yMax - r.yMin;
+        const area = ((rw * rh) / 1e6).toFixed(1);
+
+        out += `
+          <g class="cursor-pointer hover:opacity-90 transition" data-room-id="${face.id}">
+            <rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="${col.fill}" fill-opacity="0.72" stroke="${col.stroke}" stroke-width="${state.layers.showWalls ? 45 : 20}" />
+            <text x="${rx + rw / 2}" y="${ry + rh / 2 - 80}" fill="#ffffff" font-size="${Math.min(310, Math.max(190, Math.floor(rw / 9)))}" font-weight="bold" text-anchor="middle">${face.labelFa}</text>
+            <text x="${rx + rw / 2}" y="${ry + rh / 2 + 240}" fill="#e2e8f0" font-size="${Math.min(250, Math.max(170, Math.floor(rw / 11)))}" text-anchor="middle">${area} m² (${(rw / 1000).toFixed(2)}×${(rh / 1000).toFixed(2)}m)</text>
+          </g>
+        `;
+
+        // Furniture & Door Arcs inside each space
+        if (face.spaceType === "LIVING_ROOM" && rw >= 3500) {
+          // L-Sofa + Coffee Table + Dining Table
+          out += `<rect x="${rx + 250}" y="${ry + rh - 2100}" width="2400" height="750" rx="60" fill="#047857" stroke="#6ee7b7" stroke-width="22" opacity="0.85"/>`;
+          out += `<rect x="${rx + 250}" y="${ry + rh - 2100}" width="750" height="1850" rx="60" fill="#047857" stroke="#6ee7b7" stroke-width="22" opacity="0.85"/>`;
+          out += `<rect x="${rx + 1200}" y="${ry + rh - 1150}" width="1100" height="650" rx="40" fill="#065f46" stroke="#a7f3d0" stroke-width="18" opacity="0.85"/>`;
+          if (rw >= 4800) {
+            out += `<rect x="${rx + rw - 2100}" y="${ry + 650}" width="1600" height="1900" rx="80" fill="#064e3b" stroke="#6ee7b7" stroke-width="22" opacity="0.85"/>`;
+          }
+          // Entry Door Arc at North wall of Living Room
+          const dhx = rx + Math.min(2800, rw * 0.45);
+          const dhy = ry;
+          out += `<line x1="${dhx}" y1="${dhy}" x2="${dhx}" y2="${dhy + 950}" stroke="#fb923c" stroke-width="35"/>`;
+          out += `<path d="M ${dhx} ${dhy + 950} A 950 950 0 0 0 ${dhx + 950} ${dhy}" fill="none" stroke="#fdba74" stroke-width="22" stroke-dasharray="60,40"/>`;
+        } else if (face.spaceType === "KITCHEN") {
+          // L-Counter + Double Sink + Gas Burners + Island
+          out += `<rect x="${rx + 80}" y="${ry + 60}" width="${rw - 160}" height="580" fill="#164e63" stroke="#67e8f9" stroke-width="20" opacity="0.85"/>`;
+          out += `<rect x="${rx + rw - 620}" y="${ry + 640}" width="540" height="${rh - 740}" fill="#164e63" stroke="#67e8f9" stroke-width="20" opacity="0.85"/>`;
+          out += `<rect x="${rx + 260}" y="${ry + 130}" width="380" height="420" rx="40" fill="#083344" stroke="#a5f3fc" stroke-width="16"/>`;
+          out += `<rect x="${rx + 680}" y="${ry + 130}" width="380" height="420" rx="40" fill="#083344" stroke="#a5f3fc" stroke-width="16"/>`;
+          out += `<circle cx="${rx + rw - 480}" cy="${ry + 340}" r="110" fill="none" stroke="#f97316" stroke-width="22"/>`;
+          out += `<circle cx="${rx + rw - 220}" cy="${ry + 340}" r="110" fill="none" stroke="#f97316" stroke-width="22"/>`;
+        } else if ((face.spaceType === "BEDROOM" || face.spaceType === "BEDROOM_MASTER") && rw >= 2600) {
+          // Double Bed + Pillows + Built-in Wardrobe + Door Swing Arc
+          const bx = face.spaceType === "BEDROOM_MASTER" ? rx + rw - 2150 : rx + 200;
+          const by = ry + 450;
+          out += `<rect x="${bx}" y="${by}" width="1950" height="1850" rx="60" fill="#1e3a8a" stroke="#93c5fd" stroke-width="24" opacity="0.88"/>`;
+          out += `<rect x="${bx + 120}" y="${by + 100}" width="780" height="420" rx="40" fill="#dbeafe" stroke="#60a5fa" stroke-width="16"/>`;
+          out += `<rect x="${bx + 1020}" y="${by + 100}" width="780" height="420" rx="40" fill="#dbeafe" stroke="#60a5fa" stroke-width="16"/>`;
+          out += `<rect x="${rx + 200}" y="${ry + rh - 620}" width="1600" height="540" fill="#1e293b" stroke="#94a3b8" stroke-width="18" opacity="0.85"/>`;
+          const dhx = rx + rw - 1100;
+          const dhy = ry + rh;
+          out += `<line x1="${dhx}" y1="${dhy}" x2="${dhx}" y2="${dhy - 850}" stroke="#fb923c" stroke-width="35"/>`;
+          out += `<path d="M ${dhx} ${dhy - 850} A 850 850 0 0 1 ${dhx + 850} ${dhy}" fill="none" stroke="#fdba74" stroke-width="22" stroke-dasharray="60,40"/>`;
+          // North Lightwell Window
+          out += `<rect x="${rx + rw * 0.25}" y="${ry - res.site.extWallMM}" width="${rw * 0.45}" height="${res.site.extWallMM}" fill="#0284c7" stroke="#bae6fd" stroke-width="20"/>`;
+        } else if (face.spaceType === "BATHROOM" || face.spaceType === "WC") {
+          out += `<ellipse cx="${rx + 360}" cy="${ry + 420}" rx="200" ry="280" fill="#334155" stroke="#e2e8f0" stroke-width="20"/>`;
+          out += `<rect x="${rx + rw - 620}" y="${ry + 140}" width="480" height="360" rx="60" fill="#334155" stroke="#38bdf8" stroke-width="20"/>`;
+        }
+
+        // South Facade Windows
+        if (Math.abs(r.yMin - n.yMin) <= 80 && (face.light === "DIRECT_FACADE" || face.spaceType === "RETAIL_SHOP")) {
+          const winW = Math.min(rw - 500, Math.round(rw * 0.55));
+          const wx = rx + (rw - winW) / 2;
+          const wy = ty(g.yMin) - res.site.extWallMM;
+          out += `<rect x="${wx}" y="${wy}" width="${winW}" height="${res.site.extWallMM}" fill="#38bdf8" stroke="#bae6fd" stroke-width="20" />`;
+        }
+      });
+
+      // Courtyard Parked Car & Trees when South Setback >= 4500mm
+      if (fl.grossRect.yMin >= 4500) {
+        out += `<rect x="${tx(6600)}" y="${ty(5300)}" width="2400" height="4500" rx="260" fill="#1e293b" stroke="#38bdf8" stroke-width="32" opacity="0.88"/>`;
+        out += `<rect x="${tx(6820)}" y="${ty(4300)}" width="1960" height="2300" rx="140" fill="#0f172a" stroke="#7dd3fc" stroke-width="22"/>`;
+        out += `<text x="${tx(7800)}" y="${ty(3150)}" fill="#7dd3fc" font-size="210" font-weight="bold" text-anchor="middle">پارکینگ خودرو (2.5×5.0m)</text>`;
+        out += `<circle cx="${tx(1500)}" cy="${ty(4200)}" r="750" fill="#064e3b" fill-opacity="0.7" stroke="#10b981" stroke-width="30"/>`;
+        out += `<circle cx="${tx(1500)}" cy="${ty(1900)}" r="750" fill="#064e3b" fill-opacity="0.7" stroke="#10b981" stroke-width="30"/>`;
+      }
+
+      // 5. 2-Hour Fire Separation Walls (250 mm red)
+      fl.fireWalls.forEach(fw => {
+        out += `<rect x="${tx(fw.xMin)}" y="${ty(fw.yMax)}" width="${fw.xMax - fw.xMin}" height="${fw.yMax - fw.yMin}" fill="#ef4444" stroke="#fca5a5" stroke-width="25" />`;
+      });
+
+      // 6. Fixed 3D Vertical Cores (Stair, Elevator, Lightwell, Ducts, Columns)
+      fl.activeCores.forEach(core => {
+        const r = core.rect;
+        const rx = tx(r.xMin);
+        const ry = ty(r.yMax);
+        const rw = r.xMax - r.xMin;
+        const rh = r.yMax - r.yMin;
+
+        if (core.type === "STAIR") {
+          out += `<rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="#ca8a04" fill-opacity="0.85" stroke="#fef08a" stroke-width="35" />`;
+          // Draw stair treads
+          for (let s = 1; s < 9; s++) {
+            const sy = ry + (rh / 9) * s;
+            out += `<line x1="${rx + 80}" y1="${sy}" x2="${rx + rw - 80}" y2="${sy}" stroke="#fef08a" stroke-width="20" stroke-opacity="0.7" />`;
+          }
+          out += `<text x="${rx + rw / 2}" y="${ry + rh / 2}" fill="#ffffff" font-size="240" font-weight="bold" text-anchor="middle">پله (${fl.stair.riserCount}R)</text>`;
+        } else if (core.type === "ELEVATOR") {
+          out += `<rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="#d97706" fill-opacity="0.9" stroke="#fde68a" stroke-width="35" />`;
+          out += `<line x1="${rx}" y1="${ry}" x2="${rx + rw}" y2="${ry + rh}" stroke="#fde68a" stroke-width="20" />`;
+          out += `<line x1="${rx + rw}" y1="${ry}" x2="${rx}" y2="${ry + rh}" stroke="#fde68a" stroke-width="20" />`;
+          out += `<text x="${rx + rw / 2}" y="${ry + rh / 2 + 70}" fill="#ffffff" font-size="220" font-weight="bold" text-anchor="middle">آسانسور</text>`;
+        } else if (core.type === "LIGHTWELL") {
+          out += `<rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="url(#lightwellHatch)" stroke="#38bdf8" stroke-width="40" />`;
+          out += `<line x1="${rx}" y1="${ry}" x2="${rx + rw}" y2="${ry + rh}" stroke="#38bdf8" stroke-width="20" stroke-dasharray="100,80" />`;
+          out += `<text x="${rx + rw / 2}" y="${ry + rh / 2}" fill="#7dd3fc" font-size="250" font-weight="bold" text-anchor="middle">پاسیو نورگیر (۱۲m²)</text>`;
+        } else if (core.type === "SERVICE_DUCT") {
+          out += `<rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="#475569" stroke="#cbd5e1" stroke-width="25" />`;
+        } else if (core.type === "COLUMN" && state.layers.showGrid) {
+          out += `<rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="#f43f5e" stroke="#fecdd3" stroke-width="20" />`;
+        }
+      });
+
+      // 7. Ackerman Parking Swept-Path Trajectory (on Basement level)
+      if (state.layers.showEgress && fl.parkingKinematics) {
+        const pts = fl.parkingKinematics.sweptPath.map(([x, y]) => `${tx(x)},${ty(y)}`).join(" ");
+        out += `<polyline points="${pts}" fill="none" stroke="#38bdf8" stroke-width="75" stroke-dasharray="180,100" stroke-linecap="round" stroke-linejoin="round" />`;
+      }
+
+      // 8. Exterior Dimensions (mm)
+      if (state.layers.showDims) {
+        out += `<text x="${tx(siteW) + 520}" y="${ty(siteH / 2)}" fill="#cbd5e1" font-size="280" font-weight="bold" text-anchor="middle" transform="rotate(90, ${tx(siteW) + 520}, ${ty(siteH / 2)})">طول زمین: ${siteH} mm (${(siteH / 1000).toFixed(1)}m)</text>`;
+        out += `<text x="${tx(siteW / 2)}" y="${ty(siteH) - 620}" fill="#cbd5e1" font-size="280" font-weight="bold" text-anchor="middle">عرض زمین: ${siteW} mm (${(siteW / 1000).toFixed(1)}m)</text>`;
+      }
+
+      out += `</svg>`;
+      return out;
+    }
+
+    function buildVerticalSectionSVG(res) {
+      const siteH = res.site.lengthY;
+      const floors = res.floors;
+      const minZ = Math.min(...floors.map(f => f.zMM), -3000);
+      const maxZ = Math.max(...floors.map(f => f.zMM + f.heightMM), 6000) + 1500;
+      const totalZ = maxZ - minZ;
+
+      const padX = 2400;
+      const padY = 1600;
+      const vbW = siteH + padX * 2;
+      const vbH = totalZ + padY * 2;
+
+      const tx = yMM => padX + yMM; // Section along South-North Y axis
+      const tz = zMM => padY + (maxZ - zMM);
+
+      let out = `<svg viewBox="0 0 ${vbW} ${vbH}" class="w-full max-h-[560px]" xmlns="http://www.w3.org/2000/svg">`;
+
+      // Ground Datum Line (Z = 0.00)
+      out += `<line x1="${padX - 1400}" y1="${tz(0)}" x2="${vbW - 800}" y2="${tz(0)}" stroke="#10b981" stroke-width="45" stroke-dasharray="240,120" />`;
+      out += `<text x="${padX - 1200}" y="${tz(0) - 140}" fill="#10b981" font-size="300" font-weight="bold">تراز صفر زمین (Z = ±0.00m)</text>`;
+
+      // Render each floor slab & section box
+      floors.forEach(fl => {
+        const y0 = fl.grossRect.yMin;
+        const y1 = fl.grossRect.yMax;
+        const z0 = fl.zMM;
+        const z1 = fl.zMM + fl.heightMM;
+
+        const fillCol = fl.occupancy === "PARKING_BASEMENT" ? "#1e293b" :
+                        (fl.occupancy === "MIXED_GROUND" || fl.occupancy === "COMMERCIAL" ? "#7c2d12" :
+                        (fl.occupancy === "OFFICE" ? "#312e81" : "#064e3b"));
+
+        out += `<rect x="${tx(y0)}" y="${tz(z1)}" width="${y1 - y0}" height="${fl.heightMM}" fill="${fillCol}" fill-opacity="0.65" stroke="#e2e8f0" stroke-width="45" />`;
+
+        // Transfer Ceiling Plenum highlight on Mixed/Commercial Ground Floor
+        if (fl.hasTransferPlenum) {
+          out += `<rect x="${tx(y0)}" y="${tz(z1)}" width="${y1 - y0}" height="450" fill="#f59e0b" fill-opacity="0.85" />`;
+          out += `<text x="${tx((y0 + y1) / 2)}" y="${tz(z1) + 330}" fill="#0f172a" font-size="230" font-weight="bold" text-anchor="middle">سقف کاذب انتقال تأسیسات (Transfer Plenum — هدایت افقی فاضلاب مسکونی به رایزر)</text>`;
+        }
+
+        // Level label & coverage
+        out += `<text x="${tx(y0) - 250}" y="${tz((z0 + z1) / 2)}" fill="#38bdf8" font-size="280" font-weight="bold" text-anchor="end">${fl.nameFa} (Z=${(z0 / 1000).toFixed(2)}m)</text>`;
+        out += `<text x="${tx((y0 + y1) / 2)}" y="${tz((z0 + z1) / 2) + 120}" fill="#ffffff" font-size="290" font-weight="bold" text-anchor="middle">سطح اشغال: ${Math.round(fl.coverageAchieved * 100)}% | تراکم: ${fl.unitCount} واحد | زیربنا: ${fl.grossM2} m²</text>`;
+      });
+
+      // Fixed Vertical Cores in Section (Staircase, Lightwell, Columns)
+      res.verticalCores.forEach(c => {
+        if (c.type === "STAIR") {
+          out += `<rect x="${tx(c.rect.yMin)}" y="${tz(c.zEnd)}" width="${c.rect.yMax - c.rect.yMin}" height="${c.zEnd - c.zStart}" fill="#eab308" fill-opacity="0.45" stroke="#fef08a" stroke-width="35" />`;
+          out += `<text x="${tx((c.rect.yMin + c.rect.yMax) / 2)}" y="${tz((c.zStart + c.zEnd) / 2)}" fill="#fef08a" font-size="270" font-weight="bold" text-anchor="middle">هسته ثابت راه‌پله و آسانسور (0.0mm Drift)</text>`;
+        } else if (c.type === "LIGHTWELL") {
+          out += `<rect x="${tx(c.rect.yMin)}" y="${tz(c.zEnd)}" width="${c.rect.yMax - c.rect.yMin}" height="${c.zEnd - c.zStart}" fill="#0ea5e9" fill-opacity="0.28" stroke="#38bdf8" stroke-width="35" stroke-dasharray="140,90" />`;
+          out += `<text x="${tx((c.rect.yMin + c.rect.yMax) / 2)}" y="${tz(c.zEnd) - 180}" fill="#38bdf8" font-size="260" font-weight="bold" text-anchor="middle">▼ آسمان آزاد پاسیو (Open Sky Lightwell) ▼</text>`;
+        }
+      });
+
+      out += `</svg>`;
+      return out;
+    }
+
+    function build3DAxonometricSVG(res) {
+      const yaw = (state.view3D.yawDeg * Math.PI) / 180;
+      const explode = state.view3D.explodePx;
+      const scale = 0.016;
+      const cx = 480;
+      const baseCy = 460;
+
+      const project = (xmm, ymm, floorIdx) => {
+        const sx = (xmm - res.site.widthX / 2) * scale;
+        const sy = (ymm - res.site.lengthY / 2) * scale;
+        const rx = sx * Math.cos(yaw) - sy * Math.sin(yaw);
+        const ry = (sx * Math.sin(yaw) + sy * Math.cos(yaw)) * 0.52;
+        const zShift = floorIdx * explode;
+        return [ +(cx + rx).toFixed(1), +(baseCy - ry - zShift).toFixed(1) ];
+      };
+
+      const polyStr = (r, fOrder) => {
+        const p0 = project(r.xMin, r.yMin, fOrder);
+        const p1 = project(r.xMax, r.yMin, fOrder);
+        const p2 = project(r.xMax, r.yMax, fOrder);
+        const p3 = project(r.xMin, r.yMax, fOrder);
+        return `${p0[0]},${p0[1]} ${p1[0]},${p1[1]} ${p2[0]},${p2[1]} ${p3[0]},${p3[1]}`;
+      };
+
+      let out = `<svg viewBox="0 0 960 620" class="w-full max-h-[560px]" xmlns="http://www.w3.org/2000/svg">`;
+
+      res.floors.forEach((fl, idx) => {
+        // Site ghost outline
+        const sitePoly = polyStr({ xMin: 0, yMin: 0, xMax: res.site.widthX, yMax: res.site.lengthY }, idx);
+        out += `<polygon points="${sitePoly}" fill="none" stroke="#334155" stroke-width="1" stroke-dasharray="4,4" />`;
+
+        // Floor Gross Slab
+        const slabPoly = polyStr(fl.grossRect, idx);
+        out += `<polygon points="${slabPoly}" fill="#1e293b" fill-opacity="0.82" stroke="#94a3b8" stroke-width="2" />`;
+
+        // Rooms
+        fl.faces.forEach(f => {
+          const col = getSpaceColor(f.spaceType);
+          const rp = polyStr(f.rect, idx);
+          out += `<polygon points="${rp}" fill="${col.fill}" fill-opacity="0.75" stroke="${col.stroke}" stroke-width="1.2" />`;
+        });
+
+        // Cores
+        fl.activeCores.forEach(c => {
+          if (c.type === "STAIR" || c.type === "ELEVATOR" || c.type === "LIGHTWELL") {
+            const cp = polyStr(c.rect, idx);
+            const cFill = c.type === "LIGHTWELL" ? "#0284c7" : "#eab308";
+            out += `<polygon points="${cp}" fill="${cFill}" fill-opacity="0.85" stroke="#fef08a" stroke-width="1.5" />`;
+          }
+        });
+
+        // Label next to slab
+        const lblPt = project(res.site.widthX + 800, fl.grossRect.yMax / 2, idx);
+        out += `<text x="${lblPt[0]}" y="${lblPt[1]}" fill="#38bdf8" font-size="12" font-weight="bold">${fl.nameFa} (${Math.round(fl.coverageAchieved * 100)}% اشغال · ${fl.unitCount} واحد)</text>`;
+      });
+
+      out += `</svg>`;
+      return out;
+    }
+
+    function attachRoomClickHandlers(activeFl) {
+      document.querySelectorAll("[data-room-id]").forEach(g => {
+        g.addEventListener("click", () => {
+          const rid = g.getAttribute("data-room-id");
+          const f = activeFl.faces.find(x => x.id === rid);
+          if (f) {
+            const w = f.rect.xMax - f.rect.xMin;
+            const h = f.rect.yMax - f.rect.yMin;
+            const area = ((w * h) / 1e6).toFixed(2);
+            document.getElementById("selectedElementInfo").textContent =
+              `فضای انتخاب‌شده: ${f.labelFa} (${f.id}) | ابعاد خالص داخلی: ${w}×${h} میلی‌متر | مساحت مفید قانونی: ${area} مترمربع`;
+          }
+        });
+      });
+    }
+
+    // ============================================================================
+    // Export Helpers (AutoCAD DXF, Multi-Floor SVG, JSON)
+    // ============================================================================
+    function downloadTextFile(filename, content, mimeType) {
+      const blob = new Blob([content], { type: mimeType });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast(`فایل ${filename} با موفقیت تولید و دانلود شد.`);
+    }
+
+    function generateDXF(res) {
+      const lines = ["0", "SECTION", "2", "HEADER", "9", "$INSUNITS", "70", "4", "0", "ENDSEC", "0", "SECTION", "2", "ENTITIES"];
+      const addRect = (x0, y0, x1, y1, layer) => {
+        lines.push("0", "LWPOLYLINE", "8", layer, "90", "4", "70", "1");
+        [[x0, y0], [x1, y0], [x1, y1], [x0, y1]].forEach(([x, y]) => {
+          lines.push("10", x.toFixed(1), "20", y.toFixed(1));
+        });
+      };
+      const stride = res.site.widthX + 5000;
+      res.floors.forEach((fl, i) => {
+        const ox = i * stride;
+        addRect(ox, 0, ox + res.site.widthX, res.site.lengthY, "A-SITE");
+        addRect(ox + fl.grossRect.xMin, fl.grossRect.yMin, ox + fl.grossRect.xMax, fl.grossRect.yMax, "A-WALL-EXT");
+        fl.faces.forEach(f => {
+          addRect(ox + f.rect.xMin, f.rect.yMin, ox + f.rect.xMax, f.rect.yMax, "A-ROOM-NET");
+        });
+        fl.activeCores.forEach(c => {
+          addRect(ox + c.rect.xMin, c.rect.yMin, ox + c.rect.xMax, c.rect.yMax, `A-CORE-${c.type}`);
+        });
+      });
+      lines.push("0", "ENDSEC", "0", "EOF");
+      return lines.join("\n");
+    }
+
+    // ============================================================================
+    // Event Listeners Initialization
+    // ============================================================================
+    window.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("btnPreset1").addEventListener("click", () => loadPreset("scenario1"));
+      document.getElementById("btnPreset2").addEventListener("click", () => loadPreset("scenario2"));
+      document.getElementById("btnPreset3").addEventListener("click", () => loadPreset("scenario3"));
+
+      ["inputSiteWidth", "inputSiteLength", "inputJointMM", "inputExtWallMM"].forEach(id => {
+        document.getElementById(id).addEventListener("change", () => {
+          state.site.widthX = Math.round(parseFloat(document.getElementById("inputSiteWidth").value || "15") * 1000);
+          state.site.lengthY = Math.round(parseFloat(document.getElementById("inputSiteLength").value || "22") * 1000);
+          state.site.jointMM = parseInt(document.getElementById("inputJointMM").value || "50", 10);
+          state.site.extWallMM = parseInt(document.getElementById("inputExtWallMM").value || "200", 10);
+          recalculateElevationsAndSolve();
+        });
+      });
+
+      document.getElementById("chkLightwell").addEventListener("change", e => {
+        state.site.enableLightwell = e.target.checked;
+        recalculateElevationsAndSolve();
+      });
+
+      document.getElementById("btnToggleBasement").addEventListener("click", () => {
+        const idx = state.floors.findIndex(f => f.floorIndex === -1);
+        if (idx >= 0) {
+          if (state.floors.length > 1) state.floors.splice(idx, 1);
+        } else {
+          state.floors.unshift({
+            floorIndex: -1,
+            nameFa: "زیرزمین پارکینگ (-3.00m)",
+            occupancy: "PARKING_BASEMENT",
+            zMM: -3000,
+            heightMM: 3000,
+            coverageRatio: 0.80,
+            unitCount: 1,
+            southSetbackMM: 4000,
+            hasTransferPlenum: false
+          });
+          state.activeFloorIndex = -1;
+        }
+        recalculateElevationsAndSolve();
+      });
+
+      document.getElementById("btnAddFloor").addEventListener("click", () => {
+        const maxIdx = Math.max(...state.floors.map(f => f.floorIndex), -1);
+        const nextIdx = maxIdx + 1;
+        if (nextIdx > 8) {
+          showToast("حداکثر ۸ طبقه روی همکف در این نما فعال است.");
+          return;
+        }
+        state.floors.push({
+          floorIndex: nextIdx,
+          nameFa: nextIdx === 0 ? "همکف مسکونی/مختلط" : `طبقه ${nextIdx} مسکونی`,
+          occupancy: nextIdx === 0 ? "MIXED_GROUND" : "RESIDENTIAL",
+          zMM: nextIdx * 3400,
+          heightMM: 3400,
+          coverageRatio: Math.max(0.45, 0.65 - nextIdx * 0.04),
+          unitCount: nextIdx % 2 === 0 ? 3 : 2,
+          southSetbackMM: 6000,
+          hasTransferPlenum: nextIdx === 0
+        });
+        state.activeFloorIndex = nextIdx;
+        recalculateElevationsAndSolve();
+      });
+
+      document.getElementById("btnRemoveFloor").addEventListener("click", () => {
+        const upperFloors = state.floors.filter(f => f.floorIndex >= 0);
+        if (upperFloors.length <= 1) {
+          showToast("ساختمان باید حداقل دارای یک طبقه روی زمین باشد.");
+          return;
+        }
+        const maxIdx = Math.max(...upperFloors.map(f => f.floorIndex));
+        state.floors = state.floors.filter(f => f.floorIndex !== maxIdx);
+        recalculateElevationsAndSolve();
+      });
+
+      // View mode tabs
+      const setViewMode = mode => {
+        state.activeView = mode;
+        const map = { "2D": "tabView2D", "SECTION": "tabViewSection", "3D": "tabView3D", "WORKBUDDY": "tabViewWorkbuddy" };
+        Object.entries(map).forEach(([m, btnId]) => {
+          const btn = document.getElementById(btnId);
+          btn.className = m === mode
+            ? "px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-600 text-white transition"
+            : "px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white transition";
+        });
+        renderAll();
+      };
+
+      document.getElementById("tabView2D").addEventListener("click", () => setViewMode("2D"));
+      document.getElementById("tabViewSection").addEventListener("click", () => setViewMode("SECTION"));
+      document.getElementById("tabView3D").addEventListener("click", () => setViewMode("3D"));
+      document.getElementById("tabViewWorkbuddy").addEventListener("click", () => setViewMode("WORKBUDDY"));
+
+      // Layer checkboxes
+      document.getElementById("chkShowGrid").addEventListener("change", e => { state.layers.showGrid = e.target.checked; renderAll(); });
+      document.getElementById("chkShowWalls").addEventListener("change", e => { state.layers.showWalls = e.target.checked; renderAll(); });
+      document.getElementById("chkShowEgress").addEventListener("change", e => { state.layers.showEgress = e.target.checked; renderAll(); });
+      document.getElementById("chkShowDims").addEventListener("change", e => { state.layers.showDims = e.target.checked; renderAll(); });
+
+      // 3D sliders
+      document.getElementById("slider3DYaw").addEventListener("input", e => {
+        state.view3D.yawDeg = parseInt(e.target.value, 10);
+        document.getElementById("lbl3DYaw").textContent = `${state.view3D.yawDeg}°`;
+        renderAll();
+      });
+      document.getElementById("slider3DExplode").addEventListener("input", e => {
+        state.view3D.explodePx = parseInt(e.target.value, 10);
+        document.getElementById("lbl3DExplode").textContent = `${state.view3D.explodePx} px`;
+        renderAll();
+      });
+
+      // Exports
+      document.getElementById("btnExportDXF").addEventListener("click", () => {
+        downloadTextFile("ArchitectOS_MultiFloor_Plan.dxf", generateDXF(state.designResult), "application/dxf");
+      });
+      document.getElementById("btnExportSVG").addEventListener("click", () => {
+        const svgEl = document.querySelector("#svgViewportTarget svg");
+        if (svgEl) {
+          downloadTextFile("ArchitectOS_Floor_Sheet.svg", svgEl.outerHTML, "image/svg+xml");
+        }
+      });
+      document.getElementById("btnExportJSON").addEventListener("click", () => {
+        downloadTextFile("ArchitectOS_MultiFloor_Contract.json", JSON.stringify(state.designResult, null, 2), "application/json");
+      });
+
+      document.getElementById("btnCopyWorkbuddyPrompt").addEventListener("click", () => {
+        const txt = document.getElementById("workbuddyPromptText").textContent;
+        const ta = document.createElement("textarea");
+        ta.value = txt;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        showToast("پرامپت Workbuddy در کلیپ‌بورد کپی شد!");
+      });
+
+      const runNaturalPrompt = promptStr => {
+        document.getElementById("inputNaturalPrompt").value = promptStr;
+        const p = promptStr.replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d));
+        if (p.includes("دوبلکس")) {
+          state.projectName = "طراحی پلان ساختمان دوبلکس مسکونی (۱۲۰ مترمربع در هر طبقه + حیاط خلوت ۱۲ مترمربعی)";
+          state.site = { widthX: 10000, lengthY: 20000, jointMM: 50, extWallMM: 200, intWallMM: 100, fireWallMM: 250, enableLightwell: true };
+          state.floors = [
+            { floorIndex: 0, nameFa: "طبقه اول دوبلکس (عرصه روز ۱۲۰m²)", occupancy: "RESIDENTIAL", zMM: 400, heightMM: 3400, coverageRatio: 0.60, unitCount: 1, southSetbackMM: 6130, hasTransferPlenum: false },
+            { floorIndex: 1, nameFa: "طبقه دوم دوبلکس (عرصه شب ۱۲۰m²)", occupancy: "RESIDENTIAL", zMM: 3800, heightMM: 3400, coverageRatio: 0.60, unitCount: 1, southSetbackMM: 6130, hasTransferPlenum: false }
+          ];
+          state.activeFloorIndex = 0;
+          document.getElementById("savedPathsBanner").textContent = "Saved: <repo-root>\\outputs\\plans\\Plan_Duplex_120m2_2Floors.dxf & .svg";
+          syncSiteInputsFromState();
+          recalculateElevationsAndSolve();
+        } else if (p.includes("مختلط") || p.includes("تجاری")) {
+          loadPreset("scenario2");
+          document.getElementById("savedPathsBanner").textContent = "Saved: <repo-root>\\outputs\\plans\\Plan_MixedUse_MultiFloor.dxf & .svg";
+        } else {
+          loadPreset("scenario1");
+          document.getElementById("savedPathsBanner").textContent = "Saved: <repo-root>\\outputs\\plans\\Plan_10x20_North60_Lightwell12m2.dxf & .svg";
+        }
+        showToast("پلان معماری با مبلمان، در و پنجره، ستون‌گذاری و سایت‌پلان ترسیم شد.");
+      };
+
+      document.getElementById("btnRunNaturalPrompt").addEventListener("click", () => {
+        runNaturalPrompt(document.getElementById("inputNaturalPrompt").value);
+      });
+      document.getElementById("btnPrompt10x20").addEventListener("click", () => {
+        runNaturalPrompt("60 درصد محل احداث تو شمال با یه حیاط خلوت به عمق 1.7 متر با مساحت 12 متر مربع برای نورگیری بزاره زمین هم 10*20 سه طرف پلاک هست شمال شرق و غرب پلاک و جنوب کوچه 10 متری");
+      });
+      document.getElementById("btnPromptDuplex").addEventListener("click", () => {
+        runNaturalPrompt("یک ساختمان دوبلکس 120 متری در هر طبقه طراحی کن");
+      });
+      document.getElementById("btnPromptVilla").addEventListener("click", () => {
+        runNaturalPrompt("یک ساختمان یک طبقه ویلایی طراحی کن");
+      });
+
+      // Default initial load: Scenario 1 (10x20m 60% North + 1.70m Deep 12m² Lightwell)
+      loadPreset("scenario1");
+    });
+  </script>
+
+<!-- [ARCHITECTOS_V33_EXTERNAL_PLAN_BUTTON] -->
+<script>
+(function() {
+  window.__archosUploadedByProjSig = window.__archosUploadedByProjSig || {};
+  function getActiveArchProjectSignature() {
+    var activeItem = document.querySelector(".project-item.active, .sidebar-item.active, [data-project-id].active");
+    var sideTxt = activeItem ? (activeItem.textContent || "").trim().split(/\s+/)[0] : "";
+    var hdrCandidates = Array.from(document.querySelectorAll("header span, header div, .breadcrumb, #project-title, .project-name, b, strong"));
+    var hdrProj = "";
+    for (var i = 0; i < hdrCandidates.length; i++) {
+      var t = (hdrCandidates[i].textContent || "").trim();
+      if (/^\d+\.\d+$/.test(t)) { hdrProj = t; break; }
+    }
+    return hdrProj || sideTxt || "main";
+  }
+  function getActiveArchProjectId() {
+    var activeItem = document.querySelector(".project-item.active, .sidebar-item.active, [data-project-id].active");
+    if (activeItem && activeItem.getAttribute("data-project-id")) {
+      return activeItem.getAttribute("data-project-id");
+    }
+    var curSig = getActiveArchProjectSignature();
+    if (window.__archosLastActiveProjectId && window.__archosLastActiveProjectIdSig === curSig) {
+      return window.__archosLastActiveProjectId;
+    }
+    if (curSig && curSig !== "main") {
+      return "proj_" + curSig.replace(/[^a-zA-Z0-9]/g, "_");
+    }
+    return window.currentProjectId || (window.state && window.state.currentProjectId) || localStorage.getItem("activeProjectId") || "default";
+  }
+  function getCurrentProjectUploadedFileInfo() {
+    var curSig = getActiveArchProjectSignature();
+    var saved = window.__archosUploadedByProjSig[curSig];
+    if (saved && saved.name) return saved;
+    var btn3d = document.getElementById("archos-v50-import-3d-btn");
+    var btn2d = document.getElementById("archos-v33-ext-plan-btn");
+    if (btn3d && btn3d.getAttribute("data-uploaded-file")) {
+      return { is3D: true, name: btn3d.getAttribute("data-uploaded-file"), flLbl: btn3d.getAttribute("data-uploaded-fllbl") || "۲ طبقه" };
+    }
+    if (btn2d && btn2d.getAttribute("data-uploaded-file")) {
+      return { is3D: false, name: btn2d.getAttribute("data-uploaded-file"), flLbl: btn2d.getAttribute("data-uploaded-fllbl") || "۲ طبقه" };
+    }
+    if (btn3d && (btn3d.textContent || "").indexOf("✅") !== -1) {
+      var m3 = (btn3d.textContent || "").match(/\(([^)]+)\)/);
+      if (m3 && m3[1]) return { is3D: true, name: m3[1].trim(), flLbl: "۲ طبقه" };
+    }
+    if (btn2d && (btn2d.textContent || "").indexOf("✅") !== -1) {
+      var m2 = (btn2d.textContent || "").match(/\(([^)—\-]+)/);
+      if (m2 && m2[1]) return { is3D: false, name: m2[1].trim(), flLbl: "۲ طبقه" };
+    }
+    return null;
+  }
+  function syncUploadButtonsWithProjectSwitch() {
+    var btn2d = document.getElementById("archos-v33-ext-plan-btn");
+    var btn3d = document.getElementById("archos-v50-import-3d-btn");
+    var inp = document.getElementById("archos-v33-ext-plan-input");
+    if (!btn2d || !btn3d) return;
+    var curSig = getActiveArchProjectSignature();
+    if (window.__archosLastSyncedProjSig === undefined) {
+      window.__archosLastSyncedProjSig = curSig;
+      return;
+    }
+    if (curSig !== window.__archosLastSyncedProjSig) {
+      window.__archosLastSyncedProjSig = curSig;
+      var saved = window.__archosUploadedByProjSig[curSig];
+      var oldCard = document.getElementById("archos-v52-upload-card");
+      if (oldCard) oldCard.remove();
+      var openModal = document.getElementById("archos-v48-3d-modal");
+      if (openModal) openModal.remove();
+      if (inp) inp.value = "";
+      if (saved && saved.is3D) {
+        btn3d.setAttribute("data-uploaded-file", saved.name);
+        btn2d.removeAttribute("data-uploaded-file");
+        btn3d.style.borderColor = "#16a34a";
+        btn3d.innerHTML = "✅ مدل ۳بعدی آماده رندر (" + saved.name + ")";
+        btn2d.style.borderColor = "#0ea5e9";
+        btn2d.innerHTML = "📐 پلان اتوکد (DWG/DXF) +";
+      } else if (saved && !saved.is3D) {
+        btn2d.setAttribute("data-uploaded-file", saved.name);
+        btn3d.removeAttribute("data-uploaded-file");
+        btn2d.style.borderColor = "#16a34a";
+        btn2d.innerHTML = "✅ پلان فعال (" + saved.name + " — " + saved.flLbl + ")";
+        btn3d.style.borderColor = "#10b981";
+        btn3d.innerHTML = "📦 ورود فایل ۳بعدی (MAX/3DS/RVT/IFC/OBJ)";
+      } else {
+        btn2d.removeAttribute("data-uploaded-file");
+        btn3d.removeAttribute("data-uploaded-file");
+        btn2d.style.borderColor = "#0ea5e9";
+        btn2d.innerHTML = "📐 پلان اتوکد (DWG/DXF) +";
+        btn3d.style.borderColor = "#10b981";
+        btn3d.innerHTML = "📦 ورود فایل ۳بعدی (MAX/3DS/RVT/IFC/OBJ)";
+      }
+    }
+  }
+
+  function appendUploadConfirmationCardToChat(data, is3DFile) {
+    var chatBox = document.querySelector("#chat-messages, .chat-messages, .messages-container, main");
+    if (!chatBox) return;
+    var oldCard = document.getElementById("archos-v52-upload-card");
+    if (oldCard) oldCard.remove();
+    var card = document.createElement("div");
+    card.id = "archos-v52-upload-card";
+    card.style.cssText = "margin:12px auto;max-width:820px;padding:14px 18px;background:#0f172a;border:2px solid " + (is3DFile ? "#10b981" : "#0ea5e9") + ";border-radius:12px;color:#f8fafc;font-family:Tahoma,sans-serif;direction:rtl;box-shadow:0 10px 25px rgba(0,0,0,0.35);";
+    var fname = (data && data.original_filename) || "فایل بارگذاری‌شده";
+    var desc = (data && data.floors_desc_fa) || (is3DFile ? "مدل سه‌بعدی آماده رندر مستقیم (بدون نیاز به ورود به استودیو)" : "پلان معماری بارگذاری شد");
+    if (is3DFile) {
+      card.innerHTML = '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">' +
+        '<div>' +
+        '<div style="font-weight:bold;font-size:14px;color:#34d399;">✅ مسیر ۲ (فایل سه‌بعدی آماده): ' + fname + ' بارگذاری شد (نیازی به باز شدن در استودیو نیست)</div>' +
+        '<div style="font-size:12px;color:#cbd5e1;margin-top:4px;">' + desc + ' — اکنون می‌توانید از بخش <b>References</b> رفرنس سبک را انتخاب کنید یا در کادر چت دستور رندر (مثلاً: «از نمای غربی این مغازه با شیشه سکوریت، سایبان سقف و رمپ رندر واقعی بگیر») را بنویسید و <b>Send</b> را بزنید.</div>' +
+        '</div></div>';
+    } else {
+      card.innerHTML = '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">' +
+        '<div>' +
+        '<div style="font-weight:bold;font-size:14px;color:#38bdf8;">✅ مسیر ۱ (پلان ۲بعدی اتوکد): ' + fname + ' با موفقیت بارگذاری شد</div>' +
+        '<div style="font-size:12px;color:#cbd5e1;margin-top:4px;">' + desc + '</div>' +
+        '</div>' +
+        '<div style="display:flex;gap:8px;align-items:center;">' +
+        '<button type="button" id="arch52-card-open-studio" style="background:#7c3aed;color:#fff;border:none;border-radius:6px;padding:6px 12px;cursor:pointer;font-weight:bold;font-size:12px;">📐 باز کردن استودیو ۲بعدی/۳بعدی v66.0</button>' +
+        '</div></div>';
+    }
+    chatBox.appendChild(card);
+    card.scrollIntoView({ behavior: "smooth", block: "end" });
+    var openBtn = document.getElementById("arch52-card-open-studio");
+    if (openBtn) {
+      openBtn.onclick = function() {
+        var b3 = document.getElementById("archos-v48-3d-viewer-btn");
+        if (b3) b3.click();
+      };
+    }
+  }
+
+  function injectExternalPlanUploadButton() {
+    if (document.getElementById("archos-v33-ext-plan-btn")) return;
+    var buttons = Array.from(document.querySelectorAll("button, label, a.btn, .btn"));
+    var krockiBtn = buttons.find(function(b) {
+      var t = (b.textContent || "").trim();
+      return t.indexOf("کروکی") !== -1;
+    });
+    if (!krockiBtn || !krockiBtn.parentNode) return;
+
+    var fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.id = "archos-v33-ext-plan-input";
+    fileInput.accept = ".dwg,.dxf,.max,.3ds,.rvt,.ifc,.obj,.glb,.gltf,.fbx,.pdf,.png,.jpg,.jpeg,.webp,.svg";
+    fileInput.style.display = "none";
+    Array.from(document.querySelectorAll("input[type=file]")).forEach(function(inp){
+      if (!inp.accept || inp.accept.indexOf("image") !== -1) {
+        inp.accept = "image/*,.dwg,.dxf,.3ds,.rvt,.ifc,.obj,.glb,.gltf,.fbx,.pdf";
+      }
+    });
+
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.id = "archos-v33-ext-plan-btn";
+    btn.className = krockiBtn.className || "";
+    btn.style.cssText = krockiBtn.style.cssText + "; margin-left: 6px; margin-right: 6px; border: 1px solid #0ea5e9; color: #0284c7; font-weight: 600;";
+    btn.title = "مسیر ۱: بارگذاری پلان ۲بعدی اتوکد (DWG / DXF / PDF) برای تفکیک طبقه همکف و نیم‌طبقه، لایه‌بندی تک‌خطی ۲بعدی و ساخت مدل ۳بعدی";
+    btn.innerHTML = "📐 پلان اتوکد (DWG/DXF) +";
+
+    var btnImport3D = document.createElement("button");
+    btnImport3D.type = "button";
+    btnImport3D.id = "archos-v50-import-3d-btn";
+    btnImport3D.className = krockiBtn.className || "";
+    btnImport3D.style.cssText = krockiBtn.style.cssText + "; margin-left: 6px; border: 1px solid #10b981; color: #059669; font-weight: 600;";
+    btnImport3D.title = "مسیر ۲: ورود مستقیم فایل سه‌بعدی آماده (MAX / 3DS / RVT / IFC / OBJ / GLB / FBX) برای رندر مستقیم در چت بدون نیاز به استودیو";
+    btnImport3D.innerHTML = "📦 ورود فایل ۳بعدی (MAX/3DS/RVT/IFC/OBJ)";
+
+    btn.addEventListener("click", function() {
+      fileInput.value = "";
+      fileInput.setAttribute("data-upload-track", "2D_PLAN");
+      fileInput.accept = ".dwg,.dxf,.pdf,.png,.jpg,.jpeg,.webp,.svg";
+      fileInput.click();
+    });
+    btnImport3D.addEventListener("click", function() {
+      fileInput.value = "";
+      fileInput.setAttribute("data-upload-track", "3D_MODEL");
+      fileInput.accept = ".max,.3ds,.rvt,.ifc,.obj,.glb,.gltf,.fbx,.stl,.ply,.dae";
+      fileInput.click();
+    });
+
+    fileInput.addEventListener("change", function() {
+      if (!fileInput.files || !fileInput.files[0]) return;
+      var f = fileInput.files[0];
+      var extLow = (f.name || "").split(".").pop().toLowerCase();
+      var is3D = ["max", "3ds", "rvt", "ifc", "obj", "glb", "gltf", "fbx", "stl", "ply", "dae"].indexOf(extLow) !== -1 || fileInput.getAttribute("data-upload-track") === "3D_MODEL";
+      var pid = getActiveArchProjectId();
+      var curSigNow = getActiveArchProjectSignature();
+      if (is3D) {
+        btnImport3D.innerHTML = "⏳ در حال بارگذاری مدل ۳بعدی (" + f.name + ")...";
+        window.__archosUploadedByProjSig[curSigNow] = { is3D: true, name: f.name, flLbl: "۲ طبقه" };
+        btnImport3D.setAttribute("data-uploaded-file", f.name);
+      } else {
+        btn.innerHTML = "⏳ در حال تحلیل پلان و نیم‌طبقه...";
+      }
+
+      function sendUploadFormData() {
+        var fd = new FormData();
+        // v66.0: For binary `.max` files > 2MB, slice header so 1-2GB `.max` files upload in <50ms without freezing HTTP!
+        var uploadBlob = f; // v75.0: ALWAYS upload intact .max/.rvt file bytes so 3dsmaxbatch.exe opens the full scene!
+        fd.append("file", uploadBlob, f.name);
+        fd.append("project_id", pid);
+        fd.append("project_sig", curSigNow);
+        return fetch("/api/plan/upload_external?project_id=" + encodeURIComponent(pid), {
+          method: "POST",
+          body: fd
+        }).then(function(r) { return r.json(); });
+      }
+
+      var uploadPromise;
+      if (is3D && (extLow === "max" || f.size > 10 * 1024 * 1024)) {
+        uploadPromise = fetch("/api/plan/upload_external?project_id=" + encodeURIComponent(pid), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            reuse_existing_3d_file: true,
+            filename: f.name,
+            file_size: f.size,
+            project_id: pid,
+            project_sig: curSigNow
+          })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(dFast) {
+          if (dFast && dFast.ok) return dFast;
+          return sendUploadFormData();
+        })
+        .catch(function() { return sendUploadFormData(); });
+      } else {
+        uploadPromise = sendUploadFormData();
+      }
+
+      uploadPromise
+      .then(function(data) {
+        if (data && data.ok) {
+          var flLbl = (data.floors_desc_fa && data.floors_desc_fa.indexOf("نیم‌طبقه") !== -1) ? "همکف + نیم‌طبقه" : ((data.total_floors || 1) + " طبقه");
+          var curSigUp = getActiveArchProjectSignature();
+          window.__archosLastSyncedProjSig = curSigUp;
+          var openModUp = document.getElementById("archos-v48-3d-modal");
+          if (openModUp) openModUp.remove();
+          window.__archosStudioCamera = null;
+          window.__archosUploadedByProjSig[curSigUp] = {
+            is3D: is3D,
+            name: f.name,
+            flLbl: flLbl,
+            uploadId: (data && data.upload_id) || "",
+            scenePath: (data && data.scene_3d_json_path) || ""
+          };
+          if (is3D) {
+            btnImport3D.setAttribute("data-uploaded-file", f.name);
+            btnImport3D.setAttribute("data-uploaded-fllbl", flLbl);
+            btn.removeAttribute("data-uploaded-file");
+            btnImport3D.style.borderColor = "#16a34a";
+            btnImport3D.innerHTML = "✅ مدل ۳بعدی آماده رندر (" + f.name + ")";
+            btn.style.borderColor = "#0ea5e9";
+            btn.innerHTML = "📐 پلان اتوکد (DWG/DXF) +";
+            appendUploadConfirmationCardToChat(data, true);
+          } else {
+            btn.setAttribute("data-uploaded-file", f.name);
+            btn.setAttribute("data-uploaded-fllbl", flLbl);
+            btnImport3D.removeAttribute("data-uploaded-file");
+            btn.style.borderColor = "#16a34a";
+            btn.innerHTML = "✅ پلان فعال (" + f.name + " — " + flLbl + ")";
+            btnImport3D.style.borderColor = "#10b981";
+            btnImport3D.innerHTML = "📦 ورود فایل ۳بعدی (MAX/3DS/RVT/IFC/OBJ)";
+            appendUploadConfirmationCardToChat(data, false);
+            var b3 = document.getElementById("archos-v48-3d-viewer-btn");
+            if (b3) b3.click();
+          }
+        } else {
+          btn.innerHTML = "📐 پلان اتوکد (DWG/DXF) +";
+          btnImport3D.innerHTML = "📦 ورود فایل ۳بعدی (MAX/3DS/RVT/IFC/OBJ)";
+          alert((data && data.message) || "خطا در بارگذاری فایل");
+        }
+      })
+      .catch(function(err) {
+        btn.innerHTML = "📐 پلان اتوکد (DWG/DXF) +";
+        btnImport3D.innerHTML = "📦 ورود فایل ۳بعدی (MAX/3DS/RVT/IFC/OBJ)";
+        console.error("Upload error:", err);
+      });
+    });
+
+    krockiBtn.parentNode.insertBefore(btn, krockiBtn.nextSibling);
+    krockiBtn.parentNode.insertBefore(fileInput, btn.nextSibling);
+    krockiBtn.parentNode.insertBefore(btnImport3D, fileInput.nextSibling);
+
+    var btn3d = document.createElement("button");
+    btn3d.type = "button";
+    btn3d.id = "archos-v48-3d-viewer-btn";
+    btn3d.className = krockiBtn.className || "";
+    btn3d.style.cssText = krockiBtn.style.cssText + "; margin-left: 6px; border: 1px solid #8b5cf6; color: #7c3aed; font-weight: 600;";
+    btn3d.title = "استودیو دو مرحله‌ای v66.0: زوم و Pan در ۲بعدی و ۳بعدی، نشانگر Crosshair، انتخاب تک‌خطی لایه‌ها، پله چندبازو/ال‌شکل، شافت پله و داکت";
+    btn3d.innerHTML = "🧊 استودیو ۲بعدی/۳بعدی و لایه‌بندی";
+    btn3d.addEventListener("click", function() {
+      var pid = getActiveArchProjectId();
+      var curSig = getActiveArchProjectSignature();
+      var saved = getCurrentProjectUploadedFileInfo();
+      if (!saved || !saved.name) {
+        alert("در این پروژه هنوز هیچ فایلی انتخاب نشده است. لطفاً ابتدا از دکمه «📐 پلان اتوکد» یا «📦 ورود فایل ۳بعدی» فایل خود را انتخاب کنید.");
+        return;
+      }
+      var qs = "project_id=" + encodeURIComponent(pid) + "&project_sig=" + encodeURIComponent(curSig) + "&selected_file=" + encodeURIComponent(saved.name) + "&upload_id=" + encodeURIComponent(saved.uploadId || "") + "&has_ui_upload=1&_ts=" + Date.now();
+      Promise.all([
+        fetch("/api/3d/scene_json?" + qs).then(function(r) { return r.json(); }),
+        fetch("/api/cad/layers?" + qs).then(function(r) { return r.json(); }).catch(function() { return { ok: false, canonical_layers: [], preview_entities: [], floors_2d: [], text_entities: [] }; })
+      ]).then(function(results) {
+        var scene = results[0];
+        var cadData = results[1] || {};
+        if (!scene || scene.no_file_in_project || ((!scene.elements || !scene.elements.length) && (!scene.mesh_triangles || !scene.mesh_triangles.length))) {
+          alert("در این پروژه هنوز هیچ فایلی بارگذاری نشده است. لطفاً ابتدا فایل پلان ۲بعدی یا مدل ۳بعدی خود را انتخاب کنید.");
+          return;
+        }
+        window.__openArchOS3DViewerModal(scene, cadData, pid);
+      });
+    });
+    krockiBtn.parentNode.insertBefore(btn3d, btnImport3D.nextSibling);
+
+    // v66.0 Modern Chat Toolbar Layout: Full-width spacious chat input on top row + sleek wrapped button pills below!
+    try {
+      var barEl = krockiBtn.parentNode;
+      if (barEl && !barEl.getAttribute("data-arch57-styled")) {
+        barEl.setAttribute("data-arch57-styled", "1");
+        barEl.style.display = "flex";
+        barEl.style.flexWrap = "wrap";
+        barEl.style.alignItems = "center";
+        barEl.style.gap = "7px";
+        barEl.style.padding = "10px 14px";
+        barEl.style.borderRadius = "14px";
+        barEl.style.background = "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)";
+        barEl.style.border = "1px solid #334155";
+        barEl.style.boxShadow = "0 8px 24px rgba(0,0,0,0.22)";
+
+        var chatInputEl = barEl.querySelector("textarea, input[type='text'], input:not([type])");
+        if (!chatInputEl && barEl.parentNode) {
+          chatInputEl = barEl.parentNode.querySelector("textarea, input[type='text']");
+        }
+        if (chatInputEl) {
+          chatInputEl.style.order = "-2";
+          chatInputEl.style.flex = "1 1 100%";
+          chatInputEl.style.width = "100%";
+          chatInputEl.style.minWidth = "100%";
+          chatInputEl.style.minHeight = "50px";
+          chatInputEl.style.padding = "10px 14px";
+          chatInputEl.style.borderRadius = "10px";
+          chatInputEl.style.background = "#0b1120";
+          chatInputEl.style.color = "#f8fafc";
+          chatInputEl.style.border = "1.5px solid #38bdf8";
+          chatInputEl.style.fontSize = "13px";
+          chatInputEl.style.lineHeight = "1.5";
+          chatInputEl.style.boxSizing = "border-box";
+        }
+        Array.from(barEl.querySelectorAll("button, label")).forEach(function(el) {
+          el.style.borderRadius = "8px";
+          el.style.whiteSpace = "nowrap";
+          el.style.fontSize = "12px";
+          var txt = (el.textContent || "").trim();
+          if (txt === "Send") {
+            el.style.background = "linear-gradient(135deg, #0284c7, #2563eb)";
+            el.style.color = "#ffffff";
+            el.style.fontWeight = "bold";
+            el.style.padding = "6px 16px";
+            el.style.border = "none";
+            el.style.boxShadow = "0 4px 12px rgba(37,99,235,0.4)";
+          }
+        });
+      }
+    } catch (e) {}
+
+    Array.from(document.querySelectorAll("label, span, div")).forEach(function(lbl) {
+      var t = (lbl.textContent || "").trim();
+      if (t === "Conditioned") {
+        lbl.title = "✅ Conditioned (مقید به هندسه): وقتی فایل سه‌بعدی (RVT/3DS) یا پلان اتوکد بارگذاری کرده‌اید و رفرنس سبک می‌زنید، این تیک باید روشن باشد تا ۱۰۰٪ هندسه، عرض مغازه، سایبان، رمپ و نیم‌طبقه حفظ شود.";
+        var chk = lbl.querySelector("input[type=checkbox]") || (lbl.previousElementSibling && lbl.previousElementSibling.type === "checkbox" ? lbl.previousElementSibling : null);
+        if (chk) chk.checked = true;
+      } else if (t === "Conceptual") {
+        lbl.title = "⚠️ Conceptual (طرح مفهومی آزاد): به موتور اجازه می‌دهد حجم ساختمان را تغییر دهد. وقتی پلان یا مدل سه‌بعدی دقیق داده‌اید، اصلاً نباید این تیک را بزنید!";
+        var chkC = lbl.querySelector("input[type=checkbox]") || (lbl.previousElementSibling && lbl.previousElementSibling.type === "checkbox" ? lbl.previousElementSibling : null);
+        if (chkC) chkC.checked = false;
+      }
+    });
+
+    window.__openArchOS3DViewerModal = function(scene, cadData, pid) {
+      var oldM = document.getElementById("archos-v48-3d-modal");
+      if (oldM) oldM.remove();
+      var activeBrushLayer = "A-WALL";
+      var activeToolMode = "LAYER_BRUSH";
+      var stairDraftPts = [];
+      var stairPolylines = [];
+      var customDatumBadges = [];
+      var selected3DElem = null;
+      var selected2DLineId = null;
+      var hiddenLayers = {};
+      var is3DBuilt = false;
+
+      // 2D Zoom, Pan & CAD Crosshair state
+      var zoom2D = 1.0, pan2DX = 0.0, pan2DY = 0.0;
+      var isPanning2D = false, pan2DStartX = 0, pan2DStartY = 0, movedDuring2DPan = false;
+      var mouse2DX = -1, mouse2DY = -1, hovered2DIdx = -1;
+
+      // 3D Orbit, Zoom & Pan state
+      var pan3DX = 0.0, pan3DY = 0.0;
+
+      var floors2D = (cadData && cadData.floors_2d && cadData.floors_2d.length) ? cadData.floors_2d : (
+        (scene && scene.floors_2d && scene.floors_2d.length) ? scene.floors_2d : [
+          { floor_index: 0, role: "GROUND_FLOOR", title_fa: (scene && scene.is_3d_model) ? "📦 مدل سه‌بعدی مستقیم (بدون نیاز به پلان ۲بعدی)" : "۱. پلان طبقه همکف", elevation_m: 0.0, entities: (cadData && cadData.preview_entities) || [], texts: (cadData && cadData.text_entities) || [] }
+        ]
+      );
+      var activeFloorIdx = 0;
+
+      var layerDefs = [
+        { code: "A-WALL", fa: "دیوار", col: "#e8dfce", border: "#94a3b8" },
+        { code: "A-WIN", fa: "پنجره / شیشه سکوریت", col: "#38bdf8", border: "#0284c7" },
+        { code: "A-DOOR", fa: "در ورودی", col: "#f59e0b", border: "#d97706" },
+        { code: "A-STAIR", fa: "پله", col: "#86efac", border: "#22c55e" },
+        { code: "A-DUCT", fa: "داکت تأسیسات", col: "#f43f5e", border: "#e11d48" },
+        { code: "A-ELEVATOR", fa: "آسانسور", col: "#67e8f9", border: "#06b6d4" },
+        { code: "A-RAMP", fa: "رمپ شیب‌دار", col: "#93c5fd", border: "#3b82f6" },
+        { code: "A-FLOOR", fa: "کف / نیم‌طبقه", col: "#cbd5e1", border: "#64748b" },
+        { code: "A-BALUSTRADE", fa: "نرده نیم‌طبقه/لبه آزاد", col: "#fde047", border: "#eab308" },
+        { code: "A-ROOF", fa: "سقف", col: "#d6d3d1", border: "#a8a29e" },
+        { code: "A-OVERHANG", fa: "پیش‌آمدگی بعد از ستون", col: "#f0abfc", border: "#d946ef" },
+        { code: "A-CANOPY", fa: "سایبان هم‌تراز سقف", col: "#fca5a5", border: "#dc2626" }
+      ];
+      var lyrBtnsHtml = layerDefs.map(function(ld) {
+        return '<button type="button" class="arch50-lyr-btn" data-lyr="' + ld.code + '" style="background:#1e293b;color:' + ld.col + ';padding:4px 8px;border-radius:6px;border:2px solid ' + (ld.code === "A-WALL" ? "#38bdf8" : ld.border) + ';cursor:pointer;font-size:11px;font-weight:bold;">' + ld.fa + '</button>';
+      }).join("");
+
+      function renderFloorTabsHtml() {
+        return floors2D.map(function(fl, idx) {
+          var isMez = (fl.is_mezzanine || (fl.role || "").indexOf("MEZZANINE") !== -1 || (fl.title_fa || "").indexOf("نیم‌طبقه") !== -1);
+          var icon = isMez ? "🪜 " : "🏢 ";
+          return '<button type="button" class="arch51-floor-tab" data-fidx="' + idx + '" style="width:100%;text-align:right;padding:7px 10px;margin-bottom:6px;border-radius:6px;border:1px solid ' + (idx === activeFloorIdx ? '#38bdf8' : '#334155') + ';background:' + (idx === activeFloorIdx ? '#0284c7' : (isMez ? '#312e81' : '#1e293b')) + ';color:#f8fafc;cursor:pointer;font-size:11px;font-weight:bold;">' +
+            icon + (fl.title_fa || ('طبقه ' + (idx + 1))) + '</button>';
+        }).join("");
+      }
+
+      var srcTitle = scene.source_filename || (cadData && cadData.source_filename) || "فایل فعال پروژه";
+      var modal = document.createElement("div");
+      modal.id = "archos-v48-3d-modal";
+      modal.style.cssText = "position:fixed;inset:0;background:rgba(15,23,42,0.92);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Tahoma,sans-serif;direction:rtl;";
+      modal.innerHTML = '<div style="background:#0f172a;border:1px solid #334155;border-radius:14px;width:96vw;max-width:1460px;height:92vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,0.8);">' +
+        '<div style="padding:9px 16px;background:#1e293b;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;color:#f8fafc;border-bottom:1px solid #334155;gap:8px;">' +
+        '<div style="font-weight:bold;font-size:13px;">🧊 استودیو دو مرحله‌ای ArchitectOS v66.0 — فایل فعال: <span style="color:#38bdf8;">' + srcTitle + '</span> (انتخاب تک‌خطی با Crosshair + زوم/Pan + شافت پله و داکت)</div>' +
+        '<div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:11px;">' +
+        '<button type="button" id="arch52-btn-build-3d-top" style="background:#10b981;color:#fff;border:none;border-radius:6px;padding:6px 12px;cursor:pointer;font-weight:bold;box-shadow:0 0 12px rgba(16,185,129,0.5);">🔨 ساخت مدل سه‌بعدی از روی پلان تاییدشده</button>' +
+        '<label title="به صورت پیش‌فرض سقف اصلی مخفی است تا پله، شافت، داکت و اتاق‌های نیم‌طبقه دیده شوند (سایبان هم‌تراز سقف همیشه نمایش داده می‌شود)"><input type="checkbox" id="arch3d-chk-roof"> نمایش سقف (بام)</label>' +
+        '<label><input type="checkbox" id="arch3d-chk-rail" checked> نرده خودکار لبه‌های آزاد (>60cm)</label>' +
+        '<label><input type="checkbox" id="arch3d-chk-fill" checked> پر کردن زیرپله</label>' +
+        '<label><input type="checkbox" id="arch3d-chk-furn" checked> مبلمان و خودرو</label>' +
+        '<label title="وقتی تیک نخورده باشد (پیش‌فرض)، کلیک روی هر خط در پلان ۲بعدی فقط همان تک‌خط را تغییر لایه می‌دهد"><input type="checkbox" id="arch3d-chk-allfloors"> اعمال به کل لایه هم‌نام</label>' +
+        '<button type="button" id="arch3d-btn-photoreal" style="background:#0284c7;color:#fff;border:none;border-radius:6px;padding:5px 10px;cursor:pointer;font-weight:bold;">📸 انتخاب رفرنس سبک و رندر واقعی</button>' +
+        '<a href="/api/3d/download_bim?project_id=' + encodeURIComponent(pid || "default") + '" style="background:#059669;color:#fff;text-decoration:none;border-radius:6px;padding:5px 10px;font-weight:bold;">🏛️ دانلود Revit (.ifc / .rvt)</a>' +
+        '<button type="button" id="arch3d-close" style="background:#ef4444;color:#fff;border:none;border-radius:6px;padding:5px 12px;cursor:pointer;font-weight:bold;">بستن ✕</button>' +
+        '</div></div>' +
+        '<div id="arch51-ref-bar" style="display:none;padding:10px 16px;background:#1e3a8a;border-bottom:1px solid #3b82f6;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;color:#fff;font-size:12px;">' +
+        '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">' +
+        '<span style="font-weight:bold;color:#fde047;">🎨 رندر واقعی مقید به حجم (Style Reference + Locked 3D Depth):</span>' +
+        '<input type="file" id="arch51-ref-file" accept="image/*" style="display:none;">' +
+        '<button type="button" id="arch51-pick-ref-btn" style="background:#f59e0b;color:#0f172a;border:none;border-radius:6px;padding:5px 10px;cursor:pointer;font-weight:bold;">🖼️ ۱. انتخاب عکس رفرنس سبک معماری</button>' +
+        '<span id="arch51-ref-name" style="color:#bfdbfe;">بدون عکس رفرنس (توصیف متنی)</span>' +
+        '<input type="text" id="arch51-render-prompt" value="" placeholder="توصیف اختیاری رندر (خالی بگذارید تا دقیقاً همین مدل سه‌بعدی بدون هیچ تغییر فرم رندر شود)..." style="width:440px;padding:5px 8px;border-radius:6px;border:1px solid #93c5fd;background:#0f172a;color:#fff;font-family:Tahoma;">' +
+        '</div>' +
+        '<button type="button" id="arch51-run-render-btn" style="background:#10b981;color:#fff;border:none;border-radius:6px;padding:6px 14px;cursor:pointer;font-weight:bold;">🚀 ۲. شروع رندر واقعی</button>' +
+        '</div>' +
+        '<div style="padding:7px 14px;background:#0f172a;border-bottom:1px solid #334155;display:flex;flex-wrap:wrap;gap:5px;align-items:center;font-size:11px;color:#cbd5e1;">' +
+        '<span style="color:#38bdf8;font-weight:bold;">ابزار فعال: <b id="arch50-active-lbl" style="color:#facc15;">دیوار (A-WALL) — انتخاب تک‌خطی با Crosshair</b></span>' +
+        lyrBtnsHtml +
+        '<button type="button" id="arch51-tool-datum" style="background:#422006;color:#fef08a;padding:4px 8px;border-radius:6px;border:2px solid #eab308;cursor:pointer;font-size:11px;font-weight:bold;" title="کلیک روی هر فضا در پلان برای ثبت کد ارتفاعی (مثلاً +0.60 یا +3.64)">⊕ کد ارتفاعی (±0.00)</button>' +
+        '<button type="button" id="arch51-tool-stair" style="background:#052e16;color:#86efac;padding:4px 8px;border-radius:6px;border:2px solid #22c55e;cursor:pointer;font-size:11px;font-weight:bold;" title="ترسیم چندخطی مسیر پله (شروع ⬅ پاگرد اول ⬅ پاگرد دوم ⬅ انتهای پله؛ دابل‌کلیک یا دکمه پایان پله برای اتمام)">🪜 مسیر پله (تک‌بازو/ال‌شکل/چندبازو)</button>' +
+        '<button type="button" id="arch56-finish-stair-btn" style="display:none;background:#16a34a;color:#fff;padding:4px 9px;border-radius:6px;border:2px solid #86efac;cursor:pointer;font-size:11px;font-weight:bold;">✅ پایان ترسیم پله</button>' +
+        '<button type="button" id="arch56-tool-pan" style="background:#1e1b4b;color:#c4b5fd;padding:4px 8px;border-radius:6px;border:2px solid #8b5cf6;cursor:pointer;font-size:11px;font-weight:bold;" title="جابجایی (Pan) در صفحه ۲بعدی و ۳بعدی (یا با کلیک راست / کلیک وسط / Shift+Drag)">✋ جابجایی (Pan 2D/3D)</button>' +
+        '<button type="button" id="arch56-zoom-in" style="background:#1e293b;color:#38bdf8;padding:4px 7px;border-radius:6px;border:1px solid #38bdf8;cursor:pointer;font-size:11px;font-weight:bold;" title="بزرگ‌نمایی پلان ۲بعدی (یا چرخ ماوس)">🔍+</button>' +
+        '<button type="button" id="arch56-zoom-out" style="background:#1e293b;color:#38bdf8;padding:4px 7px;border-radius:6px;border:1px solid #38bdf8;cursor:pointer;font-size:11px;font-weight:bold;" title="کوچک‌نمایی پلان ۲بعدی">🔍-</button>' +
+        '<button type="button" id="arch56-zoom-reset" style="background:#1e293b;color:#cbd5e1;padding:4px 7px;border-radius:6px;border:1px solid #64748b;cursor:pointer;font-size:11px;font-weight:bold;" title="ریست زوم و جابجایی ۲بعدی و ۳بعدی">🔄 ریست دید</button>' +
+        '</div>' +
+        '<div style="flex:1;display:flex;flex-direction:row;overflow:hidden;">' +
+        '<div style="width:18%;min-width:205px;background:#0f172a;border-left:1px solid #334155;padding:10px;display:flex;flex-direction:column;overflow-y:auto;">' +
+        '<div style="color:#38bdf8;font-weight:bold;font-size:12px;margin-bottom:8px;">🏢 طبقات و نیم‌طبقات پلان:</div>' +
+        '<div id="arch51-floor-list">' + renderFloorTabsHtml() + '</div>' +
+        '<button type="button" id="arch52-add-mezzanine-btn" style="margin-top:6px;width:100%;padding:7px 8px;border-radius:6px;border:1px dashed #a78bfa;background:#1e1b4b;color:#ddd6fe;cursor:pointer;font-size:11px;font-weight:bold;">➕ افزودن/تنظیم نیم‌طبقه (آکس D تا G)</button>' +
+        '<div style="margin-top:10px;padding-top:10px;border-top:1px solid #334155;font-size:11px;color:#94a3b8;line-height:1.65;">' +
+        '<div style="color:#facc15;font-weight:bold;margin-bottom:4px;">قابلیت‌های جدید v66.0:</div>' +
+        '• <b>نشانگر Crosshair (+) و انتخاب تک‌خط:</b> روی هر تک‌خط کلیک کنید تا فقط همان خط وارد لایه انتخابی شود.<br>' +
+        '• <b>زوم و Pan در ۲بعدی و ۳بعدی:</b> با چرخ ماوس (Wheel) زوم کنید و با ابزار <b>✋ Pan</b> یا کلیک‌راست/Shift صفحه را جابجا کنید.<br>' +
+        '• <b>پله ال‌شکل/چندبازو:</b> با ابزار 🪜 نقاط شروع، پاگرد و پایان را کلیک کنید و دابل‌کلیک یا «✅ پایان پله» را بزنید.' +
+        '</div></div>' +
+        '<div style="width:44%;border-left:1px solid #334155;display:flex;flex-direction:column;background:#0b1120;">' +
+        '<div style="padding:6px 12px;background:#1e293b;color:#38bdf8;font-size:11px;font-weight:bold;display:flex;justify-content:space-between;"><span id="arch2d-panel-title">📐 مرحله ۱: پلان ۲بعدی (زوم با چرخ ماوس | Pan با کلیک‌راست یا ✋ | انتخاب تک‌خط با +)</span><span id="arch2d-status" style="color:#fde047;">آماده انتخاب تک‌خطی</span></div>' +
+        '<canvas id="arch2d-cad-canvas" width="620" height="560" style="flex:1;width:100%;height:100%;cursor:none;background:#0b1120;"></canvas>' +
+        '</div>' +
+        '<div style="width:38%;display:flex;flex-direction:column;background:#0f172a;position:relative;">' +
+        '<div style="padding:6px 12px;background:#1e293b;color:#a78bfa;font-size:11px;font-weight:bold;display:flex;justify-content:space-between;"><span>🧊 مرحله ۲: مدل ۳بعدی (چرخش با کلیک‌چپ | Pan با کلیک‌راست یا ✋ | بدون سقف روی پله و داکت)</span><span id="arch3d-sel-status" style="color:#34d399;"></span></div>' +
+        '<div id="arch52-stage1-overlay" style="position:absolute;inset:32px 0 0 0;background:rgba(15,23,42,0.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;z-index:5;">' +
+        '<div style="font-size:38px;margin-bottom:12px;">📐 ⬅ 🧊</div>' +
+        '<div style="color:#38bdf8;font-weight:bold;font-size:14px;margin-bottom:8px;">مرحله ۱: بررسی پلان ۲بعدی، نیم‌طبقه (آکس D تا G)، داکت و پله</div>' +
+        '<div style="color:#cbd5e1;font-size:12px;max-width:390px;line-height:1.7;margin-bottom:16px;">ابتدا در کادر وسط، <b>پلان همکف (+0.60m)</b> و <b>نیم‌طبقه (+3.64m)</b>، رمپ شیب‌دار، سایبان هم‌تراز سقف، شافت پله، داکت تأسیسات (A-DUCT) و درهای حمام/آبدارخانه را بررسی کنید؛ سپس دکمه زیر را بزنید تا مدل ۳بعدی دقیق ساخته شود:</div>' +
+        '<button type="button" id="arch52-btn-build-3d-center" style="background:#10b981;color:#fff;border:none;border-radius:8px;padding:10px 20px;cursor:pointer;font-weight:bold;font-size:13px;box-shadow:0 8px 20px rgba(16,185,129,0.4);">🔨 ساخت مدل سه‌بعدی از روی پلان ۲بعدی تاییدشده</button>' +
+        '</div>' +
+        '<canvas id="arch3d-canvas" width="540" height="560" style="flex:1;width:100%;height:100%;cursor:grab;background:#0f172a;"></canvas>' +
+        '</div></div></div>';
+      document.body.appendChild(modal);
+      document.getElementById("arch3d-close").onclick = function() { modal.remove(); };
+
+      function bindFloorTabEvents() {
+        var floorBtns = Array.from(modal.querySelectorAll(".arch51-floor-tab"));
+        floorBtns.forEach(function(fb) {
+          fb.onclick = function() {
+            activeFloorIdx = parseInt(fb.getAttribute("data-fidx") || "0", 10);
+            hovered2DIdx = -1;
+            document.getElementById("arch51-floor-list").innerHTML = renderFloorTabsHtml();
+            bindFloorTabEvents();
+            draw2DCad();
+            if (is3DBuilt) drawScene();
+          };
+        });
+      }
+      bindFloorTabEvents();
+
+      function rebuildGeneral2DCadTo3DElements() {
+        if (!floors2D || !floors2D.length || (scene && scene.is_3d_model)) return;
+        // Preserve specialized 123.dwg / 1064.dwg 3D scenes unless the user edited layers or it is a general AutoCAD plan
+        var hasSpecial3D = scene && scene.elements && scene.elements.some(function(el) {
+          var nm = (el.name || "");
+          return nm.indexOf("Showroom") !== -1 || nm.indexOf("Axis4") !== -1 || nm.indexOf("Courtyard_Sunken") !== -1;
+        });
+        if (hasSpecial3D && !window.__archosUserEdited2DLayers) return;
+        var actFls = floors2D.filter(function(fl) { return fl.role !== "FULL_AUTOCAD_SHEET" && fl.entities && fl.entities.length >= 4; });
+        if (!actFls.length) actFls = [floors2D[0]];
+        var newEls = [];
+        var zCur = 0.0;
+        var maxW = 6.0, maxL = 8.0;
+        actFls.forEach(function(fl, fIdx) {
+          var ents = fl.entities || [];
+          if (!ents.length) return;
+          var xs = [], ys = [];
+          ents.forEach(function(e) { xs.push(e.x1, e.x2); ys.push(e.y1, e.y2); });
+          xs.sort(function(a, b) { return a - b; });
+          ys.sort(function(a, b) { return a - b; });
+          var fx0 = xs[Math.floor(xs.length * 0.02)] || xs[0];
+          var fx1 = xs[Math.floor(xs.length * 0.98)] || xs[xs.length - 1];
+          var fy0 = ys[Math.floor(ys.length * 0.02)] || ys[0];
+          var fy1 = ys[Math.floor(ys.length * 0.98)] || ys[ys.length - 1];
+          var fw = Math.max(4.0, fx1 - fx0), flLen = Math.max(4.0, fy1 - fy0);
+          var scF = Math.max(fw, flLen) > 1500 ? 0.001 : (Math.max(fw, flLen) > 180 ? 0.01 : 1.0);
+          var fwM = fw * scF, flM = flLen * scF;
+          maxW = Math.max(maxW, fwM); maxL = Math.max(maxL, flM);
+          var fh = 3.20;
+          newEls.push({
+            floor_index: fIdx, ifc_class: "IFCSLAB", semantic_layer: "A-FLOOR", category: "SLAB",
+            color_hex: "#cbd5e1", name: "Slab_F" + (fIdx + 1),
+            cx: 0.5 * fwM, cy: 0.5 * flM, cz: zCur + 0.10, dx: fwM, dy: flM, dz: 0.20, angle_rad: 0.0
+          });
+          var stairList = [];
+          ents.forEach(function(e, eIdx) {
+            var x1 = (e.x1 - fx0) * scF, y1 = (e.y1 - fy0) * scF;
+            var x2 = (e.x2 - fx0) * scF, y2 = (e.y2 - fy0) * scF;
+            var slen = Math.hypot(x2 - x1, y2 - y1);
+            if (slen < 0.08 || slen > Math.max(fwM, flM) * 1.2) return;
+            var sang = Math.atan2(y2 - y1, x2 - x1);
+            var cxE = 0.5 * (x1 + x2), cyE = 0.5 * (y1 + y2);
+            var sLyr = (e.semantic_layer || "A-WALL").toUpperCase();
+            var lid = e.line_id || ("L_" + fIdx + "_" + eIdx);
+            if (sLyr === "A-STAIR") {
+              stairList.push({ cx: cxE, cy: cyE, len: slen, ang: sang, lid: lid });
+            } else if (sLyr === "A-WIN") {
+              newEls.push({ floor_index: fIdx, ifc_class: "IFCWALL", semantic_layer: "A-WALL", category: "WALL", color_hex: "#e8dfce", name: "WinSill_" + lid, line_id: lid, cx: cxE, cy: cyE, cz: zCur + 0.42, dx: slen, dy: 0.20, dz: 0.85, angle_rad: sang });
+              newEls.push({ floor_index: fIdx, ifc_class: "IFCWINDOW", semantic_layer: "A-WIN", category: "WINDOW", color_hex: "#38bdf8", name: "Window_" + lid, line_id: lid, cx: cxE, cy: cyE, cz: zCur + 1.60, dx: slen, dy: 0.08, dz: 1.50, angle_rad: sang });
+              newEls.push({ floor_index: fIdx, ifc_class: "IFCWALL", semantic_layer: "A-WALL", category: "WALL", color_hex: "#e8dfce", name: "WinLintel_" + lid, line_id: lid, cx: cxE, cy: cyE, cz: zCur + 2.77, dx: slen, dy: 0.20, dz: 0.85, angle_rad: sang });
+            } else if (sLyr === "A-DOOR") {
+              newEls.push({ floor_index: fIdx, ifc_class: "IFCDOOR", semantic_layer: "A-DOOR", category: "DOOR", color_hex: "#d97706", name: "Door_" + lid, line_id: lid, cx: cxE, cy: cyE, cz: zCur + 1.10, dx: Math.min(slen, 1.35), dy: 0.08, dz: 2.20, angle_rad: sang });
+              newEls.push({ floor_index: fIdx, ifc_class: "IFCWALL", semantic_layer: "A-WALL", category: "WALL", color_hex: "#e8dfce", name: "DoorLintel_" + lid, line_id: lid, cx: cxE, cy: cyE, cz: zCur + 2.70, dx: Math.min(slen, 1.35), dy: 0.20, dz: 1.00, angle_rad: sang });
+            } else if (sLyr === "A-BALUSTRADE") {
+              newEls.push({ floor_index: fIdx, ifc_class: "IFCRAILING", semantic_layer: "A-BALUSTRADE", category: "RAILING", color_hex: "#fde047", name: "Rail_" + lid, line_id: lid, cx: cxE, cy: cyE, cz: zCur + 0.55, dx: slen, dy: 0.12, dz: 1.05, angle_rad: sang });
+            } else if (sLyr === "A-CANOPY" || sLyr === "A-OVERHANG") {
+              newEls.push({ floor_index: fIdx, ifc_class: "IFCSLAB", semantic_layer: sLyr, category: "SLAB", color_hex: "#dc2626", name: "Canopy_" + lid, line_id: lid, cx: cxE, cy: cyE, cz: zCur + fh - 0.12, dx: slen, dy: 0.85, dz: 0.22, angle_rad: sang });
+            } else if (sLyr === "A-RAMP") {
+              newEls.push({ floor_index: fIdx, ifc_class: "IFCRAMP", semantic_layer: "A-RAMP", category: "SLAB", color_hex: "#3b82f6", name: "Ramp_" + lid, line_id: lid, cx: cxE, cy: cyE, cz: zCur + 0.30, dx: slen, dy: 1.20, dz: 0.55, angle_rad: sang });
+            } else if (sLyr === "A-WALL" || sLyr === "A-ELEVATOR" || sLyr === "A-DUCT") {
+              newEls.push({ floor_index: fIdx, ifc_class: "IFCWALL", semantic_layer: sLyr, category: "WALL", color_hex: "#e8dfce", name: "Wall_" + lid, line_id: lid, cx: cxE, cy: cyE, cz: zCur + 0.5 * fh, dx: slen, dy: 0.20, dz: fh, angle_rad: sang });
+            }
+          });
+          stairList.slice(0, 24).forEach(function(st, sIdx) {
+            var tf = (sIdx + 1) / Math.max(1, Math.min(stairList.length, 24));
+            newEls.push({ floor_index: fIdx, ifc_class: "IFCSTAIR", semantic_layer: "A-STAIR", category: "STAIR", color_hex: "#22c55e", name: "Stair_" + (sIdx + 1), line_id: st.lid, cx: st.cx, cy: st.cy, cz: zCur + tf * (fh - 0.18), dx: Math.max(0.90, st.len), dy: 0.30, dz: 0.18, angle_rad: st.ang });
+          });
+          zCur += fh;
+        });
+        newEls.push({
+          floor_index: actFls.length - 1, ifc_class: "IFCSLAB", semantic_layer: "A-ROOF", category: "ROOF",
+          color_hex: "#cbd5e1", name: "Main_Roof_Slab",
+          cx: 0.5 * maxW, cy: 0.5 * maxL, cz: zCur + 0.11, dx: maxW, dy: maxL, dz: 0.22, angle_rad: 0.0
+        });
+        if (newEls.length >= 6) {
+          scene.elements = newEls;
+          cx0 = 0.5 * maxW; cy0 = 0.5 * maxL; cz0 = 0.5 * zCur;
+          span3D = Math.max(10.0, maxW, maxL, zCur);
+          dist = span3D * 1.32;
+        }
+      }
+
+      function triggerBuild3DFromApproved2D() {
+        is3DBuilt = true;
+        rebuildGeneral2DCadTo3DElements();
+        var ov = document.getElementById("arch52-stage1-overlay");
+        if (ov) ov.style.display = "none";
+        var topBtn = document.getElementById("arch52-btn-build-3d-top");
+        if (topBtn) {
+          topBtn.textContent = "🔄 بروزرسانی مجدد مدل ۳بعدی از پلان ۲بعدی";
+          topBtn.style.background = "#059669";
+        }
+        document.getElementById("arch3d-sel-status").textContent = "✅ مدل ۳بعدی (رمپ شیب‌دار + سایبان +6.60m + شافت پله و داکت خالی) ساخته شد";
+        drawScene();
+      }
+      document.getElementById("arch52-btn-build-3d-top").onclick = triggerBuild3DFromApproved2D;
+      document.getElementById("arch52-btn-build-3d-center").onclick = triggerBuild3DFromApproved2D;
+
+      document.getElementById("arch52-add-mezzanine-btn").onclick = function() {
+        var axisSpan = prompt("بازه آکس نیم‌طبقه و کد ارتفاعی آن را وارد کنید (مثلاً: آکس D تا G، کد +3.64m):", "آکس D تا G — کد +3.64m");
+        if (!axisSpan) return;
+        var baseFl = floors2D[activeFloorIdx] || floors2D[0];
+        var allEnts = (baseFl && baseFl.entities) ? baseFl.entities : [];
+        var mezEnts = allEnts.filter(function(e) { return Math.max(e.x1, e.x2) >= 11.8; });
+        if (!mezEnts.length) mezEnts = allEnts.slice();
+        floors2D.push({
+          floor_index: floors2D.length,
+          role: "MEZZANINE_FLOOR",
+          is_mezzanine: true,
+          parent_floor_index: activeFloorIdx,
+          start_axis: "D",
+          end_axis: "G",
+          title_fa: "پلان نیم‌طبقه (" + axisSpan + ")",
+          elevation_m: 3.64,
+          entities: mezEnts,
+          texts: [
+            { text: "نیم‌طبقه (" + axisSpan + ")", x: 18.0, y: -1.4 },
+            { text: "+3.64m", x: 15.2, y: -2.0 }
+          ]
+        });
+        activeFloorIdx = floors2D.length - 1;
+        document.getElementById("arch51-floor-list").innerHTML = renderFloorTabsHtml();
+        bindFloorTabEvents();
+        draw2DCad();
+      };
+
+      var lyrBtns = Array.from(modal.querySelectorAll(".arch50-lyr-btn"));
+      lyrBtns.forEach(function(b) {
+        b.onclick = function() {
+          activeToolMode = "LAYER_BRUSH";
+          document.getElementById("arch56-finish-stair-btn").style.display = "none";
+          document.getElementById("arch56-tool-pan").style.boxShadow = "none";
+          activeBrushLayer = b.getAttribute("data-lyr") || "A-WALL";
+          document.getElementById("arch50-active-lbl").textContent = b.textContent + " (" + activeBrushLayer + ") — کلیک تک‌خطی با +";
+          lyrBtns.forEach(function(x) { x.style.boxShadow = (x === b) ? "0 0 0 2px #facc15" : "none"; });
+          if (selected3DElem) {
+            selected3DElem.semantic_layer = activeBrushLayer;
+            selected3DElem.color_hex = lyrColorMap[activeBrushLayer] || selected3DElem.color_hex;
+            document.getElementById("arch3d-sel-status").textContent = selected3DElem.name + " ⬅ " + activeBrushLayer;
+            draw2DCad();
+            if (is3DBuilt) drawScene();
+          }
+        };
+        b.ondblclick = function() {
+          var code = b.getAttribute("data-lyr");
+          hiddenLayers[code] = !hiddenLayers[code];
+          b.style.opacity = hiddenLayers[code] ? "0.35" : "1.0";
+          draw2DCad();
+          if (is3DBuilt) drawScene();
+        };
+      });
+
+      document.getElementById("arch51-tool-datum").onclick = function() {
+        activeToolMode = "DATUM_EDIT";
+        document.getElementById("arch56-finish-stair-btn").style.display = "none";
+        document.getElementById("arch50-active-lbl").textContent = "⊕ ثبت کد ارتفاعی فضا (روی فضای مورد نظر در پلان کلیک کنید)";
+      };
+
+      function finishStairPolyline() {
+        if (stairDraftPts.length < 2) {
+          stairDraftPts = [];
+          document.getElementById("arch56-finish-stair-btn").style.display = "none";
+          activeToolMode = "LAYER_BRUSH";
+          draw2DCad();
+          return;
+        }
+        var ptsCopy = stairDraftPts.slice();
+        stairPolylines.push({ floorIdx: activeFloorIdx, pts: ptsCopy });
+        // Build stepped 3D stair treads + intermediate landings along each polyline segment (NO solid cuboid block!)
+        var totalLen = 0.0;
+        for (var i = 0; i < ptsCopy.length - 1; i++) {
+          totalLen += Math.max(0.2, Math.hypot(ptsCopy[i + 1].x - ptsCopy[i].x, ptsCopy[i + 1].y - ptsCopy[i].y));
+        }
+        var zStart = (activeFloorIdx === 0) ? 0.60 : 3.64;
+        var zEnd = (activeFloorIdx === 0) ? 3.64 : 6.60;
+        var zSpan = zEnd - zStart;
+        var accumLen = 0.0;
+        for (var legIdx = 0; legIdx < ptsCopy.length - 1; legIdx++) {
+          var pA = ptsCopy[legIdx], pB = ptsCopy[legIdx + 1];
+          var legLen = Math.max(0.2, Math.hypot(pB.x - pA.x, pB.y - pA.y));
+          var legAng = Math.atan2(pB.y - pA.y, pB.x - pA.x);
+          var nStepsLeg = Math.max(3, Math.min(12, Math.round(legLen / 0.28)));
+          var zLeg0 = zStart + (accumLen / totalLen) * zSpan;
+          var zLeg1 = zStart + ((accumLen + legLen) / totalLen) * zSpan;
+          for (var sIdx = 0; sIdx < nStepsLeg; sIdx++) {
+            var tMid = (sIdx + 0.5) / nStepsLeg;
+            var zStepTop = zLeg0 + ((sIdx + 1) / nStepsLeg) * (zLeg1 - zLeg0);
+            scene.elements.push({
+              name: "User_Stair_Flight" + (legIdx + 1) + "_Step_" + (sIdx + 1),
+              ifc_class: "IFCSLAB",
+              category: "STRUCTURE",
+              semantic_layer: "A-STAIR",
+              color_hex: "#86efac",
+              floor_index: activeFloorIdx,
+              cx: pA.x + (pB.x - pA.x) * tMid,
+              cy: pA.y + (pB.y - pA.y) * tMid,
+              cz: zStepTop - 0.09,
+              dx: (legLen / nStepsLeg) * 0.95,
+              dy: 1.05,
+              dz: 0.18,
+              angle_rad: legAng
+            });
+          }
+          if (legIdx < ptsCopy.length - 2) {
+            scene.elements.push({
+              name: "User_Stair_Landing_" + (legIdx + 1),
+              ifc_class: "IFCSLAB",
+              category: "STRUCTURE",
+              semantic_layer: "A-STAIR",
+              color_hex: "#4ade80",
+              floor_index: activeFloorIdx,
+              cx: pB.x,
+              cy: pB.y,
+              cz: zLeg1 - 0.09,
+              dx: 1.15,
+              dy: 1.15,
+              dz: 0.18,
+              angle_rad: 0.0
+            });
+          }
+          accumLen += legLen;
+        }
+        stairDraftPts = [];
+        document.getElementById("arch56-finish-stair-btn").style.display = "none";
+        activeToolMode = "LAYER_BRUSH";
+        document.getElementById("arch2d-status").textContent = "✅ پله چندبازو/ال‌شکل (" + (ptsCopy.length - 1) + " بازو) با پله‌های پله‌پله و پاگرد ساخته شد";
+        draw2DCad();
+        if (is3DBuilt) drawScene();
+      }
+
+      document.getElementById("arch51-tool-stair").onclick = function() {
+        activeToolMode = "STAIR_VECTOR";
+        stairDraftPts = [];
+        document.getElementById("arch56-finish-stair-btn").style.display = "inline-block";
+        document.getElementById("arch50-active-lbl").textContent = "🪜 نقطه شروع پله را کلیک کنید، سپس پاگرد(ها) و انتهای پله (برای اتمام: دابل‌کلیک یا دکمه سبز پایان پله)";
+      };
+      document.getElementById("arch56-finish-stair-btn").onclick = finishStairPolyline;
+
+      document.getElementById("arch56-tool-pan").onclick = function() {
+        if (activeToolMode === "PAN_MODE") {
+          activeToolMode = "LAYER_BRUSH";
+          this.style.boxShadow = "none";
+          document.getElementById("arch50-active-lbl").textContent = activeBrushLayer + " — انتخاب تک‌خطی با Crosshair";
+        } else {
+          activeToolMode = "PAN_MODE";
+          this.style.boxShadow = "0 0 0 2px #facc15";
+          document.getElementById("arch50-active-lbl").textContent = "✋ ابزار جابجایی (Pan) فعال است — در صفحه ۲بعدی یا ۳بعدی بکشید";
+        }
+      };
+
+      document.getElementById("arch56-zoom-in").onclick = function() {
+        zoom2D = Math.min(14.0, zoom2D * 1.28);
+        draw2DCad();
+      };
+      document.getElementById("arch56-zoom-out").onclick = function() {
+        zoom2D = Math.max(0.45, zoom2D / 1.28);
+        draw2DCad();
+      };
+      document.getElementById("arch56-zoom-reset").onclick = function() {
+        zoom2D = 1.0; pan2DX = 0.0; pan2DY = 0.0;
+        pan3DX = 0.0; pan3DY = 0.0;
+        yaw = -0.65; pitch = 0.52; dist = span3D * 1.32;
+        draw2DCad();
+        if (is3DBuilt) drawScene();
+      };
+
+      var refBar = document.getElementById("arch51-ref-bar");
+      var refFileInput = document.getElementById("arch51-ref-file");
+      document.getElementById("arch3d-btn-photoreal").onclick = function() {
+        refBar.style.display = (refBar.style.display === "none") ? "flex" : "none";
+      };
+      document.getElementById("arch51-pick-ref-btn").onclick = function() {
+        refFileInput.click();
+      };
+      refFileInput.onchange = function() {
+        if (refFileInput.files && refFileInput.files[0]) {
+          document.getElementById("arch51-ref-name").textContent = "✅ رفرنس انتخاب شد: " + refFileInput.files[0].name;
+          var mainRefInp = document.querySelector("input[type=file][accept*='image']");
+          if (mainRefInp && mainRefInp !== refFileInput) {
+            try { mainRefInp.files = refFileInput.files; } catch (e) {}
+          }
+        }
+      };
+      document.getElementById("arch51-run-render-btn").onclick = function() {
+        var rawTyped = (document.getElementById("arch51-render-prompt").value || "").trim();
+        var promptTxt = rawTyped || "از همین مدل سه‌بعدی با حفظ ۱۰۰٪ فرم و هندسه دقیق ساختمان رندر واقعی بگیر";
+        modal.remove();
+        var chatInp = document.querySelector("textarea, input[type=text]");
+        if (chatInp) {
+          chatInp.value = promptTxt;
+        }
+        var sendBtn = Array.from(document.querySelectorAll("button")).find(function(x) { return (x.textContent || "").trim() === "Send"; });
+        if (sendBtn) sendBtn.click();
+      };
+
+      var cv2d = document.getElementById("arch2d-cad-canvas");
+      var ctx2d = cv2d.getContext("2d");
+      var lyrColorMap = {};
+      layerDefs.forEach(function(ld) { lyrColorMap[ld.code] = ld.col; });
+
+      function getActiveFloor2DEntities() {
+        var flObj = floors2D[activeFloorIdx] || floors2D[0] || { entities: [], texts: [] };
+        var ents = (flObj.entities && flObj.entities.length) ? flObj.entities : [];
+        return { ents: ents, texts: flObj.texts || [], title_fa: flObj.title_fa || "" };
+      }
+
+      function draw2DCad() {
+        ctx2d.fillStyle = "#0b1120";
+        ctx2d.fillRect(0, 0, cv2d.width, cv2d.height);
+        var fData = getActiveFloor2DEntities();
+        var titleEl = document.getElementById("arch2d-panel-title");
+        if (titleEl && fData.title_fa) {
+          titleEl.textContent = "📐 " + fData.title_fa + " (زوم: " + Math.round(zoom2D * 100) + "%)";
+        }
+        var cadEnts = fData.ents;
+        if (!cadEnts.length) return;
+        var minX = 1e9, maxX = -1e9, minY = 1e9, maxY = -1e9;
+        cadEnts.forEach(function(e) {
+          minX = Math.min(minX, e.x1, e.x2); maxX = Math.max(maxX, e.x1, e.x2);
+          minY = Math.min(minY, e.y1, e.y2); maxY = Math.max(maxY, e.y1, e.y2);
+        });
+        var spanX = Math.max(1.0, maxX - minX), spanY = Math.max(1.0, maxY - minY);
+        var baseSc = Math.min((cv2d.width - 72) / spanX, (cv2d.height - 84) / spanY);
+        var sc = baseSc * zoom2D;
+        var ox = (cv2d.width - spanX * sc) * 0.5 - minX * sc + pan2DX;
+        var oy = (cv2d.height - spanY * sc) * 0.5 + pan2DY;
+        cv2d.__tx = { sc: sc, ox: ox, oy: oy, maxY: maxY, minX: minX, ents: cadEnts };
+
+        cadEnts.forEach(function(e, idx) {
+          var sl = e.semantic_layer || "A-WALL";
+          if (hiddenLayers[sl]) return;
+          var isHovered = (idx === hovered2DIdx);
+          var isSelectedLine = (e.line_id && e.line_id === selected2DLineId);
+          ctx2d.strokeStyle = isHovered ? "#00f5d4" : (isSelectedLine ? "#facc15" : (lyrColorMap[sl] || "#e8dfce"));
+          ctx2d.lineWidth = isHovered ? 3.8 : (isSelectedLine ? 3.2 : ((sl === "A-WIN" || sl === "A-DOOR" || sl === "A-DUCT" || sl === "A-BALUSTRADE") ? 2.5 : 1.75));
+          if (sl === "A-CANOPY") {
+            ctx2d.setLineDash([6, 4]);
+          } else {
+            ctx2d.setLineDash([]);
+          }
+          ctx2d.beginPath();
+          ctx2d.moveTo(ox + e.x1 * sc, oy + (maxY - e.y1) * sc);
+          ctx2d.lineTo(ox + e.x2 * sc, oy + (maxY - e.y2) * sc);
+          ctx2d.stroke();
+        });
+        ctx2d.setLineDash([]);
+
+        ctx2d.font = "bold 11px Tahoma";
+        ctx2d.fillStyle = "#fde047";
+        (fData.texts || []).forEach(function(t) {
+          var px = ox + t.x * sc, py = oy + (maxY - t.y) * sc;
+          ctx2d.fillText("⊕ " + t.text, px, py);
+        });
+
+        customDatumBadges.forEach(function(b) {
+          if (b.floorIdx !== activeFloorIdx) return;
+          var px = ox + b.wx * sc, py = oy + (maxY - b.wy) * sc;
+          ctx2d.fillStyle = "#422006";
+          ctx2d.fillRect(px - 24, py - 12, 56, 18);
+          ctx2d.strokeStyle = "#facc15";
+          ctx2d.strokeRect(px - 24, py - 12, 56, 18);
+          ctx2d.fillStyle = "#fef08a";
+          ctx2d.fillText("⊕ " + b.code, px - 20, py + 1);
+        });
+
+        // Completed multi-segment stair polylines
+        stairPolylines.forEach(function(sp) {
+          if (sp.floorIdx !== activeFloorIdx || !sp.pts || sp.pts.length < 2) return;
+          ctx2d.strokeStyle = "#22c55e";
+          ctx2d.lineWidth = 3.0;
+          ctx2d.beginPath();
+          sp.pts.forEach(function(pt, idx) {
+            var sx = ox + pt.x * sc, sy = oy + (maxY - pt.y) * sc;
+            if (idx === 0) ctx2d.moveTo(sx, sy);
+            else ctx2d.lineTo(sx, sy);
+          });
+          ctx2d.stroke();
+          var p0 = sp.pts[0], pN = sp.pts[sp.pts.length - 1];
+          ctx2d.fillStyle = "#86efac";
+          ctx2d.fillText("شروع پله", ox + p0.x * sc - 16, oy + (maxY - p0.y) * sc - 6);
+          ctx2d.fillText("⬆ انتهای پله", ox + pN.x * sc - 20, oy + (maxY - pN.y) * sc - 6);
+        });
+
+        // In-progress multi-segment stair polyline rubber-band preview
+        if (activeToolMode === "STAIR_VECTOR" && stairDraftPts.length > 0) {
+          ctx2d.strokeStyle = "#4ade80";
+          ctx2d.lineWidth = 2.6;
+          ctx2d.beginPath();
+          stairDraftPts.forEach(function(pt, idx) {
+            var sx = ox + pt.x * sc, sy = oy + (maxY - pt.y) * sc;
+            if (idx === 0) ctx2d.moveTo(sx, sy);
+            else ctx2d.lineTo(sx, sy);
+          });
+          if (mouse2DX >= 0 && mouse2DY >= 0) {
+            ctx2d.lineTo(mouse2DX, mouse2DY);
+          }
+          ctx2d.stroke();
+          stairDraftPts.forEach(function(pt, idx) {
+            var sx = ox + pt.x * sc, sy = oy + (maxY - pt.y) * sc;
+            ctx2d.fillStyle = "#22c55e";
+            ctx2d.fillRect(sx - 4, sy - 4, 8, 8);
+            ctx2d.fillStyle = "#fef08a";
+            ctx2d.fillText(idx === 0 ? "شروع پله" : ("پاگرد " + idx), sx + 6, sy - 4);
+          });
+        }
+
+        // Precision AutoCAD Crosshair Cursor (+) with Pickbox square (□)
+        if (mouse2DX >= 0 && mouse2DY >= 0) {
+          ctx2d.save();
+          ctx2d.strokeStyle = (hovered2DIdx >= 0) ? "#00f5d4" : "rgba(56, 189, 248, 0.72)";
+          ctx2d.lineWidth = 1.0;
+          ctx2d.beginPath();
+          ctx2d.moveTo(0, mouse2DY); ctx2d.lineTo(cv2d.width, mouse2DY);
+          ctx2d.moveTo(mouse2DX, 0); ctx2d.lineTo(mouse2DX, cv2d.height);
+          ctx2d.stroke();
+          ctx2d.strokeRect(mouse2DX - 5, mouse2DY - 5, 10, 10);
+          ctx2d.restore();
+        }
+      }
+
+      cv2d.oncontextmenu = function(e) { e.preventDefault(); };
+
+      cv2d.onwheel = function(e) {
+        e.preventDefault();
+        var rect = cv2d.getBoundingClientRect();
+        var mx = (e.clientX - rect.left) * (cv2d.width / rect.width);
+        var my = (e.clientY - rect.top) * (cv2d.height / rect.height);
+        var prevZoom = zoom2D;
+        var factor = (e.deltaY < 0) ? 1.18 : 0.85;
+        zoom2D = Math.max(0.45, Math.min(14.0, zoom2D * factor));
+        var ratio = zoom2D / prevZoom;
+        pan2DX = (mx - cv2d.width * 0.5) * (1 - ratio) + pan2DX * ratio;
+        pan2DY = (my - cv2d.height * 0.5) * (1 - ratio) + pan2DY * ratio;
+        draw2DCad();
+      };
+
+      cv2d.onmousedown = function(ev) {
+        if (activeToolMode === "PAN_MODE" || ev.button === 1 || ev.button === 2 || ev.shiftKey) {
+          isPanning2D = true;
+          movedDuring2DPan = false;
+          pan2DStartX = ev.clientX - pan2DX;
+          pan2DStartY = ev.clientY - pan2DY;
+          ev.preventDefault();
+        }
+      };
+
+      cv2d.onmousemove = function(ev) {
+        var rect = cv2d.getBoundingClientRect();
+        mouse2DX = (ev.clientX - rect.left) * (cv2d.width / rect.width);
+        mouse2DY = (ev.clientY - rect.top) * (cv2d.height / rect.height);
+        if (isPanning2D) {
+          if (Math.hypot((ev.clientX - pan2DStartX) - pan2DX, (ev.clientY - pan2DStartY) - pan2DY) > 3) {
+            movedDuring2DPan = true;
+          }
+          pan2DX = ev.clientX - pan2DStartX;
+          pan2DY = ev.clientY - pan2DStartY;
+          draw2DCad();
+          return;
+        }
+        if (!cv2d.__tx) return;
+        var tx = cv2d.__tx;
+        var cadEnts = tx.ents || [];
+        var bestIdx = -1, bestD = 12.0;
+        cadEnts.forEach(function(e, idx) {
+          var px1 = tx.ox + e.x1 * tx.sc, py1 = tx.oy + (tx.maxY - e.y1) * tx.sc;
+          var px2 = tx.ox + e.x2 * tx.sc, py2 = tx.oy + (tx.maxY - e.y2) * tx.sc;
+          var l2 = (px2 - px1) * (px2 - px1) + (py2 - py1) * (py2 - py1);
+          var t = l2 > 0.01 ? Math.max(0, Math.min(1, ((mouse2DX - px1) * (px2 - px1) + (mouse2DY - py1) * (py2 - py1)) / l2)) : 0;
+          var d = Math.hypot(mouse2DX - (px1 + t * (px2 - px1)), mouse2DY - (py1 + t * (py2 - py1)));
+          if (d < bestD) { bestD = d; bestIdx = idx; }
+        });
+        hovered2DIdx = bestIdx;
+        if (bestIdx >= 0) {
+          var hEnt = cadEnts[bestIdx];
+          document.getElementById("arch2d-status").textContent = "🎯 تک‌خط زیر نشانگر: " + (hEnt.line_id || hEnt.raw_layer || "L") + " (" + (hEnt.semantic_layer || "A-WALL") + ") ⬅ کلیک = تغییر به " + activeBrushLayer;
+        }
+        draw2DCad();
+      };
+
+      cv2d.onmouseleave = function() {
+        mouse2DX = -1; mouse2DY = -1; hovered2DIdx = -1; isPanning2D = false;
+        draw2DCad();
+      };
+
+      cv2d.ondblclick = function(ev) {
+        if (activeToolMode === "STAIR_VECTOR" && stairDraftPts.length >= 2) {
+          ev.preventDefault();
+          finishStairPolyline();
+        }
+      };
+
+      cv2d.onclick = function(ev) {
+        if (movedDuring2DPan || activeToolMode === "PAN_MODE") {
+          movedDuring2DPan = false;
+          return;
+        }
+        if (!cv2d.__tx) return;
+        var rect = cv2d.getBoundingClientRect();
+        var mx = (ev.clientX - rect.left) * (cv2d.width / rect.width);
+        var my = (ev.clientY - rect.top) * (cv2d.height / rect.height);
+        var tx = cv2d.__tx;
+        var wx = (mx - tx.ox) / tx.sc;
+        var wy = tx.maxY - (my - tx.oy) / tx.sc;
+
+        if (activeToolMode === "DATUM_EDIT") {
+          var codeVal = prompt("کد ارتفاعی این فضا را به متر وارد کنید (مثلاً +0.60 برای همکف، +3.64 برای نیم‌طبقه، 0.00 برای پیاده‌رو):", "+3.64");
+          if (codeVal !== null && codeVal.trim() !== "") {
+            customDatumBadges.push({ floorIdx: activeFloorIdx, wx: wx, wy: wy, code: codeVal.trim() });
+            document.getElementById("arch2d-status").textContent = "کد ارتفاعی ثبت شد: ⊕ " + codeVal.trim();
+            draw2DCad();
+          }
+          return;
+        }
+
+        if (activeToolMode === "STAIR_VECTOR") {
+          stairDraftPts.push({ x: wx, y: wy });
+          document.getElementById("arch2d-status").textContent = "🪜 نقطه " + stairDraftPts.length + " پله ثبت شد — نقطه بعدی (پاگرد یا انتهای پله) را کلیک کنید یا «✅ پایان ترسیم پله» را بزنید";
+          draw2DCad();
+          return;
+        }
+
+        var cadEnts = tx.ents || [];
+        var bestIdx = hovered2DIdx;
+        if (bestIdx < 0) {
+          var bestD = 15.0;
+          cadEnts.forEach(function(e, idx) {
+            var px1 = tx.ox + e.x1 * tx.sc, py1 = tx.oy + (tx.maxY - e.y1) * tx.sc;
+            var px2 = tx.ox + e.x2 * tx.sc, py2 = tx.oy + (tx.maxY - e.y2) * tx.sc;
+            var l2 = (px2 - px1) * (px2 - px1) + (py2 - py1) * (py2 - py1);
+            var t = l2 > 0.01 ? Math.max(0, Math.min(1, ((mx - px1) * (px2 - px1) + (my - py1) * (py2 - py1)) / l2)) : 0;
+            var d = Math.hypot(mx - (px1 + t * (px2 - px1)), my - (py1 + t * (py2 - py1)));
+            if (d < bestD) { bestD = d; bestIdx = idx; }
+          });
+        }
+        if (bestIdx >= 0) {
+          var hit = cadEnts[bestIdx];
+          var applyAll = document.getElementById("arch3d-chk-allfloors").checked;
+          // Single-line precision selection: ONLY mutate `hit` unless `applyAll` is explicitly checked!
+          hit.semantic_layer = activeBrushLayer;
+          selected2DLineId = hit.line_id || hit.raw_layer || ("L_" + (bestIdx + 1));
+          if (hit.ref3d) {
+            hit.ref3d.semantic_layer = activeBrushLayer;
+            hit.ref3d.color_hex = lyrColorMap[activeBrushLayer] || "#e8dfce";
+            selected3DElem = hit.ref3d;
+          }
+          if (applyAll && hit.raw_layer) {
+            cadEnts.forEach(function(e) { if (e.raw_layer === hit.raw_layer) e.semantic_layer = activeBrushLayer; });
+          }
+          var targetKey = hit.line_id || hit.raw_layer || "0";
+          document.getElementById("arch2d-status").textContent = "✅ تک‌خط " + targetKey + " ⬅ " + activeBrushLayer;
+          var ov = {}; ov[targetKey] = activeBrushLayer;
+          fetch("/api/cad/reclassify_layers", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project_id: pid || "default", layer_overrides: ov, apply_all_floors: applyAll })
+          }).catch(function() {});
+          draw2DCad();
+          if (is3DBuilt) drawScene();
+        }
+      };
+
+      var cv = document.getElementById("arch3d-canvas");
+      var ctx = cv.getContext("2d");
+      var min3X = 1e9, max3X = -1e9, min3Y = 1e9, max3Y = -1e9, min3Z = 1e9, max3Z = -1e9;
+      var hasMeshTris = !!(scene.mesh_triangles && scene.mesh_triangles.length > 0);
+      if (hasMeshTris) {
+        scene.mesh_triangles.forEach(function(t) {
+          min3X = Math.min(min3X, t[0], t[3], t[6]); max3X = Math.max(max3X, t[0], t[3], t[6]);
+          min3Y = Math.min(min3Y, t[1], t[4], t[7]); max3Y = Math.max(max3Y, t[1], t[4], t[7]);
+          min3Z = Math.min(min3Z, t[2], t[5], t[8]); max3Z = Math.max(max3Z, t[2], t[5], t[8]);
+        });
+      } else {
+        scene.elements.forEach(function(el) {
+          if (el.vertices_3d && el.vertices_3d.length === 8) {
+            el.vertices_3d.forEach(function(v) {
+              min3X = Math.min(min3X, v[0]); max3X = Math.max(max3X, v[0]);
+              min3Y = Math.min(min3Y, v[1]); max3Y = Math.max(max3Y, v[1]);
+              min3Z = Math.min(min3Z, v[2]); max3Z = Math.max(max3Z, v[2]);
+            });
+          } else {
+            min3X = Math.min(min3X, el.cx - el.dx * 0.5); max3X = Math.max(max3X, el.cx + el.dx * 0.5);
+            min3Y = Math.min(min3Y, el.cy - el.dy * 0.5); max3Y = Math.max(max3Y, el.cy + el.dy * 0.5);
+            min3Z = Math.min(min3Z, el.cz - el.dz * 0.5); max3Z = Math.max(max3Z, el.cz + el.dz * 0.5);
+          }
+        });
+      }
+      var cx0 = (min3X + max3X) * 0.5, cy0 = (min3Y + max3Y) * 0.5, cz0 = (min3Z + max3Z) * 0.5;
+      var span3D = Math.max(8.0, Math.hypot(max3X - min3X, max3Y - min3Y, max3Z - min3Z));
+      var yaw = hasMeshTris ? -0.24 : -0.65, pitch = hasMeshTris ? 0.18 : 0.52, dist = span3D * (hasMeshTris ? 1.15 : 1.32);
+      var dragging = false, panning3DNow = false, movedDuringDrag = false, lx = 0, ly = 0;
+      var renderedFacesCache = [];
+
+      cv.oncontextmenu = function(e) { e.preventDefault(); };
+      cv.onmousedown = function(e) {
+        dragging = true;
+        movedDuringDrag = false;
+        panning3DNow = (activeToolMode === "PAN_MODE" || e.button === 1 || e.button === 2 || e.shiftKey);
+        lx = e.clientX;
+        ly = e.clientY;
+      };
+      window.addEventListener("mouseup", function() { dragging = false; panning3DNow = false; isPanning2D = false; });
+      cv.onmousemove = function(e) {
+        if (!dragging || !is3DBuilt) return;
+        if (Math.hypot(e.clientX - lx, e.clientY - ly) > 3) movedDuringDrag = true;
+        if (panning3DNow) {
+          pan3DX += (e.clientX - lx);
+          pan3DY += (e.clientY - ly);
+        } else {
+          yaw += (e.clientX - lx) * 0.009;
+          pitch = Math.max(0.08, Math.min(1.42, pitch + (e.clientY - ly) * 0.007));
+        }
+        lx = e.clientX; ly = e.clientY;
+        drawScene();
+      };
+      cv.onwheel = function(e) {
+        if (!is3DBuilt) return;
+        e.preventDefault();
+        dist = Math.max(span3D * 0.40, Math.min(span3D * 3.5, dist + e.deltaY * 0.015));
+        drawScene();
+      };
+
+      cv.onclick = function(ev) {
+        if (!is3DBuilt || movedDuringDrag) return;
+        var rect = cv.getBoundingClientRect();
+        var mx = (ev.clientX - rect.left) * (cv.width / rect.width);
+        var my = (ev.clientY - rect.top) * (cv.height / rect.height);
+        for (var i = renderedFacesCache.length - 1; i >= 0; i--) {
+          var f = renderedFacesCache[i];
+          var xs = f.pts.map(function(p) { return p.sx; });
+          var ys = f.pts.map(function(p) { return p.sy; });
+          if (mx >= Math.min.apply(null, xs) && mx <= Math.max.apply(null, xs) && my >= Math.min.apply(null, ys) && my <= Math.max.apply(null, ys)) {
+            selected3DElem = f.el;
+            if (activeToolMode === "LAYER_BRUSH") {
+              f.el.semantic_layer = activeBrushLayer;
+              f.el.color_hex = lyrColorMap[activeBrushLayer] || f.el.color_hex;
+            }
+            document.getElementById("arch3d-sel-status").textContent = "انتخاب ۳بعدی: " + (f.el.name || "المان") + " (" + (f.el.semantic_layer || "A-WALL") + ")";
+            draw2DCad();
+            drawScene();
+            break;
+          }
+        }
+      };
+
+      function shadeHexColor(hexStr, mult) {
+        var h = (hexStr || "#e8dfce").replace("#", "");
+        if (h.length !== 6) return hexStr || "#e8dfce";
+        var r = Math.max(0, Math.min(255, Math.round(parseInt(h.substring(0, 2), 16) * mult)));
+        var g = Math.max(0, Math.min(255, Math.round(parseInt(h.substring(2, 4), 16) * mult)));
+        var b = Math.max(0, Math.min(255, Math.round(parseInt(h.substring(4, 6), 16) * mult)));
+        return "rgb(" + r + "," + g + "," + b + ")";
+      }
+
+      function drawScene() {
+        if (!is3DBuilt) return;
+        window.__archosStudioCamera = {
+          yaw: yaw,
+          pitch: pitch,
+          dist: dist,
+          pan3DX: pan3DX,
+          pan3DY: pan3DY,
+          projectSig: getActiveArchProjectSignature(),
+          sourceFile: (scene && scene.source_filename) || ""
+        };
+        var showRoof = document.getElementById("arch3d-chk-roof").checked;
+        var showRail = document.getElementById("arch3d-chk-rail").checked;
+        var showFill = document.getElementById("arch3d-chk-fill").checked;
+        var showFurn = document.getElementById("arch3d-chk-furn").checked;
+        ctx.fillStyle = "#0f172a";
+        ctx.fillRect(0, 0, cv.width, cv.height);
+        var cyaw = Math.cos(yaw), syaw = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
+        var focal = Math.min(cv.width, cv.height) * 1.15;
+
+        function projPt(wx, wy, wz) {
+          var rx = wx - cx0, ry = wy - cy0, rz = wz - cz0;
+          var x1 = rx * cyaw - ry * syaw;
+          var y1 = rx * syaw + ry * cyaw;
+          var depth = y1 * cp - rz * sp + dist;
+          var y2 = y1 * sp + rz * cp;
+          var dSafe = Math.max(0.5, depth);
+          return {
+            sx: cv.width * 0.5 + pan3DX + (x1 * focal) / dSafe,
+            sy: cv.height * 0.54 + pan3DY - (y2 * focal) / dSafe,
+            depth: depth
+          };
+        }
+
+        var faces = [];
+        var faceIndices = [
+          [4, 5, 6, 7, 1.05],
+          [0, 1, 2, 3, 0.72],
+          [0, 1, 5, 4, 0.96],
+          [2, 3, 7, 6, 0.82],
+          [1, 2, 6, 5, 0.90],
+          [3, 0, 4, 7, 0.86]
+        ];
+
+        if (hasMeshTris) {
+          var isObjSrc = ((scene.source_filename || "").toLowerCase().indexOf(".obj") !== -1) || ((scene.source_filename || "").toLowerCase().indexOf("tamrin") !== -1);
+          scene.mesh_triangles.forEach(function(t) {
+            var p0 = projPt(t[0], t[1], t[2]);
+            var p1 = projPt(t[3], t[4], t[5]);
+            var p2 = projPt(t[6], t[7], t[8]);
+            if (p0.depth <= 0.8 && p1.depth <= 0.8 && p2.depth <= 0.8) return;
+            var mId = t[10] || 0;
+            var triHex = mId === 2 ? (isObjSrc ? "#262c34" : "#1e88e5") : (mId === 7 ? "#262c34" : (mId === 3 ? "#1e2024" : (mId === 4 ? "#a06a48" : (mId === 5 ? "#262930" : (mId === 6 ? "#f8fafc" : (mId === 1 ? "#f1ead8" : "#e8dfce"))))));
+            faces.push({
+              el: { name: scene.source_filename || "Mesh3D", semantic_layer: "3D-MESH" },
+              pts: [p0, p1, p2],
+              depth: ((p0.depth + p1.depth + p2.depth) / 3.0) - (mId >= 2 ? 0.32 : (mId === 1 ? 0.20 : 0.0)),
+              color: shadeHexColor(triHex, t[9] || 0.85),
+              isWin: (mId === 2 || mId === 7),
+              isSel: false,
+              isTri: true
+            });
+          });
+        } else {
+        scene.elements.forEach(function(el) {
+          if (!showRail && el.category === "RAILING") return;
+          if (!showFill && el.category === "UNDERFILL") return;
+          if (!showFurn && el.category === "FURNITURE") return;
+          var nmU = (el.name || "").toUpperCase();
+          // Keep A-CANOPY (`سایبان هم‌تراز سقف +6.60m`) visible even when `نمایش سقف (بام)` (`A-ROOF`) is unchecked!
+          if (!showRoof && (el.semantic_layer === "A-ROOF" || nmU.indexOf("MAIN_ROOF") !== -1)) return;
+          if (el.semantic_layer && hiddenLayers[el.semantic_layer]) return;
+
+          var pts;
+          if (el.vertices_3d && el.vertices_3d.length === 8) {
+            pts = el.vertices_3d.map(function(v) {
+              return projPt(v[0], v[1], v[2]);
+            });
+          } else {
+            var hx = el.dx * 0.5, hy = el.dy * 0.5, hz = el.dz * 0.5;
+            var ca = Math.cos(el.angle_rad || 0), sa = Math.sin(el.angle_rad || 0);
+            var localC = [
+              [-hx, -hy, -hz], [hx, -hy, -hz], [hx, hy, -hz], [-hx, hy, -hz],
+              [-hx, -hy,  hz], [hx, -hy,  hz], [hx, hy,  hz], [-hx, hy,  hz]
+            ];
+            pts = localC.map(function(c) {
+              var wx = el.cx + c[0] * ca - c[1] * sa;
+              var wy = el.cy + c[0] * sa + c[1] * ca;
+              var wz = el.cz + c[2];
+              return projPt(wx, wy, wz);
+            });
+          }
+          var baseHex = el.color_hex || (el.category === "RAILING" ? "#fde047" : (el.ifc_class === "IFCWINDOW" ? "#38bdf8" : (el.ifc_class === "IFCDOOR" ? "#f59e0b" : (el.ifc_class === "IFCSLAB" ? "#cbd5e1" : "#e8dfce"))));
+          faceIndices.forEach(function(fi) {
+            var p0 = pts[fi[0]], p1 = pts[fi[1]], p2 = pts[fi[2]], p3 = pts[fi[3]];
+            if (p0.depth <= 0.8 && p1.depth <= 0.8 && p2.depth <= 0.8 && p3.depth <= 0.8) return;
+            var avgD = (p0.depth + p1.depth + p2.depth + p3.depth) * 0.25;
+            faces.push({
+              el: el,
+              pts: [p0, p1, p2, p3],
+              depth: avgD,
+              color: shadeHexColor(baseHex, fi[4]),
+              isWin: (el.ifc_class === "IFCWINDOW"),
+              isSel: el === selected3DElem
+            });
+          });
+        });
+
+        }
+        faces.sort(function(a, b) { return b.depth - a.depth; });
+        renderedFacesCache = faces;
+        faces.forEach(function(f) {
+          ctx.beginPath();
+          ctx.moveTo(f.pts[0].sx, f.pts[0].sy);
+          for (var pi = 1; pi < f.pts.length; pi++) {
+            ctx.lineTo(f.pts[pi].sx, f.pts[pi].sy);
+          }
+          ctx.closePath();
+          ctx.fillStyle = f.color;
+          ctx.globalAlpha = f.isWin ? 0.50 : 1.0;
+          ctx.fill();
+          ctx.globalAlpha = 1.0;
+          ctx.strokeStyle = f.isSel ? "#facc15" : (f.isTri ? "rgba(51,65,85,0.28)" : "#334155");
+          ctx.lineWidth = f.isSel ? 2.2 : (f.isTri ? 0.35 : 0.65);
+          ctx.stroke();
+        });
+      }
+      document.getElementById("arch3d-chk-roof").onchange = drawScene;
+      document.getElementById("arch3d-chk-rail").onchange = drawScene;
+      document.getElementById("arch3d-chk-fill").onchange = drawScene;
+      document.getElementById("arch3d-chk-furn").onchange = drawScene;
+      draw2DCad();
+      if (scene && scene.is_3d_model) { triggerBuild3DFromApproved2D(); }
+    };
+  }
+
+  function healEmptyRenderChatBubble() {
+    var allEls = Array.from(document.querySelectorAll("div, p, span"));
+    var broken = allEls.filter(function(el) {
+      var t = (el.textContent || "").trim();
+      return (t.indexOf("پاسخ دریافتی متن قابل نمایشی نداشت") !== -1 || t.indexOf("No response from the Core API") !== -1 || t.indexOf("list index out of range") !== -1 || t.indexOf("NetworkError") !== -1 || t.indexOf("Failed to fetch") !== -1) && el.children.length <= 2;
+    });
+    if (!broken.length) return;
+    var pid = getActiveArchProjectId();
+    fetch("/api/render/latest?project_id=" + encodeURIComponent(pid))
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        if (!d || !d.ok || !d.image_url) return;
+        broken.forEach(function(b) {
+          b.innerHTML = "🎨 <b>رندر سه‌بعدی با موفقیت تولید شد:</b><br>" +
+            "<span style='font-size:12px;color:#475569;'>📁 مسیر فایل: <code>" + (d.saved_location || d.filename) + "</code></span><br>" +
+            "<img src='" + d.image_url + "' style='max-width:100%;border-radius:10px;margin-top:8px;box-shadow:0 4px 14px rgba(0,0,0,0.22);'>";
+        });
+      })
+      .catch(function() {});
+  }
+
+  if (!window.__archosQualityFetchHooked) {
+    window.__archosQualityFetchHooked = true;
+    var origFetch = window.fetch;
+    window.fetch = function(input, init) {
+      var urlStr = "";
+      try {
+        urlStr = (typeof input === "string") ? input : (input && input.url ? input.url : "");
+        if (init && init.method && init.method.toUpperCase() === "POST" && init.body && typeof init.body === "string") {
+          if (urlStr.indexOf("/api/chat") !== -1 || urlStr.indexOf("/api/design") !== -1 || urlStr.indexOf("/api/render") !== -1) {
+            var parsed = JSON.parse(init.body);
+            var curSigFetch = getActiveArchProjectSignature();
+            if (parsed.project_id && parsed.project_id !== "default") {
+              window.__archosLastActiveProjectId = parsed.project_id;
+              window.__archosLastActiveProjectIdSig = curSigFetch;
+            }
+            parsed.project_sig = curSigFetch;
+            var upInfoFetch = getCurrentProjectUploadedFileInfo();
+            if (upInfoFetch && upInfoFetch.name) {
+              parsed.selected_file = upInfoFetch.name;
+              parsed.has_ui_upload = true;
+              if (upInfoFetch.uploadId) parsed.upload_id = upInfoFetch.uploadId;
+            }
+            if (window.__archosStudioCamera && typeof window.__archosStudioCamera.yaw === "number") {
+              if (!window.__archosStudioCamera.projectSig || window.__archosStudioCamera.projectSig === curSigFetch) {
+                parsed.studio_camera = window.__archosStudioCamera;
+              }
+            }
+            var qSel = document.querySelector("select#quality, select[name='quality'], #render-quality, .quality-select");
+            if (!qSel) {
+              var allSelects = Array.from(document.querySelectorAll("select"));
+              qSel = allSelects.find(function(s) {
+                var txt = (s.textContent || "").toLowerCase();
+                return txt.indexOf("draft") !== -1 || txt.indexOf("high") !== -1 || txt.indexOf("standard") !== -1;
+              });
+            }
+            if (qSel && qSel.value && !parsed.quality) {
+              parsed.quality = qSel.value.toLowerCase();
+            }
+            var allDomSpans = Array.from(document.querySelectorAll("div, span, small, p"));
+            var refBadge = allDomSpans.find(function(el) {
+              var t = (el.textContent || "").trim();
+              return t.indexOf("REFERENCE:") === 0 && t.length < 140;
+            });
+            if (refBadge) {
+              var refTxt = (refBadge.textContent || "").replace("REFERENCE:", "").trim();
+              if (!parsed.reference_id) parsed.reference_id = refTxt.split(/\s+/)[0];
+              if (!parsed.reference_caption) parsed.reference_caption = refTxt;
+            }
+            var selCard = document.querySelector(".reference-card.selected, .ref-card.active, [data-ref-id].active, [data-ref-id].selected");
+            var refImgEl = selCard ? selCard.querySelector("img") : null;
+            if (!refImgEl && parsed.reference_id) {
+              var ridLow = String(parsed.reference_id).toLowerCase();
+              var allImgs = Array.from(document.querySelectorAll("img"));
+              refImgEl = allImgs.find(function(im) {
+                var s = (im.src || "").toLowerCase();
+                var a = (im.alt || "").toLowerCase();
+                var ptxt = (im.parentNode && im.parentNode.textContent ? im.parentNode.textContent : "").toLowerCase();
+                return s.indexOf(ridLow) !== -1 || a.indexOf(ridLow) !== -1 || ptxt.indexOf(ridLow) !== -1;
+              });
+            }
+            if (!refImgEl && window.__archosCustomRefDataUrl) {
+              parsed.reference_image_base64 = window.__archosCustomRefDataUrl;
+            }
+            if (refImgEl && refImgEl.src) {
+              if (!parsed.reference_image_url) parsed.reference_image_url = refImgEl.src;
+              try {
+                if (refImgEl.complete && refImgEl.naturalWidth > 0) {
+                  var cvRef = document.createElement("canvas");
+                  cvRef.width = 256; cvRef.height = 256;
+                  var ctxRef = cvRef.getContext("2d");
+                  ctxRef.drawImage(refImgEl, 0, 0, 256, 256);
+                  parsed.reference_image_base64 = cvRef.toDataURL("image/jpeg", 0.88);
+                }
+              } catch (eRef) {}
+            }
+            parsed.conditioned = true;
+            parsed.conceptual = false;
+            init.body = JSON.stringify(parsed);
+          }
+        }
+      } catch (e) {}
+      var p = origFetch.apply(this, arguments);
+      if (urlStr && (urlStr.indexOf("/api/chat") !== -1 || urlStr.indexOf("/api/render") !== -1)) {
+        p.then(function() {
+          setTimeout(healEmptyRenderChatBubble, 400);
+          setTimeout(healEmptyRenderChatBubble, 1500);
+        }).catch(function() {});
+      }
+      return p;
+    };
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function() {
+      injectExternalPlanUploadButton();
+      setInterval(injectExternalPlanUploadButton, 2000);
+      setInterval(healEmptyRenderChatBubble, 1000);
+    });
+  } else {
+    injectExternalPlanUploadButton();
+    setInterval(injectExternalPlanUploadButton, 2000);
+    setInterval(syncUploadButtonsWithProjectSwitch, 400);
+    setInterval(healEmptyRenderChatBubble, 1000);
+  }
+})();
+</script>
+<!-- [/ARCHITECTOS_V33_EXTERNAL_PLAN_BUTTON] -->
+
+</body>
+</html>

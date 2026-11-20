@@ -1,0 +1,194 @@
+{
+  "fixture": "abstraction_v3_teaching_corpus",
+  "version": "1.0",
+  "visibility": "LEARNER_VISIBLE",
+  "note": "No concept name, expected relation, or evaluation key appears anywhere in this file. The human's own words only, in English. Grammatical connectives are ordinary English; no architectural relation vocabulary is used as a label. Structural punctuation from other scripts is permitted but no other-script vocabulary is used.",
+  "teaching_examples": [
+    {
+      "contract": "V3WhyConditionTeachingExampleV1",
+      "version": "1.0",
+      "example_id": "T1",
+      "text": "The alcove is set back from the passage because a person who is tired needs to recover away from the movement."
+    },
+    {
+      "contract": "V3WhyConditionTeachingExampleV1",
+      "version": "1.0",
+      "example_id": "T2",
+      "text": "A niche sits apart from the corridor so that someone who is weary can recover quietly."
+    },
+    {
+      "contract": "V3WhyConditionTeachingExampleV1",
+      "version": "1.0",
+      "example_id": "T3",
+      "text": "A bay stands back from the walkway for a visitor who is exhausted to recover in a still corner."
+    },
+    {
+      "contract": "V3WhyConditionTeachingExampleV1",
+      "version": "1.0",
+      "example_id": "T4",
+      "text": "The bench is drawn away from the thoroughfare because a resting person needs to recover undisturbed."
+    },
+    {
+      "contract": "V3WhyConditionTeachingExampleV1",
+      "version": "1.0",
+      "example_id": "T5",
+      "text": "The recess is pulled away from the busy lane so that a person who is unwell can recover in peace."
+    },
+    {
+      "contract": "V3WhyConditionTeachingExampleV1",
+      "version": "1.0",
+      "example_id": "T6",
+      "text": "The hall opens onto the courtyard because the room needs to be entered easily."
+    },
+    {
+      "contract": "V3WhyConditionTeachingExampleV1",
+      "version": "1.0",
+      "example_id": "T7",
+      "text": "The stair meets the landing because a walker needs to arrive somewhere clear."
+    }
+  ],
+  "comparison_corpora": {
+    "filler_substituted_examples": [
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "T1-filler",
+        "text": "The burrow is set back from the channel because a person who is tired needs to recover away from the movement."
+      },
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "T2-filler",
+        "text": "A grotto sits apart from the gutter so that someone who is weary can recover quietly."
+      },
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "T3-filler",
+        "text": "A cove stands back from the ditch for a visitor who is exhausted to recover in a still corner."
+      },
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "T4-filler",
+        "text": "The stool is drawn away from the byway because a resting person needs to recover undisturbed."
+      },
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "T5-filler",
+        "text": "The recess is pulled away from the noisy track so that a person who is unwell can recover in peace."
+      }
+    ],
+    "reformulated_examples": [
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "T1-ref",
+        "text": "Because a person who is tired needs to recover away from the movement, the alcove is set back from the passage."
+      },
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "T2-ref",
+        "text": "So that someone who is weary can recover quietly, a niche sits apart from the corridor."
+      },
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "T3-ref",
+        "text": "In order that a visitor who is exhausted recovers in a still corner, a bay stands back from the walkway."
+      }
+    ],
+    "why_swapped_examples": [
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "T1-swap",
+        "text": "The alcove is set back from the passage because the paint is a warm shade."
+      },
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "T2-swap",
+        "text": "A niche sits apart from the corridor so that the plan is easier to draw."
+      },
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "T3-swap",
+        "text": "A bay stands back from the walkway for the budget to stay the same."
+      }
+    ],
+    "counterfactual_examples": [
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "T1-cf",
+        "text": "The alcove is set within the passage because a person who is tired needs to recover away from the movement."
+      },
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "T2-cf",
+        "text": "A niche sits apart from the corridor so that someone who is weary can recover quietly."
+      }
+    ]
+  },
+  "novel_concept_corpus": {
+    "note": "N1 and N2 state a teaching relation using NO word from the predefined relation or scope vocabulary. They exist to test whether a novel relational pattern can be reached at all. They are NOT promised to succeed.",
+    "novel_teaching_examples": [
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "N1",
+        "text": "The bench turns its back on the plaza because a person who is reading needs to not be seen."
+      },
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "N2",
+        "text": "The seat turns its back on the street because someone who is thinking needs to not be seen."
+      }
+    ],
+    "novel_unseen_cases": [
+      {
+        "contract": "V3UnseenCaseV1",
+        "version": "1.0",
+        "case_id": "N1-unseen",
+        "text": "The ledge turns its back on the road because a person who is resting needs to not be seen."
+      }
+    ]
+  },
+  "mode_p_probe_corpus": {
+    "note": "A SEPARATE, deliberately favourable corpus for the Mode-P baseline. In this corpus the humans' WHY literally contains the same word the predefined vocabulary supplies as a kind. It exists so the Mode-P baseline can be shown to reach its ceiling when, and only when, the reason happens to repeat the supplied vocabulary. This is the degenerate case that makes representation dependence measurable.",
+    "teaching_examples": [
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "MP1",
+        "text": "The hall opens onto the court because access is needed for visitors."
+      },
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "MP2",
+        "text": "The lobby opens onto the yard because access is needed for guests."
+      },
+      {
+        "contract": "V3WhyConditionTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "MP3",
+        "text": "The room opens onto the garden because access is needed for people."
+      }
+    ],
+    "unseen_cases": [
+      {
+        "contract": "V3UnseenCaseV1",
+        "version": "1.0",
+        "case_id": "MP-U1",
+        "text": "The porch opens onto the lane because access is needed for walkers."
+      }
+    ]
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "climates": {
+
+
+    "hot_dry": {
+
+      "strategies": [
+
+        "control direct solar exposure",
+        "provide shaded openings",
+        "use thermal mass",
+        "reduce excessive glazing"
+
+      ],
+
+      "facade_modifications": [
+
+        "deep window reveals",
+        "shading elements",
+        "limited west openings",
+        "controlled south openings"
+
+      ]
+
+    },
+
+
+    "hot_humid": {
+
+      "strategies": [
+
+        "increase natural ventilation",
+        "reduce heat gain",
+        "protect from rain"
+
+      ],
+
+      "facade_modifications": [
+
+        "larger openings",
+        "ventilated facade",
+        "sun shading devices"
+
+      ]
+
+    },
+
+
+    "cold": {
+
+      "strategies": [
+
+        "maximize solar gain",
+        "reduce heat loss"
+
+      ],
+
+      "facade_modifications": [
+
+        "compact openings",
+        "insulated facade",
+        "controlled glazing"
+
+      ]
+
+    }
+
+  },
+
+
+  "orientation_rules": {
+
+
+    "south": [
+
+      "use horizontal shading",
+      "control summer solar gain"
+
+    ],
+
+
+    "west": [
+
+      "limit large openings",
+      "use stronger shading"
+
+    ],
+
+
+    "east": [
+
+      "control morning solar radiation"
+
+    ],
+
+
+    "north": [
+
+      "allow controlled daylight"
+
+    ]
+
+  }
+
+}

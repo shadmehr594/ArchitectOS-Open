@@ -1,0 +1,512 @@
+{
+  "styles": {
+
+    "modern": {
+
+      "synonyms": [
+        "modern",
+        "مدرن",
+        "معاصر",
+        "contemporary"
+      ],
+
+      "character": [
+        "simple_geometry",
+        "clean_lines",
+        "functional_expression",
+        "material_contrast",
+        "minimal_expression"
+      ],
+
+      "form_language": [
+        "simple_volumes",
+        "flat_roof",
+        "open_plan",
+        "horizontal_composition"
+      ],
+
+      "facade_languages": [
+        "large_openings",
+        "glass_combination",
+        "stone_modern",
+        "wood_combination",
+        "metal_details",
+        "horizontal_lines",
+        "layered_volumes",
+        "deep_frames",
+        "projecting_frames",
+        "recessed_openings",
+        "shadow_gaps",
+        "floating_canopies",
+        "vertical_fins",
+        "controlled_asymmetry",
+        "solid_void_contrast",
+        "material_contrast",
+        "indoor_outdoor_continuity"
+      ],
+
+      "materials": [
+        "glass",
+        "concrete",
+        "stone",
+        "wood",
+        "metal"
+      ]
+
+    },
+
+
+    "classic": {
+
+      "synonyms": [
+        "classic",
+        "کلاسیک"
+      ],
+
+      "character": [
+        "symmetry",
+        "formal_composition",
+        "decorative_details",
+        "balanced_proportion"
+      ],
+
+      "form_language": [
+        "symmetrical_mass",
+        "formal_axis",
+        "balanced_facade"
+      ],
+
+      "facade_languages": [
+        "stone_cladding",
+        "window_frames",
+        "arches",
+        "balustrades",
+        "cornices"
+      ],
+
+      "materials": [
+        "travertine",
+        "natural_stone",
+        "marble"
+      ]
+
+    },
+
+
+    "roman_classic": {
+
+      "synonyms": [
+        "roman",
+        "رومی",
+        "نمای رومی",
+        "classic stone facade"
+      ],
+
+      "character": [
+        "monumental_expression",
+        "classical_proportion",
+        "luxury_appearance",
+        "formal_symmetry"
+      ],
+
+      "form_language": [
+        "strong_axis",
+        "central_entrance",
+        "monumental_mass"
+      ],
+
+      "facade_languages": [
+        "stone_frames",
+        "columns",
+        "arches",
+        "domes",
+        "stone_railings",
+        "decorative_cornice",
+        "window_surrounds"
+      ],
+
+      "materials": [
+        "travertine",
+        "marble",
+        "natural_stone"
+      ]
+
+    },
+
+
+    "neoclassical": {
+
+      "synonyms": [
+        "neoclassical",
+        "نئوکلاسیک",
+        "نئو کلاسیک"
+      ],
+
+      "character": [
+        "classical_order",
+        "modern_luxury",
+        "symmetry",
+        "refined_details"
+      ],
+
+      "form_language": [
+        "balanced_volume",
+        "classical_grid",
+        "formal_entry"
+      ],
+
+      "facade_languages": [
+        "columns",
+        "pilasters",
+        "stone_frames",
+        "cornices",
+        "classical_windows"
+      ],
+
+      "materials": [
+        "travertine",
+        "marble",
+        "stone"
+      ]
+
+    },
+
+
+    "iranian_traditional": {
+
+      "synonyms": [
+        "iranian traditional",
+        "سنتی ایرانی",
+        "معماری ایرانی",
+        "بومی"
+      ],
+
+      "character": [
+        "climate_response",
+        "courtyard_living",
+        "local_identity",
+        "human_scale"
+      ],
+
+      "form_language": [
+        "central_courtyard",
+        "introverted_layout",
+        "thick_walls",
+        "controlled_openings",
+        "ivaan"
+      ],
+
+      "facade_languages": [
+        "brick_work",
+        "arches",
+        "vaults",
+        "ivans",
+        "ornamental_patterns",
+        "shaded_openings",
+        "orsi_window",
+        "tile_work",
+        "courtyard_facade"
+      ],
+
+      "materials": [
+        "traditional_brick",
+        "mud_brick",
+        "kahgel",
+        "natural_stone",
+        "glazed_tile"
+      ]
+
+    },
+
+
+    "islamic_architecture": {
+
+      "synonyms": [
+        "islamic",
+        "اسلامی",
+        "معماری اسلامی"
+      ],
+
+      "character": [
+        "geometric_order",
+        "ornament",
+        "spiritual_expression",
+        "axis_based_design"
+      ],
+
+      "form_language": [
+        "courtyard",
+        "dome",
+        "vault",
+        "central_axis"
+      ],
+
+      "facade_languages": [
+        "arches",
+        "muqarnas",
+        "tile_work",
+        "calligraphy",
+        "geometric_patterns"
+      ],
+
+      "materials": [
+        "traditional_brick",
+        "glazed_tile",
+        "stone",
+        "marble"
+      ]
+
+    },
+
+
+    "iranian_brick": {
+
+      "synonyms": [
+        "brick",
+        "آجری",
+        "نمای آجری",
+        "آجر نسوز",
+        "آجر قرمز"
+      ],
+
+      "character": [
+        "warm_expression",
+        "natural_identity",
+        "human_scale",
+        "craftsmanship"
+      ],
+
+      "form_language": [
+        "brick_mass",
+        "textured_surface",
+        "layered_facade"
+      ],
+
+      "facade_languages": [
+        "brick_pattern",
+        "traditional_details",
+        "shading_elements",
+        "brick_arches",
+        "brick_lattice_screen",
+        "geometric_brick_relief",
+        "deep_brick_reveal",
+        "qazaghi_brick_detailing"
+      ],
+
+      "materials": [
+        "red_brick",
+        "fire_brick",
+        "traditional_brick"
+      ]
+
+    },
+
+    "french_classical": {
+
+      "synonyms": [
+        "french classical",
+        "french classicism",
+        "french classic",
+        "فرانسه کلاسیک",
+        "کلاسیک فرانسوی",
+        "نمای فرانسوی"
+      ],
+
+      "character": [
+        "classical_order",
+        "formal_symmetry",
+        "measured_proportion",
+        "refined_stonework"
+      ],
+
+      "form_language": [
+        "symmetrical_mass",
+        "hipped_roof",
+        "axial_entry",
+        "balanced_facade"
+      ],
+
+      "facade_languages": [
+        "classical_orders",
+        "engaged_columns",
+        "pilasters",
+        "tall_arched_windows",
+        "string_courses",
+        "quoins",
+        "dentilled_cornice",
+        "balustrades",
+        "ashlar_stonework"
+      ],
+
+      "materials": [
+        "natural_stone",
+        "stone",
+        "metal",
+        "glass"
+      ],
+
+      "optional_elements": [
+        "mansard_roof",
+        "cupola",
+        "sculptural_relief",
+        "dormers"
+      ]
+
+    },
+
+    "beaux_arts": {
+
+      "synonyms": [
+        "beaux arts",
+        "beaux-arts",
+        "beaux arts style",
+        "بوزار",
+        "هنرهای زیبا"
+      ],
+
+      "character": [
+        "monumental_symmetry",
+        "sculptural_richness",
+        "layered_orders",
+        "grand_entrance"
+      ],
+
+      "form_language": [
+        "axial_composition",
+        "rusticated_base",
+        "prominent_cornice",
+        "sculptural_skyline"
+      ],
+
+      "facade_languages": [
+        "paired_columns",
+        "composite_capitals",
+        "rusticated_base",
+        "tall_arched_windows",
+        "sculptural_relief",
+        "modillion_cornice",
+        "balustrades",
+        "ornamental_metalwork",
+        "ashlar_stonework"
+      ],
+
+      "materials": [
+        "marble",
+        "natural_stone",
+        "stone",
+        "metal"
+      ],
+
+      "optional_elements": [
+        "mansard_roof",
+        "cupola",
+        "figural_sculpture",
+        "corner_pavilions"
+      ]
+
+    },
+
+    "second_empire": {
+
+      "synonyms": [
+        "second empire",
+        "second empire style",
+        "haussmann",
+        "napoleon iii",
+        "mansard style",
+        "امپراتوری دوم",
+        "هوسمان"
+      ],
+
+      "character": [
+        "mansard_silhouette",
+        "pavilion_massing",
+        "ornate_surfaces",
+        "formal_symmetry"
+      ],
+
+      "form_language": [
+        "mansard_roof",
+        "projecting_central_pavilion",
+        "symmetrical_bays",
+        "strong_cornice"
+      ],
+
+      "facade_languages": [
+        "mansard_roof",
+        "dormers",
+        "tall_arched_windows",
+        "heavy_window_surrounds",
+        "quoins",
+        "bracketed_cornice",
+        "ornamental_metalwork",
+        "stone_trim"
+      ],
+
+      "materials": [
+        "natural_stone",
+        "red_brick",
+        "metal",
+        "stone"
+      ],
+
+      "optional_elements": [
+        "cupola",
+        "sculptural_relief",
+        "corner_pavilions"
+      ]
+
+    },
+
+    "french_provincial": {
+
+      "synonyms": [
+        "french provincial",
+        "provence",
+        "provencal",
+        "rustic french",
+        "پروانس",
+        "روستایی فرانسه"
+      ],
+
+      "character": [
+        "rustic_simplicity",
+        "local_materials",
+        "human_scale",
+        "weathered_character"
+      ],
+
+      "form_language": [
+        "low_pitched_roof",
+        "thick_walls",
+        "modest_openings",
+        "asymmetric_extension"
+      ],
+
+      "facade_languages": [
+        "stucco_walls",
+        "stone_quoins",
+        "small_paned_windows",
+        "timber_shutters",
+        "arched_ground_openings",
+        "simple_cornice",
+        "wrought_iron_details"
+      ],
+
+      "materials": [
+        "natural_stone",
+        "architectural_render",
+        "wood",
+        "metal"
+      ],
+
+      "optional_elements": [
+        "dormers",
+        "decorative_ironwork",
+        "exposed_beams"
+      ]
+
+    }
+
+  }
+}

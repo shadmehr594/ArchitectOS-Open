@@ -1,0 +1,30 @@
+{
+  "schema": "PATTERN_SELECTION_MODEL_V1",
+  "pipeline": [
+    "SITE+PROGRAM+USER_CONSTRAINTS+JURISDICTION",
+    "APPLICABLE_FAMILIES",
+    "3-5_DISTINCT_GRAMMARS",
+    "ZONING_ACCESS_DAYLIGHT_GRAPHS",
+    "GEOMETRY_LATER",
+    "VALIDATE",
+    "SCORE",
+    "HUMAN_REVIEW"
+  ],
+  "selector_factors": [
+    "site_width_m",
+    "site_depth_m",
+    "open_legal_edges",
+    "street_location",
+    "bedroom_count",
+    "public_space_priority",
+    "daylight_deficit",
+    "privacy_requirement",
+    "yard_courtyard_available",
+    "parking_required",
+    "building_placement_preference",
+    "user_preferences",
+    "jurisdiction"
+  ],
+  "no_hardcoded_winner": true,
+  "failure_code": "COSMETIC_VARIATION_ONLY"
+}

@@ -1,0 +1,15 @@
+{
+  "contract": "ProjectPlanningControlInputsV1",
+  "policy": "Local regulations validate project inputs; they do not become nationwide design defaults.",
+  "project_input_fields": ["allowed_FAR", "coverage_controls", "max_site_coverage", "commercial_area_target", "commercial_use_type", "local_regulation_jurisdiction"],
+  "coverage_control_semantics": {
+    "canonical_field": "coverage_controls",
+    "required_record_fields": ["id", "floor_scope", "use", "value_percent", "authority_class", "source_reference", "provenance", "applicability"],
+    "legacy_scalar_field": "max_site_coverage",
+    "legacy_policy": "accepted only when supplied explicitly; never generated from coverage_controls and never used to collapse mixed-use controls"
+  },
+  "authority_class": "PROJECT_REQUIREMENT",
+  "workflow": ["PROJECT_REQUIREMENT", "LOCAL_REGULATION_VALIDATION", "NATIONAL_REGULATION_VALIDATION"],
+  "terminal_statuses": ["pass", "conflict", "approval_required", "unresolved"],
+  "forbidden": ["local_rule_as_nationwide_default", "validator_input_overwrite", "article_5_approval_generalization", "geometry_derived_project_control_value", "mixed_use_coverage_collapsed_to_global_scalar", "coverage_default_generation"]
+}

@@ -1,0 +1,17 @@
+{
+  "fixture": "abstraction_v3_author_reference",
+  "version": "1.0",
+  "visibility": "AUTHOR_ONLY",
+  "note": "This file records what the AUTHOR had in mind. It exists for audit. It is never given to the learner, and the probe reads it ONLY after its verdict. Recording an intent here does NOT make that intent evidenced: the whole point of V3 is that the learner may fail to reach it, and that a failure to reach it is reported honestly.",
+  "author_intent": {
+    "intended_concept": "a place to be apart and recover",
+    "intended_relation_shape": "a resting participant is placed away from movement",
+    "intended_why": "the person needs to recover",
+    "intended_relation_should_be_reached_without_vocabulary": true
+  },
+  "author_expectation_summary": {
+    "mode_p_expected_ceiling": "LEVEL_B_STRUCTURED_GENERALIZATION",
+    "mode_e_expected_outcome": "unknown - the author does not know whether Mode E can derive a why-grounded slot from this corpus, and deliberately does not decide it in advance",
+    "note": "The author's expectation for Mode E is recorded as unknown on purpose. If it were recorded as an expected success, the evaluator could be tempted to bend the verdict toward it."
+  }
+}

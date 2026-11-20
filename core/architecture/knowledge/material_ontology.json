@@ -1,0 +1,461 @@
+{
+  "materials": {
+
+
+    "travertine": {
+
+      "styles": [
+        "roman_classic",
+        "classic",
+        "neoclassical",
+        "luxury"
+      ],
+
+      "properties": [
+        "classical_character",
+        "thermal_mass",
+        "stone_detail_capability"
+      ],
+
+      "uses": [
+        "facade_cladding",
+        "window_frames",
+        "columns",
+        "base"
+      ]
+
+    },
+
+
+    "fire_brick": {
+
+      "styles": [
+        "iranian_brick",
+        "modern_warm",
+        "traditional"
+      ],
+
+      "properties": [
+        "warm_texture",
+        "local_identity",
+        "durability"
+      ],
+
+      "uses": [
+        "facade_cladding",
+        "accent_wall"
+      ]
+
+    },
+
+
+    "red_brick": {
+
+      "styles": [
+        "iranian",
+        "contemporary",
+        "second_empire"
+      ],
+
+      "properties": [
+        "human_scale",
+        "natural_character"
+      ],
+
+      "uses": [
+        "facade",
+        "screens"
+      ]
+
+    },
+
+
+    "glass": {
+
+      "styles": [
+        "modern"
+      ],
+
+      "properties": [
+        "transparency",
+        "daylight"
+      ],
+
+      "limitations": [
+        "needs_solar_control"
+      ],
+
+      "uses": [
+        "windows",
+        "curtain_wall"
+      ]
+
+    },
+
+
+    "wood": {
+
+      "styles": [
+        "modern",
+        "warm",
+        "luxury"
+      ],
+
+      "properties": [
+        "natural_warmth"
+      ],
+
+      "uses": [
+        "entrance",
+        "details"
+      ]
+
+    },
+
+    "concrete": {
+      "category": "mineral",
+      "styles": [
+        "modern",
+        "contemporary",
+        "minimal",
+        "industrial"
+      ],
+      "properties": [
+        "thermal_mass",
+        "monolithic_character",
+        "minimal_expression",
+        "durability"
+      ],
+      "uses": [
+        "facade_cladding",
+        "base",
+        "plinth",
+        "structural_expression",
+        "feature_wall"
+      ]
+    },
+
+    "exposed_concrete": {
+      "category": "mineral",
+      "styles": [
+        "modern",
+        "contemporary",
+        "minimal",
+        "brutalist"
+      ],
+      "properties": [
+        "raw_texture",
+        "monolithic_character",
+        "architectural_expression"
+      ],
+      "uses": [
+        "facade",
+        "feature_volume",
+        "vertical_plane",
+        "canopy"
+      ]
+    },
+
+    "stone": {
+      "category": "natural_stone",
+      "styles": [
+        "modern",
+        "contemporary",
+        "classic",
+        "neoclassical",
+        "french_classical",
+        "beaux_arts",
+        "second_empire",
+        "french_provincial"
+      ],
+      "properties": [
+        "durability",
+        "natural_texture",
+        "solid_expression"
+      ],
+      "uses": [
+        "facade_cladding",
+        "base",
+        "entrance",
+        "feature_wall"
+      ]
+    },
+
+    "marble": {
+      "category": "natural_stone",
+      "styles": [
+        "classic",
+        "roman_classic",
+        "neoclassical",
+        "luxury",
+        "beaux_arts",
+        "french_classical"
+      ],
+      "properties": [
+        "refined_surface",
+        "luxury_character",
+        "fine_detail_capability"
+      ],
+      "uses": [
+        "facade_cladding",
+        "frames",
+        "columns",
+        "entrance",
+        "decorative_details"
+      ]
+    },
+
+    "metal": {
+      "category": "metal",
+      "styles": [
+        "modern",
+        "contemporary",
+        "minimal",
+        "industrial",
+        "french_classical",
+        "beaux_arts",
+        "second_empire",
+        "french_provincial"
+      ],
+      "properties": [
+        "lightweight_expression",
+        "precision",
+        "thin_profile_capability"
+      ],
+      "uses": [
+        "frames",
+        "shading",
+        "canopy",
+        "railings",
+        "facade_details"
+      ]
+    },
+
+    "aluminum": {
+      "category": "metal",
+      "styles": [
+        "modern",
+        "contemporary",
+        "minimal"
+      ],
+      "properties": [
+        "lightweight",
+        "weather_resistant",
+        "precision_profile"
+      ],
+      "uses": [
+        "window_frames",
+        "curtain_wall_frames",
+        "louvers",
+        "shading_systems"
+      ]
+    },
+
+    "dark_metal": {
+      "category": "metal",
+      "styles": [
+        "modern",
+        "contemporary",
+        "luxury"
+      ],
+      "properties": [
+        "visual_contrast",
+        "thin_profile_expression",
+        "modern_character"
+      ],
+      "uses": [
+        "window_frames",
+        "entrance_frames",
+        "canopies",
+        "railings",
+        "accent_lines"
+      ]
+    },
+
+    "architectural_render": {
+      "category": "coating",
+      "styles": [
+        "modern",
+        "contemporary",
+        "minimal",
+        "french_provincial"
+      ],
+      "properties": [
+        "continuous_surface",
+        "clean_finish",
+        "neutral_expression"
+      ],
+      "uses": [
+        "facade_surface",
+        "recessed_volume",
+        "parapet",
+        "courtyard_wall"
+      ]
+    },
+
+    "wood_composite": {
+      "category": "wood",
+      "styles": [
+        "modern",
+        "contemporary",
+        "warm_modern"
+      ],
+      "properties": [
+        "natural_warmth",
+        "linear_texture",
+        "weather_resistance"
+      ],
+      "uses": [
+        "facade_accent",
+        "entrance",
+        "soffit",
+        "vertical_panels",
+        "shading"
+      ]
+    },
+
+
+    "kahgel": {
+
+    "category": "traditional_iranian",
+
+    "styles": [
+        "iranian_traditional",
+        "desert_architecture",
+        "vernacular"
+    ],
+
+    "properties": [
+        "thermal_mass",
+        "natural_texture",
+        "earth_character",
+        "climate_adaptation"
+    ],
+
+    "climates": [
+        "hot_dry"
+    ],
+
+    "uses": [
+        "traditional_facade",
+        "courtyard_wall",
+        "wall_finish"
+    ]
+
+},
+
+
+"mud_brick": {
+
+    "category": "earthen_material",
+
+    "styles": [
+        "iranian_traditional",
+        "vernacular",
+        "desert"
+    ],
+
+    "properties": [
+        "high_thermal_mass",
+        "local_material",
+        "humidity_buffer"
+    ],
+
+    "climates": [
+        "hot_dry"
+    ],
+
+    "uses": [
+        "walls",
+        "mass",
+        "courtyard"
+    ]
+
+},
+
+
+"traditional_brick": {
+
+    "category": "iranian",
+
+    "styles": [
+        "iranian_traditional",
+        "brick_architecture",
+        "contemporary_iranian"
+    ],
+
+    "properties": [
+        "warm_texture",
+        "craftsmanship",
+        "architectural_identity"
+    ],
+
+    "uses": [
+        "facade",
+        "arches",
+        "brick_pattern",
+        "ornament"
+    ]
+
+},
+
+
+"natural_stone": {
+
+    "category": "vernacular",
+
+    "styles": [
+        "rustic",
+        "mountain",
+        "iranian_traditional",
+        "french_classical",
+        "beaux_arts",
+        "second_empire",
+        "french_provincial"
+    ],
+
+    "properties": [
+        "natural_character",
+        "rough_texture",
+        "local_identity"
+    ],
+
+    "uses": [
+        "base",
+        "facade",
+        "landscape_wall"
+    ]
+
+},
+
+"glazed_tile": {
+
+    "category": "ceramic",
+
+    "styles": [
+        "islamic_architecture",
+        "iranian_traditional"
+    ],
+
+    "properties": [
+        "glazed_surface",
+        "colour_saturation",
+        "ornamental_capability"
+    ],
+
+    "uses": [
+        "facade",
+        "ornament",
+        "dome",
+        "entrance"
+    ],
+
+    "finish": [
+        "glazed"
+    ]
+
+}
+
+  }
+
+}

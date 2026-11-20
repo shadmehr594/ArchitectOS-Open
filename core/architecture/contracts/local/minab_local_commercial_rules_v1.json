@@ -1,0 +1,19 @@
+{
+  "contract": "MinabLocalCommercialRulesV1",
+  "jurisdiction": "MINAB_LOCAL_ONLY",
+  "document_status": "PRIMARY_LOCAL_WORKING_REGULATION",
+  "promulgation_status": "promulgation_unverified",
+  "source_document": "Minab Detailed Plan, Volume 4, Regulations, Spring 1400",
+  "source_sha256": "13B2C9A9E7279CA3B4641EC0DC1C9B175ADBC1474C52C5DAD562746AA3E05DB2",
+  "rules": [
+    {"id": "commercial_service_unit_neighborhood_minimum", "value_m2": 18, "minimum_width_m": 3.0, "applicability": "commercial_service_land_neighborhood", "printed_page": 36, "pdf_page": 42},
+    {"id": "commercial_service_unit_district_city_minimum", "value_m2": 25, "minimum_width_m": 3.5, "applicability": "commercial_service_land_district_or_city", "printed_page": 36, "pdf_page": 42},
+    {"id": "floating_commercial_article_5_threshold", "threshold_m2": 100, "above_threshold": "approval_required", "approval": "Article 5 case-specific", "applicability": "eligible_floating_commercial_axis_only", "printed_page": 36, "pdf_page": 42},
+    {"id": "residential_land_neighborhood_exception", "maximum_m2": 18, "unit_count": 1, "parking_required": true, "applicability": "residential_land_neighborhood_only", "printed_page": 18, "pdf_page": 22},
+    {"id": "commercial_land_not_globally_capped_at_100", "global_100_m2_cap": false, "controls": ["local_zoning", "FAR", "site_coverage", "floors", "parking"], "applicability": "commercial_service_land", "printed_page": 38, "pdf_page": 44},
+    {"id": "mixed_commercial_pilotis_ground", "allowed": "conditional", "commercial_entrance": "street_not_through_pilotis", "applicability": "source_conditions_must_be_verified", "printed_page": 38, "pdf_page": 44}
+  ],
+  "may_generate_project_values": false,
+  "may_apply_outside_minab": false,
+  "article_5_approvals_generalizable": false
+}

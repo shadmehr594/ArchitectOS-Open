@@ -1,0 +1,38 @@
+{
+  "format_version": "forward_rule_registry_v1",
+  "rules": {
+    "seating_and_adult_beds": {
+      "status": "supported",
+      "semantic_forward_axis": "+Z",
+      "expected_geometry_direction": "-Z",
+      "geometry_gate_required": true,
+      "scope": {
+        "include_categories": [
+          "chair",
+          "classic_chinese_chair",
+          "lounge_chair_/_cafe_chair_/_office_chair",
+          "lounge_chair_/_book_chair_/_computer_chair",
+          "dressing_chair",
+          "three_seat_/_multi_seat_sofa",
+          "loveseat_sofa",
+          "l_shaped_sofa",
+          "bed",
+          "king_size_bed"
+        ],
+        "exclude_categories": [
+          "kids_bed",
+          "bunk_bed"
+        ]
+      },
+      "evidence": {
+        "rule_id": "forward_family_rule_v1",
+        "source_checkpoint": "phase_3d_q_bounded_audit",
+        "agreement": 0.95,
+        "notes": [
+          "seating_and_adult_beds_only",
+          "kids_and_bunk_beds_excluded"
+        ]
+      }
+    }
+  }
+}

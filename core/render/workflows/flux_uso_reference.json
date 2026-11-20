@@ -1,0 +1,162 @@
+{
+  "202": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux1-dev-fp8.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "204": {
+    "class_type": "DualCLIPLoader",
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux",
+      "device": "default"
+    }
+  },
+  "205": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    }
+  },
+  "206": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "204",
+        0
+      ],
+      "text": "architectural visualization"
+    }
+  },
+  "212": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "clip": [
+        "204",
+        0
+      ],
+      "text": ""
+    }
+  },
+  "300": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "reference_not_bound.png"
+    }
+  },
+  "304": {
+    "class_type": "CLIPVisionLoader",
+    "inputs": {
+      "clip_name": "sigclip_vision_patch14_384.safetensors"
+    }
+  },
+  "303": {
+    "class_type": "CLIPVisionEncode",
+    "inputs": {
+      "clip_vision": [
+        "304",
+        0
+      ],
+      "image": [
+        "300",
+        0
+      ],
+      "crop": "center"
+    }
+  },
+  "320": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": [
+        "202",
+        0
+      ],
+      "lora_name": "uso-flux1-dit-lora-v1.safetensors",
+      "strength_model": 1.0
+    }
+  },
+  "321": {
+    "class_type": "ModelPatchLoader",
+    "inputs": {
+      "name": "uso-flux1-projector-v1.safetensors"
+    }
+  },
+  "322": {
+    "class_type": "USOStyleReference",
+    "inputs": {
+      "model": [
+        "320",
+        0
+      ],
+      "model_patch": [
+        "321",
+        0
+      ],
+      "clip_vision_output": [
+        "303",
+        0
+      ]
+    }
+  },
+  "332": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 1024,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "210": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "322",
+        0
+      ],
+      "seed": 0,
+      "steps": 20,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "positive": [
+        "206",
+        0
+      ],
+      "negative": [
+        "212",
+        0
+      ],
+      "latent_image": [
+        "332",
+        0
+      ],
+      "denoise": 1.0
+    }
+  },
+  "208": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "210",
+        0
+      ],
+      "vae": [
+        "205",
+        0
+      ]
+    }
+  },
+  "9": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "208",
+        0
+      ],
+      "filename_prefix": "architectos_uso_reference"
+    }
+  }
+}

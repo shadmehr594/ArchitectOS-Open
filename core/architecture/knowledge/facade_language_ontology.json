@@ -1,0 +1,343 @@
+{
+  "facade_languages": {
+
+
+    "roman_classic": {
+
+      "composition": [
+        "symmetrical facade",
+        "formal entrance axis",
+        "classical proportion"
+      ],
+
+      "elements": [
+        "stone window frames",
+        "arches",
+        "columns",
+        "balustrades",
+        "decorative cornice",
+        "stone base"
+      ],
+
+      "materials": [
+        "travertine",
+        "natural stone",
+        "marble details"
+      ]
+
+    },
+
+
+    "classic": {
+
+      "composition": [
+        "balanced facade",
+        "formal organization",
+        "vertical emphasis"
+      ],
+
+      "elements": [
+        "window frames",
+        "stone details",
+        "classical trims",
+        "symmetrical openings"
+      ],
+
+      "materials": [
+        "travertine",
+        "natural stone"
+      ]
+
+    },
+
+
+    "iranian_brick": {
+
+      "composition": [
+        "warm facade expression",
+        "human scale",
+        "textured surface"
+      ],
+
+      "elements": [
+        "brick patterns",
+        "deep window openings",
+        "shading elements",
+        "traditional brick details",
+        "brick lattice screens",
+        "geometric brick relief",
+        "deep brick reveals",
+        "qazaghi brick detailing"
+      ],
+
+      "materials": [
+        "fire_brick",
+        "red_brick"
+      ]
+
+    },
+
+
+    "modern": {
+
+      "composition": [
+        "simple geometry",
+        "clean lines",
+        "horizontal composition"
+      ],
+
+      "elements": [
+        "large openings",
+        "glass surfaces",
+        "minimal details"
+      ],
+
+      "materials": [
+        "glass",
+        "concrete",
+        "wood"
+      ]
+
+    },
+
+
+    "modern_minimal": {
+      "composition": [
+        "clean planar composition",
+        "strong solid void contrast",
+        "controlled asymmetry",
+        "minimal depth hierarchy"
+      ],
+      "elements": [
+        "large glazing",
+        "recessed openings",
+        "thin dark frames",
+        "flat canopy",
+        "shadow gaps",
+        "minimal parapet"
+      ],
+      "materials": [
+        "architectural_render",
+        "glass",
+        "dark_metal",
+        "concrete"
+      ]
+    },
+
+    "modern_luxury": {
+      "composition": [
+        "layered volumes",
+        "deep facade frames",
+        "large transparent zones",
+        "strong entrance hierarchy",
+        "controlled material contrast"
+      ],
+      "elements": [
+        "projecting frames",
+        "double height glazing",
+        "deep reveals",
+        "feature stone planes",
+        "linear lighting zones",
+        "floating canopy"
+      ],
+      "materials": [
+        "stone",
+        "glass",
+        "dark_metal",
+        "wood_composite"
+      ]
+    },
+
+    "contemporary_warm": {
+      "composition": [
+        "warm material contrast",
+        "layered horizontal volumes",
+        "indoor outdoor continuity",
+        "controlled asymmetry"
+      ],
+      "elements": [
+        "wood panels",
+        "large glazing",
+        "horizontal slabs",
+        "deep balconies",
+        "vertical fins",
+        "recessed entrance"
+      ],
+      "materials": [
+        "wood_composite",
+        "glass",
+        "architectural_render",
+        "dark_metal"
+      ]
+    },
+
+    "contemporary_stone": {
+      "composition": [
+        "monolithic stone planes",
+        "deep openings",
+        "layered solid volumes",
+        "strong vertical and horizontal frames"
+      ],
+      "elements": [
+        "stone feature walls",
+        "recessed glazing",
+        "deep frames",
+        "floating slabs",
+        "vertical fins",
+        "entrance portal"
+      ],
+      "materials": [
+        "stone",
+        "glass",
+        "dark_metal",
+        "wood_composite"
+      ]
+    },
+
+    "french_classical": {
+      "styles": [
+        "french_classical",
+        "french_classicism",
+        "french_classic",
+        "french",
+        "french_facade"
+      ],
+      "composition": [
+        "formal symmetry",
+        "measured classical proportion",
+        "restrained ornament",
+        "strong horizontal cornice"
+      ],
+      "elements": [
+        "classical orders",
+        "engaged columns",
+        "pilasters",
+        "tall arched windows",
+        "string courses",
+        "quoins",
+        "dentilled cornice",
+        "stone balustrades",
+        "ashlar stonework"
+      ],
+      "materials": [
+        "natural_stone",
+        "stone",
+        "metal"
+      ],
+      "optional_elements": [
+        "mansard roof",
+        "cupola",
+        "sculptural relief",
+        "dormers"
+      ]
+    },
+
+    "beaux_arts": {
+      "styles": [
+        "beaux_arts",
+        "beaux-arts",
+        "beaux_arts_style"
+      ],
+      "composition": [
+        "monumental axial symmetry",
+        "layered classical orders",
+        "rich sculptural ornament",
+        "grand entrance hierarchy"
+      ],
+      "elements": [
+        "paired columns",
+        "composite capitals",
+        "rusticated base",
+        "tall arched windows",
+        "sculptural relief panels",
+        "modillion cornice",
+        "stone balustrades",
+        "ornamental metalwork",
+        "ashlar stonework"
+      ],
+      "materials": [
+        "marble",
+        "natural_stone",
+        "stone",
+        "metal"
+      ],
+      "optional_elements": [
+        "mansard roof",
+        "cupola",
+        "figural sculpture",
+        "corner pavilions"
+      ]
+    },
+
+    "second_empire": {
+      "styles": [
+        "second_empire",
+        "haussmann",
+        "napoleon_iii",
+        "mansard_style"
+      ],
+      "composition": [
+        "mansard silhouette",
+        "symmetrical bays",
+        "pavilion massing",
+        "strong bracketed cornice"
+      ],
+      "elements": [
+        "mansard roof",
+        "dormers",
+        "tall arched windows",
+        "heavy window surrounds",
+        "quoins",
+        "bracketed cornice",
+        "ornamental iron balconies",
+        "stone trim"
+      ],
+      "materials": [
+        "natural_stone",
+        "red_brick",
+        "metal"
+      ],
+      "optional_elements": [
+        "cupola",
+        "sculptural relief",
+        "corner pavilions"
+      ]
+    },
+
+    "french_provincial": {
+      "styles": [
+        "french_provincial",
+        "provence",
+        "provencal",
+        "rustic_french"
+      ],
+      "composition": [
+        "rustic simplicity",
+        "low horizontal massing",
+        "local material expression",
+        "modest ornament"
+      ],
+      "elements": [
+        "stucco walls",
+        "stone quoins",
+        "small paned windows",
+        "timber shutters",
+        "arched ground openings",
+        "simple cornice",
+        "wrought iron details"
+      ],
+      "materials": [
+        "natural_stone",
+        "architectural_render",
+        "wood",
+        "metal"
+      ],
+      "optional_elements": [
+        "dormers",
+        "decorative ironwork",
+        "exposed beams"
+      ]
+    }
+
+  }
+}

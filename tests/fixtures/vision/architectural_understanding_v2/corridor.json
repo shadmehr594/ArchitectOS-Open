@@ -1,0 +1,19 @@
+{
+  "case_id": "corridor",
+  "input": {
+    "image_type": "architectural_render_or_photo",
+    "observed": ["corridor visible"],
+    "inferred": [],
+    "unresolved": [],
+    "confidence": "MEDIUM",
+    "architectural_elements": ["corridor"]
+  },
+  "expected": {
+    "space_type": "corridor",
+    "semantic_status": "bounded_interpretation",
+    "role": null,
+        "visible_elements": [
+      "circulation"
+    ]
+  }
+}

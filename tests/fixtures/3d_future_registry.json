@@ -1,0 +1,22 @@
+{
+  "assets": [
+    {
+      "model_id": "chair-perfect-size",
+      "category": "chair",
+      "full_dims_xyz": [2.0, 1.0, 0.6]
+    },
+    {
+      "model_id": "bed-wrong-feature",
+      "category": "bed",
+      "full_dims_xyz": [2.0, 1.0, 0.6],
+      "objfeat": [0.0, 1.0]
+    },
+    {
+      "model_id": "bed-best-feature",
+      "category": "bed",
+      "full_dims_xyz": [2.0, 1.0, 0.6],
+      "objfeat": [1.0, 0.0],
+      "model_path": "3D-FUTURE-model/bed-best-feature/raw_model.obj"
+    }
+  ]
+}

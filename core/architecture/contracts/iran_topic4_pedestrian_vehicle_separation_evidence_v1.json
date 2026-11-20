@@ -1,0 +1,53 @@
+{
+  "contract": "IranTopic4PedestrianVehicleSeparationEvidenceV1",
+  "jurisdiction": "Iran",
+  "document": "National Building Regulations of Iran, Topic 4: General Building Requirements",
+  "issuing_authority": "Ministry of Roads and Urban Development, Office of National Building Regulations",
+  "edition": "third edition, 1396 (2017/2018)",
+  "source_url": "https://nezamat.ir/%D9%85%D9%82%D8%B1%D8%B1%D8%A7%D8%AA-%D9%85%D9%84%DB%8C%D9%91-%D8%B3%D8%A7%D8%AE%D8%AA%D9%85%D8%A7%D9%86-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-%D9%85%D8%A8%D8%AD%D8%AB-%DA%86%D9%87%D8%A7%D8%B1%D9%85/",
+  "retrieved_at": "2026-09-12",
+  "evidence_records": [
+    {
+      "id": "continuous_safe_unobstructed_access_route",
+      "clause": "4-5-1-2",
+      "page": null,
+      "page_status": "not_authoritatively_verified_in_this_audit",
+      "policy_type": "qualitative",
+      "requirement": "A continuous, safe and unobstructed route must connect usable building areas, including usable basements, to a safe open space or public way.",
+      "applicability": "building access and egress routes; coordinate with Topic 3",
+      "applicability_status": "applicability_requires_project_classification",
+      "numeric_frontage_gate_separation_m": null,
+      "provenance": "primary regulation text, ministry-issued document; indexed legal publication used for retrieval"
+    },
+    {
+      "id": "large_parking_pedestrian_walkway_separation",
+      "clause": "4-5-10-1-6",
+      "page": null,
+      "page_status": "not_authoritatively_verified_in_this_audit",
+      "policy_type": "conditional_numeric_and_qualitative",
+      "requirement": "In large parking facilities, provide a pedestrian walkway beside the vehicular aisle or parking spaces, separated by floor-color change or raised floor.",
+      "minimum_pedestrian_walkway_width_m": 0.60,
+      "applicability": "large parking facilities only",
+      "applicability_status": "applicability_requires_parking_size_classification",
+      "numeric_frontage_gate_separation_m": null,
+      "provenance": "primary regulation text, ministry-issued document; indexed legal publication used for retrieval"
+    },
+    {
+      "id": "parking_pedestrian_exits",
+      "clause": "4-5-10-3-2",
+      "page": null,
+      "page_status": "not_authoritatively_verified_in_this_audit",
+      "policy_type": "conditional_count",
+      "requirement": "Large and medium parking facilities must have at least two pedestrian exits compliant with Topic 3.",
+      "minimum_exit_count": 2,
+      "applicability": "large and medium parking facilities",
+      "applicability_status": "applicability_requires_parking_size_classification",
+      "numeric_frontage_gate_separation_m": null,
+      "provenance": "primary regulation text, ministry-issued document; indexed legal publication used for retrieval"
+    }
+  ],
+  "explicit_non_findings": [
+    "No authoritative general minimum numeric separation between a pedestrian frontage gate and a vehicle frontage gate was established by this in-scope audit.",
+    "The 0.60 m value is a walkway width for large parking facilities, not a frontage gate-to-gate separation distance."
+  ]
+}

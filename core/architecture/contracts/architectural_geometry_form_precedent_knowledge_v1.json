@@ -1,0 +1,67 @@
+{
+  "contract": "ArchitecturalGeometryFormPrecedentKnowledgeV1",
+  "authority_class": "PRECEDENT_NON_REGULATORY",
+  "may_resolve_regulatory_requirement": false,
+  "selection_policy": "precedents inform problem-action-benefit-risk reasoning; they never select a named shape",
+  "geometry_families_observed": [
+    "orthogonal", "chamfer_or_angled", "polygonal", "circular_or_semicircular",
+    "arc_or_curved_wall", "ellipse_or_oval", "radial", "hybrid_or_composite",
+    "transition_or_distribution"
+  ],
+  "precedents": [
+    {
+      "name": "Oblique Figures Apartment",
+      "building_type": "duplex_apartment",
+      "source": "https://www.archdaily.com/958801/oblique-figures-apartment-jroc-design",
+      "observed_problem": ["single_aspect_daylight", "public_private_gradient", "multi_level_sequence"],
+      "geometry_action": ["central_curved_stair_fulcrum", "context_derived_rotation", "angled_private_suite"],
+      "benefit": ["daylight_access", "privacy", "spatial_sequence", "cross_level_orientation"],
+      "risk": ["furniture_edge_loss", "construction_complexity"]
+    },
+    {
+      "name": "The Octagon of Pelayo Apartment",
+      "building_type": "apartment",
+      "source": "https://www.archdaily.com/974121/the-octagon-of-pelayo-apartment-piano-piano-studio",
+      "observed_problem": ["dark_linear_corridor", "diagonal_party_wall", "weak_distribution"],
+      "geometry_action": ["access_derived_polygonal_joint", "central_distribution_place"],
+      "benefit": ["shorter_distribution", "adaptability", "inhabitable_transition"],
+      "risk": ["arbitrary_vertex_proliferation", "residual_wedges"]
+    },
+    {
+      "name": "Casa Eliptica",
+      "building_type": "house",
+      "source": "https://www.archdaily.com/806714/casa-eliptica-mario-martins-atelier",
+      "observed_problem": ["landscape_relation", "central_courtyard_definition"],
+      "geometry_action": ["elliptical_courtyard_edge", "curved_perimeter_composition"],
+      "benefit": ["continuous_frontage", "view_sequence", "courtyard_centrality"],
+      "risk": ["room_fit_at_curved_edges", "complex_envelope"]
+    },
+    {
+      "name": "Oval House",
+      "building_type": "house",
+      "source": "https://www.archdaily.com/1022638/oval-house-jorgelina-tortorici-and-asociados-plus-nicolas-lanza",
+      "observed_problem": ["arrival_sequence", "visitor_welcome", "indoor_outdoor_focus"],
+      "geometry_action": ["oval_courtyard_inside_orthogonal_outer_order", "hybrid_rigid_organic_language"],
+      "benefit": ["hierarchy", "framed_views", "social_focus", "clear_service_block"],
+      "risk": ["formal_overreach", "curved_boundary_efficiency"]
+    },
+    {
+      "name": "OVal House",
+      "building_type": "two_storey_house",
+      "source": "https://www.archdaily.com/476563/oval-house-elias-rizo-arquitectos",
+      "observed_problem": ["street_privacy", "interior_daylight", "upper_floor_distribution"],
+      "geometry_action": ["orthogonal_outer_composition", "glazed_courtyard_as_distribution_anchor"],
+      "benefit": ["privacy", "daylit_hall", "legibility"],
+      "risk": ["circulation_area_cost"]
+    },
+    {
+      "name": "Hanna-Honeycomb House",
+      "building_type": "house",
+      "source": "https://franklloydwright.org/wp-content/uploads/2020/07/ED_ShapedHouse_v01.pdf",
+      "observed_problem": ["coherent_non_orthogonal_whole_house_order"],
+      "geometry_action": ["repeated_contextual_module", "radial_or_angled_room_relations"],
+      "benefit": ["whole_plan_coherence", "continuous_spatial_flow"],
+      "risk": ["module_imposed_on_program", "furniture_fit"]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "case_id": "ambiguous_space",
+  "input": {
+    "image_type": "unknown",
+    "observed": ["seating element visible", "daylight opening visible"],
+    "inferred": ["bedroom possible"],
+    "unresolved": ["space function unclear"],
+    "confidence": "LOW",
+    "architectural_elements": []
+  },
+  "expected": {
+    "space_type": "unknown",
+    "semantic_status": "undetermined",
+    "role": null,
+        "visible_elements": [
+      "opening",
+      "seating"
+    ],
+    "requires_uncertainty": true
+  }
+}

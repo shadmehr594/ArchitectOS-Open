@@ -1,0 +1,23 @@
+{
+  "contract": "RoomPlanningV2ImmutabilityBaseline",
+  "created_at": "2026-09-13T01:56:50.1977916+03:30",
+  "files": [
+    {"path":"core/architecture/reasoning/parcel2_room_level_design_v1.py","size":9593,"sha256":"3c294d79cf02a6f8a11b8899ae666b47e271c705d6c2023cd699246677844422"},
+    {"path":"tools/run_parcel2_room_level_design_v1.py","size":8321,"sha256":"50aa84898e4133ba341fc73da3afb4f912a4cfce29053cc1f5eb41f74187294d"},
+    {"path":"tests/test_parcel2_room_level_design_v1.py","size":2532,"sha256":"3580b66a8769a4863f8c137d733520eef4eccee5921287d61014df8248970cae"},
+    {"path":"core/architecture/reasoning/architectural_geometric_intervention_reasoning_v2.py","size":17024,"sha256":"5495baf46f901e2777b43f8fe82652e90768805a2b7d87890891737c31aedb82"},
+    {"path":"core/architecture/reasoning/architectural_precedent_experience_intelligence_v1.py","size":12119,"sha256":"65d0ce3b0a3b1455bd0f541670555c8915046d260a0a2be70d086714ae62f320"},
+    {"path":"core/architecture/reasoning/architectural_precedent_importer_mapping_replay_v2.py","size":9661,"sha256":"913907db17f9462d0cfd1cb5f9ea6a7360ce6618d9357ca37bf2f01715f46304"},
+    {"path":"tests/test_architectural_geometric_intervention_reasoning_v2.py","size":5600,"sha256":"a53098a53fb5c80ae6b66d1f04cac4f0429e12f64d3d98cdabe8bdc5cebfcf9b"},
+    {"path":"tests/test_architectural_precedent_experience_intelligence_v1.py","size":4286,"sha256":"649bad6551e9375f23dbe313913bf1cd9d787054722386d07dbab7dbe23f136c"},
+    {"path":"tests/test_architectural_precedent_importer_mapping_replay_v2.py","size":4855,"sha256":"ad3ee6edbb160d1f5325ab3b01a50130fad431ed4c443a98d66ea574d2f845b1"},
+    {"path":"tools/run_parcel2_h1_circulation_core_topology_v6.py","size":14743,"sha256":"9ab633b0a3099c980db16a50ef134ab00bb1f46e30db59cd18e5092ebf58d194"},
+    {"path":"tools/run_parcel2_h1_human_architectural_quality_review_v7.py","size":21245,"sha256":"6921f293250606c25050ebae41e22932ad3a49f46db70d25b8e1b3cda894aa29"},
+    {"path":"tools/run_parcel2_h1_upper_floor_design_around_current_core_v8.py","size":22986,"sha256":"872b9934bdb8d3ed5fbd639d2986c58396371cfbd77f5ddbdb5ecc8319e117fb"},
+    {"path":"tools/run_parcel2_h1_residential_corridor_entrance_geometry_v9.py","size":9639,"sha256":"5d13da8df20d88e8617c934a942cd69155386f2879f438172d3c59253f9e5be3"},
+    {"path":"tests/test_parcel2_h1_circulation_core_topology_v6.py","size":2512,"sha256":"d8dd991a7494598ef37906a7e1cf3ccebcdddf6cc85b750e54988ef40a51edf8"},
+    {"path":"tests/test_parcel2_h1_human_architectural_quality_review_v7.py","size":3047,"sha256":"648b48e67846175de10657fafce8fa3cf970eb32280fe103d0aacd2b29417ad3"},
+    {"path":"tests/test_parcel2_h1_upper_floor_design_around_current_core_v8.py","size":3181,"sha256":"90c22d9648fcef7f0a60b6f11798dd4501ae555b49c5fae29d16d9f24d20391c"},
+    {"path":"tests/test_parcel2_h1_residential_corridor_entrance_geometry_v9.py","size":3141,"sha256":"324018cd00d8aad82902dfd8d513c25603fd2acadf4097a57f03bd3cf64394bc"}
+  ]
+}

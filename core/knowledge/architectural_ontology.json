@@ -1,0 +1,1318 @@
+{
+  "building_types": {
+
+    "shopping_mall": {
+
+      "synonyms": [
+        "mall",
+        "shopping mall",
+        "مرکز خرید",
+        "پاساژ",
+        "مجتمع تجاری"
+      ],
+
+      "category": "commercial",
+
+      "default_spaces": [
+        "lobby",
+        "retail",
+        "food_court",
+        "public_circulation",
+        "service_core",
+        "parking"
+      ],
+
+      "required_spaces": [
+        "lobby",
+        "retail",
+        "public_circulation"
+      ],
+
+      "optional_spaces": [
+        "food_court",
+        "cinema",
+        "entertainment"
+      ],
+
+      "relationships": [
+
+        {
+          "from": "lobby",
+          "to": "retail",
+          "type": "direct_access"
+        },
+
+        {
+          "from": "retail",
+          "to": "public_circulation",
+          "type": "connected"
+        },
+
+        {
+          "from": "parking",
+          "to": "lobby",
+          "type": "vertical_connection"
+        }
+
+      ]
+
+    },
+
+
+    "commercial": {
+
+      "synonyms": [
+        "commercial",
+        "تجاری",
+        "مرکز تجاری"
+      ],
+
+      "category": "commercial",
+
+      "default_spaces": [
+        "lobby",
+        "retail"
+      ],
+
+      "required_spaces": [
+        "lobby",
+        "retail"
+      ],
+
+      "optional_spaces": [],
+
+      "relationships": []
+
+    },
+
+
+    "villa": {
+
+      "synonyms": [
+        "villa",
+        "ویلا"
+      ],
+
+      "category": "residential",
+
+      "default_spaces": [
+        "living_room",
+        "kitchen",
+        "bedroom"
+      ],
+
+      "required_spaces": [
+        "living_room",
+        "kitchen",
+        "bedroom"
+      ],
+
+      "optional_spaces": [
+        "pool",
+        "terrace"
+      ],
+
+      "relationships": [
+        {
+            "from": "living_room",
+            "to": "terrace",
+            "type": "direct_access"
+        },
+        {
+            "from": "terrace",
+            "to": "pool",
+            "type": "connected"
+        },
+        {
+            "from": "bedroom",
+            "to": "bathroom",
+            "type": "adjacent"
+        }
+    ]
+
+    },
+
+
+    "hospital": {
+
+      "synonyms": [
+        "hospital",
+        "بیمارستان"
+      ],
+
+      "category": "healthcare",
+
+      "default_spaces": [
+        "reception",
+        "waiting_area",
+        "clinic_room"
+      ],
+
+      "required_spaces": [
+        "reception",
+        "waiting_area"
+      ],
+
+      "optional_spaces": [
+        "pharmacy",
+        "laboratory"
+      ],
+
+      "relationships": []
+
+    },
+
+
+    "office": {
+
+      "synonyms": [
+        "office",
+        "اداری"
+      ],
+
+      "category": "office",
+
+      "default_spaces": [
+        "lobby",
+        "office_room",
+        "meeting_room"
+      ],
+
+      "required_spaces": [
+        "lobby",
+        "office_room"
+      ],
+
+      "optional_spaces": [
+        "conference_room"
+      ],
+
+      "relationships": []
+
+    }
+
+  },
+  "spaces": {
+
+
+    "retail": {
+
+      "synonyms": [
+        "retail",
+        "shop",
+        "store",
+        "مغازه",
+        "فروشگاه",
+        "بوتیک",
+        "واحد فروش"
+      ],
+
+      "zone": "commercial",
+
+      "space_type": "sales",
+
+      "access": [
+        "public"
+      ],
+
+      "adjacent_to": [
+        "public_circulation",
+        "lobby"
+      ]
+
+    },
+
+
+    "lobby": {
+
+      "synonyms": [
+        "lobby",
+        "لابی",
+        "ورودی",
+        "فضای ورودی"
+      ],
+
+      "zone": "public",
+
+      "space_type": "entrance",
+
+      "access": [
+        "public"
+      ],
+
+      "adjacent_to": [
+        "retail",
+        "public_circulation"
+      ]
+
+    },
+
+
+    "food_court": {
+
+      "synonyms": [
+        "food court",
+        "فودکورت",
+        "رستوران مرکزی"
+      ],
+
+      "zone": "public",
+
+      "space_type": "food",
+
+      "access": [
+        "public"
+      ],
+
+      "adjacent_to": [
+        "public_circulation"
+      ]
+
+    },
+
+
+    "public_circulation": {
+
+      "synonyms": [
+        "circulation",
+        "راهرو",
+        "مسیر حرکت",
+        "مسیر عمومی"
+      ],
+
+      "zone": "public",
+
+      "space_type": "circulation",
+
+      "access": [
+        "public"
+      ],
+
+      "adjacent_to": [
+        "retail",
+        "lobby",
+        "food_court"
+      ]
+
+    },
+
+
+    "service_core": {
+
+      "synonyms": [
+        "service core",
+        "هسته خدماتی",
+        "فضای خدماتی",
+        "اتاق خدمات"
+      ],
+
+      "zone": "service",
+
+      "space_type": "service",
+
+      "access": [
+        "staff"
+      ],
+
+      "adjacent_to": [
+        "parking",
+        "back_of_house"
+      ]
+
+    },
+
+
+    "parking": {
+
+      "synonyms": [
+        "parking",
+        "پارکینگ",
+        "پارکینگ خودرو"
+      ],
+
+      "zone": "service",
+
+      "space_type": "parking",
+
+      "access": [
+        "public",
+        "service"
+      ],
+
+      "adjacent_to": [
+        "lobby",
+        "vertical_core"
+      ]
+
+    },
+
+
+    "cinema": {
+
+      "synonyms": [
+        "cinema",
+        "سینما",
+        "سالن نمایش"
+      ],
+
+      "zone": "public",
+
+      "space_type": "entertainment",
+
+      "access": [
+        "public"
+      ],
+
+      "adjacent_to": [
+        "public_circulation",
+        "food_court"
+      ]
+
+    },
+
+
+    "entertainment": {
+
+      "synonyms": [
+        "entertainment",
+        "سرگرمی",
+        "فضای تفریحی",
+        "شهربازی"
+      ],
+
+      "zone": "public",
+
+      "space_type": "entertainment",
+
+      "access": [
+        "public"
+      ],
+
+      "adjacent_to": [
+        "food_court",
+        "cinema"
+      ]
+
+    },
+    "living_room": {
+
+      "synonyms": [
+        "living room",
+        "living_room",
+        "پذیرایی",
+        "نشیمن"
+      ],
+
+      "zone": "semi_public",
+
+      "space_type": "living",
+
+      "access": [
+        "family"
+      ],
+
+      "adjacent_to": [
+        "kitchen",
+        "terrace"
+      ]
+
+    },
+
+
+    "kitchen": {
+
+      "synonyms": [
+        "kitchen",
+        "آشپزخانه"
+      ],
+
+      "zone": "service",
+
+      "space_type": "kitchen",
+
+      "access": [
+        "family"
+      ],
+
+      "adjacent_to": [
+        "living_room",
+        "dining"
+      ]
+
+    },
+
+
+    "bedroom": {
+
+      "synonyms": [
+        "bedroom",
+        "اتاق خواب",
+        "خواب"
+      ],
+
+      "zone": "private",
+
+      "space_type": "bedroom",
+
+      "access": [
+        "private"
+      ],
+
+      "adjacent_to": [
+        "bathroom",
+        "corridor"
+      ]
+
+    },
+
+
+    "dining": {
+
+      "synonyms": [
+        "dining",
+        "dining room",
+        "dining_room"
+      ],
+
+      "zone": "semi_public",
+
+      "space_type": "dining",
+
+      "access": [
+        "family",
+        "guest"
+      ],
+
+      "adjacent_to": [
+        "living_room",
+        "kitchen"
+      ]
+
+    },
+
+
+    "bathroom": {
+
+      "synonyms": [
+        "bathroom",
+        "bath",
+        "wc",
+        "guest_wc",
+        "toilet"
+      ],
+
+      "zone": "private",
+
+      "space_type": "bathroom",
+
+      "access": [
+        "private"
+      ],
+
+      "adjacent_to": [
+        "bedroom",
+        "corridor"
+      ]
+
+    },
+
+
+    "corridor": {
+
+      "synonyms": [
+        "corridor",
+        "hallway",
+        "passage"
+      ],
+
+      "zone": "circulation",
+
+      "space_type": "circulation",
+
+      "access": [
+        "public",
+        "private",
+        "service"
+      ],
+
+      "adjacent_to": [
+        "living_room",
+        "bedroom",
+        "bathroom",
+        "vertical_core"
+      ]
+
+    },
+
+
+    "pool": {
+
+      "synonyms": [
+        "pool",
+        "استخر"
+      ],
+
+      "zone": "external",
+
+      "space_type": "recreation",
+
+      "access": [
+        "private",
+        "public"
+      ],
+
+      "adjacent_to": [
+        "garden",
+        "terrace"
+      ]
+
+    },
+
+
+    "terrace": {
+
+      "synonyms": [
+        "terrace",
+        "تراس",
+        "بالکن",
+        "روف تراس"
+      ],
+
+      "zone": "external",
+
+      "space_type": "outdoor",
+
+      "access": [
+        "private",
+        "public"
+      ],
+
+      "adjacent_to": [
+        "living_room",
+        "garden"
+      ]
+
+    },
+
+
+    "office_room": {
+
+      "synonyms": [
+        "office room",
+        "office_room",
+        "اتاق اداری",
+        "دفتر"
+      ],
+
+      "zone": "private",
+
+      "space_type": "workspace",
+
+      "access": [
+        "staff"
+      ],
+
+      "adjacent_to": [
+        "meeting_room",
+        "corridor"
+      ]
+
+    },
+
+
+    "meeting_room": {
+
+      "synonyms": [
+        "meeting room",
+        "meeting_room",
+        "اتاق جلسه"
+      ],
+
+      "zone": "private",
+
+      "space_type": "meeting",
+
+      "access": [
+        "staff",
+        "visitor"
+      ],
+
+      "adjacent_to": [
+        "office_room",
+        "lobby"
+      ]
+
+    },
+
+
+    "conference_room": {
+
+      "synonyms": [
+        "conference room",
+        "conference_room",
+        "اتاق کنفرانس"
+      ],
+
+      "zone": "private",
+
+      "space_type": "conference",
+
+      "access": [
+        "staff",
+        "visitor"
+      ],
+
+      "adjacent_to": [
+        "meeting_room",
+        "office_room"
+      ]
+
+    },
+
+
+    "reception": {
+
+      "synonyms": [
+        "reception",
+        "پذیرش"
+      ],
+
+      "zone": "public",
+
+      "space_type": "reception",
+
+      "access": [
+        "public"
+      ],
+
+      "adjacent_to": [
+        "waiting_area"
+      ]
+
+    },
+    "waiting_area": {
+
+      "synonyms": [
+        "waiting area",
+        "waiting_area",
+        "فضای انتظار",
+        "اتاق انتظار"
+      ],
+
+      "zone": "public",
+
+      "space_type": "waiting",
+
+      "access": [
+        "public"
+      ],
+
+      "adjacent_to": [
+        "reception",
+        "clinic_room"
+      ]
+
+    },
+
+
+    "clinic_room": {
+
+      "synonyms": [
+        "clinic room",
+        "clinic_room",
+        "اتاق درمان",
+        "اتاق معاینه"
+      ],
+
+      "zone": "private",
+
+      "space_type": "medical",
+
+      "access": [
+        "staff",
+        "patient"
+      ],
+
+      "adjacent_to": [
+        "waiting_area"
+      ]
+
+    },
+
+
+    "pharmacy": {
+
+      "synonyms": [
+        "pharmacy",
+        "داروخانه"
+      ],
+
+      "zone": "service",
+
+      "space_type": "medical_service",
+
+      "access": [
+        "public"
+      ]
+
+    },
+
+
+    "laboratory": {
+
+      "synonyms": [
+        "laboratory",
+        "آزمایشگاه"
+      ],
+
+      "zone": "service",
+
+      "space_type": "medical_service",
+
+      "access": [
+        "staff",
+        "patient"
+      ]
+
+    },
+
+
+    "back_of_house": {
+
+      "synonyms": [
+        "back of house",
+        "فضای پشت خدمات",
+        "پشت صحنه"
+      ],
+
+      "zone": "service",
+
+      "space_type": "service",
+
+      "access": [
+        "staff"
+      ]
+
+    },
+
+
+    "vertical_core": {
+
+      "synonyms": [
+        "vertical core",
+        "هسته عمودی",
+        "آسانسور",
+        "راه پله"
+      ],
+
+      "zone": "service",
+
+      "space_type": "vertical_transport",
+
+      "access": [
+        "public",
+        "service"
+      ]
+
+    },
+
+
+    "garden": {
+
+      "synonyms": [
+        "garden",
+        "باغ",
+        "فضای سبز",
+        "محوطه سبز"
+      ],
+
+      "zone": "external",
+
+      "space_type": "landscape",
+
+      "access": [
+        "public",
+        "private"
+      ]
+
+    },
+
+
+    "yard": {
+
+      "synonyms": [
+        "yard",
+        "حیاط",
+        "محوطه",
+        "فضای باز"
+      ],
+
+      "zone": "external",
+
+      "space_type": "open_space",
+
+      "access": [
+        "public",
+        "private"
+      ]
+
+    },
+
+    "foyer": {
+      "synonyms": [
+        "foyer",
+        "cinema foyer"
+      ],
+      "zone": "public",
+      "space_type": "assembly_public_space",
+      "access": [
+        "public"
+      ],
+      "adjacent_to": [
+        "lobby",
+        "ticketing",
+        "audience_circulation"
+      ]
+    },
+
+    "ticketing": {
+      "synonyms": [
+        "ticketing",
+        "ticket counter",
+        "ticket_counter",
+        "box office",
+        "box_office"
+      ],
+      "zone": "public",
+      "space_type": "public_service",
+      "access": [
+        "public",
+        "staff"
+      ],
+      "adjacent_to": [
+        "lobby",
+        "foyer"
+      ]
+    },
+
+    "auditorium": {
+      "synonyms": [
+        "auditorium",
+        "cinema hall",
+        "cinema_hall",
+        "screening room",
+        "screening_room"
+      ],
+      "zone": "public",
+      "space_type": "assembly",
+      "access": [
+        "public",
+        "staff"
+      ],
+      "adjacent_to": [
+        "foyer",
+        "audience_circulation",
+        "egress_circulation",
+        "projection_room"
+      ]
+    },
+
+    "projection_room": {
+      "synonyms": [
+        "projection room",
+        "projection_room",
+        "projection booth",
+        "projection_booth"
+      ],
+      "zone": "service",
+      "space_type": "technical_service",
+      "access": [
+        "staff"
+      ],
+      "adjacent_to": [
+        "auditorium"
+      ]
+    },
+
+    "audience_circulation": {
+      "synonyms": [
+        "audience circulation",
+        "audience_circulation"
+      ],
+      "zone": "circulation",
+      "space_type": "assembly_circulation",
+      "access": [
+        "public"
+      ],
+      "adjacent_to": [
+        "foyer",
+        "auditorium",
+        "egress_circulation",
+        "vertical_core"
+      ]
+    },
+
+    "egress_circulation": {
+      "synonyms": [
+        "egress circulation",
+        "egress_circulation",
+        "exit circulation"
+      ],
+      "zone": "circulation",
+      "space_type": "egress",
+      "access": [
+        "public",
+        "service"
+      ],
+      "adjacent_to": [
+        "auditorium",
+        "audience_circulation",
+        "vertical_core"
+      ]
+    },
+
+    "stage": {
+      "synonyms": [
+        "stage",
+        "performance stage",
+        "performance_stage"
+      ],
+      "zone": "performance",
+      "space_type": "performance",
+      "access": [
+        "performer",
+        "staff"
+      ],
+      "adjacent_to": [
+        "auditorium",
+        "back_of_house",
+        "performer_circulation"
+      ]
+    },
+
+    "performer_entrance": {
+      "synonyms": [
+        "performer entrance",
+        "performer_entrance",
+        "artist entrance"
+      ],
+      "zone": "service",
+      "space_type": "staff_access",
+      "access": [
+        "performer",
+        "staff"
+      ],
+      "adjacent_to": [
+        "performer_circulation",
+        "back_of_house"
+      ]
+    },
+
+    "performer_circulation": {
+      "synonyms": [
+        "performer circulation",
+        "performer_circulation",
+        "backstage circulation"
+      ],
+      "zone": "service",
+      "space_type": "service_circulation",
+      "access": [
+        "performer",
+        "staff"
+      ],
+      "adjacent_to": [
+        "performer_entrance",
+        "back_of_house",
+        "stage"
+      ]
+    },
+
+    "control_room": {
+      "synonyms": [
+        "control room",
+        "control_room",
+        "technical control room",
+        "technical_control_room"
+      ],
+      "zone": "service",
+      "space_type": "technical_service",
+      "access": [
+        "staff"
+      ],
+      "adjacent_to": [
+        "auditorium",
+        "stage"
+      ]
+    },
+
+    "service_access": {
+      "synonyms": [
+        "service access",
+        "service_access",
+        "service entrance"
+      ],
+      "zone": "service",
+      "space_type": "service_access",
+      "access": [
+        "staff"
+      ],
+      "adjacent_to": [
+        "back_of_house",
+        "service_core"
+      ]
+    },
+
+    "audience_area": {
+      "synonyms": [
+        "audience area",
+        "audience_area",
+        "amphitheater audience",
+        "amphitheatre audience",
+        "open air audience area"
+      ],
+      "zone": "external",
+      "space_type": "assembly",
+      "access": [
+        "public"
+      ],
+      "adjacent_to": [
+        "audience_circulation",
+        "stage",
+        "egress_circulation"
+      ]
+    }
+
+
+  },
+
+
+
+  "materials": {
+
+    "concrete": {
+
+        "synonyms": [
+            "بتن",
+            "بتنی",
+            "بتن اکسپوز",
+            "concrete",
+            "exposed concrete"
+        ],
+
+        "material_type": "structure_finish",
+
+        "normalized": "concrete",
+
+        "qualified_forms": {
+            "exposed concrete": "exposed concrete",
+            "بتن اکسپوز": "exposed concrete"
+        },
+
+        "properties": [
+            "modern",
+            "minimal",
+            "durable"
+        ]
+    },
+
+
+    "glass": {
+
+        "synonyms": [
+            "شیشه",
+            "نمای شیشه ای",
+            "نمای شیشه‌ای",
+            "glass",
+            "glass facade"
+        ],
+
+        "material_type": "facade",
+
+        "normalized": "glass facade",
+
+        "properties": [
+            "transparent",
+            "modern",
+            "lightweight"
+        ]
+    },
+
+
+    "brick_red": {
+
+        "synonyms": [
+            "آجر قرمز",
+            "آجر قرمز نما",
+            "red brick"
+        ],
+
+        "material_type": "facade",
+
+        "normalized": "red brick facade",
+
+        "properties": [
+            "warm",
+            "traditional",
+            "natural"
+        ]
+    },
+
+
+    "brick": {
+
+        "synonyms": [
+            "brick",
+            "آجر",
+            "آجری",
+            "نمای آجری"
+        ],
+
+        "material_type": "facade",
+
+        "normalized": "brick facade",
+
+        "properties": [
+            "masonry",
+            "generic"
+        ]
+    },
+
+
+    "fire_brick": {
+
+        "synonyms": [
+            "آجر نسوز",
+            "آجر نسوز نما",
+            "fire brick"
+        ],
+
+        "material_type": "facade",
+
+        "normalized": "fire resistant brick facade",
+
+        "properties": [
+            "durable",
+            "premium",
+            "warm"
+        ]
+    },
+
+
+    "marble": {
+
+        "synonyms": [
+            "سنگ مرمر",
+            "مرمر",
+            "marble"
+        ],
+
+        "material_type": "luxury_finish",
+
+        "normalized": "natural marble finish",
+
+        "properties": [
+            "luxury",
+            "elegant",
+            "premium"
+        ]
+    },
+
+
+    "stone": {
+
+        "synonyms": [
+            "سنگ",
+            "نمای سنگی",
+            "سنگ طبیعی",
+            "stone facade",
+            "natural stone",
+            "stone"
+        ],
+
+        "material_type": "facade",
+
+        "normalized": "natural stone facade",
+
+        "properties": [
+            "natural",
+            "luxury",
+            "organic"
+        ]
+    },
+
+
+    "wood": {
+
+        "synonyms": [
+            "چوب",
+            "چوبی",
+            "ترمووود",
+            "wood",
+            "thermowood",
+            "wood cladding",
+            "thermowood cladding"
+        ],
+
+        "material_type": "facade",
+
+        "normalized": "wood",
+
+        "qualified_forms": {
+            "wood cladding": "wood cladding",
+            "thermowood cladding": "thermowood cladding"
+        },
+
+        "properties": [
+            "warm",
+            "natural",
+            "biophilic"
+        ]
+    },
+
+
+    "metal": {
+
+        "synonyms": [
+            "فلز",
+            "آلومینیوم",
+            "metal",
+            "aluminum",
+            "metal facade panels"
+        ],
+
+        "material_type": "facade",
+
+        "normalized": "metal",
+
+        "qualified_forms": {
+            "metal facade panels": "metal facade panels"
+        },
+
+        "properties": [
+            "modern",
+            "industrial"
+        ]
+    },
+
+
+    "travertine": {
+
+        "synonyms": [
+            "تراورتن",
+            "travertine"
+        ],
+
+        "material_type": "facade",
+
+        "normalized": "travertine stone facade",
+
+        "properties": [
+            "classic",
+            "natural",
+            "luxury"
+        ]
+    }
+
+  }  
+
+}

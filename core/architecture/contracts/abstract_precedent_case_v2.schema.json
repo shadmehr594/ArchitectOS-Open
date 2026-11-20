@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ArchitectOS/AbstractPrecedentCaseV2",
+  "title": "Abstract Precedent Case V2",
+  "type": "object",
+  "required": ["contract", "id", "source", "authority_class", "problem", "constraints", "design_move", "reasoning", "outcome", "trade_off", "applicability", "contains_transferable_geometry"],
+  "properties": {
+    "contract": {"const": "AbstractPrecedentCaseV2"},
+    "source": {"type": "object", "required": ["kind", "reference"], "properties": {"kind": {"enum": ["local", "manual", "online", "image_plan_analysis"]}, "reference": {"type": "string", "minLength": 1}}},
+    "authority_class": {"enum": ["PRECEDENT_NON_REGULATORY", "HUMAN_FEEDBACK", "DESIGN_ASSUMPTION"]},
+    "problem": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "constraints": {"type": "array", "items": {"type": "string"}},
+    "design_move": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "reasoning": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "outcome": {"type": "array", "items": {"type": "string"}},
+    "trade_off": {"type": "array", "items": {"type": "string"}},
+    "applicability": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "contains_transferable_geometry": {"const": false}
+  }
+}

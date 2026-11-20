@@ -1,0 +1,564 @@
+Folder PATH listing
+Volume serial number is 00000155 3AA0:E666
+D:\ARCHITECTOS
+¦   .gitignore
+¦   app.py
+¦   ArchitectOS.spec
+¦   bootstrap.py
+¦   build.py
+¦   config.json
+¦   config.py
+¦   docker-compose.yml
+¦   Dockerfile
+¦   fix_env.py
+¦   launcher.py
+¦   python
+¦   python_files.txt
+¦   requirements.txt
+¦   run.py
+¦   run_voice.py
+¦   structure.txt
+¦   test_brain.py
+¦   test_comfy.py
+¦   test_memory.py
+¦   test_render.py
+¦   test_wan_render.py
+¦   
++---ai
+¦       agents.py
+¦       orchestrator.py
+¦       
++---api
+¦   ¦   routes.py
+¦   ¦   server.py
+¦   ¦   
+¦   +---__pycache__
+¦           server.cpython-311.pyc
+¦           
++---app
+¦   ¦   api.py
+¦   ¦   dashboard.py
+¦   ¦   
+¦   +---bim
+¦   ¦   ¦   realtime_bim_engine.py
+¦   ¦   ¦   
+¦   ¦   +---collab
+¦   ¦           bim_collab_engine.py
+¦   ¦           
+¦   +---static
+¦   +---templates
+¦           dashboard.html
+¦           
++---backend
+¦   ¦   app.py
+¦   ¦   
+¦   +---api
+¦   ¦       project_api.py
+¦   ¦       routes.py
+¦   ¦       
+¦   +---db
+¦           database.py
+¦           models.py
+¦           
++---bim
+¦       spatial_engine.py
+¦       structure_engine.py
+¦       
++---brain
+¦   ¦   chat.py
+¦   ¦   learning.py
+¦   ¦   llm_brain.py
+¦   ¦   ollama_brain.py
+¦   ¦   prompt_builder.py
+¦   ¦   reflection_engine.py
+¦   ¦   state.py
+¦   ¦   tool_decider.py
+¦   ¦   tool_safety.py
+¦   ¦   __init__.py
+¦   ¦   
+¦   +---__pycache__
+¦           ollama_brain.cpython-311.pyc
+¦           tool_decider.cpython-311.pyc
+¦           __init__.cpython-311.pyc
+¦           
++---cloud
+¦       cloud_engine.py
+¦       sync.py
+¦       
++---config
+¦   ¦   comfy_config.py
+¦   ¦   __init__.py
+¦   ¦   
+¦   +---__pycache__
++---core
+¦   ¦   app_boot.py
+¦   ¦   architect.py
+¦   ¦   architecture_ai.py
+¦   ¦   bim_model.py
+¦   ¦   bim_validator.py
+¦   ¦   brain.py
+¦   ¦   brain_boot.py
+¦   ¦   brain_selector.py
+¦   ¦   comfy_client.py
+¦   ¦   controller.py
+¦   ¦   debugger.py
+¦   ¦   design_ai.py
+¦   ¦   fixer.py
+¦   ¦   graph_engine.py
+¦   ¦   image_tracker.py
+¦   ¦   llm.py
+¦   ¦   logger.py
+¦   ¦   memory.py
+¦   ¦   orchestrator.py
+¦   ¦   project_engine.py
+¦   ¦   prompt_engine.py
+¦   ¦   registry.py
+¦   ¦   renderer.py
+¦   ¦   response_filter.py
+¦   ¦   response_formatter.py
+¦   ¦   room_engine.py
+¦   ¦   router.py
+¦   ¦   runtime_mode.py
+¦   ¦   spatial_engine.py
+¦   ¦   system_config.py
+¦   ¦   tools.py
+¦   ¦   tool_generator.py
+¦   ¦   tool_interface.py
+¦   ¦   tool_memory.py
+¦   ¦   tool_registry.py
+¦   ¦   voice_agent.py
+¦   ¦   voice_pipeline.py
+¦   ¦   __init__.py
+¦   ¦   
+¦   +---agents
+¦   ¦   ¦   analyst_agent.py
+¦   ¦   ¦   architect_agent.py
+¦   ¦   ¦   architect_team.py
+¦   ¦   ¦   base_agent.py
+¦   ¦   ¦   constraint_agent.py
+¦   ¦   ¦   design_agent.py
+¦   ¦   ¦   intent_router.py
+¦   ¦   ¦   manager_agent.py
+¦   ¦   ¦   memory_agent.py
+¦   ¦   ¦   optimization_agent.py
+¦   ¦   ¦   planner_agent.py
+¦   ¦   ¦   realtime_design_engine.py
+¦   ¦   ¦   reflection_agent.py
+¦   ¦   ¦   render_agent.py
+¦   ¦   ¦   repair_agent.py
+¦   ¦   ¦   structural_agent.py
+¦   ¦   ¦   tool_reasoner.py
+¦   ¦   ¦   validation_agent.py
+¦   ¦   ¦   validator_agent.py
+¦   ¦   ¦   
+¦   ¦   +---__pycache__
+¦   ¦           bim_compiler.cpython-311.pyc
+¦   ¦           constraint_agent.cpython-311.pyc
+¦   ¦           design_agent.cpython-311.pyc
+¦   ¦           intent_router.cpython-311.pyc
+¦   ¦           memory_agent.cpython-311.pyc
+¦   ¦           optimization_agent.cpython-311.pyc
+¦   ¦           planner_agent.cpython-311.pyc
+¦   ¦           repair_agent.cpython-311.pyc
+¦   ¦           structural_agent.cpython-311.pyc
+¦   ¦           
+¦   +---ai
+¦   ¦       architect_copilot.py
+¦   ¦       architect_reasoning_engine.py
+¦   ¦       autonomous_architect_agent.py
+¦   ¦       design_reasoning.py
+¦   ¦       design_reasoning_engine.py
+¦   ¦       
+¦   +---analysis
+¦   ¦       structural_analysis_engine.py
+¦   ¦       
+¦   +---autonomous
+¦   ¦       city_architect_ai.py
+¦   ¦       design_loop_engine.py
+¦   ¦       
+¦   +---bim
+¦   ¦   ¦   bidirectional_bim_engine.py
+¦   ¦   ¦   bim_export_engine.py
+¦   ¦   ¦   bim_pipeline.py
+¦   ¦   ¦   bim_pipeline_engine.py
+¦   ¦   ¦   cloud_bim_collab_engine.py
+¦   ¦   ¦   full_bim_pipeline.py
+¦   ¦   ¦   revit_export_engine.py
+¦   ¦   ¦   revit_live_sync_engine.py
+¦   ¦   ¦   validator.py
+¦   ¦   ¦   
+¦   ¦   +---__pycache__
+¦   ¦           validator.cpython-311.pyc
+¦   ¦           
+¦   +---cad
+¦   ¦       cad_import_engine.py
+¦   ¦       
+¦   +---chat
+¦   ¦       chat_architect.py
+¦   ¦       chat_engine.py
+¦   ¦       
+¦   +---city
+¦   ¦       city_generator.py
+¦   ¦       
+¦   +---cloud
+¦   ¦       bim_cloud_platform.py
+¦   ¦       
+¦   +---collab
+¦   ¦       realtime_bim_collab.py
+¦   ¦       
+¦   +---company
+¦   ¦       autonomous_architect_company_os.py
+¦   ¦       
+¦   +---compiler
+¦   ¦   ¦   bim_compiler.py
+¦   ¦   ¦   structure.txt
+¦   ¦   ¦   workflow_compiler.py
+¦   ¦   ¦   __init__.py
+¦   ¦   ¦   
+¦   ¦   +---__pycache__
+¦   ¦           bim_compiler.cpython-311.pyc
+¦   ¦           __init__.cpython-311.pyc
+¦   ¦           
+¦   +---debug
+¦   ¦       import_fixer.py
+¦   ¦       
+¦   +---economy
+¦   ¦       ai_architect_economy.py
+¦   ¦       
+¦   +---engine
+¦   ¦   ¦   executor.py
+¦   ¦   ¦   graph_runtime.py
+¦   ¦   ¦   memory.py
+¦   ¦   ¦   mutator.py
+¦   ¦   ¦   scorer.py
+¦   ¦   ¦   self_analyzer.py
+¦   ¦   ¦   self_rewriter.py
+¦   ¦   ¦   __init__.py
+¦   ¦   ¦   
+¦   ¦   +---__pycache__
+¦   ¦           executor.cpython-311.pyc
+¦   ¦           memory.cpython-311.pyc
+¦   ¦           mutator.cpython-311.pyc
+¦   ¦           scorer.cpython-311.pyc
+¦   ¦           self_analyzer.cpython-311.pyc
+¦   ¦           self_rewriter.cpython-311.pyc
+¦   ¦           __init__.cpython-311.pyc
+¦   ¦           
+¦   +---execution
+¦   ¦   ¦   execution_graph.py
+¦   ¦   ¦   __init__.py
+¦   ¦   ¦   
+¦   ¦   +---__pycache__
+¦   ¦           execution_graph.cpython-311.pyc
+¦   ¦           __init__.cpython-311.pyc
+¦   ¦           
+¦   +---export
+¦   ¦       cad_exporter.py
+¦   ¦       ifc_revit_exporter.py
+¦   ¦       production_export_engine.py
+¦   ¦       revit_export_engine.py
+¦   ¦       three_exporter.py
+¦   ¦       
+¦   +---geometry
+¦   ¦       bim_geometry_engine.py
+¦   ¦       
+¦   +---ifc
+¦   ¦       ifc_standard_engine.py
+¦   ¦       
+¦   +---learning
+¦   ¦       self_improving_architect.py
+¦   ¦       
+¦   +---memory
+¦   ¦       architect_memory.py
+¦   ¦       store.py
+¦   ¦       
+¦   +---metric
+¦   ¦       metrics_engine.py
+¦   ¦       
+¦   +---network
+¦   ¦       global_bim_network.py
+¦   ¦       
+¦   +---offline
+¦   ¦       local_engine.py
+¦   ¦       
+¦   +---pipeline
+¦   ¦       main_pipeline.py
+¦   ¦       
+¦   +---planner
+¦   ¦   ¦   planner.py
+¦   ¦   ¦   __init__.py
+¦   ¦   ¦   
+¦   ¦   +---__pycache__
+¦   ¦           planner.cpython-311.pyc
+¦   ¦           __init__.cpython-311.pyc
+¦   ¦           
+¦   +---registry
+¦   ¦       engine_registry.py
+¦   ¦       
+¦   +---render
+¦   ¦       animation_engine.py
+¦   ¦       comfyui_bridge.py
+¦   ¦       comfy_bridge.py
+¦   ¦       comfy_client.py
+¦   ¦       comfy_pipeline.py
+¦   ¦       render_preparation_engine.py
+¦   ¦       svg_engine.py
+¦   ¦       
+¦   +---site
+¦   ¦   ¦   site_engine.py
+¦   ¦   ¦   site_loader.py
+¦   ¦   ¦   zoning_engine.py
+¦   ¦   ¦   
+¦   ¦   +---__pycache__
+¦   ¦           site_engine.cpython-311.pyc
+¦   ¦           
+¦   +---spatial
+¦   ¦   ¦   spatial_engine.py
+¦   ¦   ¦   spatial_transformer.py
+¦   ¦   ¦   zoning_spatial_engine.py
+¦   ¦   ¦   
+¦   ¦   +---__pycache__
+¦   ¦           spatial_engine.cpython-311.pyc
+¦   ¦           
+¦   +---stability
+¦   ¦       output_guard.py
+¦   ¦       
+¦   +---state
+¦   ¦       bim_state.py
+¦   ¦       
+¦   +---structure
+¦   ¦       grid_engine.py
+¦   ¦       structural_element_engine.py
+¦   ¦       structural_engine.py
+¦   ¦       structural_grid_engine.py
+¦   ¦       
+¦   +---sync
+¦   ¦       revit_sync_engine.py
+¦   ¦       
+¦   +---system
+¦   ¦       mode_controller.py
+¦   ¦       
+¦   +---tools
+¦   ¦   ¦   base.py
+¦   ¦   ¦   chat_tool.py
+¦   ¦   ¦   design_tool.py
+¦   ¦   ¦   image_tool.py
+¦   ¦   ¦   memory_tool.py
+¦   ¦   ¦   __init__.py
+¦   ¦   ¦   
+¦   ¦   +---__pycache__
+¦   ¦           base.cpython-311.pyc
+¦   ¦           chat_tool.cpython-311.pyc
+¦   ¦           design_tool.cpython-311.pyc
+¦   ¦           image_tool.cpython-311.pyc
+¦   ¦           memory_tool.cpython-311.pyc
+¦   ¦           __init__.cpython-311.pyc
+¦   ¦           
+¦   +---view
+¦   ¦       view_generation_engine.py
+¦   ¦       
+¦   +---voice
+¦   ¦       async_engine.py
+¦   ¦       async_listener.py
+¦   ¦       intent_classifier.py
+¦   ¦       memory.py
+¦   ¦       parser.py
+¦   ¦       pipeline.py
+¦   ¦       router.py
+¦   ¦       self_corrector.py
+¦   ¦       stream_listener.py
+¦   ¦       task_graph.py
+¦   ¦       ultimate_engine.py
+¦   ¦       vector_memory.py
+¦   ¦       voice_engine.py
+¦   ¦       voice_router.py
+¦   ¦       wake_daemon.py
+¦   ¦       wake_word.py
+¦   ¦       
+¦   +---zoning
+¦   ¦   ¦   zoning_engine.py
+¦   ¦   ¦   zoning_rule_engine.py
+¦   ¦   ¦   
+¦   ¦   +---__pycache__
+¦   ¦           zoning_rule_engine.cpython-311.pyc
+¦   ¦           
+¦   +---__pycache__
+¦           app_boot.cpython-311.pyc
+¦           architect.cpython-311.pyc
+¦           architecture_ai.cpython-311.pyc
+¦           brain.cpython-311.pyc
+¦           design_ai.cpython-311.pyc
+¦           engine.cpython-311.pyc
+¦           fixer.cpython-311.pyc
+¦           graph_engine.cpython-311.pyc
+¦           llm.cpython-311.pyc
+¦           memory.cpython-311.pyc
+¦           planner.cpython-311.pyc
+¦           prompt_engine.cpython-311.pyc
+¦           registry.cpython-311.pyc
+¦           renderer.cpython-311.pyc
+¦           room_engine.cpython-311.pyc
+¦           router.cpython-311.pyc
+¦           spatial_engine.cpython-311.pyc
+¦           tool_interface.cpython-311.pyc
+¦           tool_registry.cpython-311.pyc
+¦           validator.cpython-311.pyc
+¦           voice_agent.cpython-311.pyc
+¦           voice_pipeline.cpython-311.pyc
+¦           __init__.cpython-311.pyc
+¦           
++---data
+¦       __init__.py
+¦       
++---database
+¦       memory.db
+¦       memory.json
+¦       __init__.py
+¦       
++---db
+¦       database.py
+¦       projects.py
+¦       
++---docs
+¦       __init__.py
+¦       
++---export
+¦       export_engine.py
+¦       
++---frontend
+¦   ¦   app.js
+¦   ¦   index.html
+¦   ¦   styles.css
+¦   ¦   
+¦   +---app
+¦   ¦       api.js
+¦   ¦       main.js
+¦   ¦       
+¦   +---dashboard
+¦   ¦       app.js
+¦   ¦       index.html
+¦   ¦       styles.css
+¦   ¦       
+¦   +---viewer
+¦           index.html
+¦           viewer.js
+¦           
++---icf
+¦       ifc_engine.py
+¦       
++---logs
+¦       2026-07-02.log
+¦       2026-07-03.log
+¦       __init__.py
+¦       
++---memory
+¦   ¦   database.py
+¦   ¦   memory_brain.py
+¦   ¦   models.py
+¦   ¦   storage.py
+¦   ¦   __init__.py
+¦   ¦   
+¦   +---__pycache__
+¦           memory_brain.cpython-311.pyc
+¦           __init__.cpython-311.pyc
+¦           
++---models
+¦       __init__.py
+¦       
++---offline
+¦       local_engine.py
+¦       
++---projects
+¦       __init__.py
+¦       
++---prompts
+¦       __init__.py
+¦       
++---revit_plugin
+¦       App.cs
+¦       ArchitectOSBridge.cs
+¦       BIMReceiver.cs
+¦       BIMSender.cs
+¦       SyncEngine.cs
+¦       
++---runtime
+¦   ¦   comfy_queue.py
+¦   ¦   comfy_worker.py
+¦   ¦   stream.py
+¦   ¦   
+¦   +---__pycache__
++---services
+¦       export_service.py
+¦       render_service.py
+¦       sync_service.py
+¦       
++---settings
+¦       __init__.py
+¦       
++---skills
+¦   ¦   image_skill.py
+¦   ¦   __init__.py
+¦   ¦   
+¦   +---architect
+¦   ¦       __init__.py
+¦   ¦       
+¦   +---comfyui
+¦   ¦   ¦   client.py
+¦   ¦   ¦   image_fetcher.py
+¦   ¦   ¦   workflow_engine.py
+¦   ¦   ¦   __init__.py
+¦   ¦   ¦   
+¦   ¦   +---__pycache__
+¦   +---desktop
+¦   ¦       __init__.py
+¦   ¦       
+¦   +---knowledge
+¦   ¦       __init__.py
+¦   ¦       
+¦   +---voice
+¦   ¦       __init__.py
+¦   ¦       
+¦   +---__pycache__
++---tests
+¦       system_test.py
+¦       __init__.py
+¦       
++---tools
+¦   ¦   bim_tool.py
+¦   ¦   comfy_tool.py
+¦   ¦   speech_to_text.py
+¦   ¦   text_to_speech.py
+¦   ¦   
+¦   +---__pycache__
+¦           bim_tool.cpython-311.pyc
+¦           comfy_tool.cpython-311.pyc
+¦           speech_to_text.cpython-311.pyc
+¦           text_to_speech.cpython-311.pyc
+¦           
++---ui
+¦   ¦   app.py
+¦   ¦   
+¦   +---static
+¦   ¦       app.js
+¦   ¦       style.css
+¦   ¦       
+¦   +---templates
+¦   ¦       index.html
+¦   ¦       
+¦   +---__pycache__
+¦           app.cpython-311.pyc
+¦           
++---vision
+¦       __init__.py
+¦       
++---web
+¦       app.js
+¦       index.html
+¦       styles.css
+¦       three_viewer.html
+¦       
++---workflows
+¦   +---comfy
+¦           flux.json
+¦           
++---__pycache__

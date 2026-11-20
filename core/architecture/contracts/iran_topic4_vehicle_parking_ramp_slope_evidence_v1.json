@@ -1,0 +1,80 @@
+{
+  "contract": "IranTopic4VehicleParkingRampSlopeEvidenceV1",
+  "status": "resolved_source_evidence",
+  "jurisdiction": "Iran",
+  "document": "Iran National Building Regulations, Topic 4: General Building Requirements",
+  "edition": "third_edition_1396",
+  "publisher": "Ministry of Roads and Urban Development; Road, Housing and Urban Development Research Center",
+  "scope": "vehicle_parking_ramps_only",
+  "excludes": ["pedestrian_ramps", "accessible_ramps", "design_preferences"],
+  "source": {
+    "kind": "primary_regulation_document_reproduction",
+    "document_url": "https://civil808.com/sites/default/files/mabhas_4.pdf",
+    "text_verification_url": "https://nezamat.ir/%D9%85%D9%82%D8%B1%D8%B1%D8%A7%D8%AA-%D9%85%D9%84%DB%8C%D9%91-%D8%B3%D8%A7%D8%AE%D8%AA%D9%85%D8%A7%D9%86-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-%D9%85%D8%A8%D8%AD%D8%AB-%DA%86%D9%87%D8%A7%D8%B1%D9%85/",
+    "printed_page": 70,
+    "pdf_page_index_zero_based": 82,
+    "retrieved_on": "2026-09-12",
+    "provenance": ["publisher_identified_primary_document", "clause_and_page_verified_against_document_text"]
+  },
+  "parking_size_classification": {
+    "status": "resolved_source_evidence",
+    "authority_class": "HARD_REGULATION",
+    "semantic": "classification_by_authoritative_achieved_or_final_parking_capacity",
+    "input_unit": "vehicle_parking_spaces",
+    "source": {
+      "kind": "primary_regulation_document_reproduction",
+      "section": "4-2 definitions; parking",
+      "printed_page": 14,
+      "pdf_page_index_zero_based": 25,
+      "document_url": "https://civil808.com/sites/default/files/mabhas_4.pdf",
+      "retrieved_on": "2026-09-12",
+      "provenance": ["publisher_identified_primary_document", "definition_and_boundaries_verified_against_document_text"]
+    },
+    "classes": [
+      {"class": "small", "minimum_capacity": 0, "maximum_capacity": 3, "minimum_inclusive": true, "maximum_inclusive": true},
+      {"class": "medium", "minimum_capacity": 4, "maximum_capacity": 25, "minimum_inclusive": true, "maximum_inclusive": true},
+      {"class": "large", "minimum_capacity": 26, "maximum_capacity": null, "minimum_inclusive": true, "maximum_inclusive": false}
+    ],
+    "forbidden_classification_inputs": ["minimum_required_capacity", "candidate_capacity", "geometry_derived_capacity"]
+  },
+  "clauses": [
+    {
+      "id": "iran_topic4_1396_4_5_10_2_6_public_covered_over_20m",
+      "clause": "4-5-10-2-6",
+      "applicability": {"ramp_use": "vehicle_parking", "parking_ownership": "public", "ramp_enclosure": "covered", "ramp_length_m": {"operator": "greater_than", "value": 20.0}},
+      "maximum_main_running_slope": {"value": 0.16, "unit": "ratio", "semantic": "hard_maximum"},
+      "transition_start": {"maximum_slope": 0.10, "unit": "ratio", "minimum_length": 1.0, "length_unit": "m"},
+      "transition_end": {"maximum_slope": 0.10, "unit": "ratio", "minimum_length": 1.0, "length_unit": "m"}
+    },
+    {
+      "id": "iran_topic4_1396_4_5_10_2_6_public_covered_under_20m",
+      "clause": "4-5-10-2-6",
+      "applicability": {"ramp_use": "vehicle_parking", "parking_ownership": "public", "ramp_enclosure": "covered", "ramp_length_m": {"operator": "less_than", "value": 20.0}},
+      "maximum_main_running_slope": {"value": 0.17, "unit": "ratio", "semantic": "hard_maximum"},
+      "transition_start": {"maximum_slope": 0.10, "unit": "ratio", "minimum_length": 1.0, "length_unit": "m"},
+      "transition_end": {"maximum_slope": 0.10, "unit": "ratio", "minimum_length": 1.0, "length_unit": "m"}
+    },
+    {
+      "id": "iran_topic4_1396_4_5_10_2_7_private_medium_large_open",
+      "clause": "4-5-10-2-7",
+      "applicability": {"ramp_use": "vehicle_parking", "parking_ownership": "private", "parking_size_class": ["medium", "large"], "ramp_enclosure": "open"},
+      "maximum_main_running_slope": {"value": 0.15, "unit": "ratio", "semantic": "hard_maximum"},
+      "transition_start": {"maximum_slope": 0.10, "unit": "ratio", "minimum_length": 1.0, "length_unit": "m"},
+      "transition_end": {"maximum_slope": 0.10, "unit": "ratio", "minimum_length": 1.0, "length_unit": "m"}
+    },
+    {
+      "id": "iran_topic4_1396_4_5_10_2_8_private_small_covered",
+      "clause": "4-5-10-2-8",
+      "applicability": {"ramp_use": "vehicle_parking", "parking_ownership": "private", "parking_size_class": "small", "ramp_enclosure": "covered"},
+      "maximum_main_running_slope": {"value": 0.17, "unit": "ratio", "semantic": "hard_maximum"},
+      "transition_start": {"maximum_slope": 0.10, "unit": "ratio", "minimum_length": 1.0, "length_unit": "m"},
+      "transition_end": {"maximum_slope": 0.10, "unit": "ratio", "minimum_length": 1.0, "length_unit": "m"}
+    }
+  ],
+  "explicitly_unresolved": [
+    "exactly_20m_public_covered_ramp_boundary_not_expressed_by_clause_text",
+    "all_vehicle_parking_ramp_categories_not_enumerated_by_clauses_4-5-10-2-6_through_4-5-10-2-8",
+    "parcel_2_authoritative_achieved_or_final_parking_capacity",
+    "private_covered_medium_or_large_vehicle_ramp_clause"
+  ]
+}

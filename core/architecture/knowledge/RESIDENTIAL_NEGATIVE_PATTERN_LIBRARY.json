@@ -1,0 +1,170 @@
+{
+  "schema": "RESIDENTIAL_NEGATIVE_PATTERN_LIBRARY_V1",
+  "patterns": [
+    {
+      "id": "N01",
+      "name_en": "MECHANICAL_EQUAL_GRID_PACKING",
+      "failure_codes": [
+        "MECHANICAL_EQUAL_GRID_PACKING"
+      ],
+      "regression_fixture_references": [
+        "RPL-N01"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    },
+    {
+      "id": "N02",
+      "name_en": "BEDROOM_AS_TRANSIT",
+      "failure_codes": [
+        "BEDROOM_AS_TRANSIT"
+      ],
+      "regression_fixture_references": [
+        "RPL-N02"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    },
+    {
+      "id": "N03",
+      "name_en": "BATH_OR_WC_AS_TRANSIT",
+      "failure_codes": [
+        "BATH_OR_WC_AS_TRANSIT"
+      ],
+      "regression_fixture_references": [
+        "RPL-N03"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    },
+    {
+      "id": "N04",
+      "name_en": "COURTYARD_ACCESS_THROUGH_WET_ROOM",
+      "failure_codes": [
+        "COURTYARD_ACCESS_THROUGH_WET_ROOM"
+      ],
+      "regression_fixture_references": [
+        "RPL-N04"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    },
+    {
+      "id": "N05",
+      "name_en": "GUEST_WC_INSIDE_SLEEPING_CLUSTER",
+      "failure_codes": [
+        "GUEST_WC_INSIDE_SLEEPING_CLUSTER"
+      ],
+      "regression_fixture_references": [
+        "RPL-N05"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    },
+    {
+      "id": "N06",
+      "name_en": "ROOM_TO_ROOM_DAYLIGHT_WINDOW",
+      "failure_codes": [
+        "ROOM_TO_ROOM_DAYLIGHT_WINDOW"
+      ],
+      "regression_fixture_references": [
+        "RPL-N06"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    },
+    {
+      "id": "N07",
+      "name_en": "ARBITRARY_WINDOW_PLACEMENT",
+      "failure_codes": [
+        "ARBITRARY_WINDOW_PLACEMENT"
+      ],
+      "regression_fixture_references": [
+        "RPL-N07"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    },
+    {
+      "id": "N08",
+      "name_en": "LONG_REDUNDANT_CORRIDOR",
+      "failure_codes": [
+        "LONG_REDUNDANT_CORRIDOR"
+      ],
+      "regression_fixture_references": [
+        "RPL-N08"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    },
+    {
+      "id": "N09",
+      "name_en": "DOOR_ON_EVERY_SPACE",
+      "failure_codes": [
+        "DOOR_ON_EVERY_SPACE"
+      ],
+      "regression_fixture_references": [
+        "RPL-N09"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    },
+    {
+      "id": "N10",
+      "name_en": "PARKING_WITHOUT_MANEUVER",
+      "failure_codes": [
+        "PARKING_WITHOUT_MANEUVER"
+      ],
+      "regression_fixture_references": [
+        "RPL-N10"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    },
+    {
+      "id": "N11",
+      "name_en": "KITCHEN_WITHOUT_CABINET_GEOMETRY",
+      "failure_codes": [
+        "KITCHEN_WITHOUT_CABINET_GEOMETRY"
+      ],
+      "regression_fixture_references": [
+        "RPL-N11"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    },
+    {
+      "id": "N12",
+      "name_en": "PUBLIC_TO_PRIVATE_REQUIRES_LIVING_CROSSING_WITHOUT_NEED",
+      "failure_codes": [
+        "PUBLIC_TO_PRIVATE_REQUIRES_LIVING_CROSSING_WITHOUT_NEED"
+      ],
+      "regression_fixture_references": [
+        "RPL-N12"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    },
+    {
+      "id": "N13",
+      "name_en": "PRIVATE_ZONE_EXPOSED_TO_GUEST_SIGHTLINE",
+      "failure_codes": [
+        "PRIVATE_ZONE_EXPOSED_TO_GUEST_SIGHTLINE"
+      ],
+      "regression_fixture_references": [
+        "RPL-N13"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    },
+    {
+      "id": "N14",
+      "name_en": "DAYLIGHT_YARD_WITH_SINGLE_LOW_VALUE_SERVICE_ONLY_USE_WHEN_BETTER_COMPOSITION_EXISTS",
+      "failure_codes": [
+        "DAYLIGHT_YARD_WITH_SINGLE_LOW_VALUE_SERVICE_ONLY_USE_WHEN_BETTER_COMPOSITION_EXISTS"
+      ],
+      "regression_fixture_references": [
+        "RPL-N14"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    },
+    {
+      "id": "N15",
+      "name_en": "OPEN_SPACE_INSERTED_WITHOUT_FUNCTIONAL_DAYLIGHT_DEFICIT",
+      "failure_codes": [
+        "OPEN_SPACE_INSERTED_WITHOUT_FUNCTIONAL_DAYLIGHT_DEFICIT"
+      ],
+      "regression_fixture_references": [
+        "RPL-N15"
+      ],
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "3": {"inputs": {"seed": 1038550040731834, "steps": 20, "cfg": 6.0, "sampler_name": "uni_pc", "scheduler": "simple", "denoise": 1.0, "model": ["48", 0], "positive": ["41", 0], "negative": ["41", 1], "latent_image": ["41", 2]}, "class_type": "KSampler", "_meta": {"title": "WAN Architectural I2V Sampler"}},
+  "6": {"inputs": {"text": "cinematic architectural animation, slow controlled camera dolly, preserve approved building geometry, facade, openings, materials and floor count, stable straight lines", "clip": ["38", 0]}, "class_type": "CLIPTextEncode", "_meta": {"title": "Architectural Motion Prompt"}},
+  "7": {"inputs": {"text": "camera shake, fast motion, warped walls, bending lines, changing facade, changing windows, extra floors, missing openings, distorted architecture, flicker, low quality, text, watermark", "clip": ["38", 0]}, "class_type": "CLIPTextEncode", "_meta": {"title": "Architectural Negative Prompt"}},
+  "8": {"inputs": {"samples": ["3", 0], "vae": ["39", 0]}, "class_type": "VAEDecode", "_meta": {"title": "Decode WAN Frames"}},
+  "37": {"inputs": {"unet_name": "wan2.1_i2v_720p_14B_fp8_scaled.safetensors", "weight_dtype": "default"}, "class_type": "UNETLoader", "_meta": {"title": "WAN 2.1 I2V 720p"}},
+  "38": {"inputs": {"clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors", "type": "wan", "device": "default"}, "class_type": "CLIPLoader", "_meta": {"title": "WAN Text Encoder"}},
+  "39": {"inputs": {"vae_name": "wan_2.1_vae.safetensors"}, "class_type": "VAELoader", "_meta": {"title": "WAN VAE"}},
+  "41": {"inputs": {"positive": ["6", 0], "negative": ["7", 0], "vae": ["39", 0], "width": 832, "height": 480, "length": 49, "batch_size": 1, "start_image": ["50", 0]}, "class_type": "WanImageToVideo", "_meta": {"title": "Approved Architecture to Video"}},
+  "48": {"inputs": {"shift": 8.0, "model": ["37", 0]}, "class_type": "ModelSamplingSD3", "_meta": {"title": "WAN Model Sampling"}},
+  "50": {"inputs": {"image": "example.png"}, "class_type": "LoadImage", "_meta": {"title": "Approved Architectural Render"}},
+  "51": {"inputs": {"images": ["8", 0], "fps": 16.0}, "class_type": "CreateVideo", "_meta": {"title": "Create Architectural Video"}},
+  "52": {"inputs": {"video": ["51", 0], "filename_prefix": "ArchitectOS/architecture_wan", "format": "mp4", "codec": "h264"}, "class_type": "SaveVideo", "_meta": {"title": "Save Architectural MP4"}}
+}

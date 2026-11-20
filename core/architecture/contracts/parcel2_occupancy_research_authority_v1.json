@@ -1,0 +1,110 @@
+{
+  "contract": "Parcel2OccupancyResearchAuthorityV1",
+  "project_id": "parcel_2",
+  "jurisdiction": "Minab, Hormozgan, Iran",
+  "research_date": "2026-09-12",
+  "authority_policy": "Only readable official documents with verifiable clause/article/page and proven Parcel 2 applicability may resolve an occupancy input.",
+  "records": [
+    {
+      "jurisdiction": "Parcel 2 project only",
+      "issuing_authority": "Project user / design authority",
+      "document_title": "Parcel 2 mixed-use design confirmation chain",
+      "edition_or_date": "2026-09-12",
+      "source_reference": "chatgpt-conversation://6aa29f0b-b138-83e9-b9f8-e2c4f9237685",
+      "verification_status": "latest_explicit_user_design_direction_audited_2026-09-12",
+      "authority_class": "PROJECT_DESIGN_CONFIRMATION",
+      "applicability_to_parcel_2": "explicit_current_mixed_use_scenario_only",
+      "confirmed_values": {
+        "ground_commercial_coverage_percent": 100,
+        "upper_residential_coverage_percent": 100,
+        "commercial_floor_scope": ["ground"],
+        "local_regulation_jurisdiction": "MINAB"
+      },
+      "unresolved_project_inputs": ["commercial_area_target", "commercial_occupiable_area", "commercial_use_subtype", "residential_design_population", "occupancy_conversion_rule"],
+      "superseded_assistant_suggestions": {
+        "commercial_area_target": {"value": {"area_m2": 30, "basis": "gross"}, "lifecycle_status": "SUPERSEDED", "authority_status": "NON_AUTHORITATIVE", "active": false, "may_feed_active_resolvers": false},
+        "commercial_occupiable_area": {"value": {"area_m2": 25, "basis": "net"}, "lifecycle_status": "SUPERSEDED", "authority_status": "NON_AUTHORITATIVE", "active": false, "may_feed_active_resolvers": false},
+        "commercial_use_type": {"value": "retail_shop", "lifecycle_status": "SUPERSEDED", "authority_status": "NON_AUTHORITATIVE", "active": false, "may_feed_active_resolvers": false},
+        "residential_design_population": {"value": {"F1_U1": 4, "F2_U1": 4, "F2_U2": 4, "total": 12}, "lifecycle_status": "SUPERSEDED", "authority_status": "NON_AUTHORITATIVE", "active": false, "may_feed_active_resolvers": false}
+      },
+      "mixed_use_allowed_FAR": null,
+      "excluded_from_current_scenario": {"allowed_FAR_percent": 180, "applies_only_to": "residential_only_scenario"},
+      "default_value_authority": false,
+      "may_apply_to_other_projects_or_cities": false,
+      "provenance": ["latest_explicit_user_design_direction_2026-09-12", "assistant_suggestions_are_not_human_confirmation"]
+    },
+    {
+      "jurisdiction": "Iran",
+      "issuing_authority": "Ministry of Roads and Urban Development, Office of National Building Regulations and Control",
+      "document_title": "Iran National Building Regulations publications index",
+      "edition_or_date": null,
+      "clause_article_page": null,
+      "official_url": "https://inbr.ir/",
+      "verification_status": "official_publisher_verified_document_text_not_retrieved",
+      "applicability_to_parcel_2": "unresolved_without_document_text",
+      "authority_for_occupancy_value": false,
+      "provenance": ["official_site_read_2026-09-12", "publication_page_returned_HTTP_403"]
+    },
+    {
+      "jurisdiction": "Minab, Hormozgan",
+      "issuing_authority": "Supreme Council of Urban Planning and Architecture / Ministry of Roads and Urban Development archive",
+      "document_title": "Approved urban plans archive entry for Minab",
+      "edition_or_date": null,
+      "clause_article_page": null,
+      "official_url": "https://archive.mrud.ir/UI/Forms/index.aspx",
+      "verification_status": "official_archive_unavailable_timeout",
+      "applicability_to_parcel_2": "unresolved_no_parcel_location_or_zoning_sheet_verified",
+      "authority_for_occupancy_value": false,
+      "provenance": ["official_archive_attempt_2026-09-12"]
+    },
+    {
+      "jurisdiction": "Minab municipality, Hormozgan",
+      "issuing_authority": ["Ministry of Interior", "Hormozgan Governorate", "Municipality of Minab"],
+      "document_title": "Minab Detailed Plan, Volume 4, Regulations",
+      "document_title_fa": "طرح تفصیلی شهر میناب، جلد 4، ضوابط و مقررات",
+      "edition_or_date": "Spring 1400",
+      "consultant": "Pouya Naghshe Shahr-o-Bana Consulting Engineers",
+      "canonical_path": "core/architecture/authorities/minab/minab_detailed_plan_volume_4_regulations_spring_1400.pdf",
+      "sha256": "13B2C9A9E7279CA3B4641EC0DC1C9B175ADBC1474C52C5DAD562746AA3E05DB2",
+      "byte_size": 6890828,
+      "page_count": 164,
+      "verification_status": "user_supplied_primary_local_reference_content_and_cover_verified",
+      "document_status": "PRIMARY_LOCAL_WORKING_REGULATION",
+      "promulgation_status": "promulgation_unverified",
+      "jurisdiction_scope": "MINAB_LOCAL_ONLY",
+      "final_approval_status": "unresolved_separate_approval_or_promulgation_record_not_verified",
+      "authority_for_occupancy_value": "conditional_on_clause_page_and_parcel_applicability_verification",
+      "applicability_to_parcel_2": "unresolved_until_parcel_zoning_and_map_sheet_are_verified",
+      "verified_sections": [
+        {"subject": "mixed_use_definition", "clause_article": "1-19 and 1-20", "printed_page": 4, "pdf_page": 8},
+        {"subject": "residential_land_use", "clause_article": "3-1", "printed_page": 18, "pdf_page": 22},
+        {"subject": "commercial_service_land_use", "clause_article": "3-2", "printed_page": 36, "pdf_page": 42},
+        {"subject": "commercial_service_construction_rules", "clause_article": "3-2-3", "printed_page": 38, "pdf_page": 44}
+      ],
+      "provenance": [
+        "user_supplied_file:<user-home>/Desktop/ALL Zavabet T- minab-1400-5-17.pdf",
+        "cover_and_relevant_pages_visually_verified_2026-09-12",
+        "canonical_copy_sha256_verified_byte_equal"
+      ],
+      "normalized_local_validator": "core/architecture/contracts/local/minab_local_commercial_rules_v1.json",
+      "default_value_authority": false,
+      "may_overwrite_project_inputs": false
+    }
+  ],
+  "secondary_leads": [
+    {"document_title": "Minab County Comprehensive Plan approval", "reported_date": "1380-07-16", "authority_use": "discovery_only_not_authority"},
+    {"document_title": "Bandar Abbas Region Comprehensive Plan including Minab", "reported_date": "1386-11-01", "authority_use": "discovery_only_not_authority"}
+  ],
+  "mandatory_authority_families": ["Iran National Building Regulations", "Minab Detailed Plan Volume 4 Regulations Spring 1400"],
+  "resolution_policy": {
+    "both_authority_families_must_be_checked": true,
+    "clause_and_page_required": true,
+    "parcel_applicability_required": true,
+    "conflicts_fail_closed": true,
+    "secondary_sources_are_authority": false,
+    "local_regulations_validate_project_inputs_only": true,
+    "national_regulations_are_a_separate_validation_layer": true,
+    "article_5_approvals_are_case_specific": true
+  },
+  "unresolved_regulatory_questions": ["commercial occupancy load factor", "residential population conversion", "Parcel 2 detailed-plan zoning/map sheet", "final approval/promulgation record for the supplied Minab volume", "current municipal parking/area definitions applicable to Parcel 2"]
+}

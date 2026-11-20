@@ -1,0 +1,142 @@
+{
+  "202": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "flux1-krea-dev_fp8_scaled.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "204": {
+    "class_type": "DualCLIPLoader",
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux",
+      "device": "default"
+    }
+  },
+  "205": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    }
+  },
+  "300": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "input.png",
+      "upload": "image"
+    }
+  },
+  "301": {
+    "class_type": "VAEEncode",
+    "inputs": {
+      "pixels": [
+        "300",
+        0
+      ],
+      "vae": [
+        "205",
+        0
+      ]
+    }
+  },
+  "206": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "improve the architectural design, realistic materials, better lighting, professional architectural visualization",
+      "clip": [
+        "204",
+        0
+      ]
+    }
+  },
+  "212": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "",
+      "clip": [
+        "204",
+        0
+      ]
+    }
+  },
+  "210": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 0,
+      "steps": 30,
+      "cfg": 5,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.3,
+      "model": [
+        "202",
+        0
+      ],
+      "positive": [
+        "206",
+        0
+      ],
+      "negative": [
+        "212",
+        0
+      ],
+      "latent_image": [
+        "301",
+        0
+      ]
+    }
+  },
+  "208": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "210",
+        0
+      ],
+      "vae": [
+        "205",
+        0
+      ]
+    }
+  },
+  "9": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "architectos_img2img_edit",
+      "images": [
+        "208",
+        0
+      ]
+    }
+  },
+  "304": {
+    "class_type": "CLIPVisionLoader",
+    "inputs": {
+      "clip_name": "clip_vision_h.safetensors"
+    }
+  },
+  "302": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "style_reference.png",
+      "upload": "image"
+    }
+  },
+  "303": {
+    "class_type": "CLIPVisionEncode",
+    "inputs": {
+      "clip_vision": [
+        "304",
+        0
+      ],
+      "image": [
+        "302",
+        0
+      ],
+      "crop": "center"
+    },
+    "_architectos_note": "UNCONSUMED experimental branch: output is NOT connected to the sampler; ComfyUI may prune it. Proves no conditioning."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "contract": "RoomDaylightAuthorityEvidenceV2",
+  "research_date": "2026-09-13",
+  "authority_repository_scope": "<repo-root>/core/architecture/authorities",
+  "national_authority": {
+    "document_title": "Iran National Building Regulations, Topic 4 - General Building Requirements",
+    "edition": "third edition, 1396",
+    "repository_file_status": "ABSENT",
+    "promotion_status": "FAIL_CLOSED",
+    "records": [
+      {"clause":"4-5-2-3-1","printed_page":null,"pdf_page":null,"provenance":"repository_official_pdf_absent","applicability":"unresolved","status":"UNVERIFIED_AUTHORITY"},
+      {"clause":"4-5-2-3-2","printed_page":null,"pdf_page":null,"provenance":"repository_official_pdf_absent","applicability":"unresolved","status":"UNVERIFIED_AUTHORITY"},
+      {"clause":"4-5-2-8-3","printed_page":null,"pdf_page":null,"provenance":"repository_official_pdf_absent","applicability":"unresolved","status":"UNVERIFIED_AUTHORITY"},
+      {"clause":"4-5-8-3-5","printed_page":null,"pdf_page":null,"provenance":"repository_official_pdf_absent","applicability":"unresolved","status":"UNVERIFIED_AUTHORITY"},
+      {"clause":"4-5-8-3-6","printed_page":null,"pdf_page":null,"provenance":"repository_official_pdf_absent","applicability":"unresolved","status":"UNVERIFIED_AUTHORITY"},
+      {"clause":"4-5-8-3-7","printed_page":null,"pdf_page":null,"provenance":"repository_official_pdf_absent","applicability":"unresolved","status":"UNVERIFIED_AUTHORITY"},
+      {"clause":"Table 4-6","printed_page":null,"pdf_page":null,"provenance":"repository_official_pdf_absent","applicability":"unresolved","status":"UNVERIFIED_AUTHORITY"}
+    ]
+  },
+  "local_authority": {
+    "document_title": "Minab Detailed Plan, Volume 4, Regulations",
+    "edition": "Spring 1400",
+    "issuing_authority": "unresolved_pending_approval_or_promulgation_record",
+    "local_path": "core/architecture/authorities/minab/minab_detailed_plan_volume_4_regulations_spring_1400.pdf",
+    "sha256": "13b2c9a9e7279ca3b4641ec0dc1c9b175adbc1474c52c5dad562746aa3e05db2",
+    "parcel2_applicability": "UNRESOLVED",
+    "override_status": "NOT_APPLIED",
+    "records": [
+      {"clause":"1-44","subject":"courtyard definition and daylight/ventilation use","printed_page":7,"pdf_page":11,"provenance":"local_pdf_text_verified","applicability":"definition_only; parcel2 conditions unresolved","status":"APPLICABILITY_UNRESOLVED"},
+      {"clause":"1-45","subject":"patio definition and daylight/ventilation use","printed_page":7,"pdf_page":11,"provenance":"local_pdf_text_verified","applicability":"definition_only; parcel2 conditions unresolved","status":"APPLICABILITY_UNRESOLVED"},
+      {"clause":"1-50","subject":"principal residential spaces definition","printed_page":8,"pdf_page":12,"provenance":"local_pdf_text_verified","applicability":"definition_only; parcel2 conditions unresolved","status":"APPLICABILITY_UNRESOLVED"},
+      {"clause":"21-1","subject":"daylighting of principal spaces and kitchen via courtyard/lightwell","printed_page":29,"pdf_page":33,"provenance":"local_pdf_text_verified","applicability":"parcel area/orientation/floor count and approval status unresolved","status":"APPLICABILITY_UNRESOLVED"},
+      {"clause":"21-2","subject":"natural air flow in central lightwells","printed_page":29,"pdf_page":33,"provenance":"local_pdf_text_verified","applicability":"central-lightwell condition and approval status unresolved","status":"APPLICABILITY_UNRESOLVED"},
+      {"clause":"23-1..3","subject":"openings, guard/privacy, opposing windows","printed_page":29,"pdf_page":33,"provenance":"local_pdf_text_verified","applicability":"floor/unit/opposing-window conditions and approval status unresolved","status":"APPLICABILITY_UNRESOLVED"}
+    ]
+  },
+  "resolved_regulatory_values": {},
+  "building_program_knowledge_policy": "DESIGN_KNOWLEDGE_NON_AUTHORITATIVE",
+  "room_planning_v2_authority_gate": "BLOCKED"
+}

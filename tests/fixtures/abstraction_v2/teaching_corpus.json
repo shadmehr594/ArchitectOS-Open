@@ -1,0 +1,135 @@
+{
+  "_role": "LEARNER DATA. This file is read by the LEARNER boundary only. It must never contain the intended concept name, an intended invariant, an expected label, or any evaluation key. The isolated knowledge domain is deliberately NOT architecture-named: the experiment must not be able to succeed by recognising a building word.",
+  "_domain": "a withdrawn personal domain whose point is recovery away from observation; the fillers are deliberately non-architectural where possible",
+  "teaching_corpus_a": {
+    "corpus_id": "corpus_A",
+    "language": "en",
+    "examples": [
+      {
+        "contract": "ArchitecturalHumanTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "A1",
+        "description": "A sleeping chamber is set apart from the shared rooms, screened by depth.",
+        "reason": "because the occupant needs to recover where nobody watches them",
+        "context": "a shared dwelling with several occupants"
+      },
+      {
+        "contract": "ArchitecturalHumanTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "A2",
+        "description": "A resting cell stands beyond the common hall, withdrawn behind a threshold.",
+        "reason": "because a person has to be unobserved while they recover",
+        "context": "a household whose day is shared"
+      },
+      {
+        "contract": "ArchitecturalHumanTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "A3",
+        "description": "A quiet nook sits past the gathering space, kept out of sight.",
+        "reason": "because the household member needs an unwatched place to rest",
+        "context": "a dwelling with a busy shared core"
+      },
+      {
+        "contract": "ArchitecturalHumanTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "A4",
+        "description": "A small bay lies off the busy corridor, turned away from company.",
+        "reason": "because whoever uses it must recover out of anyone view",
+        "context": "a compact dwelling"
+      }
+    ]
+  },
+  "teaching_corpus_b": {
+    "_note": "BLIND RELEARNING corpus. The SAME underlying idea, expressed with different fillers, wording and clause order. The learner is NEVER told this corpus expresses the same idea.",
+    "corpus_id": "corpus_B",
+    "language": "en",
+    "examples": [
+      {
+        "contract": "ArchitecturalHumanTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "B1",
+        "description": "A sheltered recess sits past the family zone, shielded from view.",
+        "reason": "since the resident has to recover unobserved",
+        "context": "a dwelling with a communal heart"
+      },
+      {
+        "contract": "ArchitecturalHumanTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "B2",
+        "description": "A tucked corner rests behind the entry sequence, hidden from onlookers.",
+        "reason": "for its owner needs to recover away from prying eyes",
+        "context": "an open plan dwelling"
+      },
+      {
+        "contract": "ArchitecturalHumanTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "B3",
+        "description": "A withdrawn pocket lies off the social space, kept from sight.",
+        "reason": "because the user must recover where nobody watches",
+        "context": "a house shared by many"
+      }
+    ]
+  },
+  "filler_substitution_corpus": {
+    "_note": "Every filler noun replaced. The derived WEHY-bound content must not move.",
+    "corpus_id": "corpus_FILL",
+    "language": "en",
+    "examples": [
+      {
+        "contract": "ArchitecturalHumanTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "F1",
+        "description": "A hutch is set apart from the meeting area, screened by depth.",
+        "reason": "because the occupant needs to recover where nobody watches them",
+        "context": "a shared dwelling"
+      },
+      {
+        "contract": "ArchitecturalHumanTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "F2",
+        "description": "A cranny stands beyond the assembly zone, withdrawn behind a threshold.",
+        "reason": "because a person has to be unobserved while they recover",
+        "context": "a shared dwelling"
+      },
+      {
+        "contract": "ArchitecturalHumanTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "F3",
+        "description": "A bay sits past the assembly area, kept out of sight.",
+        "reason": "because the household member needs an unwatched place to rest",
+        "context": "a shared dwelling"
+      }
+    ]
+  },
+  "why_swap_corpus": {
+    "_note": "The DESCRIPTIONS are kept, the WHY is replaced with a structural, non-experiential reason. A learner that survives this swap as if nothing changed would have ignored the WHY.",
+    "corpus_id": "corpus_WHYSWAP",
+    "language": "en",
+    "examples": [
+      {
+        "contract": "ArchitecturalHumanTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "W1",
+        "description": "A sleeping chamber is set apart from the shared rooms, screened by depth.",
+        "reason": "because the builder wanted the cheapest possible partition",
+        "context": "a speculative development"
+      },
+      {
+        "contract": "ArchitecturalHumanTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "W2",
+        "description": "A resting cell stands beyond the common hall, withdrawn behind a threshold.",
+        "reason": "because the plot line forced the wall in that position",
+        "context": "a constrained site"
+      },
+      {
+        "contract": "ArchitecturalHumanTeachingExampleV1",
+        "version": "1.0",
+        "example_id": "W3",
+        "description": "A quiet nook sits past the gathering space, kept out of sight.",
+        "reason": "because the structural bays had to stay regular",
+        "context": "a standard frame building"
+      }
+    ]
+  }
+}

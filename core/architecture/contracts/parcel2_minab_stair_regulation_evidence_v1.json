@@ -1,0 +1,187 @@
+{
+  "contract": "Parcel2MinabStairRegulationEvidenceV1",
+  "evidence_status": "mixed_authority_evidence_set",
+  "stair_requirements": {
+    "minimum_tread": null
+  },
+  "evidence_records": [
+    {
+      "id": "iran_national_topic4_minimum_tread",
+      "key": "minimum_tread",
+      "value": 0.28,
+      "unit": "m",
+      "constraint": "minimum",
+      "source_kind": "national_building_regulation",
+      "source": "Iran National Building Regulations, Topic 4, General Building Requirements",
+      "source_reference": "Topic 4, third edition 1396, clause 4-5-1-7-1",
+      "edition": "1396",
+      "jurisdiction": "Minab",
+      "evidence_status": "resolved_authoritative",
+      "confidence": 1.0,
+      "applicability": {
+        "status": "explicitly_applicable",
+        "project_id": "*",
+        "jurisdiction": "Minab",
+        "edition": "1396",
+        "occupancies": ["residential", "commercial"]
+      },
+      "provenance": ["national_topic4_clause_4-5-1-7-1"]
+    },
+    {
+      "id": "minab_current_project_minimum_tread",
+      "key": "minimum_tread",
+      "value": 0.30,
+      "unit": "m",
+      "constraint": "minimum",
+      "source_kind": "human_confirmed_current_project_local_requirement",
+      "source": "explicit_user_confirmation_for_current_Minab_project",
+      "jurisdiction": "Minab",
+      "source_reference": "chatgpt-conversation://6aa29f0b-b138-83e9-b9f8-e2c4f9237685#user-confirmed-minab-minimum-tread",
+      "authority_scope": "current_project_only",
+      "verification_status": "human_confirmed_not_independently_document_verified",
+      "evidence_status": "authoritative_for_current_project_human_confirmed",
+      "confidence": 1.0,
+      "applicability": {
+        "status": "explicitly_applicable",
+        "project_id": "parcel_2",
+        "jurisdiction": "Minab"
+      },
+      "provenance": ["human_confirmation_current_project_minab_local_requirement"]
+    },
+    {
+      "id": "iran_national_topic4_derived_maximum_riser_for_parcel2_tread",
+      "key": "maximum_riser",
+      "value": 0.17,
+      "unit": "m",
+      "constraint": "maximum",
+      "source_kind": "national_building_regulation_derived_bound",
+      "source": "Iran National Building Regulations, Topic 4, General Building Requirements",
+      "code_document_name": "مقررات ملی ساختمان ایران، مبحث چهارم: الزامات عمومی ساختمان",
+      "source_url": "https://civil808.com/sites/default/files/mabhas_4.pdf",
+      "promulgation_record_url": "https://nezamat.ir/مقررات-ملی-ساختمان-ایران-مبحث-چهارم/",
+      "source_reference": "Topic 4, third edition 1396, clause 4-5-1-7-1, printed page 48, PDF page 60",
+      "clause": "4-5-1-7-1",
+      "printed_page": 48,
+      "pdf_page": 60,
+      "edition": "1396",
+      "jurisdiction": "Minab",
+      "evidence_status": "resolved_authoritative_derived_from_primary_regulation_and_project_requirement",
+      "confidence": 1.0,
+      "derivation": {
+        "regulatory_expression": "minimum_tread + 2 * riser_height <= 0.64 m",
+        "project_requirement_expression": "minimum_tread >= 0.30 m",
+        "derived_expression": "riser_height <= (0.64 - 0.30) / 2 = 0.17 m",
+        "regulation_evidence_id": "iran_national_topic4_minimum_tread",
+        "project_requirement_evidence_id": "minab_current_project_minimum_tread"
+      },
+      "applicability": {
+        "status": "explicitly_applicable",
+        "project_id": "parcel_2",
+        "jurisdiction": "Minab",
+        "edition": "1396",
+        "occupancies": ["residential", "commercial"]
+      },
+      "provenance": [
+        "deterministic_upper_bound_derivation"
+      ]
+    },
+    {
+      "id": "iran_national_topic3_maximum_rise_between_landings",
+      "key": "maximum_rise_per_flight",
+      "value": 3.70,
+      "unit": "m",
+      "constraint": "maximum",
+      "source_kind": "national_building_regulation",
+      "source": "Iran National Building Regulations, Topic 3, Fire Protection of Buildings",
+      "code_document_name": "مقررات ملی ساختمان ایران، مبحث سوم: حفاظت ساختمان‌ها در مقابل حریق",
+      "source_url": "https://behsazcivil.ir/wp-content/uploads/2021/03/Mabhas03-1395.pdf",
+      "source_reference": "Topic 3, edition 1395, clause 3-6-4-3-10, printed page 93, PDF page 108",
+      "clause": "3-6-4-3-10",
+      "printed_page": 93,
+      "pdf_page": 108,
+      "edition": "1395",
+      "jurisdiction": "Minab",
+      "evidence_status": "resolved_authoritative",
+      "confidence": 1.0,
+      "applicability": {
+        "status": "explicitly_applicable",
+        "project_id": "*",
+        "jurisdiction": "Minab",
+        "edition": "1395",
+        "occupancies": ["residential", "commercial"]
+      },
+      "provenance": ["national_topic3_clause_3-6-4-3-10"]
+    },
+    {
+      "id": "iran_national_topic4_minimum_landing_dimension_relation",
+      "key": "minimum_landing_dimension_relation",
+      "value": "not_less_than_stair_clear_width",
+      "unit": "relation",
+      "constraint": "minimum_relation",
+      "source_kind": "national_building_regulation",
+      "source": "Iran National Building Regulations, Topic 4, General Building Requirements",
+      "code_document_name": "مقررات ملی ساختمان ایران، مبحث چهارم: الزامات عمومی ساختمان",
+      "source_url": "https://civil808.com/sites/default/files/mabhas_4.pdf",
+      "source_reference": "Topic 4, third edition 1396, clause 4-5-1-7-4, printed page 48, PDF page 60",
+      "clause": "4-5-1-7-4",
+      "printed_page": 48,
+      "pdf_page": 60,
+      "edition": "1396",
+      "jurisdiction": "Minab",
+      "evidence_status": "resolved_authoritative",
+      "confidence": 1.0,
+      "applicability": {
+        "status": "explicitly_applicable",
+        "project_id": "*",
+        "jurisdiction": "Minab",
+        "edition": "1396",
+        "occupancies": ["residential", "commercial"]
+      },
+      "semantic_scope": {
+        "straight_landing": "minimum_clear_dimension",
+        "curved_landing": "minimum_clear_radius",
+        "numeric_constant_provided": false
+      },
+      "provenance": ["national_topic4_clause_4-5-1-7-4"]
+    },
+    {
+      "id": "iran_national_topic4_accessible_maximum_steps_between_landings",
+      "key": "maximum_risers_per_flight",
+      "value": 12,
+      "unit": "count",
+      "constraint": "maximum",
+      "source_kind": "national_building_regulation",
+      "source": "Iran National Building Regulations, Topic 4, General Building Requirements",
+      "code_document_name": "مقررات ملی ساختمان ایران، مبحث چهارم: الزامات عمومی ساختمان",
+      "source_url": "https://civil808.com/sites/default/files/mabhas_4.pdf",
+      "source_reference": "Topic 4, third edition 1396, clause 4-5-1-7-5, printed page 48, PDF page 60",
+      "clause": "4-5-1-7-5",
+      "printed_page": 48,
+      "pdf_page": 60,
+      "edition": "1396",
+      "jurisdiction": "Minab",
+      "evidence_status": "resolved_authoritative_conditional",
+      "confidence": 1.0,
+      "applicability": {
+        "status": "conditional_not_proven_for_active_project",
+        "project_id": "*",
+        "jurisdiction": "Minab",
+        "edition": "1396",
+        "occupancies": ["residential", "commercial"],
+        "condition": "building_used_by_people_with_physical-mobility disabilities"
+      },
+      "provenance": ["national_topic4_clause_4-5-1-7-5"]
+    }
+  ],
+  "maximum_riser": {
+    "status": "resolved",
+    "value": 0.17,
+    "unit": "m",
+    "constraint": "maximum",
+    "evidence_record_id": "iran_national_topic4_derived_maximum_riser_for_parcel2_tread"
+  },
+  "upper_floor_spans": {
+    "status": "unresolved",
+    "required_input": "level_contract_required"
+  }
+}

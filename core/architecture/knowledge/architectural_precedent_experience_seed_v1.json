@@ -1,0 +1,39 @@
+{
+  "contract": "ArchitecturalPrecedentExperienceSeedV1",
+  "authority_class": "PRECEDENT_NON_REGULATORY",
+  "offline_first": true,
+  "may_resolve_regulation": false,
+  "contains_copyable_geometry": false,
+  "cases": [
+    {
+      "id": "CASE_DAYLIGHT_DISTRIBUTION_001",
+      "authority_class": "PRECEDENT_NON_REGULATORY",
+      "retrieval_tags": ["residential", "daylight", "privacy", "circulation"],
+      "problems": ["unequal_daylight_access", "weak_public_private_gradient"],
+      "design_moves": ["use_daylit_shared_space_as_distribution_anchor", "group_private_spaces_beyond_shared_threshold"],
+      "reasoning": ["one organizing move can improve orientation and privacy together"],
+      "outcomes": ["daylight", "privacy", "legibility"],
+      "trade_offs": ["shared_distribution_area_cost", "requires_room_level_validation"]
+    },
+    {
+      "id": "CASE_CORE_ADJACENCY_001",
+      "authority_class": "PRECEDENT_NON_REGULATORY",
+      "retrieval_tags": ["residential", "core_adjacency", "circulation", "service_cluster"],
+      "problems": ["weak_core_entry_relationship", "fragmented_service_adjacency"],
+      "design_moves": ["consolidate_service_relationships_near_core", "clarify_entry_distribution_node"],
+      "reasoning": ["coordinating adjacency before geometry avoids isolated local fixes"],
+      "outcomes": ["core_adjacency", "circulation_hierarchy", "service_efficiency"],
+      "trade_offs": ["area_reallocation", "whole_plan_revalidation"]
+    },
+    {
+      "id": "CASE_RESIDUAL_SPACE_001",
+      "authority_class": "PRECEDENT_NON_REGULATORY",
+      "retrieval_tags": ["residential", "residual_space", "usable_area", "circulation"],
+      "problems": ["residual_space", "indirect_room_access"],
+      "design_moves": ["merge_residual_area_into_adjacent_program", "align_access_with_dominant_spatial_order"],
+      "reasoning": ["resolve leftover space through adjacency and access rather than decorative form"],
+      "outcomes": ["usable_area", "direct_access", "legibility"],
+      "trade_offs": ["neighbor_area_shift", "dimensional_revalidation"]
+    }
+  ]
+}

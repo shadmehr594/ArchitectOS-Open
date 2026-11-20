@@ -1,0 +1,47 @@
+{
+  "contract": "IranTopic15ElevatorAccessibilityEvidenceV1",
+  "jurisdiction": "Iran",
+  "document": "Iran National Building Regulations, Topic 15: Elevators and Escalators",
+  "edition": "third_edition_1392",
+  "publisher": "Ministry of Roads and Urban Development, National Building Regulations Office",
+  "source_reference": "https://azmunsara.com/wp-content/uploads/2021/09/mabhas-15.pdf",
+  "source_host_status": "third_party_host_of_ministry_published_text",
+  "evidence_records": [
+    {
+      "rule_id": "topic15_15_2_1_5_accessible_elevator",
+      "clause": "15-2-1-5",
+      "authority_class": "HARD_REGULATION",
+      "applicability": {"when_elevator_required": true},
+      "requirement": {"minimum_wheelchair_accessible_elevator_count": 1}
+    },
+    {
+      "rule_id": "topic15_15_2_1_9_accessible_car_and_door_minima",
+      "clause": "15-2-1-9",
+      "authority_class": "HARD_REGULATION",
+      "applicability": {"elevator_role": "wheelchair_accessible"},
+      "requirement": {
+        "cabin_minimum_mm": {"width": 1400, "depth": 1100},
+        "clear_door_minimum_mm": 800
+      }
+    },
+    {
+      "rule_id": "topic15_15_2_1_12_traffic_calculation_dependency",
+      "clause": "15-2-1-12",
+      "authority_class": "HARD_REGULATION",
+      "requirement": {"rated_capacity_requires_traffic_calculation": true}
+    },
+    {
+      "rule_id": "topic15_15_2_2_2_1_shaft_dependency",
+      "clause": "15-2-2-2-1",
+      "authority_class": "HARD_REGULATION",
+      "requirement": {"shaft_dependencies": ["rated_capacity", "door_type_or_arrangement", "speed"]}
+    }
+  ],
+  "appendix_2_publication_policy": {
+    "official_candidates_only": true,
+    "row_selection_permitted": false,
+    "unresolved_dependencies": ["rated_capacity", "system_type", "speed", "door_type_or_arrangement"],
+    "reason": "No appendix row is independently applicable before its equipment and traffic dependencies are resolved."
+  },
+  "forbidden_project_authority": ["legacy_1.8x1.8_shaft", "historical_geometry", "vendor_model_default"]
+}

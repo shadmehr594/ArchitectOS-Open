@@ -1,0 +1,18 @@
+{
+  "case_id": "facade",
+  "input": {
+    "image_type": "facade_or_elevation",
+    "observed": ["facade visible", "openings visible", "balcony visible", "entrance visible"],
+    "inferred": [],
+    "unresolved": [],
+    "confidence": "HIGH",
+    "architectural_elements": ["facade", "window", "balcony", "entrance"]
+  },
+  "expected": {
+    "space_type": "facade",
+    "semantic_status": "bounded_interpretation",
+    "role": null,
+    "relation_types": ["opening_within_facade_plane", "platform_connected_to_facade_plane", "entrance_threshold_in_facade_composition"],
+    "relation_statuses": ["BOUNDED_INFERENCE"]
+  }
+}

@@ -1,0 +1,967 @@
+{
+  "schema": "FURNITURE_VECTOR_LIBRARY_CONTRACT_V1",
+  "vector_only": true,
+  "raster_dependencies": [],
+  "symbols": [
+    {
+      "semantic_id": "SINGLE_BED",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "DOUBLE_BED",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "MASTER_BED",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "BEDSIDE_TABLE",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "WARDROBE",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "SOFA_1_SEAT",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "SOFA_2_SEAT",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "SOFA_3_SEAT",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "L_SOFA",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "ARMCHAIR",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "COFFEE_TABLE",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "TV_MEDIA_UNIT",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "DINING_TABLE_4",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "DINING_TABLE_6",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "DINING_TABLE_8",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "KITCHEN_BASE_CABINET",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "KITCHEN_TALL_CABINET",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "SINK",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "COOKTOP",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "REFRIGERATOR",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "ISLAND",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "PENINSULA",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "WC_IRANIAN",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "WC_WESTERN",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "WASHBASIN",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "SHOWER",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "BATHTUB",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "WASHING_MACHINE",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "PARKED_CAR",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "TREE",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "PLANTER",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    },
+    {
+      "semantic_id": "LANDSCAPE_PROXY",
+      "vector_drawing_primitives": [
+        "PATH",
+        "LINE",
+        "ARC",
+        "POLYLINE"
+      ],
+      "nominal_real_world_footprint": {
+        "width_m": null,
+        "depth_m": null,
+        "status": "HEURISTIC_TO_BE_CALIBRATED",
+        "provenance": "DESIGN_HEURISTIC"
+      },
+      "anchor_points": [
+        "INSERTION",
+        "CENTER",
+        "ALIGNMENT_EDGE"
+      ],
+      "rotation": {
+        "unit": "degrees",
+        "allowed": true
+      },
+      "clearance_envelope": {
+        "required": true,
+        "representation": "VECTOR_PATH"
+      },
+      "svg_pdf_representation_contract": "VECTOR_GROUP_AND_PATHS",
+      "future_dwg_block_mapping": null
+    }
+  ]
+}

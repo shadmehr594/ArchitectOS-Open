@@ -1,0 +1,58 @@
+{
+  "contract": "Parcel2TemporaryCoreReservationDesignAssumptionV1",
+  "project_id": "parcel_2",
+  "authority_class": "DESIGN_ASSUMPTION",
+  "assumption_scope": "DESIGN_ASSUMPTION_FOR_SPACE_RESERVATION_ONLY",
+  "status": "temporary_non_final_replaceable",
+  "provenance": "assistant_proposed_under_user_delegated_design_assumption",
+  "source_reference": "chatgpt-conversation://6aa29f0b-b138-83e9-b9f8-e2c4f9237685#continuation-request-2026-09-12-core-reservation",
+  "applicability": {
+    "project_id": "parcel_2",
+    "scenario": "current_mixed_use_architecture_geometry_search",
+    "may_be_reused_as_national_or_local_default": false
+  },
+  "elevator_count": {
+    "value": 1,
+    "authority_class": "DESIGN_CONFIRMATION",
+    "status": "already_confirmed"
+  },
+  "accessible_elevator_cabin_minima": {
+    "cabin_width_mm": 1400,
+    "cabin_depth_mm": 1100,
+    "clear_door_width_mm": 800,
+    "authority_class": "HARD_REGULATION",
+    "source_contract": "iran_topic15_elevator_accessibility_evidence_v1.json",
+    "reservation_proxy_does_not_replace_this_authority": true
+  },
+  "temporary_elevator_shaft_reservation_envelope_m": [2.1, 2.1],
+  "total_vertical_core_reservation_target_area_m2": 20.0,
+  "shape_policy": {
+    "proxy": "square_equivalent_from_area_only",
+    "shape_proxy": true,
+    "final_geometry": false,
+    "selection": false,
+    "fixed_rectangle_placement_forbidden": true,
+    "cardinal_direction_logic_forbidden": true,
+    "fixed_offset_logic_forbidden": true,
+    "fixed_family_logic_forbidden": true
+  },
+  "not_authorized_to_determine": [
+    "final_stair_topology",
+    "elevator_model",
+    "machine_room_or_machine_room_less_selection",
+    "elevator_speed",
+    "door_arrangement",
+    "permanent_core_geometry",
+    "final_elevator_capacity",
+    "equipment_dependent_shaft_size"
+  ],
+  "expiry_and_invalidation": {
+    "must_be_superseded_when_any_becomes_available": [
+      "authoritative_elevator_capacity",
+      "authoritative_equipment_shaft_sizing",
+      "final_core_design"
+    ],
+    "replacement_required_before_final_design": true,
+    "automatic_promotion_to_project_requirement_or_regulation": false
+  }
+}

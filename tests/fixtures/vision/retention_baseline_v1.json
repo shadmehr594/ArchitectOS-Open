@@ -1,0 +1,1232 @@
+{
+  "authorized_by": "DESCRIPTIVE_ARCHITECTURAL_CLAIM_RETENTION_V1",
+  "companion_change": "VISION_SPACE_TYPE_SUBJECT_ROLE_SAFETY_V1",
+  "contract": "VISION_RETENTION_BASELINE_V1",
+  "corpus_root": "runs/vision_finished_facade_acceptance_v1",
+  "corpus_sha256": {
+    "A": "a91095b1eea604e7a08396dbfa2064df45017de7dfb95b00b72baadd25e5d77f",
+    "B": "f8a2da37f57a92d5bd576d2ea66345c5507b27494facc4abf5c3c5ca7a07716f",
+    "C": "c2052adc624a5b744cfed186ac8bfffa81061ad493c9db6491ca434065fcc8ea",
+    "D": "6cad29c1be06845d4eb37d2f0d21a877693dea54b3fe71766800f1610b259be1"
+  },
+  "cpu_only": true,
+  "facades": {
+    "A": {
+      "corpus_dir": "A_neue_nationalgalerie_2022",
+      "current_element_count": 5,
+      "elements": [
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "floor‑to‑ceiling glass curtain wall",
+          "kind": [
+            "wall"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "very deep, flat roof slab",
+          "kind": [
+            "roof"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "exposed orthogonal grid of beams/rafters",
+          "kind": [
+            "beam"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "slender, dark, square‑section columns",
+          "kind": [
+            "column"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "regular column grid",
+          "kind": [
+            "column"
+          ],
+          "status": "visible"
+        }
+      ],
+      "historical_element_count": 4,
+      "historical_elements": [
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "floor‑to‑ceiling glass curtain wall",
+          "kind": [
+            "wall"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "very deep, flat roof slab",
+          "kind": [
+            "roof"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "exposed orthogonal grid of beams/rafters",
+          "kind": [
+            "beam"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "regular column grid",
+          "kind": [
+            "column"
+          ],
+          "status": "visible"
+        }
+      ],
+      "material_delta": [],
+      "material_observations": [
+        {
+          "confidence": "LOW",
+          "descriptor": "floor‑to‑ceiling glass curtain wall",
+          "evidence_phrase": "floor‑to‑ceiling glass curtain wall",
+          "materials": [
+            "glass"
+          ]
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "no interior furniture, sanitary or kitchen fixtures are legible through the glass",
+          "evidence_phrase": "no interior furniture, sanitary or kitchen fixtures are legible through the glass",
+          "materials": [
+            "glass"
+          ]
+        }
+      ],
+      "retained_delta": [
+        {
+          "admission_reason": "claim_properties_not_verified",
+          "evidence_phrase": "slender, dark, square‑section columns",
+          "kind": [
+            "column"
+          ],
+          "provider_reasons": [
+            "claim_properties_not_verified",
+            "claim_properties_not_verified"
+          ]
+        }
+      ],
+      "space_type": "unknown",
+      "visible_floors_count": 1
+    },
+    "B": {
+      "corpus_dir": "B_ref_10",
+      "current_element_count": 15,
+      "elements": [
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Ground floor = level with the central open doorway, the two flanking windows, and the two‑step stone stoop",
+          "kind": [
+            "door",
+            "window",
+            "floor"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Upper floor = level of the curved balcony and its windows",
+          "kind": [
+            "window",
+            "balcony",
+            "floor"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "A triangular pediment (gable) crowns the facade",
+          "kind": [
+            "facade",
+            "pediment"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "The pediment is fully within the frame",
+          "kind": [
+            "pediment"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "small portions of adjacent structures (a pale wall and a small plant on the left; a grey wall on the right) are visible",
+          "kind": [
+            "wall"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Exterior walls clad in beige/tan veined stone or marble panels",
+          "kind": [
+            "wall"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "one central rectangular doorway, open (no door leaf visible), with a stone surround",
+          "kind": [
+            "door"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "a third opening is partly obscured",
+          "kind": [
+            "opening"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "an interior staircase is visible (dark treads with a handrail/balustrade) rising to the upper level",
+          "kind": [
+            "stair",
+            "railing"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "A projecting porch/balcony soffit with a grid of small recessed downlights",
+          "kind": [
+            "balcony"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "A curved (semicircular) upper balcony with a balustrade of turned stone balusters and a moulded handrail and base rail",
+          "kind": [
+            "balcony",
+            "railing"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Exterior walls clad in beige/tan veined stone or marble panels (large rectangular panels with visible joints)",
+          "kind": [
+            "wall"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Multiple large projecting columns/pilasters with simple block capitals and paneled/fluted shafts supporting the balcony and roof overhang",
+          "kind": [
+            "roof",
+            "balcony",
+            "column",
+            "pilaster",
+            "capital",
+            "canopy"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "A panelled frieze/cornice band running beneath the pediment",
+          "kind": [
+            "cornice",
+            "frieze",
+            "pediment"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "A large circular recessed medallion (oculus‑like) in the pediment field, filled with a tiled/mosaic dome pattern",
+          "kind": [
+            "pediment"
+          ],
+          "status": "visible"
+        }
+      ],
+      "historical_element_count": 14,
+      "historical_elements": [
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Ground floor = level with the central open doorway, the two flanking windows, and the two‑step stone stoop",
+          "kind": [
+            "door",
+            "window",
+            "floor"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Upper floor = level of the curved balcony and its windows",
+          "kind": [
+            "window",
+            "balcony",
+            "floor"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "A triangular pediment (gable) crowns the facade",
+          "kind": [
+            "facade",
+            "pediment"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "The pediment is fully within the frame",
+          "kind": [
+            "pediment"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "small portions of adjacent structures (a pale wall and a small plant on the left; a grey wall on the right) are visible",
+          "kind": [
+            "wall"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Exterior walls clad in beige/tan veined stone or marble panels",
+          "kind": [
+            "wall"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "one central rectangular doorway, open (no door leaf visible), with a stone surround",
+          "kind": [
+            "door"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "an interior staircase is visible (dark treads with a handrail/balustrade) rising to the upper level",
+          "kind": [
+            "stair",
+            "railing"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "A projecting porch/balcony soffit with a grid of small recessed downlights",
+          "kind": [
+            "balcony"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "A curved (semicircular) upper balcony with a balustrade of turned stone balusters and a moulded handrail and base rail",
+          "kind": [
+            "balcony",
+            "railing"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Exterior walls clad in beige/tan veined stone or marble panels (large rectangular panels with visible joints)",
+          "kind": [
+            "wall"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "A panelled frieze/cornice band running beneath the pediment",
+          "kind": [
+            "cornice",
+            "frieze",
+            "pediment"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "A large circular recessed medallion (oculus‑like) in the pediment field, filled with a tiled/mosaic dome pattern",
+          "kind": [
+            "pediment"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "a third opening is partly obscured",
+          "kind": [
+            "opening"
+          ],
+          "status": "visible"
+        }
+      ],
+      "material_delta": [],
+      "material_observations": [
+        {
+          "confidence": "LOW",
+          "descriptor": "Ground floor = level with the central open doorway, the two flanking windows, and the two‑step stone stoop",
+          "evidence_phrase": "Ground floor = level with the central open doorway, the two flanking windows, and the two‑step stone stoop",
+          "materials": [
+            "stone"
+          ]
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "Exterior walls clad in beige/tan veined stone or marble panels",
+          "evidence_phrase": "Exterior walls clad in beige/tan veined stone or marble panels",
+          "material_alternatives": [
+            [
+              "stone",
+              "marble"
+            ]
+          ],
+          "materials": []
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "one central rectangular doorway, open (no door leaf visible), with a stone surround",
+          "evidence_phrase": "one central rectangular doorway, open (no door leaf visible), with a stone surround",
+          "materials": [
+            "stone"
+          ]
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "A curved (semicircular) upper balcony with a balustrade of turned stone balusters and a moulded handrail and base rail",
+          "evidence_phrase": "A curved (semicircular) upper balcony with a balustrade of turned stone balusters and a moulded handrail and base rail",
+          "materials": [
+            "stone"
+          ]
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "Exterior walls clad in beige/tan veined stone or marble panels (large rectangular panels with visible joints)",
+          "evidence_phrase": "Exterior walls clad in beige/tan veined stone or marble panels (large rectangular panels with visible joints)",
+          "material_alternatives": [
+            [
+              "stone",
+              "marble"
+            ]
+          ],
+          "materials": []
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "A large circular recessed medallion (oculus‑like) in the pediment field, filled with a tiled/mosaic dome pattern",
+          "evidence_phrase": "A large circular recessed medallion (oculus‑like) in the pediment field, filled with a tiled/mosaic dome pattern",
+          "materials": [
+            "tile"
+          ]
+        }
+      ],
+      "retained_delta": [
+        {
+          "admission_reason": "claim_properties_not_verified",
+          "evidence_phrase": "Multiple large projecting columns/pilasters with simple block capitals and paneled/fluted shafts supporting the balcony and roof overhang",
+          "kind": [
+            "roof",
+            "balcony",
+            "column",
+            "pilaster",
+            "capital",
+            "canopy"
+          ],
+          "provider_reasons": [
+            "claim_properties_not_verified"
+          ]
+        }
+      ],
+      "space_type": "facade",
+      "visible_floors_count": 2
+    },
+    "C": {
+      "corpus_dir": "C_ref_14",
+      "current_element_count": 15,
+      "elements": [
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Flat side wall visible on the right (receding in perspective)",
+          "kind": [
+            "wall"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Corner and bay edges articulated by fluted pilasters with ornate (Corinthian‑type) capitals",
+          "kind": [
+            "pilaster",
+            "capital"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "central ornate wrought‑iron gate (double‑leaf, decorative scrollwork) within a recessed opening",
+          "kind": [
+            "opening"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "to its right a small arched window with metal grille",
+          "kind": [
+            "window",
+            "grille",
+            "arch"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "three stacked levels, each with a dark‑glazed rectangular window behind a projecting balcony and a smaller rectangular window to the right of it",
+          "kind": [
+            "window",
+            "balcony"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "top level has arched‑top (round‑headed) windows",
+          "kind": [
+            "window",
+            "arch"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "the two lower upper levels have rectangular double‑pane windows",
+          "kind": [
+            "window"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "rectangular windows flanking the central pedimented bay",
+          "kind": [
+            "window",
+            "pediment"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Three projecting balconies in the central bay, each with a stone balustrade of turned balusters",
+          "kind": [
+            "balcony",
+            "railing"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "a fourth smaller balustraded ledge at the top under the pediment",
+          "kind": [
+            "pediment",
+            "railing"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "No stairs, lifts, or other vertical circulation elements are visible on the facade",
+          "kind": [
+            "facade"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Pilasters/columns with capitals at corners and flanking the central bay",
+          "kind": [
+            "column",
+            "pilaster",
+            "capital"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "entablature bands",
+          "kind": [
+            "entablature"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "a broken/segmental pediment crowning the top",
+          "kind": [
+            "pediment"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "a triangular pediment (entablature) capping the ground floor above the gate",
+          "kind": [
+            "entablature",
+            "pediment",
+            "floor"
+          ],
+          "status": "visible"
+        }
+      ],
+      "historical_element_count": 9,
+      "historical_elements": [
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Flat side wall visible on the right (receding in perspective)",
+          "kind": [
+            "wall"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Corner and bay edges articulated by fluted pilasters with ornate (Corinthian‑type) capitals",
+          "kind": [
+            "pilaster",
+            "capital"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "central ornate wrought‑iron gate (double‑leaf, decorative scrollwork) within a recessed opening",
+          "kind": [
+            "opening"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "Three projecting balconies in the central bay, each with a stone balustrade of turned balusters",
+          "kind": [
+            "balcony",
+            "railing"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "a fourth smaller balustraded ledge at the top under the pediment",
+          "kind": [
+            "pediment",
+            "railing"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "No stairs, lifts, or other vertical circulation elements are visible on the facade",
+          "kind": [
+            "facade"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "entablature bands",
+          "kind": [
+            "entablature"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "a broken/segmental pediment crowning the top",
+          "kind": [
+            "pediment"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "a triangular pediment (entablature) capping the ground floor above the gate",
+          "kind": [
+            "entablature",
+            "pediment",
+            "floor"
+          ],
+          "status": "visible"
+        }
+      ],
+      "material_delta": [
+        {
+          "confidence": "LOW",
+          "descriptor": "to its right a small arched window with metal grille",
+          "evidence_phrase": "to its right a small arched window with metal grille",
+          "materials": [
+            "metal"
+          ]
+        }
+      ],
+      "material_observations": [
+        {
+          "confidence": "LOW",
+          "descriptor": "Tall, narrow, multi‑storey building clad in light beige/cream stone or rendered masonry with horizontal rustication lines",
+          "evidence_phrase": "Tall, narrow, multi‑storey building clad in light beige/cream stone or rendered masonry with horizontal rustication lines",
+          "material_alternatives": [
+            [
+              "stone",
+              "rendered masonry"
+            ]
+          ],
+          "materials": []
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "to its right a small arched window with metal grille",
+          "evidence_phrase": "to its right a small arched window with metal grille",
+          "materials": [
+            "metal"
+          ]
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "Three projecting balconies in the central bay, each with a stone balustrade of turned balusters",
+          "evidence_phrase": "Three projecting balconies in the central bay, each with a stone balustrade of turned balusters",
+          "materials": [
+            "stone"
+          ]
+        }
+      ],
+      "retained_delta": [
+        {
+          "admission_reason": "claim_properties_not_verified",
+          "evidence_phrase": "to its right a small arched window with metal grille",
+          "kind": [
+            "window",
+            "grille",
+            "arch"
+          ],
+          "provider_reasons": [
+            "claim_properties_not_verified",
+            "claim_properties_not_verified"
+          ]
+        },
+        {
+          "admission_reason": "claim_properties_not_verified",
+          "evidence_phrase": "three stacked levels, each with a dark‑glazed rectangular window behind a projecting balcony and a smaller rectangular window to the right of it",
+          "kind": [
+            "window",
+            "balcony"
+          ],
+          "provider_reasons": [
+            "claim_properties_not_verified",
+            "claim_properties_not_verified"
+          ]
+        },
+        {
+          "admission_reason": "claim_properties_not_verified",
+          "evidence_phrase": "top level has arched‑top (round‑headed) windows",
+          "kind": [
+            "window",
+            "arch"
+          ],
+          "provider_reasons": [
+            "claim_properties_not_verified",
+            "claim_properties_not_verified"
+          ]
+        },
+        {
+          "admission_reason": "claim_properties_not_verified",
+          "evidence_phrase": "the two lower upper levels have rectangular double‑pane windows",
+          "kind": [
+            "window"
+          ],
+          "provider_reasons": [
+            "claim_properties_not_verified",
+            "claim_properties_not_verified"
+          ]
+        },
+        {
+          "admission_reason": "claim_properties_not_verified",
+          "evidence_phrase": "rectangular windows flanking the central pedimented bay",
+          "kind": [
+            "window",
+            "pediment"
+          ],
+          "provider_reasons": [
+            "claim_properties_not_verified",
+            "claim_properties_not_verified"
+          ]
+        },
+        {
+          "admission_reason": "claim_properties_not_verified",
+          "evidence_phrase": "Pilasters/columns with capitals at corners and flanking the central bay",
+          "kind": [
+            "column",
+            "pilaster",
+            "capital"
+          ],
+          "provider_reasons": [
+            "claim_properties_not_verified",
+            "claim_properties_not_verified"
+          ]
+        }
+      ],
+      "space_type": "unknown",
+      "visible_floors_count": null
+    },
+    "D": {
+      "corpus_dir": "D_upload_042039a7_003",
+      "current_element_count": 19,
+      "elements": [
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "ground floor",
+          "kind": [
+            "floor"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "upper floor",
+          "kind": [
+            "floor"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "recessed entry",
+          "kind": [
+            "entrance"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "canopy",
+          "kind": [
+            "canopy"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "dark pitched roof",
+          "kind": [
+            "roof"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "pronounced eaves/overhang",
+          "kind": [
+            "canopy"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "partial wall",
+          "kind": [
+            "wall"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "heavy brick pier",
+          "kind": [
+            "pier"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "two brick arches",
+          "kind": [
+            "arch"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "two wall‑mounted sconce lights",
+          "kind": [
+            "light_fixture"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "brick piers/columns",
+          "kind": [
+            "column",
+            "pier"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "two masonry arches",
+          "kind": [
+            "arch"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "flat metal canopy",
+          "kind": [
+            "canopy"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "pitched roof with deep eaves",
+          "kind": [
+            "roof"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "dark‑framed glass doors",
+          "kind": [
+            "door"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "dark main door",
+          "kind": [
+            "door"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "tall arched window",
+          "kind": [
+            "window",
+            "arch"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "tall narrow window",
+          "kind": [
+            "window"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "projecting bay‑like window groups",
+          "kind": [
+            "window"
+          ],
+          "status": "visible"
+        }
+      ],
+      "historical_element_count": 13,
+      "historical_elements": [
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "ground floor",
+          "kind": [
+            "floor"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "upper floor",
+          "kind": [
+            "floor"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "recessed entry",
+          "kind": [
+            "entrance"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "canopy",
+          "kind": [
+            "canopy"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "dark pitched roof",
+          "kind": [
+            "roof"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "pronounced eaves/overhang",
+          "kind": [
+            "canopy"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "partial wall",
+          "kind": [
+            "wall"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "heavy brick pier",
+          "kind": [
+            "pier"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "two brick arches",
+          "kind": [
+            "arch"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "two wall‑mounted sconce lights",
+          "kind": [
+            "light_fixture"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "two masonry arches",
+          "kind": [
+            "arch"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "flat metal canopy",
+          "kind": [
+            "canopy"
+          ],
+          "status": "visible"
+        },
+        {
+          "confidence": "LOW",
+          "evidence_phrase": "pitched roof with deep eaves",
+          "kind": [
+            "roof"
+          ],
+          "status": "visible"
+        }
+      ],
+      "material_delta": [
+        {
+          "confidence": "LOW",
+          "descriptor": "brick piers/columns",
+          "evidence_phrase": "brick piers/columns",
+          "materials": [
+            "brick"
+          ]
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "dark‑framed glass doors",
+          "evidence_phrase": "dark‑framed glass doors",
+          "materials": [
+            "glass"
+          ]
+        }
+      ],
+      "material_observations": [
+        {
+          "confidence": "LOW",
+          "descriptor": "exposed red‑brown brick masonry",
+          "evidence_phrase": "exposed red‑brown brick masonry",
+          "materials": [
+            "brick",
+            "masonry"
+          ]
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "heavy brick pier",
+          "evidence_phrase": "heavy brick pier",
+          "materials": [
+            "brick"
+          ]
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "two brick arches",
+          "evidence_phrase": "two brick arches",
+          "materials": [
+            "brick"
+          ]
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "Dark (black) painted metal/wood trim",
+          "evidence_phrase": "Dark (black) painted metal/wood trim",
+          "materials": [
+            "metal",
+            "wood"
+          ]
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "brick piers/columns",
+          "evidence_phrase": "brick piers/columns",
+          "materials": [
+            "brick"
+          ]
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "two masonry arches",
+          "evidence_phrase": "two masonry arches",
+          "materials": [
+            "masonry"
+          ]
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "flat metal canopy",
+          "evidence_phrase": "flat metal canopy",
+          "materials": [
+            "metal"
+          ]
+        },
+        {
+          "confidence": "LOW",
+          "descriptor": "dark‑framed glass doors",
+          "evidence_phrase": "dark‑framed glass doors",
+          "materials": [
+            "glass"
+          ]
+        }
+      ],
+      "retained_delta": [
+        {
+          "admission_reason": "claim_properties_not_verified",
+          "evidence_phrase": "brick piers/columns",
+          "kind": [
+            "column",
+            "pier"
+          ],
+          "provider_reasons": [
+            "claim_properties_not_verified"
+          ]
+        },
+        {
+          "admission_reason": "claim_properties_not_verified",
+          "evidence_phrase": "dark‑framed glass doors",
+          "kind": [
+            "door"
+          ],
+          "provider_reasons": [
+            "claim_properties_not_verified"
+          ]
+        },
+        {
+          "admission_reason": "claim_properties_not_verified",
+          "evidence_phrase": "dark main door",
+          "kind": [
+            "door"
+          ],
+          "provider_reasons": [
+            "claim_properties_not_verified"
+          ]
+        },
+        {
+          "admission_reason": "claim_properties_not_verified",
+          "evidence_phrase": "tall arched window",
+          "kind": [
+            "window",
+            "arch"
+          ],
+          "provider_reasons": [
+            "claim_properties_not_verified"
+          ]
+        },
+        {
+          "admission_reason": "claim_properties_not_verified",
+          "evidence_phrase": "tall narrow window",
+          "kind": [
+            "window"
+          ],
+          "provider_reasons": [
+            "claim_properties_not_verified"
+          ]
+        },
+        {
+          "admission_reason": "claim_properties_not_verified",
+          "evidence_phrase": "projecting bay‑like window groups",
+          "kind": [
+            "window"
+          ],
+          "provider_reasons": [
+            "claim_properties_not_verified"
+          ]
+        }
+      ],
+      "space_type": "entrance",
+      "visible_floors_count": 2
+    }
+  },
+  "production_sha256": {
+    "core/vision/architectural_observation_v1.py": "170ca145c5ca60ab0a90f2423fb1a4ec5d870a9ffaa1877996628a7a71198787",
+    "core/vision/architectural_vision_interpreter_v1.py": "03dd30ebebbad0b2c98cb8cf85c57dc938f29f14b050acc982951256fdd2fa53",
+    "core/vision/image_understanding_v1.py": "6a6f13698fc7153a7da7bffe5b044ef54187fcbf726009301372f8de351abb18"
+  },
+  "purpose": "Accepted post-retention architectural observation layer for the four-facade corpus. Replaces the pre-retention identity expectation with an exact allowed-delta expectation."
+}

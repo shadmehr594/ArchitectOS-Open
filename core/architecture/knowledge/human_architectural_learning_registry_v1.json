@@ -1,0 +1,618 @@
+{
+  "schema": "human_architectural_learning_registry_v1",
+  "append_only": true,
+  "items": [
+    {
+      "id": "HL-001",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "شبکه‌بندی مساوی مکانیکی معماری نیست",
+      "generalized_rule": "NO_MECHANICAL_EQUAL_GRID_PACKING",
+      "scope": "GENERAL",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-001"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-002",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "اتاق خواب، حمام و سرویس مقصدند نه مسیر عبور",
+      "generalized_rule": "NON_TRANSIT_PRIVATE_AND_WET_DESTINATIONS",
+      "scope": "GENERAL",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-002"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-003",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "نشیمن می‌تواند توزیع‌کننده باشد",
+      "generalized_rule": "LIVING_MAY_DISTRIBUTE",
+      "scope": "RESIDENTIAL",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-003"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-004",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "آشپزخانه باز با بازشوی واقعی مجاز است",
+      "generalized_rule": "OPEN_KITCHEN_OPEN_CONNECTION",
+      "scope": "RESIDENTIAL",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-004"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-005",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "هسته در طبقات باید ثابت بماند",
+      "generalized_rule": "CORE_FIXED_ACROSS_FLOORS",
+      "scope": "MULTI_STOREY",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-005"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-006",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "تجاری رو به جبهه عمومی قرار گیرد",
+      "generalized_rule": "COMMERCIAL_ON_PUBLIC_FRONTAGE",
+      "scope": "MIXED_USE",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-006"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-007",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "در قرارداد سایت محصور جاری روی N/E/W بازشو همسایه ممنوع است",
+      "generalized_rule": "NO_NEIGHBOR_OPENINGS_ON_CONSTRAINED_EDGES",
+      "scope": "CURRENT_SITE_CONTRACT",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-007"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-008",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "نورگیر با حیاط قابل استفاده یکی نیست",
+      "generalized_rule": "LIGHTWELL_VS_COURTYARD_DISTINCTION",
+      "scope": "GENERAL",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-008"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-009",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "در و بازشو باید با graph در هندسه منطبق باشد",
+      "generalized_rule": "GRAPH_GEOMETRY_OPENING_MATCH",
+      "scope": "GENERAL",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-009"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-010",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "توپولوژی دیوار باید پیوسته و بازشو از solid کسر شود",
+      "generalized_rule": "CONTINUOUS_WALL_TOPOLOGY",
+      "scope": "GENERAL",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-010"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-011",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "دیوار سایت و گیت نفررو/خودرو مستقل از boundary هستند",
+      "generalized_rule": "SITE_WALL_AND_CONTROLLED_GATES",
+      "scope": "SITE",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-011"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-012",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "FFL و yard datum با provenance پروژه تفکیک شوند",
+      "generalized_rule": "FFL_VS_YARD_PROJECT_RULE",
+      "scope": "CURRENT_PROJECT",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-012"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-013",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "حیاط قابل استفاده دسترسی فیزیکی می‌خواهد",
+      "generalized_rule": "OCCUPIABLE_COURTYARD_REQUIRES_ACCESS",
+      "scope": "RESIDENTIAL",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-013"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-014",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "آشپزخانه نیازمند configuration و کابینت واقعی است",
+      "generalized_rule": "KITCHEN_CONFIGURATION_AND_CABINETS",
+      "scope": "RESIDENTIAL",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-014"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-015",
+      "date": "2026-09-20",
+      "source_checkpoint": "CUMULATIVE_PREVIOUS_ACCEPTED_LEARNING",
+      "human_observation_fa": "اثاثیه باید proxy عملکردی داشته باشد",
+      "generalized_rule": "FURNITURE_USE_PROXIES",
+      "scope": "GENERAL",
+      "provenance": "ACCEPTED_HUMAN_CORRECTION",
+      "negative_example": "طرحی که قاعده را نقض کند",
+      "positive_pattern": "الگوی مثبت متناظر",
+      "regression_test_ids": [
+        "REG-HL-015"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-016",
+      "date": "2026-09-20",
+      "source_checkpoint": "AUTONOMOUS_SINGLE_STOREY_VILLA_120M2_TEST_20260920_02",
+      "human_observation_fa": "حیاط مشترک نباید از حمام، سرویس، اتاق، انبار یا لاندری دسترسی بگیرد",
+      "generalized_rule": "COURTYARD_ADJACENT_NEUTRAL_DISTRIBUTOR_PATTERN",
+      "scope": "RESIDENTIAL_COURTYARD",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "court_door from bath_service_lobby",
+      "positive_pattern": "neutral hall/distributor to courtyard",
+      "regression_test_ids": [
+        "T01",
+        "T02",
+        "T03",
+        "T04"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-017",
+      "date": "2026-09-20",
+      "source_checkpoint": "AUTONOMOUS_SINGLE_STOREY_VILLA_120M2_TEST_20260920_02",
+      "human_observation_fa": "حیاط نورده فضاهای اقامتی در دامنه مبحث ۴ حداقل ۱۲ مترمربع و عرض ۳ متر است",
+      "generalized_rule": "IRAN_HABITABLE_COURTYARD_12M2_3M",
+      "scope": "IRAN_TOPIC4_APPLICABLE_CONTEXT",
+      "provenance": "IRAN_NATIONAL_VERIFIED_REGULATION:T4-4-5-8-3-5:PRINTED_PAGE_65:PDF_PAGE_78",
+      "negative_example": "10.80m2 / 2.70m",
+      "positive_pattern": "at least 12m2 and 3m",
+      "regression_test_ids": [
+        "T05",
+        "T06"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-018",
+      "date": "2026-09-20",
+      "source_checkpoint": "AUTONOMOUS_SINGLE_STOREY_VILLA_120M2_TEST_20260920_02",
+      "human_observation_fa": "گذار عمومی به راهروی خصوصی می‌تواند باز و عریض باشد",
+      "generalized_rule": "WIDE_OPEN_TRANSITION_CONDITIONAL",
+      "scope": "RESIDENTIAL",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "door-like narrow enclosure without need",
+      "positive_pattern": "wide opening plus privacy sightline",
+      "regression_test_ids": [
+        "T10",
+        "T11"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-019",
+      "date": "2026-09-20",
+      "source_checkpoint": "AUTONOMOUS_SINGLE_STOREY_VILLA_120M2_TEST_20260920_02",
+      "human_observation_fa": "سرویس مهمان از transition عمومی و بدون ورود به خوشه خواب قابل دسترسی باشد",
+      "generalized_rule": "GUEST_WC_PUBLIC_TRANSITION_ACCESS",
+      "scope": "RESIDENTIAL",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "guest enters sleeping cluster",
+      "positive_pattern": "PUBLIC -> TRANSITION -> GUEST_WC",
+      "regression_test_ids": [
+        "T07"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-020",
+      "date": "2026-09-20",
+      "source_checkpoint": "AUTONOMOUS_SINGLE_STOREY_VILLA_120M2_TEST_20260920_02",
+      "human_observation_fa": "حمام خانواده از راهروی خصوصی باز شود و گذر حیاط نباشد",
+      "generalized_rule": "FAMILY_BATH_PRIVATE_HALL_ACCESS",
+      "scope": "RESIDENTIAL",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "bath as courtyard passage",
+      "positive_pattern": "PUBLIC -> PRIVATE_HALL -> FAMILY_BATH",
+      "regression_test_ids": [
+        "T08",
+        "T09"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-021",
+      "date": "2026-09-20",
+      "source_checkpoint": "AUTONOMOUS_SINGLE_STOREY_VILLA_120M2_TEST_20260920_02",
+      "human_observation_fa": "فضای تر بدون تهویه مستقیم معتبر intent داکت می‌خواهد",
+      "generalized_rule": "VENTILATION_DUCT_OR_SHAFT_INTENT",
+      "scope": "WET_SPACES",
+      "provenance": "ARCHITECTURAL_DESIGN_HEURISTIC",
+      "negative_example": "wet room with no exterior/valid court ventilation",
+      "positive_pattern": "dedicated duct intent per wet space",
+      "regression_test_ids": [
+        "T12"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-022",
+      "date": "2026-09-20",
+      "source_checkpoint": "AUTONOMOUS_SINGLE_STOREY_VILLA_120M2_TEST_20260920_02",
+      "human_observation_fa": "مساحت به تنهایی قابلیت استفاده سرویس را اثبات نمی‌کند",
+      "generalized_rule": "SANITARY_FIXTURE_USE_ZONE_VALIDATION",
+      "scope": "WET_SPACES",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "fixtures overlap or block swing",
+      "positive_pattern": "fixtures plus clear approach/use zones",
+      "regression_test_ids": [
+        "T13",
+        "T14"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-023",
+      "date": "2026-09-20",
+      "source_checkpoint": "AUTONOMOUS_SINGLE_STOREY_VILLA_120M2_TEST_20260920_02",
+      "human_observation_fa": "توزیع‌کننده فشرده کنار حیاط الگوی امتیازی است نه قالب اجباری",
+      "generalized_rule": "CENTRAL_COURTYARD_DISTRIBUTOR_PATTERN",
+      "scope": "RESIDENTIAL",
+      "provenance": "ARCHITECTURAL_DESIGN_PATTERN",
+      "negative_example": "wet block seals courtyard edge",
+      "positive_pattern": "neutral compact distributor",
+      "regression_test_ids": [
+        "T15"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-024",
+      "date": "2026-09-20",
+      "source_checkpoint": "AUTONOMOUS_SINGLE_STOREY_VILLA_120M2_TEST_20260920_02",
+      "human_observation_fa": "ورودی باید از حیاط خوانا و دارای توالی ورود کامل باشد",
+      "generalized_rule": "ENTRANCE_ARRIVAL_SEQUENCE",
+      "scope": "CURRENT_PROJECT",
+      "provenance": "USER_REQUESTED_PROJECT_RULE",
+      "negative_example": "path ends at bare door",
+      "positive_pattern": "gate-walk-platform-steps-canopy-threshold-door",
+      "regression_test_ids": [
+        "T16",
+        "T17"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-025",
+      "date": "2026-09-20",
+      "source_checkpoint": "AUTONOMOUS_SINGLE_STOREY_VILLA_120M2_TEST_20260920_02",
+      "human_observation_fa": "کد ارتفاعی باید داخل یا مجاور سطح هدف باشد",
+      "generalized_rule": "SPOT_LEVEL_TARGET_CONTAINMENT",
+      "scope": "GENERAL",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "yard level printed inside building",
+      "positive_pattern": "marker inside its target polygon",
+      "regression_test_ids": [
+        "T18",
+        "T19",
+        "T20"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-026",
+      "date": "2026-09-20",
+      "source_checkpoint": "AUTONOMOUS_SINGLE_STOREY_VILLA_120M2_TEST_20260920_02",
+      "human_observation_fa": "سمبل‌های مبلمان باید از نظر SVG معنایی و متمایز باشند",
+      "generalized_rule": "SEMANTIC_VECTOR_FURNITURE_GRAPHICS",
+      "scope": "ARCHITECTURAL_GRAPHICS",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "generic identical rectangles",
+      "positive_pattern": "distinct groups/classes and recognizable symbols",
+      "regression_test_ids": [
+        "T21"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-027",
+      "date": "2026-09-20",
+      "source_checkpoint": "RESIDENTIAL_PATTERN_LIBRARY_20260920_01",
+      "human_observation_fa": "چند ترکیب معتبر همزمان حفظ شوند",
+      "generalized_rule": "MULTIPLE_VALID_RESIDENTIAL_COMPOSITIONS",
+      "scope": "RESIDENTIAL",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "single winner",
+      "positive_pattern": "3-5 distinct grammars",
+      "regression_test_ids": [
+        "RPL-04",
+        "RPL-23"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-028",
+      "date": "2026-09-20",
+      "source_checkpoint": "RESIDENTIAL_PATTERN_LIBRARY_20260920_01",
+      "human_observation_fa": "ورودی مسیر عمومی و خصوصی را جدا کند",
+      "generalized_rule": "ENTRY_BIFURCATION_PUBLIC_PRIVATE",
+      "scope": "RESIDENTIAL",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "living crossing",
+      "positive_pattern": "entry decision node",
+      "regression_test_ids": [
+        "RPL-06"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-029",
+      "date": "2026-09-20",
+      "source_checkpoint": "RESIDENTIAL_PATTERN_LIBRARY_20260920_01",
+      "human_observation_fa": "دو آستانه جریان مهمان و خانواده را جدا کند",
+      "generalized_rule": "DUAL_ENTRY_PUBLIC_PRIVATE_SPLIT",
+      "scope": "RESIDENTIAL",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "same branch",
+      "positive_pattern": "differentiated branches",
+      "regression_test_ids": [
+        "RPL-07"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-030",
+      "date": "2026-09-20",
+      "source_checkpoint": "RESIDENTIAL_PATTERN_LIBRARY_20260920_01",
+      "human_observation_fa": "بال خصوصی از دید مهمان محافظت شود",
+      "generalized_rule": "PRIVATE_WING_GUEST_VIEW_CONTROL",
+      "scope": "RESIDENTIAL",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "bedroom guest view",
+      "positive_pattern": "buffered private wing",
+      "regression_test_ids": [
+        "RPL-P10"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-031",
+      "date": "2026-09-20",
+      "source_checkpoint": "RESIDENTIAL_PATTERN_LIBRARY_20260920_01",
+      "human_observation_fa": "حیاط نورده می‌تواند میانی باشد",
+      "generalized_rule": "MID_PLAN_DAYLIGHT_YARD_PATTERN",
+      "scope": "RESIDENTIAL",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "yard forced to end",
+      "positive_pattern": "deficit-driven mid yard",
+      "regression_test_ids": [
+        "RPL-11",
+        "RPL-12"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-032",
+      "date": "2026-09-20",
+      "source_checkpoint": "RESIDENTIAL_PATTERN_LIBRARY_20260920_01",
+      "human_observation_fa": "حیاط نورده چند فضای مفید را خدمت دهد",
+      "generalized_rule": "DAYLIGHT_YARD_SERVES_MULTIPLE_SPACES",
+      "scope": "RESIDENTIAL",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "single low-value use",
+      "positive_pattern": "multi-space resource",
+      "regression_test_ids": [
+        "RPL-11"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-033",
+      "date": "2026-09-20",
+      "source_checkpoint": "RESIDENTIAL_PATTERN_LIBRARY_20260920_01",
+      "human_observation_fa": "آشپزخانه به حیاط قابل استفاده متصل شود",
+      "generalized_rule": "KITCHEN_OUTDOOR_ACCESS_PATTERN",
+      "scope": "RESIDENTIAL",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "wet transit",
+      "positive_pattern": "kitchen to yard",
+      "regression_test_ids": [
+        "RPL-P13"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-034",
+      "date": "2026-09-20",
+      "source_checkpoint": "RESIDENTIAL_PATTERN_LIBRARY_20260920_01",
+      "human_observation_fa": "overlay میناب فقط با درخواست صریح فعال شود",
+      "generalized_rule": "USER_DEFINED_MINAB_DAYLIGHT_YARD_OVERLAY",
+      "scope": "MINAB_USER_PROJECT",
+      "provenance": "USER_DEFINED_LOCAL_RULE",
+      "negative_example": "global override",
+      "positive_pattern": "opt-in local yard",
+      "regression_test_ids": [
+        "RPL-13",
+        "RPL-14",
+        "RPL-15",
+        "RPL-16",
+        "RPL-17"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-035",
+      "date": "2026-09-20",
+      "source_checkpoint": "RESIDENTIAL_PATTERN_LIBRARY_20260920_01",
+      "human_observation_fa": "انتخاب الگو تابع زمینه است",
+      "generalized_rule": "RESIDENTIAL_PATTERN_LIBRARY_SELECTION",
+      "scope": "RESIDENTIAL",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "hardcoded winner",
+      "positive_pattern": "contextual combinations",
+      "regression_test_ids": [
+        "RPL-04",
+        "RPL-22"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-036",
+      "date": "2026-09-20",
+      "source_checkpoint": "RESIDENTIAL_PATTERN_LIBRARY_20260920_01",
+      "human_observation_fa": "چرخش و قرینه تنوع واقعی نیست",
+      "generalized_rule": "COSMETIC_VARIATION_NOT_TRUE_DESIGN_DIVERSITY",
+      "scope": "RESIDENTIAL",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "rotated duplicate",
+      "positive_pattern": "topology diversity",
+      "regression_test_ids": [
+        "RPL-05",
+        "RPL-23"
+      ],
+      "superseded_by": null,
+      "active": true
+    },
+    {
+      "id": "HL-037",
+      "date": "2026-09-20",
+      "source_checkpoint": "RESIDENTIAL_PATTERN_LIBRARY_20260920_01",
+      "human_observation_fa": "مبلمان باید semantic/vector/DWG-ready باشد",
+      "generalized_rule": "SEMANTIC_FURNITURE_LIBRARY_CONTRACT",
+      "scope": "ARCHITECTURAL_GRAPHICS",
+      "provenance": "GENERALIZED_HUMAN_REVIEW_LEARNING",
+      "negative_example": "raster placeholder",
+      "positive_pattern": "vector contract",
+      "regression_test_ids": [
+        "RPL-19",
+        "RPL-20",
+        "RPL-21"
+      ],
+      "superseded_by": null,
+      "active": true
+    }
+  ]
+}

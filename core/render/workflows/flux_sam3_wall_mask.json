@@ -1,0 +1,94 @@
+{
+  "401": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "sam3.1_multiplex_fp16.safetensors"
+    }
+  },
+  "402": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "input.png",
+      "upload": "image"
+    }
+  },
+  "403": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "facade wall",
+      "clip": [
+        "401",
+        1
+      ]
+    }
+  },
+  "404": {
+    "class_type": "SAM3_Detect",
+    "inputs": {
+      "model": [
+        "401",
+        0
+      ],
+      "image": [
+        "402",
+        0
+      ],
+      "conditioning": [
+        "403",
+        0
+      ],
+      "threshold": 0.5,
+      "refine_iterations": 2,
+      "individual_masks": false
+    }
+  },
+  "405": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "404",
+        0
+      ]
+    }
+  },
+  "406": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "architectos_sam3_wallmask",
+      "images": [
+        "405",
+        0
+      ]
+    }
+  },
+  "407": {
+    "class_type": "ImageCompositeMasked",
+    "inputs": {
+      "destination": [
+        "402",
+        0
+      ],
+      "source": [
+        "405",
+        0
+      ],
+      "x": 0,
+      "y": 0,
+      "resize_source": false,
+      "mask": [
+        "404",
+        0
+      ]
+    }
+  },
+  "408": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "architectos_sam3_wallmask_footprint",
+      "images": [
+        "407",
+        0
+      ]
+    }
+  }
+}

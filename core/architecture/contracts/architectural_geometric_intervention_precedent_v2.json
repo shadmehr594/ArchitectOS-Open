@@ -1,0 +1,46 @@
+{
+  "contract": "ArchitecturalGeometricInterventionPrecedentV2",
+  "authority_class": "PRECEDENT_NON_REGULATORY",
+  "may_resolve_regulatory_requirement": false,
+  "may_select_a_shape": false,
+  "evidence_origin": "eight user-supplied plan images reviewed as design evidence",
+  "observed_patterns": [
+    {
+      "pattern": "local_curved_stair_within_orthogonal_plan",
+      "lesson": "a local geometric exception need not propagate to global geometry",
+      "candidate_operations": ["curve_transition", "bend_circulation"],
+      "required_evidence": ["movement_or_spatial_sequence_benefit", "bounded_local_scope"]
+    },
+    {
+      "pattern": "local_oblique_reconciliation_at_core_entry_service",
+      "lesson": "short angled boundaries can reconcile doors, core, service and distribution",
+      "candidate_operations": ["chamfer_corner", "relocate_doorway", "reshape_service_cluster", "widen_node"],
+      "required_evidence": ["multiple_conflicts_reduced", "residual_space_not_increased"]
+    },
+    {
+      "pattern": "rooms_follow_oblique_envelope",
+      "lesson": "dominant axes are extracted from context rather than assumed to be global X/Y",
+      "candidate_operations": ["rotate_boundary", "align_neighboring_spaces"],
+      "required_evidence": ["envelope_led_axis", "usable_room_edges"]
+    },
+    {
+      "pattern": "bounded_chamfer_or_curve_at_difficult_transition",
+      "lesson": "exceptional geometry is justified only at the conflict location",
+      "candidate_operations": ["chamfer_corner", "curve_transition", "merge_residual_pocket"],
+      "required_evidence": ["local_problem", "multi_problem_benefit"]
+    },
+    {
+      "pattern": "polygonal_or_radial_distribution_node",
+      "lesson": "organizing geometry may become zonal or global when many relationships converge",
+      "candidate_operations": ["widen_node", "radial_distribute", "reorganize_around_core"],
+      "required_evidence": ["multiple_destinations", "hierarchy_and_circulation_benefit", "whole_plan_revalidation"]
+    }
+  ],
+  "prohibitions": [
+    "no_named_shape_as_solution",
+    "no_fixed_vertex_count",
+    "no_fixed_angle_radius_or_coordinate",
+    "no_parcel_specific_rule",
+    "no_precedent_as_regulation"
+  ]
+}

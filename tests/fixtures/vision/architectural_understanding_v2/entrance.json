@@ -1,0 +1,17 @@
+{
+  "case_id": "entrance",
+  "input": {
+    "image_type": "architectural_render_or_photo",
+    "observed": ["entrance visible"],
+    "inferred": [],
+    "unresolved": [],
+    "confidence": "MEDIUM",
+    "architectural_elements": ["entrance"]
+  },
+  "expected": {
+    "space_type": "entrance",
+    "semantic_status": "bounded_interpretation",
+    "role": null,
+    "visible_elements": ["entrance"]
+  }
+}

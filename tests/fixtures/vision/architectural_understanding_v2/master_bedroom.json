@@ -1,0 +1,22 @@
+{
+  "case_id": "master_bedroom",
+  "input": {
+    "image_type": "architectural_render_or_photo",
+    "observed": ["bed visible", "wardrobe visible", "bathroom visible"],
+    "inferred": [],
+    "unresolved": [],
+    "confidence": "MEDIUM",
+    "architectural_elements": ["bed", "wardrobe", "bathroom"]
+  },
+  "expected": {
+    "space_type": "master bedroom",
+    "semantic_status": "bounded_interpretation",
+    "role": "private_sleeping_space",
+    "visible_elements": ["sleeping_element", "wardrobe_or_closet", "bathroom_or_ensuite"],
+    "associated": {
+      "wardrobe_or_closet": "storage_associated",
+      "bathroom_or_ensuite": "sanitary_service_associated"
+    },
+    "functional_relation_types": ["sleeping_storage_relation", "sleeping_sanitary_relation"]
+  }
+}

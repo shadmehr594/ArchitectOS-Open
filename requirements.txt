@@ -1,0 +1,11 @@
+flask
+flask-cors
+numpy
+requests
+ezdxf
+ifcopenshell==0.8.5
+pytest
+tesserocr @ https://github.com/simonflueckiger/tesserocr-windows_build/releases/download/tesserocr-2.10.0-tesseract-5.5.2/tesserocr-2.10.0-cp312-cp312-win_amd64.whl ; sys_platform == 'win32' and python_version == '3.12'
+
+Pillow>=10.0
+opencv-python-headless>=4.8,<4.12
