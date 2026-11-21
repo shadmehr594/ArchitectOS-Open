@@ -48,6 +48,16 @@ credentials*.json
 !*tokens*.md
 
 # ---------------------------------------------------------------------------
+# Local-only operator tooling (personal paths, never published)
+#
+# SYNC_GEMINI.bat passes the operator's personal Drive root at call time, and
+# the PowerShell helper derives the repo root from its own location. Neither
+# belongs in the public tree, so both are kept local.
+# ---------------------------------------------------------------------------
+SYNC_GEMINI.bat
+tools/sync_gemini_vision_to_drive.ps1
+
+# ---------------------------------------------------------------------------
 # ArchitectOS runtime data (personal, never published)
 # ---------------------------------------------------------------------------
 data/projects/*
